@@ -5,8 +5,8 @@ import "./ui/globals.css";
 const outfit = Outfit({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  title: "TFT Senpai",
-  description: "Teamfight Tactics app",
+  title: "Dreaming Forest",
+  description: "Maplestory app",
 };
 
 export default function RootLayout({
