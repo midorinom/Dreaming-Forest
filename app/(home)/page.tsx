@@ -1,5 +1,5 @@
-import Dashboard from "./ui/Home/Dashboard";
-import FirstTimer from "./ui/Home/FirstTimer";
+import Dashboard from "../ui/home/Dashboard/Dashboard";
+import FirstTimer from "../ui/home/FirstTimer/FirstTimer";
 
 export default function Page() {
   let isLoggedIn = false;

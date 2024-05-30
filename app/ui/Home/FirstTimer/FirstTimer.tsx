@@ -1,6 +1,6 @@
 "use client";
-import SelectRegion from "./FirstTimer/SelectRegion";
-import AddCharacter from "./FirstTimer/AddCharacter";
+import SelectRegion from "./SelectRegion";
+import AddCharacter from "./AddCharacter";
 
 export default function FirstTimer() {
   return (
