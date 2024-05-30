@@ -6,8 +6,12 @@ export default function FirstTimer() {
   return (
     <div className="w-1/3 text-primary-content">
       <div className="collapse bg-accent">
-        <input type="radio" name="my-accordion-1" />
-        <div className="collapse-title text-xl font-medium underline-offset-8 underline-pink">
+        <input type="radio" name="accordion" />
+        <div
+          className={
+            "collapse-title text-xl font-medium underline-offset-8 underline-pink"
+          }
+        >
           Select Region
         </div>
         <div className="collapse-content">
@@ -15,7 +19,7 @@ export default function FirstTimer() {
         </div>
       </div>
       <div className="collapse bg-primary">
-        <input type="radio" name="my-accordion-1" />
+        <input type="radio" name="accordion" />
         <div className="collapse-title text-xl font-medium underline-offset-8 underline-pink">
           Add Character
         </div>
