@@ -6,7 +6,7 @@ const outfit = Outfit({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Dreaming Forest",
-  description: "Maplestory app",
+  description: "Maplestory App",
 };
 
 export default function RootLayout({

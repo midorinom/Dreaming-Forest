@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -6,6 +7,14 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        elodin_background: "url('/elodin_background.png')",
+        lucid_background: "url('/lucid_background.png')",
+      },
+    },
+  },
   daisyui: {
     themes: [
       {
@@ -18,7 +27,17 @@ const config: Config = {
       },
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".underline-pink": {
+          "text-decoration": "underline",
+          "text-decoration-color": "pink",
+        },
+      });
+    }),
+  ],
 };
 
 export default config;
