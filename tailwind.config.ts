@@ -38,7 +38,7 @@ const config: Config = {
       addUtilities({
         ".underline-pink": {
           "text-decoration": "underline",
-          "text-decoration-color": "pink",
+          "text-decoration-color": "#FFC22D",
         },
       });
     }),
