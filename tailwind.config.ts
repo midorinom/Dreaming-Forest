@@ -36,9 +36,9 @@ const config: Config = {
     require("daisyui"),
     plugin(function ({ addUtilities }) {
       addUtilities({
-        ".underline-pink": {
+        ".underline-neutral": {
           "text-decoration": "underline",
-          "text-decoration-color": "#FFC22D",
+          "text-decoration-color": "#9DB4AB",
         },
       });
     }),
