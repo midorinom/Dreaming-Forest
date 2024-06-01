@@ -8,7 +8,6 @@ export default function Page() {
 
   if (!isLoggedIn && !localStorage) {
     firstTimer = true;
-    console.log("test");
   }
 
   return (
