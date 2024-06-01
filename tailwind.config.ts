@@ -18,11 +18,16 @@ const config: Config = {
   daisyui: {
     themes: [
       {
-        pastel: {
-          ...require("daisyui/src/theming/themes")["pastel"],
-          "base-100": "#ABC4A1",
+        dreamy: {
           primary: "#BBDB9B",
+          secondary: "#F6CBD1",
+          accent: "#B4E9D6",
           neutral: "#9DB4AB",
+          "base-100": "#ABC4A1",
+          info: "#00B3F0",
+          success: "#00A96F",
+          warning: "#FFC22D",
+          error: "#FF6F70",
         },
       },
     ],
@@ -31,9 +36,9 @@ const config: Config = {
     require("daisyui"),
     plugin(function ({ addUtilities }) {
       addUtilities({
-        ".underline-pink": {
+        ".underline-neutral": {
           "text-decoration": "underline",
-          "text-decoration-color": "pink",
+          "text-decoration-color": "#9DB4AB",
         },
       });
     }),
