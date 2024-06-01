@@ -7,7 +7,7 @@ export default function FirstTimer() {
   const [regionDone, setRegionDone] = useState(false);
 
   return (
-    <div className="w-1/3 text-primary-content">
+    <div className="min-w-fit w-1/3 text-primary-content">
       <div className="collapse bg-accent">
         <input type="radio" name="accordion" />
         <div
