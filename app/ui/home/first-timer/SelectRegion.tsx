@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { SelectRegionProps } from "@/app/lib/definitions/home/first-timer/first-timer-definitions";
+import { SelectRegionProps } from "@/app/lib/definitions/first-timer-definitions";
 
 export default function SelectRegion({ setRegionDone }: SelectRegionProps) {
   const [mseaSelected, setMseaSelected] = useState(false);
