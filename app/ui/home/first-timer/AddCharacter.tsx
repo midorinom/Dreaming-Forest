@@ -1,9 +1,12 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
-import IGNField from "./IGNField";
+import IgnField from "./IgnField";
 import LevelField from "./LevelField";
 import ClassField from "./ClassField";
 
 export default function AddCharacter() {
+  const [ign, setIgn] = useState<string>("");
   const fileUploaded = true;
 
   return (
@@ -24,7 +27,7 @@ export default function AddCharacter() {
           fileUploaded ? "1" : "3"
         } justify-self-center`}
       />
-      <IGNField />
+      <IgnField setIgn={setIgn} />
       <LevelField />
       <ClassField />
     </form>
