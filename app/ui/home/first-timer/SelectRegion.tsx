@@ -31,7 +31,7 @@ export default function SelectRegion({ setRegionDone }: SelectRegionProps) {
   }, [mseaSelected || gmsSelected]);
 
   return (
-    <div className="flex justify-start gap-5">
+    <div className="min-h-16 flex items-center justify-start gap-5">
       <button
         className={
           mseaSelected ? "btn btn-primary" : "btn btn-outline btn-neutral"
