@@ -3,8 +3,8 @@ import { useState, useRef, ChangeEvent } from "react";
 import { LevelFieldProps } from "@/app/lib/definitions/first-timer-definitions";
 
 export default function LevelField({ level, setLevel }: LevelFieldProps) {
-  const textInputRef = useRef<HTMLInputElement>(null);
-  const rangeInputRef = useRef<HTMLInputElement>(null);
+  const textInputRef = useRef<HTMLInputElement | null>(null);
+  const rangeInputRef = useRef<HTMLInputElement | null>(null);
 
   function handleTextChange(e: ChangeEvent<HTMLInputElement>) {
     const levelInput = parseInt(e.target.value);
