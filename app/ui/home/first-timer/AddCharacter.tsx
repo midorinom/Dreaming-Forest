@@ -1,11 +1,25 @@
+"use client";
+import { useState, ChangeEvent } from "react";
 import Image from "next/image";
+import IgnField from "./IgnField";
+import LevelField from "./LevelField";
+import ClassField from "./ClassField";
 
 export default function AddCharacter() {
-  const fileUploaded = true;
+  const [ign, setIgn] = useState<string>("");
+  const [level, setLevel] = useState<number>(0);
+  const [uploadedFile, setUploadedFile] = useState<File | null>();
+
+  function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
+    if (e.target.files) {
+      const file = e.target.files[0];
+      setUploadedFile(file);
+    }
+  }
 
   return (
-    <div className="grid grid-cols-2 grid-rows-3 gap-4 items-center">
-      {fileUploaded && (
+    <form className="grid grid-cols-2 grid-rows-3 gap-4 items-center">
+      {uploadedFile && (
         <Image
           src="/naked_char.png"
           height={0}
@@ -17,22 +31,14 @@ export default function AddCharacter() {
       )}
       <input
         type="file"
-        className={`file-input file-input-bordered file-input-accent w-4/5 max-w-xs col-start-1 row-span-${
-          fileUploaded ? "1" : "3"
+        className={`file-input file-input-bordered file-input-accent w-4/5 max-w-xs col-start-1 row-start-${
+          uploadedFile ? "3" : "2"
         } justify-self-center`}
+        onChange={handleFileChange}
       />
-      <label className="input input-bordered flex items-center gap-2 col-start-2 row-start-1 w-4/5">
-        IGN
-        <input type="text" className="grow" />
-      </label>
-      <label className="input input-bordered flex items-center gap-2 col-start-2 row-start-2 w-1/3">
-        Lv
-        <input type="text" className="grow" />
-      </label>
-      <label className="input input-bordered flex items-center gap-2 col-start-2 row-start-3 w-4/5">
-        Class
-        <input type="text" className="grow" />
-      </label>
-    </div>
+      <IgnField setIgn={setIgn} />
+      <LevelField level={level} setLevel={setLevel} />
+      <ClassField />
+    </form>
   );
 }

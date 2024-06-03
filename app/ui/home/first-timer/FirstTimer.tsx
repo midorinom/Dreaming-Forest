@@ -4,7 +4,7 @@ import SelectRegion from "./SelectRegion";
 import AddCharacter from "./AddCharacter";
 
 export default function FirstTimer() {
-  const [regionDone, setRegionDone] = useState(false);
+  const [regionDone, setRegionDone] = useState<boolean>(false);
 
   return (
     <div className="min-w-fit w-1/3 text-primary-content">
