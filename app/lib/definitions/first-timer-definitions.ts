@@ -5,3 +5,8 @@ export type SelectRegionProps = {
 export type IgnFieldProps = {
   setIgn: (ign: string) => void;
 };
+
+export type LevelFieldProps = {
+  level: number;
+  setLevel: (level: number) => void;
+};

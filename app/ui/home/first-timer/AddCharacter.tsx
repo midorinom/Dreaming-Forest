@@ -7,6 +7,7 @@ import ClassField from "./ClassField";
 
 export default function AddCharacter() {
   const [ign, setIgn] = useState<string>("");
+  const [level, setLevel] = useState<number>(0);
   const fileUploaded = true;
 
   return (
@@ -28,7 +29,7 @@ export default function AddCharacter() {
         } justify-self-center`}
       />
       <IgnField setIgn={setIgn} />
-      <LevelField />
+      <LevelField level={level} setLevel={setLevel} />
       <ClassField />
     </form>
   );
