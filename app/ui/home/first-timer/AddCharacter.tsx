@@ -18,7 +18,7 @@ export default function AddCharacter() {
   }
 
   return (
-    <form className="grid grid-cols-2 grid-rows-3 gap-4 items-center">
+    <form className="min-h-80 grid grid-cols-2 grid-rows-3 gap-4 items-center">
       {uploadedFile && (
         <Image
           src="/naked_char.png"
