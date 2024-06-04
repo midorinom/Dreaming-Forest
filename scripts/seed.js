@@ -5,8 +5,9 @@ const { classes } = require("./seed-data/classes");
 async function seedRegions(client) {
   try {
     const createTable = await client.sql`
-    CREATE TABLE IF NOT EXISTS regions (
-    region VARCHAR(8) PRIMARY KEY;
+      CREATE TABLE IF NOT EXISTS regions (
+        region VARCHAR(8) PRIMARY KEY
+      );
     `;
 
     console.log(`Created "regions" table`);
@@ -36,9 +37,10 @@ async function seedRegions(client) {
 async function seedClasses(client) {
   try {
     const createTable = await client.sql`
-    CREATE TABLE IF NOT EXISTS classes (
-    class_name VARCHAR(32) PRIMARY KEY;
-    region VARCHAR(8) REFERENCES region (region);
+      CREATE TABLE IF NOT EXISTS classes (
+        class_name VARCHAR(32) PRIMARY KEY,
+        region VARCHAR(8) REFERENCES regions (region)
+      );
     `;
 
     console.log(`Created "classes" table`);
@@ -48,6 +50,7 @@ async function seedClasses(client) {
         return client.sql`
             INSERT INTO classes (class_name, region)
             VALUES (${individual_class.class_name}, ${individual_class.region})
+            ON CONFLICT (class_name) DO NOTHING;
           `;
       })
     );
@@ -67,10 +70,11 @@ async function seedClasses(client) {
 async function seedUsers(client) {
   try {
     const createTable = await client.sql`
-    CREATE TABLE IF NOT EXISTS users (
-    username VARCHAR(16) PRIMARY KEY,
-    region VARCHAR(8) REFERENCES region (region);
-    pw_hash VARCHAR(16) NOT NULL;
+      CREATE TABLE IF NOT EXISTS users (
+        username VARCHAR(16) PRIMARY KEY,
+        region VARCHAR(8) REFERENCES regions (region),
+        pw_hash VARCHAR(16) NOT NULL
+      );
     `;
 
     console.log(`Created "users" table`);
@@ -89,13 +93,14 @@ async function seedCharacters(client) {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
     const createTable = await client.sql`
-    CREATE TABLE IF NOT EXISTS characters (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    username VARCHAR(16) REFERENCES users (username),
-    ign VARCHAR(12) NOT NULL,
-    level INT NOT NULL,
-    class_name VARCHAR(32) REFERENCES classes (class_name),
-    image UUID NULL);
+      CREATE TABLE IF NOT EXISTS characters (
+        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        username VARCHAR(16) REFERENCES users (username),
+        ign VARCHAR(12) NOT NULL,
+        level INT NOT NULL,
+        class_name VARCHAR(32) REFERENCES classes (class_name),
+        image UUID NULL
+      );
     `;
 
     console.log(`Created "characters" table`);

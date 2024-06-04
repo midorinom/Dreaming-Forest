@@ -9,10 +9,10 @@ const classes = [
   },
   {
     class_name: "Cadena",
-    region: "GMS",
-  },
-  {
-    class_name: "Cadena",
-    region: "MSEA",
+    region: "Both",
   },
 ];
+
+module.exports = {
+  classes,
+};
