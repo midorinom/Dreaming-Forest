@@ -8,7 +8,7 @@ type Class = {
 
 const ClassSelect = () => {
   //query typed by user
-  const [val, setVal] = useState("");
+  const [classInput, setClassInput] = useState("");
 
   //a list to hold all the classes
   const [classes, setClasses] = useState<string[]>([]);
@@ -18,7 +18,7 @@ const ClassSelect = () => {
 
   //query rest classes api and set the classes list
   useEffect(() => {
-    async function fetchData() {
+    function fetchData() {
       //   const url = "https://restclasses.com/v3.1/all?fields=name";
       //   const response = await fetch(url);
       //   const classes = (await response.json()) as Country[];
@@ -43,20 +43,22 @@ const ClassSelect = () => {
 
   useEffect(() => {
     //if there is no value, return the classes list.
-    if (!val) {
+    if (!classInput) {
       setItems(classes);
       return;
     }
 
     //if the val changes, we filter items so that it can be filtered. and set it as new state
     const newItems = classes
-      .filter((p) => p.toLowerCase().includes(val.toLowerCase()))
+      .filter((p) => p.toLowerCase().includes(classInput.toLowerCase()))
       .sort();
     setItems(newItems);
-  }, [classes, val]);
+  }, [classes, classInput]);
 
   //use the common auto complete component here.
-  return <AutoComplete items={items} value={val} onChange={setVal} />;
+  return (
+    <AutoComplete items={items} value={classInput} onChange={setClassInput} />
+  );
 };
 
 export default ClassSelect;
