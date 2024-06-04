@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "seed": "node seed.js",
-    "start": "next start",
+    "start": "next start && node seed.js",
     "lint": "next lint"
   },
   "dependencies": {
