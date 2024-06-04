@@ -21,7 +21,7 @@ export default function FirstTimer() {
           <SelectRegion setRegionDone={setRegionDone} />
         </div>
       </div>
-      <div className="collapse bg-primary">
+      <div className="overflow-visible collapse bg-primary">
         <input type="radio" name="accordion" />
         <div className="collapse-title text-xl font-medium underline-offset-8 underline-neutral">
           Add Character
