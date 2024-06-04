@@ -40,6 +40,16 @@ const config: Config = {
           "text-decoration": "underline",
           "text-decoration-color": "#9DB4AB",
         },
+        ".scrollbar-hide": {
+          /* Hide scrollbar for WebKit browsers */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          /* Hide scrollbar for IE and Edge */
+          "-ms-overflow-style": "none",
+          /* Hide scrollbar for Firefox */
+          "scrollbar-width": "none",
+        },
       });
     }),
   ],

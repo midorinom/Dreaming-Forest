@@ -5,4 +5,11 @@ const regions = [
   {
     region: "MSEA",
   },
+  {
+    region: "Both",
+  },
 ];
+
+module.exports = {
+  regions,
+};
