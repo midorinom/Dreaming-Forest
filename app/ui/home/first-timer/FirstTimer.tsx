@@ -19,6 +19,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
             onChange={() => {
               setCharacterChecked(false);
             }}
+            defaultChecked
           />
           <div
             className={
