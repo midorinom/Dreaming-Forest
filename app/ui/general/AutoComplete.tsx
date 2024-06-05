@@ -1,17 +1,27 @@
-import classNames from "classnames";
 import React, { memo, useRef, useState, useEffect } from "react";
+import classNames from "classnames";
+import { AutoCompleteProps } from "@/app/lib/definitions/general-definitions";
 
-type Props = {
-  items: string[];
-  value: string;
-  onChange(val: string): void;
-};
-
-// Dropdown, input and menu component from daisyui
-const Autocomplete = (props: Props) => {
-  const { items, value, onChange } = props;
+const Autocomplete = (props: AutoCompleteProps) => {
+  const {
+    items,
+    value,
+    onChange,
+    input_id,
+    dropdown_className,
+    input_className,
+    label_className,
+    dropdown_content_className,
+    ul_className,
+    li_className,
+  } = props;
   const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+
+  const new_dropdown_className = {
+    "dropdown-open": open,
+    ...dropdown_className,
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -29,8 +39,6 @@ const Autocomplete = (props: Props) => {
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     onChange(e.target.value);
     if (!open) {
-      console.log("hi");
-      console.log(items);
       setOpen(true);
     }
   }
@@ -38,25 +46,26 @@ const Autocomplete = (props: Props) => {
   return (
     <div
       // use classnames here to easily toggle dropdown open
-      className={classNames({
-        "dropdown w-4/5": true,
-        "dropdown-open": open,
-      })}
+      className={classNames(new_dropdown_className)}
       ref={ref}
     >
       <input
         type="text"
-        className="input input-bordered w-full text-primary-content"
+        className={input_className}
+        id={input_id}
         value={value}
         onChange={handleOnChange}
         onClick={() => setOpen((prevState) => !prevState)}
-        placeholder="Class"
+        placeholder=""
         tabIndex={0}
       />
+      <label htmlFor={input_id} className={label_className}>
+        Class
+      </label>
       {open && items && items[0] && (
-        <div className="dropdown-content bg-base-200 top-14 max-h-40 overflow-scroll scrollbar-hide flex-col rounded-md">
+        <div className={dropdown_content_className}>
           <ul
-            className="menu bg-accent"
+            className={ul_className}
             // use ref to calculate the width of parent
             style={{ width: ref.current?.clientWidth }}
           >
@@ -69,7 +78,7 @@ const Autocomplete = (props: Props) => {
                     onChange(item);
                     setOpen(false);
                   }}
-                  className="border-b border-b-base-content/10 w-full"
+                  className={li_className}
                 >
                   <button onClick={(e) => e.preventDefault()}>{item}</button>
                 </li>
