@@ -1,23 +1,22 @@
 "use client";
-import { useState, useEffect } from "react";
 import { SelectRegionProps } from "@/app/lib/definitions/first-timer-definitions";
 
-export default function SelectRegion({ setRegionDone }: SelectRegionProps) {
-  const [mseaSelected, setMseaSelected] = useState(false);
-  const [gmsSelected, setGmsSelected] = useState(false);
-  const handleClick = (region: string) => {
-    switch (region) {
-      case "msea":
-        setMseaSelected((prevState) => !prevState);
-        if (gmsSelected) {
-          setGmsSelected(false);
+export default function SelectRegion({ region, setRegion }: SelectRegionProps) {
+  const handleClick = (regionClicked: string) => {
+    switch (regionClicked) {
+      case "MSEA":
+        if (region === "GMS" || !region) {
+          setRegion("MSEA");
+        } else {
+          setRegion("");
         }
         break;
 
-      case "gms":
-        setGmsSelected((prevState) => !prevState);
-        if (mseaSelected) {
-          setMseaSelected(false);
+      case "GMS":
+        if (region === "MSEA" || !region) {
+          setRegion("GMS");
+        } else {
+          setRegion("");
         }
         break;
 
@@ -26,25 +25,21 @@ export default function SelectRegion({ setRegionDone }: SelectRegionProps) {
     }
   };
 
-  useEffect(() => {
-    setRegionDone(mseaSelected || gmsSelected);
-  }, [mseaSelected || gmsSelected]);
-
   return (
     <div className="min-h-16 flex items-center justify-start gap-5">
       <button
         className={
-          mseaSelected ? "btn btn-primary" : "btn btn-outline btn-neutral"
+          region === "MSEA" ? "btn btn-primary" : "btn btn-outline btn-neutral"
         }
-        onClick={() => handleClick("msea")}
+        onClick={() => handleClick("MSEA")}
       >
         MSEA
       </button>
       <button
         className={
-          gmsSelected ? "btn btn-primary" : "btn btn-outline btn-neutral"
+          region === "GMS" ? "btn btn-primary" : "btn btn-outline btn-neutral"
         }
-        onClick={() => handleClick("gms")}
+        onClick={() => handleClick("GMS")}
       >
         GMS
       </button>

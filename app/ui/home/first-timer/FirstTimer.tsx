@@ -4,7 +4,7 @@ import SelectRegion from "./SelectRegion";
 import AddCharacter from "./AddCharacter";
 
 export default function FirstTimer() {
-  const [regionDone, setRegionDone] = useState<boolean>(false);
+  const [region, setRegion] = useState<string>("");
   const [characterChecked, setCharacterChecked] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ export default function FirstTimer() {
           Select Region
         </div>
         <div className="collapse-content">
-          <SelectRegion setRegionDone={setRegionDone} />
+          <SelectRegion region={region} setRegion={setRegion} />
         </div>
       </div>
       <div
