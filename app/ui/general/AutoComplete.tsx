@@ -29,8 +29,6 @@ const Autocomplete = (props: Props) => {
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     onChange(e.target.value);
     if (!open) {
-      console.log("hi");
-      console.log(items);
       setOpen(true);
     }
   }
@@ -46,13 +44,20 @@ const Autocomplete = (props: Props) => {
     >
       <input
         type="text"
-        className="input input-bordered w-full text-primary-content"
+        className="grow block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-base text-primary-content bg-neutral dark:bg-neutral border-0 border-b-2 border-accent appearance-none dark:text-primary-content dark:border-accent dark:focus:border-accent focus:outline-none focus:ring-0 focus:border-accent peer"
+        id="class_input"
         value={value}
         onChange={handleOnChange}
         onClick={() => setOpen((prevState) => !prevState)}
-        placeholder="Class"
+        placeholder=""
         tabIndex={0}
       />
+      <label
+        htmlFor="class_input"
+        className={`absolute text-base text-accent dark:text-accent duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-accent peer-focus:dark:text-accent peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"`}
+      >
+        Class
+      </label>
       {open && items && items[0] && (
         <div className="dropdown-content bg-base-200 top-14 max-h-40 overflow-scroll scrollbar-hide flex-col rounded-md">
           <ul
