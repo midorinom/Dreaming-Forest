@@ -1,7 +1,10 @@
 import { sql } from "@vercel/postgres";
+import { unstable_noStore as noStore } from "next/cache";
 import { MaplestoryClass } from "@/app/lib/definitions/first-timer-definitions";
 
 export async function fetchClasses(region: string) {
+  noStore();
+
   try {
     const data = await sql<MaplestoryClass>`
         SELECT class_name

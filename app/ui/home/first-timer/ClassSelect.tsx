@@ -43,9 +43,9 @@ const ClassSelect = () => {
       return;
     }
 
-    const newItems = classes
-      .filter((p) => p.toLowerCase().includes(classInput.toLowerCase()))
-      .sort();
+    const newItems = classes.filter((p) =>
+      p.toLowerCase().startsWith(classInput.toLowerCase())
+    );
     setItems(newItems);
   }, [classes, classInput]);
 
