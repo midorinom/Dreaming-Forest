@@ -1,3 +1,18 @@
+export type FirstTimerContextType = {
+  classes: {
+    gms: string[];
+    msea: string[];
+  };
+  region: string;
+};
+
+export type FirstTimerProps = {
+  classes: {
+    gms: string[];
+    msea: string[];
+  };
+};
+
 export type SelectRegionProps = {
   region: string;
   setRegion: (region: string) => void;
@@ -14,5 +29,4 @@ export type LevelFieldProps = {
 
 export type MaplestoryClass = {
   class_name: string;
-  region: string;
 };

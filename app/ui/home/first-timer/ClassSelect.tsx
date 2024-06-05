@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useEffect, useState, useContext } from "react";
+import { useFirstTimer } from "@/app/ui/contexts/FirstTimerContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
 
-type Class = {
-  class_name: string;
-  region: string;
-};
-
 const ClassSelect = () => {
+  const firstTimerCtx = useFirstTimer();
   const [classInput, setClassInput] = useState<string>("");
   const [classes, setClasses] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
@@ -25,28 +23,19 @@ const ClassSelect = () => {
   const li_className = "border-b border-b-base-content/10 w-full";
 
   useEffect(() => {
-    function fetchData() {
-      //   const url = "https://restclasses.com/v3.1/all?fields=name";
-      //   const response = await fetch(url);
-      //   const classes = (await response.json()) as Country[];
-      //   const newItems = classes.map((p) => p.name.common).sort();
-
-      const newItems = [
-        "Cadena",
-        "Dual Blade",
-        "Striker",
-        "Kanna",
-        "Hero",
-        "Dark Knight",
-        "Night Walker",
-        "Wind Archer",
-        "Zero",
-      ];
-      setClasses(newItems);
+    if (firstTimerCtx) {
+      switch (firstTimerCtx.region) {
+        case "GMS":
+          setClasses(firstTimerCtx.classes.gms);
+          break;
+        case "MSEA":
+          setClasses(firstTimerCtx.classes.msea);
+          break;
+        default:
+          setClasses(firstTimerCtx.classes.gms);
+      }
     }
-
-    fetchData();
-  }, []);
+  }, [firstTimerCtx]);
 
   useEffect(() => {
     if (!classInput) {
