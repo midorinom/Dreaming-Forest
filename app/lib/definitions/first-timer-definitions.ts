@@ -26,7 +26,3 @@ export type LevelFieldProps = {
   level: number;
   setLevel: (level: number) => void;
 };
-
-export type MaplestoryClass = {
-  class_name: string;
-};

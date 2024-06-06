@@ -1,20 +1,21 @@
+import { drizzle } from "drizzle-orm/vercel-postgres";
+import { eq, or, asc } from "drizzle-orm";
 import { sql } from "@vercel/postgres";
+import { Classes } from "@/drizzle/schema";
 import { unstable_noStore as noStore } from "next/cache";
-import { MaplestoryClass } from "@/app/lib/definitions/first-timer-definitions";
 
 export async function fetchClasses(region: string) {
+  const db = drizzle(sql);
   noStore();
 
   try {
-    const data = await sql<MaplestoryClass>`
-        SELECT class_name
-        FROM classes
-        WHERE region = ${region} OR region = 'Both'
-        ORDER BY class_name ASC
-      `;
+    const fetchedClasses = await db
+      .select()
+      .from(Classes)
+      .where(or(eq(Classes.region, region), eq(Classes.region, "Both")))
+      .orderBy(asc(Classes.class_name));
 
-    const classes = data.rows;
-    return classes;
+    return fetchedClasses;
   } catch (err) {
     console.error("Database Error:", err);
     throw new Error("Failed to fetch all classes.");
