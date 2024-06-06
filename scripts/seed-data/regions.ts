@@ -1,4 +1,4 @@
-const regions = [
+export const regions = [
   {
     region: "GMS",
   },
@@ -9,7 +9,3 @@ const regions = [
     region: "Both",
   },
 ];
-
-module.exports = {
-  regions,
-};

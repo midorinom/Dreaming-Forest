@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { fetchClasses } from "@/app/lib/fetches/first-timer-fetches";
 import FirstTimer from "@/app/ui/home/first-timer/FirstTimer";
 import Dashboard from "@/app/ui/home/dashboard/Dashboard";

@@ -1,4 +1,4 @@
-const classes = [
+export const classes = [
   {
     class_name: "Hero",
     region: "Both",
@@ -240,7 +240,3 @@ const classes = [
     region: "GMS",
   },
 ];
-
-module.exports = {
-  classes,
-};
