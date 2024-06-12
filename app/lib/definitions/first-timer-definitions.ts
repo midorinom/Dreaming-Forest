@@ -13,6 +13,19 @@ export type FirstTimerProps = {
   };
 };
 
+export type Dialogue = {
+  [key in DialogueIndex]: string;
+};
+
+export type DialogueIndex = "welcome" | "add_character" | "create_account";
+
+export type RegionAndCharacterProps = {
+  region: string;
+  setRegion: (region: string) => void;
+  setDialogueIndex: (dialogueIndex: DialogueIndex) => void;
+  setProceedClicked: (proceedClicked: boolean) => void;
+};
+
 export type CharacterDetails = {
   image: File | null;
   ign?: string;
@@ -42,9 +55,3 @@ export type LevelFieldProps = {
 export type ClassFieldProps = {
   setMaplestoryClass: (maplestoryClass: string) => void;
 };
-
-export type Dialogue = {
-  [key in DialogueIndex]: string;
-};
-
-export type DialogueIndex = "welcome" | "add_character";
