@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        elodin_background: "url('/elodin_background.png')",
+        elodin_background: "url('/home/first-timer/elodin_background.png')",
         lucid_background: "url('/lucid_background.png')",
       },
     },
@@ -24,9 +24,9 @@ const config: Config = {
           accent: "#B4E9D6",
           neutral: "#9DB4AB",
           "base-100": "#ABC4A1",
-          info: "#00B3F0",
+          info: "#D1C1D7",
           success: "#00A96F",
-          warning: "#FFC22D",
+          warning: "#FFDD89",
           error: "#FF6F70",
         },
       },

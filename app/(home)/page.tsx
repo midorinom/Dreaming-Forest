@@ -25,15 +25,13 @@ export default async function Page() {
 
   return (
     <main className="bg-elodin_background bg-cover bg-center h-screen">
-      <div className="flex flex-col items-center p-24">
-        {firstTimer ? (
-          <Suspense fallback={<GenericSkeleton />}>
-            <FirstTimer classes={classes} />
-          </Suspense>
-        ) : (
-          <Dashboard />
-        )}
-      </div>
+      {firstTimer ? (
+        <Suspense fallback={<GenericSkeleton />}>
+          <FirstTimer classes={classes} />
+        </Suspense>
+      ) : (
+        <Dashboard />
+      )}
     </main>
   );
 }
