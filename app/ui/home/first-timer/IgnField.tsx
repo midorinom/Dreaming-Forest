@@ -12,13 +12,13 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
     if (!alphanumericRegex.test(ignInput)) {
       if (!isInvalid) {
         setIsInvalid(true);
-        setIgn("");
       }
+      setIgn("");
     } else {
       if (isInvalid) {
         setIsInvalid(false);
-        setIgn(ignInput);
       }
+      setIgn(ignInput);
     }
   }
 

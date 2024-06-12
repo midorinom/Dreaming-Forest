@@ -1,56 +1,51 @@
 "use client";
 import { useState } from "react";
-import { FirstTimerProps } from "@/app/lib/definitions/first-timer-definitions";
+import {
+  DialogueIndex,
+  FirstTimerProps,
+} from "@/app/lib/definitions/first-timer-definitions";
 import FirstTimerProvider from "@/app/ui/contexts/FirstTimerContext";
-import SelectRegion from "./SelectRegion";
-import AddCharacter from "./AddCharacter";
+import Image from "next/image";
+import {
+  small_spirit_dialogue,
+  small_spirit_image,
+} from "@/public/home/first-timer/small_spirit";
+import RegionAndCharacter from "./RegionAndCharacter";
+import CreateAccount from "./CreateAccount";
 
 export default function FirstTimer({ classes }: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
-  const [characterChecked, setCharacterChecked] = useState(false);
+  const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
+  const [proceedClicked, setProceedClicked] = useState(false);
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
-      <div className="min-w-fit w-1/3 text-primary-content">
-        <div className="collapse bg-accent">
-          <input
-            type="radio"
-            name="accordion"
-            onChange={() => {
-              setCharacterChecked(false);
-            }}
-            defaultChecked
+      <div className="flex flex-col items-center p-6 gap-4">
+        <div className="w-1/2 flex items-center">
+          <Image
+            src={small_spirit_image[dialogueIndex]}
+            height={0}
+            width={0}
+            alt="Naked Character"
+            sizes="100vw"
+            className="w-auto h-44"
           />
-          <div
-            className={
-              "collapse-title text-xl font-medium underline-offset-8 underline-neutral"
-            }
-          >
-            Select Region
-          </div>
-          <div className="collapse-content">
-            <SelectRegion region={region} setRegion={setRegion} />
+          <div className="chat chat-start">
+            <div className="chat-bubble chat-bubble-info">
+              {small_spirit_dialogue[dialogueIndex]}
+            </div>
           </div>
         </div>
-        <div
-          className={`${
-            characterChecked ? "overflow-visible" : ""
-          } collapse bg-primary`}
-        >
-          <input
-            type="radio"
-            name="accordion"
-            onChange={() => {
-              setCharacterChecked(true);
-            }}
+        {proceedClicked ? (
+          <CreateAccount />
+        ) : (
+          <RegionAndCharacter
+            region={region}
+            setRegion={setRegion}
+            setDialogueIndex={setDialogueIndex}
+            setProceedClicked={setProceedClicked}
           />
-          <div className="collapse-title text-xl font-medium underline-offset-8 underline-neutral">
-            Add Character
-          </div>
-          <div className="collapse-content">
-            <AddCharacter />
-          </div>
-        </div>
+        )}
       </div>
     </FirstTimerProvider>
   );
