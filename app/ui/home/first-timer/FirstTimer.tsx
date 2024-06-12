@@ -4,19 +4,10 @@ import { FirstTimerProps } from "@/app/lib/definitions/first-timer-definitions";
 import FirstTimerProvider from "@/app/ui/contexts/FirstTimerContext";
 import SelectRegion from "./SelectRegion";
 import AddCharacter from "./AddCharacter";
-import styles from "./FirstTimer.module.css";
 
 export default function FirstTimer({ classes }: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
   const [characterChecked, setCharacterChecked] = useState(false);
-  const [isAnimated, setIsAnimated] = useState(false); // to reset the fade in animation
-
-  const AddCharacterOnChange = () => {
-    setCharacterChecked(true);
-
-    setIsAnimated(false);
-    setTimeout(() => setIsAnimated(true), 10);
-  };
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
@@ -49,16 +40,14 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
           <input
             type="radio"
             name="accordion"
-            onChange={AddCharacterOnChange}
+            onChange={() => {
+              setCharacterChecked(true);
+            }}
           />
           <div className="collapse-title text-xl font-medium underline-offset-8 underline-neutral">
             Add Character
           </div>
-          <div
-            className={`collapse-content ${
-              isAnimated ? styles["fade-in"] : ""
-            }`}
-          >
+          <div className="collapse-content">
             <AddCharacter />
           </div>
         </div>
