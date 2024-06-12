@@ -13,9 +13,21 @@ export type FirstTimerProps = {
   };
 };
 
+export type CharacterDetails = {
+  image: File | null;
+  ign?: string;
+  level?: number;
+  maplestoryClass?: string;
+};
+
 export type SelectRegionProps = {
   region: string;
   setRegion: (region: string) => void;
+};
+
+export type AddCharacterProps = {
+  characterDetails: CharacterDetails;
+  setCharacterDetails: (characterDetails: CharacterDetails) => void;
 };
 
 export type IgnFieldProps = {
@@ -25,6 +37,10 @@ export type IgnFieldProps = {
 export type LevelFieldProps = {
   level: number;
   setLevel: (level: number) => void;
+};
+
+export type ClassFieldProps = {
+  setMaplestoryClass: (maplestoryClass: string) => void;
 };
 
 export type Dialogue = {

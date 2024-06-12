@@ -2,8 +2,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useFirstTimer } from "@/app/ui/contexts/FirstTimerContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
+import { ClassFieldProps } from "@/app/lib/definitions/first-timer-definitions";
 
-const ClassSelect = () => {
+const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
   const firstTimerCtx = useFirstTimer();
   const [classInput, setClassInput] = useState<string>("");
   const [classes, setClasses] = useState<string[]>([]);
@@ -40,6 +41,7 @@ const ClassSelect = () => {
   useEffect(() => {
     if (!classInput) {
       setItems(classes);
+      setMaplestoryClass("");
       return;
     }
 
@@ -47,6 +49,12 @@ const ClassSelect = () => {
       p.toLowerCase().startsWith(classInput.toLowerCase())
     );
     setItems(newItems);
+
+    if (classes.find((p) => p.toLowerCase() === classInput.toLowerCase())) {
+      setMaplestoryClass(classInput);
+    } else {
+      setMaplestoryClass("");
+    }
   }, [classes, classInput]);
 
   return (

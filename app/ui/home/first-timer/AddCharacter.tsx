@@ -1,14 +1,22 @@
 "use client";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import Image from "next/image";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
 import ClassField from "./ClassField";
+import {
+  AddCharacterProps,
+  CharacterDetails,
+} from "@/app/lib/definitions/first-timer-definitions";
 
-export default function AddCharacter() {
+export default function AddCharacter({
+  characterDetails,
+  setCharacterDetails,
+}: AddCharacterProps) {
   const [ign, setIgn] = useState<string>("");
   const [level, setLevel] = useState<number>(0);
-  const [uploadedFile, setUploadedFile] = useState<File | null>();
+  const [maplestoryClass, setMaplestoryClass] = useState<string>("");
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [fileURL, setFileURL] = useState<string>("");
   const [error, setError] = useState<string>("");
 
@@ -33,6 +41,31 @@ export default function AddCharacter() {
       }
     }
   }
+
+  useEffect(() => {
+    if (uploadedFile || ign || level || maplestoryClass) {
+      const newCharacterDetails: CharacterDetails = { ...characterDetails };
+
+      if (characterDetails.image !== uploadedFile) {
+        newCharacterDetails.image = uploadedFile;
+      }
+
+      if (characterDetails.ign !== ign) {
+        newCharacterDetails.ign = ign;
+      }
+
+      if (characterDetails.level !== level) {
+        newCharacterDetails.level = level;
+      }
+
+      if (characterDetails.maplestoryClass !== maplestoryClass) {
+        newCharacterDetails.maplestoryClass = maplestoryClass;
+      }
+
+      setCharacterDetails(newCharacterDetails);
+      console.log("Character Details Updated", newCharacterDetails);
+    }
+  }, [uploadedFile, ign, level, maplestoryClass]);
 
   return (
     <form className="relative min-h-64 grid grid-cols-2 grid-rows-3 gap-4 items-center">
@@ -68,7 +101,7 @@ export default function AddCharacter() {
       </div>
       <IgnField setIgn={setIgn} />
       <LevelField level={level} setLevel={setLevel} />
-      <ClassField />
+      <ClassField setMaplestoryClass={setMaplestoryClass} />
     </form>
   );
 }

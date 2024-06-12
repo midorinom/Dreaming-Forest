@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
+  CharacterDetails,
   DialogueIndex,
   FirstTimerProps,
 } from "@/app/lib/definitions/first-timer-definitions";
@@ -8,12 +9,19 @@ import FirstTimerProvider from "@/app/ui/contexts/FirstTimerContext";
 import Image from "next/image";
 import SelectRegion from "./SelectRegion";
 import AddCharacter from "./AddCharacter";
-import dialogue from "@/public/home/first-timer/small_spirit_dialogue";
+import {
+  small_spirit_dialogue,
+  small_spirit_image,
+} from "@/public/home/first-timer/small_spirit";
 
 export default function FirstTimer({ classes }: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
   const [characterChecked, setCharacterChecked] = useState(false);
+  const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
+    image: null,
+  });
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
+  const [readyToProceed, setReadyToProceed] = useState(false);
 
   function handleRadioChange() {
     if (characterChecked) {
@@ -25,12 +33,39 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
     }
   }
 
+  useEffect(() => {
+    if (
+      region ||
+      characterDetails.ign ||
+      characterDetails.level ||
+      characterDetails.maplestoryClass
+    ) {
+      if (
+        region &&
+        characterDetails.ign &&
+        characterDetails.level &&
+        characterDetails.maplestoryClass
+      ) {
+        setReadyToProceed(true);
+      } else {
+        if (readyToProceed) {
+          setReadyToProceed(false);
+        }
+      }
+    }
+  }, [
+    region,
+    characterDetails.ign,
+    characterDetails.level,
+    characterDetails.maplestoryClass,
+  ]);
+
   return (
     <FirstTimerProvider value={{ classes, region }}>
       <div className="flex flex-col items-center p-2 gap-4">
         <div className="w-1/2 flex items-center">
           <Image
-            src={"/home/first-timer/small_spirit_smiling.png"}
+            src={small_spirit_image[dialogueIndex]}
             height={0}
             width={0}
             alt="Naked Character"
@@ -39,7 +74,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
           />
           <div className="chat chat-start">
             <div className="chat-bubble chat-bubble-info">
-              {dialogue[dialogueIndex]}
+              {small_spirit_dialogue[dialogueIndex]}
             </div>
           </div>
         </div>
@@ -77,7 +112,10 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
                 Add Character
               </div>
               <div className="collapse-content">
-                <AddCharacter />
+                <AddCharacter
+                  characterDetails={characterDetails}
+                  setCharacterDetails={setCharacterDetails}
+                />
               </div>
             </div>
             {/* <div className="collapse bg-warning">
@@ -97,7 +135,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
             </div> */}
           </div>
           <button
-            disabled
+            disabled={!readyToProceed}
             className="self-end btn btn-lg glass btn-info rounded-full mt-4 text-xl font-medium text-primary-content"
           >
             <img src="/butterfly_logo.png" alt="My Icon" className="h-6 w-6" />
