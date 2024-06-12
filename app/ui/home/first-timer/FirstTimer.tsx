@@ -62,7 +62,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
-      <div className="flex flex-col items-center p-2 gap-4">
+      <div className="flex flex-col items-center p-6 gap-4">
         <div className="w-1/2 flex items-center">
           <Image
             src={small_spirit_image[dialogueIndex]}
