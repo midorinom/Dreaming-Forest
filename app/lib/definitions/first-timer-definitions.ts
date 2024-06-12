@@ -26,3 +26,9 @@ export type LevelFieldProps = {
   level: number;
   setLevel: (level: number) => void;
 };
+
+export type Dialogue = {
+  [key in DialogueIndex]: string;
+};
+
+export type DialogueIndex = "welcome" | "add_character";

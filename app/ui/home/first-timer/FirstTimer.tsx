@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
-import { FirstTimerProps } from "@/app/lib/definitions/first-timer-definitions";
+import {
+  DialogueIndex,
+  FirstTimerProps,
+} from "@/app/lib/definitions/first-timer-definitions";
 import FirstTimerProvider from "@/app/ui/contexts/FirstTimerContext";
 import Image from "next/image";
 import SelectRegion from "./SelectRegion";
@@ -10,6 +13,17 @@ import dialogue from "@/public/home/first-timer/small_spirit_dialogue";
 export default function FirstTimer({ classes }: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
   const [characterChecked, setCharacterChecked] = useState(false);
+  const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
+
+  function handleRadioChange() {
+    if (characterChecked) {
+      setCharacterChecked(false);
+      setDialogueIndex("welcome");
+    } else {
+      setCharacterChecked(true);
+      setDialogueIndex("add_character");
+    }
+  }
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
@@ -25,7 +39,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
           />
           <div className="chat chat-start">
             <div className="chat-bubble chat-bubble-info">
-              {dialogue.welcome}
+              {dialogue[dialogueIndex]}
             </div>
           </div>
         </div>
@@ -35,11 +49,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
               <input
                 type="radio"
                 name="accordion"
-                onChange={() => {
-                  if (characterChecked) {
-                    setCharacterChecked(false);
-                  }
-                }}
+                onChange={handleRadioChange}
                 defaultChecked
               />
               <div
@@ -61,11 +71,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
               <input
                 type="radio"
                 name="accordion"
-                onChange={() => {
-                  if (!characterChecked) {
-                    setCharacterChecked(true);
-                  }
-                }}
+                onChange={handleRadioChange}
               />
               <div className="collapse-title text-xl font-medium underline-offset-8 underline-neutral">
                 Add Character
@@ -74,7 +80,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
                 <AddCharacter />
               </div>
             </div>
-            <div className="collapse bg-warning">
+            {/* <div className="collapse bg-warning">
               <input
                 type="radio"
                 name="accordion"
@@ -88,7 +94,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
                 Create Account
               </div>
               <div className="collapse-content">Create Account</div>
-            </div>
+            </div> */}
           </div>
           <button
             disabled
