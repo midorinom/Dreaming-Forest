@@ -55,3 +55,15 @@ export type LevelFieldProps = {
 export type ClassFieldProps = {
   setMaplestoryClass: (maplestoryClass: string) => void;
 };
+
+export type SignUpDetails = {
+  username: string;
+  password: string;
+  confirmPassword: string;
+};
+
+export type SignUpErrors = {
+  usernameError: string;
+  passwordError: string;
+  confirmPasswordError: string;
+};

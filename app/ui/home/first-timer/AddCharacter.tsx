@@ -44,7 +44,7 @@ export default function AddCharacter({
 
   useEffect(() => {
     if (uploadedFile || ign || level || maplestoryClass) {
-      const newCharacterDetails: CharacterDetails = { ...characterDetails };
+      const newCharacterDetails = { ...characterDetails };
 
       if (characterDetails.image !== uploadedFile) {
         newCharacterDetails.image = uploadedFile;

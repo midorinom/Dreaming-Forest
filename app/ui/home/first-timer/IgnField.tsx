@@ -10,16 +10,13 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
     const alphanumericRegex = /^[a-zA-Z0-9À-ÿ]*$/; // Alphanumeric regex with accents
 
     if (!alphanumericRegex.test(ignInput)) {
-      if (!isInvalid) {
-        setIsInvalid(true);
-      }
       setIgn("");
-    } else {
-      if (isInvalid) {
-        setIsInvalid(false);
-      }
-      setIgn(ignInput);
+      setIsInvalid(true);
+      return;
     }
+
+    setIgn(ignInput);
+    setIsInvalid(false);
   }
 
   return (

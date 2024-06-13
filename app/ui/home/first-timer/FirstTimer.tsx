@@ -7,8 +7,8 @@ import {
 import FirstTimerProvider from "@/app/ui/contexts/FirstTimerContext";
 import Image from "next/image";
 import {
-  small_spirit_dialogue,
-  small_spirit_image,
+  smallSpiritDialogue,
+  smallSpiritImage,
 } from "@/public/home/first-timer/small_spirit";
 import RegionAndCharacter from "./RegionAndCharacter";
 import CreateAccount from "./CreateAccount";
@@ -23,7 +23,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
       <div className="flex flex-col items-center p-6 gap-4">
         <div className="w-1/2 flex items-center">
           <Image
-            src={small_spirit_image[dialogueIndex]}
+            src={smallSpiritImage[dialogueIndex]}
             height={0}
             width={0}
             alt="Naked Character"
@@ -32,7 +32,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
           />
           <div className="chat chat-start">
             <div className="chat-bubble chat-bubble-info">
-              {small_spirit_dialogue[dialogueIndex]}
+              {smallSpiritDialogue[dialogueIndex]}
             </div>
           </div>
         </div>
