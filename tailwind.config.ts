@@ -40,6 +40,10 @@ const config: Config = {
           "text-decoration": "underline",
           "text-decoration-color": "#9DB4AB",
         },
+        ".underline-info": {
+          "text-decoration": "underline",
+          "text-decoration-color": "#D1C1D7",
+        },
         ".scrollbar-hide": {
           /* Hide scrollbar for WebKit browsers */
           "&::-webkit-scrollbar": {
