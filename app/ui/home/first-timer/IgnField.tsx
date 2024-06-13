@@ -15,8 +15,8 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
       return;
     }
 
-    setIsInvalid(false);
     setIgn(ignInput);
+    setIsInvalid(false);
   }
 
   return (
