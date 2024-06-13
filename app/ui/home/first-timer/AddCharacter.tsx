@@ -63,7 +63,6 @@ export default function AddCharacter({
       }
 
       setCharacterDetails(newCharacterDetails);
-      console.log("Character Details Updated", newCharacterDetails);
     }
   }, [uploadedFile, ign, level, maplestoryClass]);
 
