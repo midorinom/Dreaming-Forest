@@ -1,5 +1,5 @@
 "use client";
-import { useRef, ChangeEvent, useEffect } from "react";
+import { useRef, ChangeEvent } from "react";
 import { LevelFieldProps } from "@/app/lib/definitions/first-timer-definitions";
 
 export default function LevelField({ level, setLevel }: LevelFieldProps) {

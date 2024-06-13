@@ -63,12 +63,11 @@ export default function AddCharacter({
       }
 
       setCharacterDetails(newCharacterDetails);
-      console.log("Character Details Updated", newCharacterDetails);
     }
   }, [uploadedFile, ign, level, maplestoryClass]);
 
   return (
-    <form className="relative min-h-64 grid grid-cols-2 grid-rows-3 gap-4 items-center">
+    <div className="relative min-h-64 grid grid-cols-2 grid-rows-3 gap-4 items-center">
       <Image
         src={fileURL ? fileURL : "/naked_char.png"}
         height={0}
@@ -102,6 +101,6 @@ export default function AddCharacter({
       <IgnField setIgn={setIgn} />
       <LevelField level={level} setLevel={setLevel} />
       <ClassField setMaplestoryClass={setMaplestoryClass} />
-    </form>
+    </div>
   );
 }

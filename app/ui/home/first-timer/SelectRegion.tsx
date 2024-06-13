@@ -29,7 +29,7 @@ export default function SelectRegion({ region, setRegion }: SelectRegionProps) {
     <div className="min-h-14 flex items-center justify-start gap-5">
       <button
         className={
-          region === "MSEA" ? "btn btn-primary" : "btn btn-outline btn-neutral"
+          region === "MSEA" ? "btn btn-info" : "btn btn-outline btn-neutral"
         }
         onClick={() => handleClick("MSEA")}
       >
@@ -37,7 +37,7 @@ export default function SelectRegion({ region, setRegion }: SelectRegionProps) {
       </button>
       <button
         className={
-          region === "GMS" ? "btn btn-primary" : "btn btn-outline btn-neutral"
+          region === "GMS" ? "btn btn-info" : "btn btn-outline btn-neutral"
         }
         onClick={() => handleClick("GMS")}
       >
