@@ -57,8 +57,8 @@ export default function RegionAndCharacter({
   ]);
 
   return (
-    <div className="w-1/2 flex flex-col items-center">
-      <div className="min-w-fit text-primary-content">
+    <div className="w-1/2 flex justify-center">
+      <div className="w-fit flex flex-col text-primary-content">
         <div className="collapse bg-accent">
           <input
             type="radio"
@@ -93,18 +93,18 @@ export default function RegionAndCharacter({
             />
           </div>
         </div>
+        <button
+          disabled={!readyToProceed}
+          className="self-end btn btn-lg glass btn-info rounded-full mt-4 text-xl font-medium text-primary-content"
+          onClick={() => {
+            setProceedClicked(true);
+            setDialogueIndex("create_account");
+          }}
+        >
+          <img src="/butterfly_logo.png" alt="My Icon" className="h-6 w-6" />
+          Proceed
+        </button>
       </div>
-      <button
-        disabled={!readyToProceed}
-        className="self-end btn btn-lg glass btn-info rounded-full mt-4 text-xl font-medium text-primary-content"
-        onClick={() => {
-          setProceedClicked(true);
-          setDialogueIndex("create_account");
-        }}
-      >
-        <img src="/butterfly_logo.png" alt="My Icon" className="h-6 w-6" />
-        Proceed
-      </button>
     </div>
   );
 }
