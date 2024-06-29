@@ -43,6 +43,10 @@ export type AddCharacterProps = {
   setCharacterDetails: (characterDetails: CharacterDetails) => void;
 };
 
+export type ImageFieldProps = {
+  setUploadedFile: (image: File | null) => void;
+};
+
 export type IgnFieldProps = {
   setIgn: (ign: string) => void;
 };
@@ -56,14 +60,16 @@ export type ClassFieldProps = {
   setMaplestoryClass: (maplestoryClass: string) => void;
 };
 
-export type SignUpDetails = {
-  username: string;
-  password: string;
-  confirmPassword: string;
+export type UsernameFieldProps = {
+  setUsername: (username: string) => void;
 };
 
-export type SignUpErrors = {
-  usernameError: string;
-  passwordError: string;
+export type PasswordFieldProps = {
+  setPassword: (password: string) => void;
+  confirmPasswordError: string;
+};
+
+export type ConfirmPasswordFieldProps = {
+  setConfirmPassword: (confirmPassword: string) => void;
   confirmPasswordError: string;
 };
