@@ -43,6 +43,10 @@ export type AddCharacterProps = {
   setCharacterDetails: (characterDetails: CharacterDetails) => void;
 };
 
+export type ImageFieldProps = {
+  setUploadedFile: (image: File | null) => void;
+};
+
 export type IgnFieldProps = {
   setIgn: (ign: string) => void;
 };
