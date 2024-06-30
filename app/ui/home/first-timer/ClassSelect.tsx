@@ -12,7 +12,7 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
 
   const input_id = "class_autocomplete";
   const dropdown_className = {
-    "dropdown w-4/5": true,
+    "dropdown w-full": true,
   };
   const input_className =
     "grow block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-base text-primary-content bg-neutral dark:bg-neutral border-0 border-b-2 border-accent appearance-none dark:text-primary-content dark:border-accent dark:focus:border-accent focus:outline-none focus:ring-0 focus:border-accent peer";
