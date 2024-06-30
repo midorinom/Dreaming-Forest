@@ -10,13 +10,13 @@ export default async function Home({ classes }: HomeProps) {
     "Loading"
   );
 
-  useEffect(() => {
-    if (localStorage.getItem("userDetails")) {
-      setIsFirstTimer(true);
-    } else {
-      setIsFirstTimer(false);
-    }
-  }, []);
+  //   useEffect(() => {
+  //     if (localStorage.getItem("userDetails")) {
+  //       setIsFirstTimer(true);
+  //     } else {
+  //       setIsFirstTimer(false);
+  //     }
+  //   }, []);
 
   return (
     <main>
