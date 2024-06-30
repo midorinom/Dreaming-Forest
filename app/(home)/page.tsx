@@ -1,18 +1,9 @@
 import { Suspense } from "react";
+import Home from "@/app/ui/home/Home";
 import { fetchClasses } from "@/app/lib/fetches/first-timer-fetches";
-import FirstTimer from "@/app/ui/home/first-timer/FirstTimer";
-import Dashboard from "@/app/ui/home/dashboard/Dashboard";
-import GenericSkeleton from "../ui/general/GenericSkeleton";
+import GenericSkeleton from "@/app/ui/general/GenericSkeleton";
 
 export default async function Page() {
-  let isLoggedIn = false;
-  let localStorage = null;
-  let firstTimer = false;
-
-  if (!isLoggedIn && !localStorage) {
-    firstTimer = true;
-  }
-
   const response = await Promise.all([
     fetchClasses("GMS"),
     fetchClasses("MSEA"),
@@ -24,14 +15,8 @@ export default async function Page() {
   };
 
   return (
-    <main className="bg-elodin_background bg-cover bg-center h-screen">
-      {firstTimer ? (
-        <Suspense fallback={<GenericSkeleton />}>
-          <FirstTimer classes={classes} />
-        </Suspense>
-      ) : (
-        <Dashboard />
-      )}
-    </main>
+    <Suspense fallback={<GenericSkeleton />}>
+      <Home classes={classes} />{" "}
+    </Suspense>
   );
 }
