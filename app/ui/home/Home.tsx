@@ -12,9 +12,9 @@ export default async function Home({ classes }: HomeProps) {
 
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {
-      setIsFirstTimer(true);
-    } else {
       setIsFirstTimer(false);
+    } else {
+      setIsFirstTimer(true);
     }
   }, []);
 
