@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import FirstTimer from "@/app/ui/home/first-timer/FirstTimer";
 import Dashboard from "@/app/ui/home/dashboard/Dashboard";
 import { HomeProps } from "@/app/lib/definitions/home-definitions";
-import GenericSkeleton from "../general/GenericSkeleton";
+import GenericPageSkeleton from "../general/GenericPageSkeleton";
 
 export default async function Home({ classes }: HomeProps) {
   const [isFirstTimer, setIsFirstTimer] = useState<boolean | "Loading">(
@@ -22,7 +22,7 @@ export default async function Home({ classes }: HomeProps) {
     <main>
       {isFirstTimer ? (
         isFirstTimer === "Loading" ? (
-          <GenericSkeleton />
+          <GenericPageSkeleton />
         ) : (
           <FirstTimer classes={classes} setIsFirstTimer={setIsFirstTimer} />
         )

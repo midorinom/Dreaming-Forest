@@ -1,7 +1,5 @@
-import { Suspense } from "react";
 import Home from "@/app/ui/home/Home";
 import { fetchClasses } from "@/app/lib/fetches/first-timer-fetches";
-import GenericSkeleton from "@/app/ui/general/GenericSkeleton";
 
 export default async function Page() {
   const response = await Promise.all([
@@ -14,9 +12,5 @@ export default async function Page() {
     msea: response[1].map((p) => p.class_name),
   };
 
-  return (
-    <Suspense fallback={<GenericSkeleton />}>
-      <Home classes={classes} />{" "}
-    </Suspense>
-  );
+  return <Home classes={classes} />;
 }
