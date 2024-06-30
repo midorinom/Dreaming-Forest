@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
+import { CreateAccountProps } from "@/app/lib/definitions/first-timer-definitions";
 import { errorMessages } from "@/public/home/first-timer/CreateAccount_error_message";
 import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
 import ConfirmPasswordField from "./ConfirmPasswordField";
 
-export default function CreateAccount() {
+export default function CreateAccount({ setSkipClicked }: CreateAccountProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -38,7 +39,10 @@ export default function CreateAccount() {
         </div>
       </div>
       <div className="w-full mt-5 flex justify-between">
-        <button className="btn btn-lg glass btn-warning rounded-full text-xl font-medium text-primary-content">
+        <button
+          className="btn btn-lg glass btn-warning rounded-full text-xl font-medium text-primary-content"
+          onClick={() => setSkipClicked(true)}
+        >
           Skip
         </button>
         <button
@@ -48,6 +52,7 @@ export default function CreateAccount() {
               ? false
               : true
           }
+          onClick={() => setSkipClicked(true)}
         >
           <img src="/butterfly_logo.png" alt="My Icon" className="h-6 w-6" />
           Create

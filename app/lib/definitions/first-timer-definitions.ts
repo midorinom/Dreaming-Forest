@@ -1,3 +1,5 @@
+import { Classes } from "./home-definitions";
+
 export type FirstTimerContextType = {
   classes: {
     gms: string[];
@@ -7,10 +9,8 @@ export type FirstTimerContextType = {
 };
 
 export type FirstTimerProps = {
-  classes: {
-    gms: string[];
-    msea: string[];
-  };
+  classes: Classes;
+  setIsFirstTimer: (isFirstTimer: boolean) => void;
 };
 
 export type Dialogue = {
@@ -58,6 +58,10 @@ export type LevelFieldProps = {
 
 export type ClassFieldProps = {
   setMaplestoryClass: (maplestoryClass: string) => void;
+};
+
+export type CreateAccountProps = {
+  setSkipClicked: (skipClicked: boolean) => void;
 };
 
 export type UsernameFieldProps = {

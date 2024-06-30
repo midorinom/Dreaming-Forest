@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DialogueIndex,
   FirstTimerProps,
@@ -13,10 +13,24 @@ import {
 import RegionAndCharacter from "./RegionAndCharacter";
 import CreateAccount from "./CreateAccount";
 
-export default function FirstTimer({ classes }: FirstTimerProps) {
+export default function FirstTimer({
+  classes,
+  setIsFirstTimer,
+}: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
+  const [skipClicked, setSkipClicked] = useState(false);
+
+  useEffect(() => {
+    if (skipClicked) {
+      localStorage.setItem(
+        "userDetails",
+        JSON.stringify({ characters: "hehe" })
+      );
+      setIsFirstTimer(false);
+    }
+  }, [skipClicked]);
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
@@ -37,7 +51,7 @@ export default function FirstTimer({ classes }: FirstTimerProps) {
           </div>
         </div>
         {proceedClicked ? (
-          <CreateAccount />
+          <CreateAccount setSkipClicked={setSkipClicked} />
         ) : (
           <RegionAndCharacter
             region={region}
