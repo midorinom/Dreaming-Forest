@@ -19,7 +19,7 @@ export default async function Home({ classes }: HomeProps) {
   }, []);
 
   return (
-    <main className="bg-elodin_background bg-cover bg-center h-screen">
+    <main>
       {isFirstTimer ? (
         isFirstTimer === "Loading" ? (
           <GenericSkeleton />

@@ -34,7 +34,7 @@ export default function FirstTimer({
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
-      <div className="flex flex-col items-center p-6 gap-4">
+      <div className="bg-elodin_background bg-cover bg-center h-screen flex flex-col items-center p-6 gap-4">
         <div className="w-1/2 flex items-center">
           <Image
             src={smallSpiritImage[dialogueIndex]}

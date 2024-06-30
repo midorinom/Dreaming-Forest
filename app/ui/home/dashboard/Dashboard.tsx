@@ -1,3 +1,7 @@
 export default function Dashboard() {
-  return <div className="text-primary-content">Dashboard</div>;
+  return (
+    <div className="bg-lucid_background bg-cover bg-center h-screen">
+      Dashboard
+    </div>
+  );
 }
