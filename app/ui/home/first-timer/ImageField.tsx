@@ -44,7 +44,7 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
           accept="image/*"
           type="file"
           className={`w-full file-input file-input-bordered ${
-            error ? "file-input-error" : "file-input-accent"
+            error ? "file-input-error" : "file-input-secondary"
           }`}
           onChange={handleFileChange}
         />

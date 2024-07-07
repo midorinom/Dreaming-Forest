@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dreaming">
+    <html lang="en">
       <body className={outfit.className}>{children}</body>
     </html>
   );

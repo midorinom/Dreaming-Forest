@@ -23,7 +23,7 @@ export default function CreateAccount({ setSkipClicked }: CreateAccountProps) {
   return (
     <div className="w-1/4 flex flex-col items-center">
       <div className="flex flex-col gap-3 min-h-64 items-center collapse collapse-open bg-base-100">
-        <div className="collapse-title text-xl font-medium underline-offset-8 underline-neutral">
+        <div className="collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral">
           Create Account
         </div>
         <div className="flex flex-col gap-8">
@@ -46,7 +46,7 @@ export default function CreateAccount({ setSkipClicked }: CreateAccountProps) {
           Skip
         </button>
         <button
-          className="btn btn-lg glass btn-info rounded-full text-xl font-medium text-primary-content"
+          className="btn btn-lg glass btn-accent rounded-full text-xl font-medium text-primary-content"
           disabled={
             username && password && confirmPassword && !confirmPasswordError
               ? false

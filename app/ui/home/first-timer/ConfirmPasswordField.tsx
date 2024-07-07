@@ -13,7 +13,7 @@ export default function ConfirmPasswordField({
   return (
     <label
       className={`${
-        confirmPasswordError ? "bg-error" : "bg-accent"
+        confirmPasswordError ? "bg-error" : "bg-secondary"
       } input input-bordered flex items-center gap-2 mb-6`}
     >
       <svg
