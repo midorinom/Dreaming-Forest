@@ -1,10 +1,8 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import relativeTime from "dayjs/plugin/relativeTime";
 
 export default function DailiesWeeklies() {
   dayjs.extend(utc);
-  dayjs.extend(relativeTime);
   const now = dayjs().utc();
   const endOfDay = dayjs().utc().endOf("day");
   const dailiesTimer = endOfDay.diff(now, "hour");
