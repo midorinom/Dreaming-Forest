@@ -75,7 +75,7 @@ export default function SideNav() {
           </div>
         )}
         {buttonHovered === "bosses" && (
-          <div className="absolute top-[17vh] left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+          <div className="absolute top-[17.1vh] left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
             Bosses
           </div>
         )}
