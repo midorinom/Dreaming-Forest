@@ -1,10 +1,17 @@
 "use client";
-import Image from "next/image";
 import { Rouge_Script } from "next/font/google";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const rougeScript = Rouge_Script({ subsets: ["latin"], weight: "400" });
 
 export default function TopNav() {
+  const router = useRouter();
+
+  function handleClick(url: string) {
+    router.replace(url);
+  }
+
   return (
     <div className="relative flex row-span-1 col-span-2 row-start-1 col-start-1 items-center justify-between ">
       <div className="absolute w-full h-full bg-info opacity-[.70]"></div>
@@ -15,10 +22,12 @@ export default function TopNav() {
           width={0}
           alt="Butterfly Logo"
           sizes="100vw"
-          className="w-[3.5vw] h-[4vh] mb-1"
+          className="w-[3.5vw] h-[4vh] mb-1 hover:cursor-pointer"
+          onClick={() => handleClick("/")}
         />
         <div
-          className={`${rougeScript.className} text-primary text-3xl mt-0.5`}
+          className={`${rougeScript.className} text-primary text-3xl mt-0.5 hover:cursor-pointer`}
+          onClick={() => handleClick("/")}
         >
           Dreaming Forest
         </div>
@@ -30,7 +39,8 @@ export default function TopNav() {
           width={0}
           alt="Profile Button"
           sizes="100vw"
-          className="w-[3vw] h-[4vh]"
+          className="w-[3vw] h-[4vh] hover:cursor-pointer"
+          onClick={() => handleClick("/profile")}
         />
         <Image
           src="/general/settings_icon.png"
@@ -38,7 +48,8 @@ export default function TopNav() {
           width={0}
           alt="Settings Button"
           sizes="100vw"
-          className="w-[3vw] h-[4vh]"
+          className="w-[3vw] h-[4vh] hover:cursor-pointer"
+          onClick={() => handleClick("/settings")}
         />
       </div>
     </div>
