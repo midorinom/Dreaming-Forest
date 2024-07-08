@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import FirstTimer from "@/app/ui/home/first-timer/FirstTimer";
-import Dashboard from "@/app/ui/home/dashboard/Dashboard";
+import MainApp from "@/app/ui/home/MainApp";
 import { HomeProps } from "@/app/lib/definitions/home-definitions";
 import GenericPageSkeleton from "../general/GenericPageSkeleton";
 
-export default async function Home({ classes }: HomeProps) {
+export default function Home({ classes }: HomeProps) {
   const [isFirstTimer, setIsFirstTimer] = useState<boolean | "Loading">(
     "Loading"
   );
@@ -27,7 +27,7 @@ export default async function Home({ classes }: HomeProps) {
           <FirstTimer classes={classes} setIsFirstTimer={setIsFirstTimer} />
         )
       ) : (
-        <Dashboard />
+        <MainApp />
       )}
     </main>
   );
