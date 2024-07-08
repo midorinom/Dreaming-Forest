@@ -1,13 +1,16 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 export default function ResetButton() {
+  const router = useRouter();
+
   function handleClick() {
     const confirmDelete = window.confirm(
       "Are you sure you want to wipe all your data on this browser?"
     );
     if (confirmDelete) {
       localStorage.removeItem("userDetails");
-      window.location.reload();
+      router.replace("/");
     }
   }
 
