@@ -3,6 +3,7 @@ import utc from "dayjs/plugin/utc";
 
 export default function DailiesWeeklies() {
   dayjs.extend(utc);
+
   const now = dayjs().utc();
   const endOfDay = dayjs().utc().endOf("day");
   const dailiesTimer = `${endOfDay.diff(now, "hour")}h`;
