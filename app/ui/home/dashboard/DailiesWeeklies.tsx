@@ -5,7 +5,7 @@ export default function DailiesWeeklies() {
   dayjs.extend(utc);
   const now = dayjs().utc();
   const endOfDay = dayjs().utc().endOf("day");
-  const dailiesTimer = endOfDay.diff(now, "hour");
+  const dailiesTimer = `${endOfDay.diff(now, "hour")}h`;
 
   return (
     <div className="flex flex-col items-end mt-2 w-full">
@@ -15,7 +15,7 @@ export default function DailiesWeeklies() {
           Dailies
         </div>
         <div className="absolute top-1 right-2 text-2xl text-info">
-          {dailiesTimer}h
+          {dailiesTimer}
         </div>
         <div className="collapse-content max-h-[41vh]"></div>
       </div>
