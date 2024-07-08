@@ -5,10 +5,10 @@ export default function ActiveCharacter() {
     <div className="w-full h-full flex justify-center">
       <div className="w-full h-full flex items-center">
         <Image
-          src="/general/midori.png"
+          src="/general/Midori.png"
           height={0}
           width={0}
-          alt="Naked Character"
+          alt="Active Character"
           sizes="100vw"
           className="h-4/5 w-auto row-span-2 ml-8 justify-self-center"
         />
