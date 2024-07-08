@@ -5,7 +5,7 @@ export default function SideNav() {
   return (
     <div className="row-span-1 col-span-1 row-start-2 col-start-1">
       <div className="relative flex flex-col w-full h-[31vh] gap-5 items-center justify-center">
-        <div className="absolute w-full h-full bg-accent opacity-[.70]"></div>
+        <div className="absolute w-full h-full bg-accent opacity-[.60]"></div>
         <Image
           src="/general/characters_icon.png"
           height={0}
