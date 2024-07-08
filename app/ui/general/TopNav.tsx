@@ -23,7 +23,7 @@ export default function TopNav() {
           Dreaming Forest
         </div>
       </div>
-      <div className="relative flex gap-2.5 right-3">
+      <div className="relative flex gap-3 right-3">
         <Image
           src="/general/profile_icon.png"
           height={0}
