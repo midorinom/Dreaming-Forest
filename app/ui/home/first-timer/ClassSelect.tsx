@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useFirstTimer } from "@/app/ui/contexts/FirstTimerContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
 import { ClassFieldProps } from "@/app/lib/definitions/first-timer-definitions";
