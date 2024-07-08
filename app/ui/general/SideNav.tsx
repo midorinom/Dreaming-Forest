@@ -65,22 +65,22 @@ export default function SideNav() {
           onMouseLeave={() => setButtonHovered("")}
         />
         {buttonHovered === "characters" && (
-          <div className="absolute top-[1.5vh] left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+          <div className="absolute top-[1.5vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
             Characters
           </div>
         )}
         {buttonHovered === "dailiesWeeklies" && (
-          <div className="absolute top-[9.3vh] left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+          <div className="absolute top-[9.3vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
             Dailies/Weeklies
           </div>
         )}
         {buttonHovered === "bosses" && (
-          <div className="absolute top-[17.1vh] left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+          <div className="absolute top-[17.1vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
             Bosses
           </div>
         )}
         {buttonHovered === "progression" && (
-          <div className="absolute top-[24.7vh] left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+          <div className="absolute top-[24.7vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
             Progression
           </div>
         )}
