@@ -61,7 +61,7 @@ export type ClassFieldProps = {
 };
 
 export type CreateAccountProps = {
-  setSkipClicked: (skipClicked: boolean) => void;
+  setDone: (done: boolean) => void;
 };
 
 export type UsernameFieldProps = {

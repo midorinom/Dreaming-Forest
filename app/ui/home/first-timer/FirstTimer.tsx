@@ -20,17 +20,17 @@ export default function FirstTimer({
   const [region, setRegion] = useState<string>("");
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
-  const [skipClicked, setSkipClicked] = useState(false);
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (skipClicked) {
+    if (done) {
       localStorage.setItem(
         "userDetails",
         JSON.stringify({ characters: "hehe" })
       );
       setIsFirstTimer(false);
     }
-  }, [skipClicked]);
+  }, [done]);
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
@@ -54,7 +54,7 @@ export default function FirstTimer({
           </div>
         </div>
         {proceedClicked ? (
-          <CreateAccount setSkipClicked={setSkipClicked} />
+          <CreateAccount setDone={setDone} />
         ) : (
           <RegionAndCharacter
             region={region}

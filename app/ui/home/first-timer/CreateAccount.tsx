@@ -6,7 +6,7 @@ import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
 import ConfirmPasswordField from "./ConfirmPasswordField";
 
-export default function CreateAccount({ setSkipClicked }: CreateAccountProps) {
+export default function CreateAccount({ setDone }: CreateAccountProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -41,7 +41,7 @@ export default function CreateAccount({ setSkipClicked }: CreateAccountProps) {
       <div className="w-full mt-5 flex justify-between">
         <button
           className="btn btn-lg glass btn-warning rounded-full text-xl font-medium text-primary-content"
-          onClick={() => setSkipClicked(true)}
+          onClick={() => setDone(true)}
         >
           Skip
         </button>
@@ -52,7 +52,7 @@ export default function CreateAccount({ setSkipClicked }: CreateAccountProps) {
               ? false
               : true
           }
-          onClick={() => setSkipClicked(true)}
+          onClick={() => setDone(true)}
         >
           <img
             src="/general/butterfly_logo.png"
