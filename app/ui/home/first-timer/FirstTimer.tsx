@@ -34,7 +34,10 @@ export default function FirstTimer({
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
-      <div className="bg-elodin_background bg-cover bg-center h-screen flex flex-col items-center p-6 gap-4">
+      <div
+        className="bg-elodin_background bg-cover bg-center h-screen flex flex-col items-center p-6 gap-4"
+        data-theme="elodin"
+      >
         <div className="w-1/2 flex items-center">
           <Image
             src={smallSpiritImage[dialogueIndex]}
@@ -45,7 +48,7 @@ export default function FirstTimer({
             className="w-auto h-44"
           />
           <div className="chat chat-start">
-            <div className="chat-bubble chat-bubble-info">
+            <div className="chat-bubble chat-bubble-accent">
               {smallSpiritDialogue[dialogueIndex]}
             </div>
           </div>

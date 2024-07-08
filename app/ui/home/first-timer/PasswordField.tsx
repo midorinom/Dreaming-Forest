@@ -26,7 +26,7 @@ export default function PasswordField({
     <div className="relative">
       <label
         className={`${
-          passwordError || confirmPasswordError ? "bg-error" : "bg-accent"
+          passwordError || confirmPasswordError ? "bg-error" : "bg-secondary"
         } input input-bordered flex items-center gap-2`}
       >
         <svg

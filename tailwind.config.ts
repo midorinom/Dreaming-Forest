@@ -11,20 +11,31 @@ const config: Config = {
     extend: {
       backgroundImage: {
         elodin_background: "url('/home/first-timer/elodin_background.png')",
-        lucid_background: "url('/lucid_background.png')",
+        lucid_background: "url('/general/lucid_background.png')",
       },
     },
   },
   daisyui: {
     themes: [
       {
-        dreamy: {
+        elodin: {
           primary: "#BBDB9B",
-          secondary: "#F6CBD1",
-          accent: "#B4E9D6",
+          secondary: "#B4E9D6",
+          accent: "#D1C1D7",
           neutral: "#9DB4AB",
           "base-100": "#ABC4A1",
-          info: "#D1C1D7",
+          warning: "#FFDD89",
+          error: "#FF6F70",
+        },
+      },
+      {
+        dreamy: {
+          primary: "#FFD9F0",
+          secondary: "#FFC8C8",
+          accent: "#F6C7FF",
+          neutral: "#FFFFFF",
+          "base-100": "#FFA6C4",
+          info: "#92808F",
           success: "#00A96F",
           warning: "#FFDD89",
           error: "#FF6F70",
@@ -36,13 +47,17 @@ const config: Config = {
     require("daisyui"),
     plugin(function ({ addUtilities }) {
       addUtilities({
-        ".underline-neutral": {
+        ".underline-elodin-neutral": {
           "text-decoration": "underline",
           "text-decoration-color": "#9DB4AB",
         },
-        ".underline-info": {
+        ".underline-dreamy-accent": {
           "text-decoration": "underline",
-          "text-decoration-color": "#D1C1D7",
+          "text-decoration-color": "#F6C7FF",
+        },
+        ".underline-dreamy-neutral": {
+          "text-decoration": "underline",
+          "text-decoration-color": "#FFFFFF",
         },
         ".scrollbar-hide": {
           /* Hide scrollbar for WebKit browsers */

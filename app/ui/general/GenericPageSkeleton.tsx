@@ -1,6 +1,9 @@
 export default function GenericPageSkeleton() {
   return (
-    <div className="h-screen w-full bg-base-100 flex justify-center items-center">
+    <div
+      className="h-screen w-full bg-base-100 flex justify-center items-center"
+      data-theme="dreamy"
+    >
       <div className="flex h-4/5 w-4/5 flex-col gap-4">
         <div className="flex items-center gap-4">
           <div className="skeleton h-32 w-32 shrink-0 rounded-full"></div>

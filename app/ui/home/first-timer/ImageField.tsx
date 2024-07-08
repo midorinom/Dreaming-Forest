@@ -31,7 +31,7 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
   return (
     <>
       <Image
-        src={fileURL ? fileURL : "/naked_char.png"}
+        src={fileURL ? fileURL : "/general/naked_char.png"}
         height={0}
         width={0}
         alt="Naked Character"
@@ -44,7 +44,7 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
           accept="image/*"
           type="file"
           className={`w-full file-input file-input-bordered ${
-            error ? "file-input-error" : "file-input-accent"
+            error ? "file-input-error" : "file-input-secondary"
           }`}
           onChange={handleFileChange}
         />

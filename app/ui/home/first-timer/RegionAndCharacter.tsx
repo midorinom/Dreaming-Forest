@@ -59,7 +59,7 @@ export default function RegionAndCharacter({
   return (
     <div className="w-1/2 flex justify-center">
       <div className="w-fit flex flex-col text-primary-content">
-        <div className="collapse bg-accent">
+        <div className="collapse bg-secondary">
           <input
             type="radio"
             name="accordion"
@@ -68,7 +68,7 @@ export default function RegionAndCharacter({
           />
           <div
             className={
-              "collapse-title text-xl font-medium underline-offset-8 underline-neutral"
+              "collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral"
             }
           >
             Select Region
@@ -83,7 +83,7 @@ export default function RegionAndCharacter({
           } collapse bg-primary`}
         >
           <input type="radio" name="accordion" onChange={handleRadioChange} />
-          <div className="collapse-title text-xl font-medium underline-offset-8 underline-neutral">
+          <div className="collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral">
             Add Character
           </div>
           <div className="collapse-content">
@@ -95,13 +95,17 @@ export default function RegionAndCharacter({
         </div>
         <button
           disabled={!readyToProceed}
-          className="self-end btn btn-lg glass btn-info rounded-full mt-4 text-xl font-medium text-primary-content"
+          className="self-end btn btn-lg glass btn-accent rounded-full mt-4 text-xl font-medium text-primary-content"
           onClick={() => {
             setProceedClicked(true);
             setDialogueIndex("create_account");
           }}
         >
-          <img src="/butterfly_logo.png" alt="My Icon" className="h-6 w-6" />
+          <img
+            src="/general/butterfly_logo.png"
+            alt="My Icon"
+            className="h-7 w-7"
+          />
           Proceed
         </button>
       </div>

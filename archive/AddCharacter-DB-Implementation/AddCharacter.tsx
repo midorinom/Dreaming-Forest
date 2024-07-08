@@ -15,7 +15,7 @@
 //     >
 //       {fileUploaded && (
 //         <Image
-//           src="/naked_char.png"
+//           src="/general/naked_char.png"
 //           height={0}
 //           width={0}
 //           alt="Naked Character"
@@ -25,7 +25,7 @@
 //       )}
 //       <input
 //         type="file"
-//         className={`file-input file-input-bordered file-input-accent w-4/5 max-w-xs col-start-1 row-span-${
+//         className={`file-input file-input-bordered file-input-secondary w-4/5 max-w-xs col-start-1 row-span-${
 //           fileUploaded ? "1" : "3"
 //         } justify-self-center`}
 //       />
