@@ -1,8 +1,10 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function SideNav() {
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   const router = useRouter();
 
   function handleClick(url: string) {
@@ -11,8 +13,16 @@ export default function SideNav() {
 
   return (
     <div className="row-span-1 col-span-1 row-start-2 col-start-1">
-      <div className="relative flex flex-col w-full h-[31vh] items-center justify-around">
-        <div className="absolute w-full h-full bg-accent opacity-[.60]"></div>
+      <div
+        className="relative flex flex-col w-full h-[31vh] items-center justify-around"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div
+          className={`absolute w-full h-full bg-accent ${
+            isHovered ? "opacity-100" : "opacity-[.60]"
+          }`}
+        ></div>
         <Image
           src="/general/characters_icon.png"
           height={0}
