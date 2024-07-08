@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
 
-export default function ActiveCharacter() {
+export default function ActiveCharacter({
+  activeCharacter,
+}: ActiveCharacterProps) {
   return (
     <div className="w-full h-full flex justify-center">
       <div className="w-full h-full flex items-center">

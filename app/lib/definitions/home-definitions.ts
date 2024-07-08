@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 
 export type Classes = {
   gms: string[];
@@ -10,5 +10,5 @@ export type HomeProps = {
 };
 
 export type MainAppProps = {
-  pageComponent: ReactNode;
+  pageComponent: ReactElement;
 };

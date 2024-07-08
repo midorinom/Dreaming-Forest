@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import {
   DialogueIndex,
   FirstTimerProps,
-  CharacterDetails,
 } from "@/app/lib/definitions/first-timer-definitions";
+import { CharacterDetails } from "@/app/lib/definitions/general-definitions";
 import FirstTimerProvider from "@/app/ui/contexts/FirstTimerContext";
 import Image from "next/image";
 import {

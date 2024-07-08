@@ -10,3 +10,15 @@ export type AutoCompleteProps = {
   ul_className: string;
   li_className: string;
 };
+
+export type CharacterDetails = {
+  image: File | null;
+  ign?: string;
+  level?: number;
+  maplestoryClass?: string;
+};
+
+export type UserDetails = {
+  region: string;
+  characters: CharacterDetails[];
+};

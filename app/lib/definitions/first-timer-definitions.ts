@@ -1,3 +1,4 @@
+import { CharacterDetails } from "./general-definitions";
 import { Classes } from "./home-definitions";
 
 export type FirstTimerContextType = {
@@ -26,13 +27,6 @@ export type RegionAndCharacterProps = {
   setCharacterDetails: (characterDetails: CharacterDetails) => void;
   setDialogueIndex: (dialogueIndex: DialogueIndex) => void;
   setProceedClicked: (proceedClicked: boolean) => void;
-};
-
-export type CharacterDetails = {
-  image: File | null;
-  ign?: string;
-  level?: number;
-  maplestoryClass?: string;
 };
 
 export type SelectRegionProps = {

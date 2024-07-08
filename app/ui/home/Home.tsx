@@ -4,15 +4,22 @@ import FirstTimer from "@/app/ui/home/first-timer/FirstTimer";
 import MainApp from "@/app/ui/home/MainApp";
 import Dashboard from "@/app/ui/home/dashboard/Dashboard";
 import { HomeProps } from "@/app/lib/definitions/home-definitions";
+import { UserDetails } from "@/app/lib/definitions/general-definitions";
 import GenericPageSkeleton from "../general/GenericPageSkeleton";
 
 export default function Home({ classes }: HomeProps) {
   const [isFirstTimer, setIsFirstTimer] = useState<boolean | "Loading">(
     "Loading"
   );
+  const [userDetails, setUserDetails] = useState<UserDetails>({
+    characters: [{ image: null }],
+    region: "GMS",
+  });
 
   useEffect(() => {
-    if (localStorage.getItem("userDetails")) {
+    const localUserDetails = localStorage.getItem("userDetails");
+    if (localUserDetails) {
+      setUserDetails(JSON.parse(localUserDetails));
       setIsFirstTimer(false);
     } else {
       setIsFirstTimer(true);
@@ -28,7 +35,7 @@ export default function Home({ classes }: HomeProps) {
           <FirstTimer classes={classes} setIsFirstTimer={setIsFirstTimer} />
         )
       ) : (
-        <MainApp pageComponent={<Dashboard />} />
+        <MainApp pageComponent={<Dashboard userDetails={userDetails} />} />
       )}
     </main>
   );
