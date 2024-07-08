@@ -9,7 +9,7 @@ export default function ActiveCharacter({
   const [hasImage, setHasImage] = useState<boolean>(false);
 
   useEffect(() => {
-    if (activeCharacter.image) {
+    if (activeCharacter.imageBase64) {
       setHasImage(true);
     }
   }, []);
@@ -25,7 +25,7 @@ export default function ActiveCharacter({
           src={
             activeCharacter.imageBase64
               ? activeCharacter.imageBase64
-              : "/general/Midori.png"
+              : "/general/naked_char.png"
           }
           height={0}
           width={0}
