@@ -13,7 +13,7 @@ export default function ResetButton() {
 
   return (
     <button
-      className="absolute right-4 bottom-4 btn btn-accent rounded-full text-xl font-medium text-primary-content"
+      className="absolute right-4 top-4 btn btn-accent rounded-full text-xl font-medium text-primary-content"
       onClick={handleClick}
     >
       Clear Data
