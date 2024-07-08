@@ -32,7 +32,11 @@ export default function Home({ classes }: HomeProps) {
         isFirstTimer === "Loading" ? (
           <GenericPageSkeleton />
         ) : (
-          <FirstTimer classes={classes} setIsFirstTimer={setIsFirstTimer} />
+          <FirstTimer
+            classes={classes}
+            setIsFirstTimer={setIsFirstTimer}
+            setUserDetails={setUserDetails}
+          />
         )
       ) : (
         <MainApp pageComponent={<Dashboard userDetails={userDetails} />} />

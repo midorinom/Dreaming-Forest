@@ -1,4 +1,4 @@
-import { CharacterDetails } from "./general-definitions";
+import { CharacterDetails, UserDetails } from "./general-definitions";
 import { Classes } from "./home-definitions";
 
 export type FirstTimerContextType = {
@@ -12,6 +12,7 @@ export type FirstTimerContextType = {
 export type FirstTimerProps = {
   classes: Classes;
   setIsFirstTimer: (isFirstTimer: boolean) => void;
+  setUserDetails: (userDetails: UserDetails) => void;
 };
 
 export type Dialogue = {

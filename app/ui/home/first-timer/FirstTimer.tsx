@@ -17,6 +17,7 @@ import CreateAccount from "./CreateAccount";
 export default function FirstTimer({
   classes,
   setIsFirstTimer,
+  setUserDetails,
 }: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
   const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
@@ -28,10 +29,10 @@ export default function FirstTimer({
 
   useEffect(() => {
     if (done) {
-      localStorage.setItem(
-        "userDetails",
-        JSON.stringify({ region: region, characters: [characterDetails] })
-      );
+      const newUserDetails = { region: region, characters: [characterDetails] };
+
+      localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+      setUserDetails(newUserDetails);
       setIsFirstTimer(false);
     }
   }, [done]);

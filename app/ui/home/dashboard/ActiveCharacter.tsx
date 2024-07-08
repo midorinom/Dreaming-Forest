@@ -8,7 +8,11 @@ export default function ActiveCharacter({
     <div className="w-full h-full flex justify-center">
       <div className="w-full h-full flex items-center">
         <Image
-          src="/general/Midori.png"
+          src={
+            activeCharacter.imageBase64
+              ? activeCharacter.imageBase64
+              : "/general/naked_char.png"
+          }
           height={0}
           width={0}
           alt="Active Character"
@@ -17,11 +21,11 @@ export default function ActiveCharacter({
         />
         <div className="w-3/5 mt-3 flex flex-col gap-2 justify-center">
           <div className="text-6xl text-neutral font-medium underline-dreamy-accent underline-offset-8">
-            Midori
+            {activeCharacter.ign}
           </div>
           <div className="text-2xl text-neutral flex gap-2">
-            <div>Lv 275</div>
-            <div>Dual Blade</div>
+            <div>Lv {activeCharacter.level}</div>
+            <div> {activeCharacter.maplestoryClass}</div>
           </div>
         </div>
       </div>

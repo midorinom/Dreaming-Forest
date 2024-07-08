@@ -13,6 +13,7 @@ export type AutoCompleteProps = {
 
 export type CharacterDetails = {
   image: File | null;
+  imageBase64?: string;
   ign?: string;
   level?: number;
   maplestoryClass?: string;
