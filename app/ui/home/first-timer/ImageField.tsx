@@ -36,7 +36,7 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
         width={0}
         alt="Naked Character"
         sizes="100vw"
-        className="w-auto h-40 row-span-2 justify-self-center"
+        className="w-1/3 max-h-40 row-span-2 justify-self-center"
       />
       <div className="w-4/5 col-start-1 row-start-3 justify-self-center relative">
         <input
