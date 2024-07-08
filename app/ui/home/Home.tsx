@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import FirstTimer from "@/app/ui/home/first-timer/FirstTimer";
 import MainApp from "@/app/ui/home/MainApp";
+import Dashboard from "@/app/ui/home/dashboard/Dashboard";
 import { HomeProps } from "@/app/lib/definitions/home-definitions";
 import GenericPageSkeleton from "../general/GenericPageSkeleton";
 
@@ -27,7 +28,7 @@ export default function Home({ classes }: HomeProps) {
           <FirstTimer classes={classes} setIsFirstTimer={setIsFirstTimer} />
         )
       ) : (
-        <MainApp />
+        <MainApp pageComponent={<Dashboard />} />
       )}
     </main>
   );

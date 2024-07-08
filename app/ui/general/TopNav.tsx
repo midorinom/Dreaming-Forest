@@ -23,14 +23,14 @@ export default function TopNav() {
           Dreaming Forest
         </div>
       </div>
-      <div className="relative flex gap-3 right-3">
+      <div className="relative flex gap-4 right-4">
         <Image
           src="/general/profile_icon.png"
           height={0}
           width={0}
           alt="Profile Button"
           sizes="100vw"
-          className="w-[3.5vw] h-[4vh]"
+          className="w-[3vw] h-[4vh]"
         />
         <Image
           src="/general/settings_icon.png"
@@ -38,7 +38,7 @@ export default function TopNav() {
           width={0}
           alt="Settings Button"
           sizes="100vw"
-          className="w-[3.5vw] h-[4vh]"
+          className="w-[3vw] h-[4vh]"
         />
       </div>
     </div>
