@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function SideNav() {
-  const [sideNavHovered, setSideNavHovered] = useState<boolean>(false);
   const [buttonHovered, setButtonHovered] = useState<string>("");
   const router = useRouter();
 
@@ -12,21 +11,12 @@ export default function SideNav() {
     router.replace(url);
   }
 
-  useEffect(() => {
-    if (buttonHovered) {
-    }
-  }, [buttonHovered]);
-
   return (
     <div className="row-span-1 col-span-1 row-start-2 col-start-1">
-      <div
-        className="relative flex flex-col w-full h-[31vh] items-center justify-around"
-        onMouseEnter={() => setSideNavHovered(true)}
-        onMouseLeave={() => setSideNavHovered(false)}
-      >
+      <div className="relative flex flex-col w-full h-[31vh] items-center justify-around">
         <div
           className={`absolute w-full h-full bg-accent ${
-            sideNavHovered ? "opacity-100" : "opacity-[.60]"
+            buttonHovered ? "opacity-100" : "opacity-[.60]"
           }`}
         ></div>
         <Image
