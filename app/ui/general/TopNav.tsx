@@ -6,7 +6,7 @@ const rougeScript = Rouge_Script({ subsets: ["latin"], weight: "400" });
 
 export default function TopNav() {
   return (
-    <div className="relative flex w-full h-[6vh] items-center justify-between ">
+    <div className="relative flex row-span-1 col-span-2 row-start-1 col-start-1 items-center justify-between ">
       <div className="absolute w-full h-full bg-info opacity-[.70]"></div>
       <div className="relative flex items-center gap-2.5 left-3">
         <Image

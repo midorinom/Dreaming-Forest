@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function SideNav() {
   return (
-    <div className="w-[4vw] h-[94vh]">
+    <div className="row-span-1 col-span-1 row-start-2 col-start-1">
       <div className="relative flex flex-col w-full h-[31vh] gap-5 items-center justify-center">
         <div className="absolute w-full h-full bg-accent opacity-[.70]"></div>
         <Image
