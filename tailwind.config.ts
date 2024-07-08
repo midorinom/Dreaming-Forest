@@ -33,9 +33,9 @@ const config: Config = {
           primary: "#FFD9F0",
           secondary: "#FFC8C8",
           accent: "#F6C7FF",
-          neutral: "#92808F",
+          neutral: "#FFFFFF",
           "base-100": "#FFA6C4",
-          info: "#D1C1D7",
+          info: "#92808F",
           success: "#00A96F",
           warning: "#FFDD89",
           error: "#FF6F70",
@@ -55,7 +55,7 @@ const config: Config = {
           "text-decoration": "underline",
           "text-decoration-color": "#F6C7FF",
         },
-        ".underline-dreamy-white": {
+        ".underline-dreamy-neutral": {
           "text-decoration": "underline",
           "text-decoration-color": "#FFFFFF",
         },
