@@ -101,7 +101,11 @@ export default function RegionAndCharacter({
             setDialogueIndex("create_account");
           }}
         >
-          <img src="/butterfly_logo.png" alt="My Icon" className="h-6 w-6" />
+          <img
+            src="/general/butterfly_logo.png"
+            alt="My Icon"
+            className="h-7 w-7"
+          />
           Proceed
         </button>
       </div>

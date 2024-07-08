@@ -15,7 +15,7 @@
 //     >
 //       {fileUploaded && (
 //         <Image
-//           src="/naked_char.png"
+//           src="/general/naked_char.png"
 //           height={0}
 //           width={0}
 //           alt="Naked Character"

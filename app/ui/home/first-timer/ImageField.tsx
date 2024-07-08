@@ -31,7 +31,7 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
   return (
     <>
       <Image
-        src={fileURL ? fileURL : "/naked_char.png"}
+        src={fileURL ? fileURL : "/general/naked_char.png"}
         height={0}
         width={0}
         alt="Naked Character"
