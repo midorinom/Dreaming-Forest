@@ -22,6 +22,8 @@ export type DialogueIndex = "welcome" | "add_character" | "create_account";
 export type RegionAndCharacterProps = {
   region: string;
   setRegion: (region: string) => void;
+  characterDetails: CharacterDetails;
+  setCharacterDetails: (characterDetails: CharacterDetails) => void;
   setDialogueIndex: (dialogueIndex: DialogueIndex) => void;
   setProceedClicked: (proceedClicked: boolean) => void;
 };

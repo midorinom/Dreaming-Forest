@@ -1,22 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  CharacterDetails,
-  RegionAndCharacterProps,
-} from "@/app/lib/definitions/first-timer-definitions";
+import { RegionAndCharacterProps } from "@/app/lib/definitions/first-timer-definitions";
 import SelectRegion from "./SelectRegion";
 import AddCharacter from "./AddCharacter";
 
 export default function RegionAndCharacter({
   region,
   setRegion,
+  characterDetails,
+  setCharacterDetails,
   setDialogueIndex,
   setProceedClicked,
 }: RegionAndCharacterProps) {
   const [characterChecked, setCharacterChecked] = useState(false);
-  const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
-    image: null,
-  });
   const [readyToProceed, setReadyToProceed] = useState(false);
 
   function handleRadioChange() {

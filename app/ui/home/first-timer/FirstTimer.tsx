@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import {
   DialogueIndex,
   FirstTimerProps,
+  CharacterDetails,
 } from "@/app/lib/definitions/first-timer-definitions";
 import FirstTimerProvider from "@/app/ui/contexts/FirstTimerContext";
 import Image from "next/image";
@@ -18,6 +19,9 @@ export default function FirstTimer({
   setIsFirstTimer,
 }: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
+  const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
+    image: null,
+  });
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
   const [done, setDone] = useState(false);
@@ -26,7 +30,7 @@ export default function FirstTimer({
     if (done) {
       localStorage.setItem(
         "userDetails",
-        JSON.stringify({ characters: "hehe" })
+        JSON.stringify({ region: region, characters: [characterDetails] })
       );
       setIsFirstTimer(false);
     }
@@ -59,6 +63,8 @@ export default function FirstTimer({
           <RegionAndCharacter
             region={region}
             setRegion={setRegion}
+            characterDetails={characterDetails}
+            setCharacterDetails={setCharacterDetails}
             setDialogueIndex={setDialogueIndex}
             setProceedClicked={setProceedClicked}
           />
