@@ -1,6 +1,6 @@
 "use client";
 import { useState, ChangeEvent } from "react";
-import { IgnFieldProps } from "@/app/lib/definitions/first-timer-definitions";
+import { IgnFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 export default function IgnField({ setIgn }: IgnFieldProps) {
   const [isInvalid, setIsInvalid] = useState<boolean>(false);

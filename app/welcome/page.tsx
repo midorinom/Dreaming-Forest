@@ -1,5 +1,5 @@
-import { fetchClasses } from "@/app/lib/fetches/first-timer-fetches";
-import FirstTimer from "@/app/ui/home/first-timer/FirstTimer";
+import { fetchClasses } from "@/app/lib/fetches/welcome-fetches";
+import Welcome from "@/app/ui/welcome/Welcome";
 
 export default async function Page() {
   const response = await Promise.all([
@@ -12,5 +12,5 @@ export default async function Page() {
     msea: response[1].map((p) => p.class_name),
   };
 
-  return <FirstTimer classes={classes} />;
+  return <Welcome classes={classes} />;
 }

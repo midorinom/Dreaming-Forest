@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useFirstTimer } from "@/app/ui/contexts/FirstTimerContext";
+import { useWelcome } from "@/app/ui/contexts/WelcomeContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
-import { ClassFieldProps } from "@/app/lib/definitions/first-timer-definitions";
+import { ClassFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
-  const firstTimerCtx = useFirstTimer();
+  const welcomeCtx = useWelcome();
   const [classInput, setClassInput] = useState<string>("");
   const [classes, setClasses] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
@@ -24,19 +24,19 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
   const li_className = "border-b border-b-base-content/10 w-full";
 
   useEffect(() => {
-    if (firstTimerCtx) {
-      switch (firstTimerCtx.region) {
+    if (welcomeCtx) {
+      switch (welcomeCtx.region) {
         case "GMS":
-          setClasses(firstTimerCtx.classes.gms);
+          setClasses(welcomeCtx.classes.gms);
           break;
         case "MSEA":
-          setClasses(firstTimerCtx.classes.msea);
+          setClasses(welcomeCtx.classes.msea);
           break;
         default:
-          setClasses(firstTimerCtx.classes.gms);
+          setClasses(welcomeCtx.classes.gms);
       }
     }
-  }, [firstTimerCtx]);
+  }, [welcomeCtx]);
 
   useEffect(() => {
     if (!classInput) {

@@ -1,4 +1,4 @@
-import { ClassFieldProps } from "@/app/lib/definitions/first-timer-definitions";
+import { ClassFieldProps } from "@/app/lib/definitions/welcome-definitions";
 import ClassSelect from "./ClassSelect";
 
 export default function ClassField({ setMaplestoryClass }: ClassFieldProps) {

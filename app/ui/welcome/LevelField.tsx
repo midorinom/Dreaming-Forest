@@ -1,6 +1,6 @@
 "use client";
 import { useRef, ChangeEvent } from "react";
-import { LevelFieldProps } from "@/app/lib/definitions/first-timer-definitions";
+import { LevelFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 export default function LevelField({ level, setLevel }: LevelFieldProps) {
   const textInputRef = useRef<HTMLInputElement | null>(null);

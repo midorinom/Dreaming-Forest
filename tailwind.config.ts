@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        elodin_background: "url('/home/first-timer/elodin_background.png')",
+        elodin_background: "url('/welcome/elodin_background.png')",
         lucid_background: "url('/general/lucid_background.png')",
       },
     },

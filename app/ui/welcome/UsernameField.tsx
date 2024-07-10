@@ -1,6 +1,7 @@
+"use client";
 import { useState, ChangeEvent } from "react";
-import { UsernameFieldProps } from "@/app/lib/definitions/first-timer-definitions";
-import { errorMessages } from "@/public/home/first-timer/CreateAccount_error_message";
+import { UsernameFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 
 export default function UsernameField({ setUsername }: UsernameFieldProps) {
   const [usernameError, setUsernameError] = useState<string>("");

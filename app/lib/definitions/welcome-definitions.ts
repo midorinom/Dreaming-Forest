@@ -1,7 +1,7 @@
-import { CharacterDetails, UserDetails } from "./general-definitions";
+import { CharacterDetails } from "./general-definitions";
 import { Classes } from "./home-definitions";
 
-export type FirstTimerContextType = {
+export type WelcomeContextType = {
   classes: {
     gms: string[];
     msea: string[];
@@ -9,7 +9,7 @@ export type FirstTimerContextType = {
   region: string;
 };
 
-export type FirstTimerProps = {
+export type WelcomeProps = {
   classes: Classes;
 };
 

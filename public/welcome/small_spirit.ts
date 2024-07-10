@@ -1,4 +1,4 @@
-import { Dialogue } from "@/app/lib/definitions/first-timer-definitions";
+import { Dialogue } from "@/app/lib/definitions/welcome-definitions";
 
 const smallSpiritDialogue: Dialogue = {
   welcome:
@@ -10,9 +10,9 @@ const smallSpiritDialogue: Dialogue = {
 };
 
 const smallSpiritImage: Dialogue = {
-  welcome: "/home/first-timer/small_spirit_happy.png",
-  add_character: "/home/first-timer/small_spirit_smiling.png",
-  create_account: "/home/first-timer/small_spirit_smiling.png",
+  welcome: "/welcome/small_spirit_happy.png",
+  add_character: "/welcome/small_spirit_smiling.png",
+  create_account: "/welcome/small_spirit_smiling.png",
 };
 
 export { smallSpiritDialogue, smallSpiritImage };

@@ -1,6 +1,7 @@
+"use client";
 import { useState, ChangeEvent } from "react";
-import { PasswordFieldProps } from "@/app/lib/definitions/first-timer-definitions";
-import { errorMessages } from "@/public/home/first-timer/CreateAccount_error_message";
+import { PasswordFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 
 export default function PasswordField({
   setPassword,

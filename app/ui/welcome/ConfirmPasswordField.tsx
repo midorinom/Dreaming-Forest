@@ -1,5 +1,6 @@
+"use client";
 import { ChangeEvent } from "react";
-import { ConfirmPasswordFieldProps } from "@/app/lib/definitions/first-timer-definitions";
+import { ConfirmPasswordFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 export default function ConfirmPasswordField({
   setConfirmPassword,
