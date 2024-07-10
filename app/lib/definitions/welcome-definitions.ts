@@ -1,5 +1,5 @@
 import { CharacterDetails } from "./general-definitions";
-import { Classes } from "./home-definitions";
+import { Classes } from "./general-definitions";
 
 export type WelcomeContextType = {
   classes: {

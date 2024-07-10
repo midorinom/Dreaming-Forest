@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export type AutoCompleteProps = {
   items: string[];
   value: string;
@@ -11,6 +13,11 @@ export type AutoCompleteProps = {
   li_className: string;
 };
 
+export type Classes = {
+  gms: string[];
+  msea: string[];
+};
+
 export type CharacterDetails = {
   image: File | null;
   imageBase64?: string;
@@ -22,4 +29,8 @@ export type CharacterDetails = {
 export type UserDetails = {
   region: string;
   characters: CharacterDetails[];
+};
+
+export type MainAppWrapperProps = {
+  page: ReactElement;
 };

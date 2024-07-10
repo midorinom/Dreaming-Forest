@@ -41,7 +41,7 @@ export default function Welcome({ classes }: WelcomeProps) {
     if (done) {
       const newUserDetails = { region: region, characters: [characterDetails] };
       localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
-      window.location.href = "/"; // Perform full refresh when redirecting in order to switch layouts properly
+      router.push("/");
     }
   }, [done]);
 
