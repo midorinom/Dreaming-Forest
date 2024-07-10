@@ -11,8 +11,6 @@ export type FirstTimerContextType = {
 
 export type FirstTimerProps = {
   classes: Classes;
-  setIsFirstTimer: (isFirstTimer: boolean) => void;
-  setUserDetails: (userDetails: UserDetails) => void;
 };
 
 export type Dialogue = {

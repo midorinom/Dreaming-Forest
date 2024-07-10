@@ -14,11 +14,7 @@ import {
 import RegionAndCharacter from "./RegionAndCharacter";
 import CreateAccount from "./CreateAccount";
 
-export default function FirstTimer({
-  classes,
-  setIsFirstTimer,
-  setUserDetails,
-}: FirstTimerProps) {
+export default function FirstTimer({ classes }: FirstTimerProps) {
   const [region, setRegion] = useState<string>("");
   const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
     image: null,
@@ -30,16 +26,14 @@ export default function FirstTimer({
   useEffect(() => {
     if (done) {
       const newUserDetails = { region: region, characters: [characterDetails] };
-
       localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
-      setUserDetails(newUserDetails);
-      setIsFirstTimer(false);
+      window.location.href = "/"; // Perform full refresh when redirecting in order to switch layouts properly
     }
   }, [done]);
 
   return (
     <FirstTimerProvider value={{ classes, region }}>
-      <div
+      <main
         className="bg-elodin_background bg-cover bg-center h-screen flex flex-col items-center p-6 gap-4"
         data-theme="elodin"
       >
@@ -70,7 +64,7 @@ export default function FirstTimer({
             setProceedClicked={setProceedClicked}
           />
         )}
-      </div>
+      </main>
     </FirstTimerProvider>
   );
 }
