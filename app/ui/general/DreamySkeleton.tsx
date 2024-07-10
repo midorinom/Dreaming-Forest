@@ -1,4 +1,4 @@
-export default function GenericPageSkeleton() {
+export default function DreamySkeleton() {
   return (
     <div
       className="h-screen w-full bg-base-100 flex justify-center items-center"
