@@ -35,7 +35,7 @@ export default function ActiveCharacter({
         />
         <div className="w-3/5 flex flex-col gap-4 justify-center">
           <div className="text-6xl text-neutral font-medium underline-dreamy-accent underline-offset-[15px]">
-            Midori
+            {activeCharacter.ign}
           </div>
           <div className="text-2xl text-neutral flex gap-2">
             <div>Lv {activeCharacter.level}</div>
