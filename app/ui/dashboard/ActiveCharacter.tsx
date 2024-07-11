@@ -8,7 +8,7 @@ export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
   const activeCharacter = userDetails?.characters[0];
 
   useEffect(() => {
-    if (activeCharacter.imageBase64) {
+    if (activeCharacter.image) {
       setHasImage(true);
     }
   }, []);
@@ -22,8 +22,8 @@ export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
       >
         <Image
           src={
-            activeCharacter.imageBase64
-              ? activeCharacter.imageBase64
+            activeCharacter.image
+              ? activeCharacter.image
               : "/general/naked_char.png"
           }
           height={0}

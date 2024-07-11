@@ -1,7 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { ResetButtonProps } from "@/app/lib/definitions/general-definitions";
+import { deleteCharacterImages } from "@/app/upload-image/route";
 
-export default function ResetButton() {
+export default function ResetButton({ userDetails }: ResetButtonProps) {
   const router = useRouter();
 
   function handleClick() {
@@ -9,7 +11,9 @@ export default function ResetButton() {
       "Are you sure you want to wipe all your data on this browser?"
     );
     if (confirmDelete) {
+      deleteCharacterImages(userDetails.characters);
       localStorage.removeItem("userDetails");
+
       router.replace("/");
     }
   }

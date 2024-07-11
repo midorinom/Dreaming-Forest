@@ -7,6 +7,7 @@ import AddCharacter from "./AddCharacter";
 export default function RegionAndCharacter({
   region,
   setRegion,
+  setUploadedFile,
   characterDetails,
   setCharacterDetails,
   setDialogueIndex,
@@ -84,6 +85,7 @@ export default function RegionAndCharacter({
           </div>
           <div className="collapse-content">
             <AddCharacter
+              setUploadedFile={setUploadedFile}
               characterDetails={characterDetails}
               setCharacterDetails={setCharacterDetails}
             />

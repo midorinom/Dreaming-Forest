@@ -8,21 +8,17 @@ import type { AddCharacterProps } from "@/app/lib/definitions/welcome-definition
 import type { CharacterDetails } from "@/app/lib/definitions/general-definitions";
 
 export default function AddCharacter({
+  setUploadedFile,
   characterDetails,
   setCharacterDetails,
 }: AddCharacterProps) {
   const [ign, setIgn] = useState<string>("");
   const [level, setLevel] = useState<number>(0);
   const [maplestoryClass, setMaplestoryClass] = useState<string>("");
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 
   useEffect(() => {
-    if (uploadedFile || ign || level || maplestoryClass) {
+    if (ign || level || maplestoryClass) {
       const newCharacterDetails: CharacterDetails = { ...characterDetails };
-
-      if (characterDetails.image !== uploadedFile) {
-        newCharacterDetails.image = uploadedFile;
-      }
 
       if (characterDetails.ign !== ign) {
         newCharacterDetails.ign = ign;
@@ -38,7 +34,7 @@ export default function AddCharacter({
 
       setCharacterDetails(newCharacterDetails);
     }
-  }, [uploadedFile, ign, level, maplestoryClass]);
+  }, [ign, level, maplestoryClass]);
 
   return (
     <div className="relative min-h-64 grid grid-cols-2 grid-rows-3 gap-4 items-center">

@@ -18,10 +18,14 @@ export default function Dashboard() {
 
   return (
     <main className="grid grid-rows-[27vh_1fr] grid-cols-[40vw_1fr]">
-      <ActiveCharacter userDetails={userDetails} />
-      <CharactersWheel />
-      <DailiesWeeklies />
-      <Bosses />
+      {userDetails && (
+        <>
+          <ActiveCharacter userDetails={userDetails} />
+          <CharactersWheel />
+          <DailiesWeeklies />
+          <Bosses />
+        </>
+      )}
     </main>
   );
 }
