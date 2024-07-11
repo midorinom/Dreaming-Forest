@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import type { UUID } from "crypto";
-import { putCharacterImage } from "@/app/upload-image/route";
+import { PUT } from "@/app/api/character-images/route";
 import type {
   DialogueIndex,
   WelcomeProps,
@@ -51,7 +51,7 @@ export default function Welcome({ classes }: WelcomeProps) {
   useEffect(() => {
     async function storeImage(newUserDetails: UserDetails, file: File) {
       const imagePath = `characters/${newUserDetails.userId}/${characterDetails.ign}`;
-      const url = await putCharacterImage(imagePath, file);
+      const url = await PUT(imagePath, file);
       newUserDetails.characters[0].image = url;
 
       localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
