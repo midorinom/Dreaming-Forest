@@ -24,6 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
     "daisyui": "^4.11.1",
     "drizzle-kit": "^0.22.2",
     "eslint": "^8",
