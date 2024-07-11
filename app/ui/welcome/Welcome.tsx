@@ -35,6 +35,7 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
   const [done, setDone] = useState(false);
+  const [isUploadingToDatabase, setIsUploadingToDatabase] = useState(false);
   const router = useRouter();
 
   // Check whether the user is a first-timer
@@ -58,6 +59,7 @@ export default function Welcome({ classes }: WelcomeProps) {
     }
 
     if (done) {
+      setIsUploadingToDatabase(true);
       const newUserDetails: UserDetails = {
         userId: uuidv4() as UUID,
         region: region,
@@ -97,7 +99,9 @@ export default function Welcome({ classes }: WelcomeProps) {
               </div>
             </div>
           </div>
-          {proceedClicked ? (
+          {isUploadingToDatabase ? (
+            <span className="loading loading-spinner text-accent"></span>
+          ) : proceedClicked ? (
             <CreateAccount setDone={setDone} />
           ) : (
             <RegionAndCharacter
