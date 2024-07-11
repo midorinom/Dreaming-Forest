@@ -1,6 +1,6 @@
 "use client";
 import { useState, ChangeEvent } from "react";
-import { PasswordFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import type { PasswordFieldProps } from "@/app/lib/definitions/welcome-definitions";
 import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 
 export default function PasswordField({

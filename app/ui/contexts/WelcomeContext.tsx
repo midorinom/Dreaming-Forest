@@ -1,5 +1,5 @@
 import React, { ReactNode, createContext, useContext } from "react";
-import { WelcomeContextType } from "@/app/lib/definitions/welcome-definitions";
+import type { WelcomeContextType } from "@/app/lib/definitions/welcome-definitions";
 
 type WelcomeProviderProps = {
   children: ReactNode;

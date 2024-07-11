@@ -4,8 +4,8 @@ import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
 import ClassField from "./ClassField";
-import { AddCharacterProps } from "@/app/lib/definitions/welcome-definitions";
-import { CharacterDetails } from "@/app/lib/definitions/general-definitions";
+import type { AddCharacterProps } from "@/app/lib/definitions/welcome-definitions";
+import type { CharacterDetails } from "@/app/lib/definitions/general-definitions";
 
 export default function AddCharacter({
   characterDetails,

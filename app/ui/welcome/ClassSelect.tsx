@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useWelcome } from "@/app/ui/contexts/WelcomeContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
-import { ClassFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import type { ClassFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
   const welcomeCtx = useWelcome();

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { MainAppWrapperProps } from "@/app/lib/definitions/general-definitions";
+import type { MainAppWrapperProps } from "@/app/lib/definitions/general-definitions";
 import TopNav from "@/app/ui/general/TopNav";
 import SideNav from "@/app/ui/general/SideNav";
 import DreamySkeleton from "@/app/ui/general/DreamySkeleton";

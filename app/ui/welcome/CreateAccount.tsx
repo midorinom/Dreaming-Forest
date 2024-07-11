@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { CreateAccountProps } from "@/app/lib/definitions/welcome-definitions";
+import type { CreateAccountProps } from "@/app/lib/definitions/welcome-definitions";
 import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { UserDetails } from "@/app/lib/definitions/general-definitions";
+import type { UserDetails } from "@/app/lib/definitions/general-definitions";
 import ActiveCharacter from "./ActiveCharacter";
 import Bosses from "./Bosses";
 import CharactersWheel from "./CharactersWheel";

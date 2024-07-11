@@ -1,7 +1,7 @@
 "use client";
 import { useState, ChangeEvent } from "react";
 import Image from "next/image";
-import { ImageFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import type { ImageFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 export default function ImageField({ setUploadedFile }: ImageFieldProps) {
   const [fileURL, setFileURL] = useState<string>("");

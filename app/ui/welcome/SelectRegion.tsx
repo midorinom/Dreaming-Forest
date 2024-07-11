@@ -1,5 +1,5 @@
 "use client";
-import { SelectRegionProps } from "@/app/lib/definitions/welcome-definitions";
+import type { SelectRegionProps } from "@/app/lib/definitions/welcome-definitions";
 
 export default function SelectRegion({ region, setRegion }: SelectRegionProps) {
   const handleClick = (regionClicked: string) => {

@@ -2,11 +2,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import {
+import type { PutBlobResult } from "@vercel/blob";
+import type {
   DialogueIndex,
   WelcomeProps,
 } from "@/app/lib/definitions/welcome-definitions";
-import { CharacterDetails } from "@/app/lib/definitions/general-definitions";
+import type { CharacterDetails } from "@/app/lib/definitions/general-definitions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
   smallSpiritDialogue,

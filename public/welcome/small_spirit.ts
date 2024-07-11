@@ -1,4 +1,4 @@
-import { Dialogue } from "@/app/lib/definitions/welcome-definitions";
+import type { Dialogue } from "@/app/lib/definitions/welcome-definitions";
 
 const smallSpiritDialogue: Dialogue = {
   welcome:

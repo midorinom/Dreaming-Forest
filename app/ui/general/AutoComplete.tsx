@@ -1,6 +1,6 @@
 import React, { memo, useRef, useState, useEffect } from "react";
 import classNames from "classnames";
-import { AutoCompleteProps } from "@/app/lib/definitions/general-definitions";
+import type { AutoCompleteProps } from "@/app/lib/definitions/general-definitions";
 
 const Autocomplete = (props: AutoCompleteProps) => {
   const {

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
+import type { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
 
 export default function ActiveCharacter({
   activeCharacter,

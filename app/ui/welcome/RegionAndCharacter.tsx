@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { RegionAndCharacterProps } from "@/app/lib/definitions/welcome-definitions";
+import type { RegionAndCharacterProps } from "@/app/lib/definitions/welcome-definitions";
 import SelectRegion from "./SelectRegion";
 import AddCharacter from "./AddCharacter";
 
