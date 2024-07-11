@@ -51,9 +51,9 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
         />
         {error && (
           <span
-            className="absolute text-sm text-error mt-1"
+            className="absolute text-sm text-error"
             style={{
-              top: "100%",
+              top: "99%",
               left: "0%",
             }}
           >
