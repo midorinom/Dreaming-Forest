@@ -8,6 +8,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "2idi2lftnnpejlee.public.blob.vercel-storage.com",
+        port: "",
       },
     ],
   },
