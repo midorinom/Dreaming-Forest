@@ -1,3 +1,4 @@
+import { UUID } from "crypto";
 import { ReactElement } from "react";
 
 export type AutoCompleteProps = {
@@ -27,6 +28,7 @@ export type CharacterDetails = {
 };
 
 export type UserDetails = {
+  userId: UUID;
   region: string;
   characters: CharacterDetails[];
 };
