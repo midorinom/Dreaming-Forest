@@ -7,10 +7,7 @@ import CharactersWheel from "./CharactersWheel";
 import DailiesWeeklies from "./DailiesWeeklies";
 
 export default function Dashboard() {
-  const [userDetails, setUserDetails] = useState<UserDetails>({
-    characters: [{ image: null }],
-    region: "GMS",
-  });
+  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
 
   useEffect(() => {
     const localUserDetails = localStorage.getItem("userDetails");
@@ -21,7 +18,7 @@ export default function Dashboard() {
 
   return (
     <main className="grid grid-rows-[27vh_1fr] grid-cols-[40vw_1fr]">
-      <ActiveCharacter activeCharacter={userDetails.characters[0]} />
+      <ActiveCharacter userDetails={userDetails} />
       <CharactersWheel />
       <DailiesWeeklies />
       <Bosses />

@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
 
-export default function ActiveCharacter({
-  activeCharacter,
-}: ActiveCharacterProps) {
+export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
   const [hasImage, setHasImage] = useState<boolean>(false);
+  const activeCharacter = userDetails?.characters[0];
 
   useEffect(() => {
     if (activeCharacter.imageBase64) {
