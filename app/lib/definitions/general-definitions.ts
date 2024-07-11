@@ -1,3 +1,4 @@
+import { UUID } from "crypto";
 import { ReactElement } from "react";
 
 export type AutoCompleteProps = {
@@ -19,18 +20,22 @@ export type Classes = {
 };
 
 export type CharacterDetails = {
-  image: File | null;
-  imageBase64?: string;
-  ign?: string;
-  level?: number;
-  maplestoryClass?: string;
+  image: string;
+  ign: string;
+  level: number;
+  maplestoryClass: string;
 };
 
 export type UserDetails = {
+  userId: UUID;
   region: string;
   characters: CharacterDetails[];
 };
 
 export type MainAppWrapperProps = {
   page: ReactElement;
+};
+
+export type ResetButtonProps = {
+  userDetails: UserDetails;
 };

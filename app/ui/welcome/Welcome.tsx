@@ -2,11 +2,16 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import {
+import { v4 as uuidv4 } from "uuid";
+import type { UUID } from "crypto";
+import type {
   DialogueIndex,
   WelcomeProps,
 } from "@/app/lib/definitions/welcome-definitions";
-import { CharacterDetails } from "@/app/lib/definitions/general-definitions";
+import type {
+  CharacterDetails,
+  UserDetails,
+} from "@/app/lib/definitions/general-definitions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
   smallSpiritDialogue,
@@ -19,12 +24,17 @@ import DreamySkeleton from "../general/DreamySkeleton";
 export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [region, setRegion] = useState<string>("");
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
-    image: null,
+    image: "",
+    ign: "",
+    level: 0,
+    maplestoryClass: "",
   });
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
   const [done, setDone] = useState(false);
+  const [isUploadingToDatabase, setIsUploadingToDatabase] = useState(false);
   const router = useRouter();
 
   // Check whether the user is a first-timer
@@ -38,10 +48,42 @@ export default function Welcome({ classes }: WelcomeProps) {
   }, []);
 
   useEffect(() => {
-    if (done) {
-      const newUserDetails = { region: region, characters: [characterDetails] };
+    async function storeImage(newUserDetails: UserDetails, image: File) {
+      const imagePath = `characters/${newUserDetails.userId}/${characterDetails.ign}`;
+
+      const response = await fetch(
+        `/api/character-images?imagepath=${imagePath}`,
+        {
+          method: "PUT",
+          body: image,
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+
+      const { url } = await response.json();
+      newUserDetails.characters[0].image = url;
       localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
       router.push("/");
+    }
+
+    if (done) {
+      setIsUploadingToDatabase(true);
+      const newUserDetails: UserDetails = {
+        userId: uuidv4() as UUID,
+        region: region,
+        characters: [characterDetails],
+      };
+
+      if (uploadedFile) {
+        storeImage(newUserDetails, uploadedFile);
+      } else {
+        localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+        router.push("/");
+      }
     }
   }, [done]);
 
@@ -69,12 +111,15 @@ export default function Welcome({ classes }: WelcomeProps) {
               </div>
             </div>
           </div>
-          {proceedClicked ? (
+          {isUploadingToDatabase ? (
+            <span className="loading loading-spinner text-accent"></span>
+          ) : proceedClicked ? (
             <CreateAccount setDone={setDone} />
           ) : (
             <RegionAndCharacter
               region={region}
               setRegion={setRegion}
+              setUploadedFile={setUploadedFile}
               characterDetails={characterDetails}
               setCharacterDetails={setCharacterDetails}
               setDialogueIndex={setDialogueIndex}

@@ -1,5 +1,5 @@
-import { CharacterDetails } from "./general-definitions";
+import type { UserDetails } from "./general-definitions";
 
 export type ActiveCharacterProps = {
-  activeCharacter: CharacterDetails;
+  userDetails: UserDetails;
 };

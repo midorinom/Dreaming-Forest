@@ -1,12 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import { RegionAndCharacterProps } from "@/app/lib/definitions/welcome-definitions";
+import type { RegionAndCharacterProps } from "@/app/lib/definitions/welcome-definitions";
 import SelectRegion from "./SelectRegion";
 import AddCharacter from "./AddCharacter";
 
 export default function RegionAndCharacter({
   region,
   setRegion,
+  setUploadedFile,
   characterDetails,
   setCharacterDetails,
   setDialogueIndex,
@@ -84,6 +85,7 @@ export default function RegionAndCharacter({
           </div>
           <div className="collapse-content">
             <AddCharacter
+              setUploadedFile={setUploadedFile}
               characterDetails={characterDetails}
               setCharacterDetails={setCharacterDetails}
             />

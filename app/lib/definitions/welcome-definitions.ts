@@ -22,6 +22,7 @@ export type DialogueIndex = "welcome" | "add_character" | "create_account";
 export type RegionAndCharacterProps = {
   region: string;
   setRegion: (region: string) => void;
+  setUploadedFile: (file: File | null) => void;
   characterDetails: CharacterDetails;
   setCharacterDetails: (characterDetails: CharacterDetails) => void;
   setDialogueIndex: (dialogueIndex: DialogueIndex) => void;
@@ -34,6 +35,7 @@ export type SelectRegionProps = {
 };
 
 export type AddCharacterProps = {
+  setUploadedFile: (file: File | null) => void;
   characterDetails: CharacterDetails;
   setCharacterDetails: (characterDetails: CharacterDetails) => void;
 };

@@ -1,15 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
+import type { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
 
-export default function ActiveCharacter({
-  activeCharacter,
-}: ActiveCharacterProps) {
+export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
   const [hasImage, setHasImage] = useState<boolean>(false);
+  const activeCharacter = userDetails?.characters[0];
 
   useEffect(() => {
-    if (activeCharacter.imageBase64) {
+    if (activeCharacter.image) {
       setHasImage(true);
     }
   }, []);
@@ -23,8 +22,8 @@ export default function ActiveCharacter({
       >
         <Image
           src={
-            activeCharacter.imageBase64
-              ? activeCharacter.imageBase64
+            activeCharacter.image
+              ? activeCharacter.image
               : "/general/naked_char.png"
           }
           height={0}

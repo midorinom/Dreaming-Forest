@@ -1,7 +1,7 @@
 "use client";
 import { useState, ChangeEvent } from "react";
 import Image from "next/image";
-import { ImageFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import type { ImageFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 export default function ImageField({ setUploadedFile }: ImageFieldProps) {
   const [fileURL, setFileURL] = useState<string>("");
@@ -51,10 +51,10 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
         />
         {error && (
           <span
-            className="absolute left-1/2 text-sm text-error mt-1"
+            className="absolute text-sm text-error"
             style={{
-              transform: "translateX(-110%)",
-              top: "100%",
+              top: "99%",
+              left: "0%",
             }}
           >
             {error}
