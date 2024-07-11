@@ -51,10 +51,10 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
         />
         {error && (
           <span
-            className="absolute left-1/2 text-sm text-error mt-1"
+            className="absolute text-sm text-error mt-1"
             style={{
-              transform: "translateX(-110%)",
               top: "100%",
+              left: "0%",
             }}
           >
             {error}
