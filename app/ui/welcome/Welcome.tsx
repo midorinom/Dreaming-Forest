@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import type { UUID } from "crypto";
-import { PUT } from "@/app/api/character-images/route";
 import type {
   DialogueIndex,
   WelcomeProps,
@@ -49,11 +48,24 @@ export default function Welcome({ classes }: WelcomeProps) {
   }, []);
 
   useEffect(() => {
-    async function storeImage(newUserDetails: UserDetails, file: File) {
+    async function storeImage(newUserDetails: UserDetails, image: File) {
       const imagePath = `characters/${newUserDetails.userId}/${characterDetails.ign}`;
-      const url = await PUT(imagePath, file);
-      newUserDetails.characters[0].image = url;
 
+      const response = await fetch(
+        `/api/character-images?imagepath=${imagePath}`,
+        {
+          method: "PUT",
+          body: image,
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+
+      const { url } = await response.json();
+      newUserDetails.characters[0].image = url;
       localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
       router.push("/");
     }
