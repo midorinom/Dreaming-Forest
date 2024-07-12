@@ -36,7 +36,6 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
 
         default:
           console.error("No region");
-          setClasses(welcomeCtx.classes.gms);
           return;
       }
     }
