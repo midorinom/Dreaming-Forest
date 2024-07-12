@@ -4,13 +4,13 @@ import Image from "next/image";
 import type { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
 import { CharacterDetails } from "@/app/lib/definitions/general-definitions";
 
-export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
+export default function ActiveCharacter({ character }: ActiveCharacterProps) {
   const [activeCharacter, setActiveCharacter] = useState<CharacterDetails>(
     {} as CharacterDetails
   );
 
   useEffect(() => {
-    setActiveCharacter(userDetails.characters[0]);
+    setActiveCharacter(character);
   }, []);
 
   return (
