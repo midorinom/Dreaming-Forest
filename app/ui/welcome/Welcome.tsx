@@ -103,7 +103,7 @@ export default function Welcome({ classes }: WelcomeProps) {
               sizes="100vw"
               className="w-auto h-44"
             />
-            <div className="chat chat-start">
+            <div className="min-w-64 chat chat-start">
               <div className="chat-bubble chat-bubble-accent">
                 {smallSpiritDialogue[dialogueIndex]}
               </div>
