@@ -11,7 +11,7 @@ export default function SideNav() {
 
   return (
     showNav && (
-      <div className="row-span-1 col-span-1 row-start-2 col-start-1">
+      <div className="col-span-1 col-start-1 row-span-1 row-start-2">
         <div className="relative flex flex-col w-full h-[31vh] items-center justify-around">
           <div
             className={`absolute w-full h-full bg-accent ${
