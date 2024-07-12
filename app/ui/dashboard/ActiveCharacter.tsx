@@ -17,7 +17,7 @@ export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
     <div className="w-full h-full flex justify-center">
       <div className={"w-full h-full flex items-center gap-4 ml-8"}>
         {!activeCharacter.ign ? (
-          <span className="mx-auto h-1/2 w-auto loading loading-spinner text-accent"></span>
+          <span className="loading loading-spinner text-accent h-1/2 w-auto mx-auto"></span>
         ) : (
           <>
             <div
