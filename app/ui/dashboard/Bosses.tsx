@@ -1,24 +1,53 @@
+import { useState, useEffect } from "react";
 import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
 
 export default function Bosses({ region }: BossesProps) {
-  dayjs.extend(utc);
-  dayjs.extend(isoWeek);
+  const [bossesTimer, setBossesTimer] = useState<string>("");
 
-  const now = dayjs().utc();
-  let nextThursday = now.isoWeekday(4);
-  if (now.isoWeekday() >= 4) {
-    nextThursday = nextThursday.add(1, "week");
-  }
-  nextThursday = nextThursday.startOf("day");
-  const endOfDay = dayjs().utc().endOf("day");
+  useEffect(() => {
+    dayjs.extend(utc);
+    dayjs.extend(isoWeek);
+    let now = undefined;
+    let endOfDay = undefined;
+    let nextThursday = undefined;
 
-  const bossesTimer = `${nextThursday.diff(now, "day")}d${endOfDay.diff(
-    now,
-    "hour"
-  )}h`;
+    switch (region) {
+      case "MSEA":
+        now = dayjs().utcOffset(8);
+        endOfDay = dayjs().utcOffset(8).endOf("day");
+        nextThursday = now.isoWeekday(4);
+        if (now.isoWeekday() >= 4) {
+          nextThursday = nextThursday.add(1, "week");
+        }
+        nextThursday = nextThursday.startOf("day");
+
+        setBossesTimer(
+          `${nextThursday.diff(now, "day")}d${endOfDay.diff(now, "hour")}h`
+        );
+        break;
+
+      case "GMS":
+        now = dayjs().utc();
+        endOfDay = dayjs().utc().endOf("day");
+        nextThursday = now.isoWeekday(4);
+        if (now.isoWeekday() >= 4) {
+          nextThursday = nextThursday.add(1, "week");
+        }
+        nextThursday = nextThursday.startOf("day");
+
+        setBossesTimer(
+          `${nextThursday.diff(now, "day")}d${endOfDay.diff(now, "hour")}h`
+        );
+        break;
+
+      default:
+        console.error("No region");
+        return;
+    }
+  }, []);
 
   return (
     <div className="w-full">
