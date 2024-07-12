@@ -27,10 +27,7 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
     image: "",
-    ign: "",
-    level: 0,
-    maplestoryClass: "",
-  });
+  } as CharacterDetails);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
   const [done, setDone] = useState(false);
