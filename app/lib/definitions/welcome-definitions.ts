@@ -17,7 +17,11 @@ export type Dialogue = {
   [key in DialogueIndex]: string;
 };
 
-export type DialogueIndex = "welcome" | "add_character" | "create_account";
+export type DialogueIndex =
+  | "welcome"
+  | "add_character"
+  | "create_account"
+  | "uploading";
 
 export type RegionAndCharacterProps = {
   region: string;

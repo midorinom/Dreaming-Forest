@@ -69,6 +69,7 @@ export default function Welcome({ classes }: WelcomeProps) {
 
     if (done) {
       setIsUploadingToDatabase(true);
+      setDialogueIndex("uploading");
       const newUserDetails: UserDetails = {
         userId: uuidv4() as UUID,
         region: region,
