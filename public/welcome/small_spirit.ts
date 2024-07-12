@@ -14,7 +14,7 @@ const smallSpiritImage: Dialogue = {
   welcome: "/welcome/small_spirit_happy.png",
   add_character: "/welcome/small_spirit_smiling.png",
   create_account: "/welcome/small_spirit_smiling.png",
-  uploading: "/welcome/small_spirit_surprised.png",
+  uploading: "/welcome/small_spirit_neutral.png",
 };
 
 export { smallSpiritDialogue, smallSpiritImage };
