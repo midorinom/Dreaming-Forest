@@ -21,6 +21,7 @@ export default function SelectRegion({ region, setRegion }: SelectRegionProps) {
         break;
 
       default:
+        console.error("No region selected");
         return;
     }
   };
