@@ -69,6 +69,7 @@ export default function Welcome({ classes }: WelcomeProps) {
 
     if (done) {
       setIsUploadingToDatabase(true);
+      setDialogueIndex("uploading");
       const newUserDetails: UserDetails = {
         userId: uuidv4() as UUID,
         region: region,
@@ -90,10 +91,10 @@ export default function Welcome({ classes }: WelcomeProps) {
         <DreamySkeleton />
       ) : (
         <main
-          className="bg-elodin_background bg-cover bg-center h-screen flex flex-col items-center p-6 gap-4"
+          className="flex flex-col items-center h-screen gap-4 p-6 bg-center bg-cover bg-elodin_background"
           data-theme="elodin"
         >
-          <div className="w-1/2 flex items-center">
+          <div className="flex items-center w-1/2">
             <Image
               src={smallSpiritImage[dialogueIndex]}
               height={0}
@@ -102,14 +103,14 @@ export default function Welcome({ classes }: WelcomeProps) {
               sizes="100vw"
               className="w-auto h-44"
             />
-            <div className="chat chat-start">
+            <div className="min-w-64 chat chat-start">
               <div className="chat-bubble chat-bubble-accent">
                 {smallSpiritDialogue[dialogueIndex]}
               </div>
             </div>
           </div>
           {isUploadingToDatabase ? (
-            <span className="loading loading-spinner text-accent h-1/5 w-auto mt-36"></span>
+            <span className="w-auto loading loading-spinner text-accent h-1/5 mt-36"></span>
           ) : proceedClicked ? (
             <CreateAccount setDone={setDone} />
           ) : (

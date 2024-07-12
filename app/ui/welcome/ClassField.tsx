@@ -3,7 +3,7 @@ import ClassSelect from "./ClassSelect";
 
 export default function ClassField({ setMaplestoryClass }: ClassFieldProps) {
   return (
-    <div className="relative col-start-2 row-start-3 w-1/2">
+    <div className="relative w-1/2 col-start-2 row-start-3">
       <ClassSelect setMaplestoryClass={setMaplestoryClass} />
     </div>
   );

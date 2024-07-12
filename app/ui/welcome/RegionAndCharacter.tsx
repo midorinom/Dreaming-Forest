@@ -54,8 +54,8 @@ export default function RegionAndCharacter({
   ]);
 
   return (
-    <div className="w-1/2 flex justify-center">
-      <div className="w-fit flex flex-col text-primary-content">
+    <div className="flex justify-center w-1/2">
+      <div className="flex flex-col w-fit text-primary-content">
         <div className="collapse bg-secondary">
           <input
             type="radio"
@@ -80,7 +80,7 @@ export default function RegionAndCharacter({
           } collapse bg-primary`}
         >
           <input type="radio" name="accordion" onChange={handleRadioChange} />
-          <div className="collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral">
+          <div className="text-xl font-medium collapse-title underline-offset-8 underline-elodin-neutral">
             Add Character
           </div>
           <div className="collapse-content">
@@ -93,7 +93,7 @@ export default function RegionAndCharacter({
         </div>
         <button
           disabled={!readyToProceed}
-          className="self-end btn btn-lg glass btn-accent rounded-full mt-4 text-xl font-medium text-primary-content"
+          className="self-end mt-4 text-xl font-medium rounded-full btn btn-lg glass btn-accent text-primary-content"
           onClick={() => {
             setProceedClicked(true);
             setDialogueIndex("create_account");

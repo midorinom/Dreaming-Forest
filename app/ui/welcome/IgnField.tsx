@@ -20,7 +20,7 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
   }
 
   return (
-    <div className="relative col-start-2 row-start-1 w-1/2">
+    <div className="relative w-1/2 col-start-2 row-start-1">
       <input
         type="text"
         id="ign_input"

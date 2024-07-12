@@ -31,7 +31,7 @@ export default function LevelField({ level, setLevel }: LevelFieldProps) {
   }
 
   return (
-    <div className="relative col-start-2 row-start-2 w-4/5 flex items-center gap-4">
+    <div className="relative flex items-center w-4/5 col-start-2 row-start-2 gap-4">
       <input
         ref={textInputRef}
         id="level_input"

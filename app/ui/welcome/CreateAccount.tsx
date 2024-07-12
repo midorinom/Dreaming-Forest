@@ -21,9 +21,9 @@ export default function CreateAccount({ setDone }: CreateAccountProps) {
   }, [password, confirmPassword]);
 
   return (
-    <div className="w-1/4 flex flex-col items-center">
-      <div className="flex flex-col gap-3 min-h-64 items-center collapse collapse-open bg-base-100">
-        <div className="collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral">
+    <div className="flex flex-col items-center w-1/4">
+      <div className="flex flex-col items-center gap-3 min-h-64 collapse collapse-open bg-base-100">
+        <div className="text-xl font-medium collapse-title underline-offset-8 underline-elodin-neutral">
           Create Account
         </div>
         <div className="flex flex-col gap-8">
@@ -38,15 +38,15 @@ export default function CreateAccount({ setDone }: CreateAccountProps) {
           />
         </div>
       </div>
-      <div className="w-full mt-5 flex justify-between">
+      <div className="flex justify-between w-full mt-5">
         <button
-          className="btn btn-lg glass btn-warning rounded-full text-xl font-medium text-primary-content"
+          className="text-xl font-medium rounded-full btn btn-lg glass btn-warning text-primary-content"
           onClick={() => setDone(true)}
         >
           Skip
         </button>
         <button
-          className="btn btn-lg glass btn-accent rounded-full text-xl font-medium text-primary-content"
+          className="text-xl font-medium rounded-full btn btn-lg glass btn-accent text-primary-content"
           disabled={
             username && password && confirmPassword && !confirmPasswordError
               ? false

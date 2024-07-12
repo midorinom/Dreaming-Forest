@@ -2,22 +2,22 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
-import { CharacterDetails } from "@/app/lib/definitions/general-definitions";
+import type { CharacterDetails } from "@/app/lib/definitions/general-definitions";
 
-export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
+export default function ActiveCharacter({ character }: ActiveCharacterProps) {
   const [activeCharacter, setActiveCharacter] = useState<CharacterDetails>(
     {} as CharacterDetails
   );
 
   useEffect(() => {
-    setActiveCharacter(userDetails.characters[0]);
+    setActiveCharacter(character);
   }, []);
 
   return (
-    <div className="w-full h-full flex justify-center">
+    <div className="flex justify-center w-full h-full">
       <div className={"w-full h-full flex items-center gap-4 ml-8"}>
         {!activeCharacter.ign ? (
-          <span className="loading loading-spinner text-accent h-1/2 w-auto mx-auto"></span>
+          <span className="w-auto mx-auto loading loading-spinner text-accent h-1/2"></span>
         ) : (
           <>
             <div
@@ -36,14 +36,14 @@ export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
                 width={0}
                 alt="Active Character"
                 sizes="100vw"
-                className="absolute h-full w-full"
+                className="absolute w-full h-full"
               />
             </div>
-            <div className="w-3/5 flex flex-col gap-4 justify-center mt-2">
+            <div className="flex flex-col justify-center w-3/5 gap-4 mt-2">
               <div className="text-6xl text-neutral font-medium underline-dreamy-accent underline-offset-[15px]">
                 {activeCharacter.ign}
               </div>
-              <div className="text-2xl text-neutral flex gap-2">
+              <div className="flex gap-2 text-2xl text-neutral">
                 <div>Lv {activeCharacter.level}</div>
                 <div> {activeCharacter.maplestoryClass}</div>
               </div>
