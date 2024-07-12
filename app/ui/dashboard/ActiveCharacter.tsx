@@ -39,7 +39,7 @@ export default function ActiveCharacter({ userDetails }: ActiveCharacterProps) {
                 className="absolute h-full w-full"
               />
             </div>
-            <div className="w-3/5 flex flex-col gap-4 justify-center">
+            <div className="w-3/5 flex flex-col gap-4 justify-center mt-2">
               <div className="text-6xl text-neutral font-medium underline-dreamy-accent underline-offset-[15px]">
                 {activeCharacter.ign}
               </div>
