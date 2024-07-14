@@ -26,7 +26,7 @@ export type Daily = {
   position: number;
 };
 
-export type CharacterDetails = {
+export type Character = {
   characterId: UUID;
   image: string;
   ign: string;
@@ -38,7 +38,7 @@ export type CharacterDetails = {
 export type UserDetails = {
   userId: UUID;
   region: string;
-  characters: CharacterDetails[];
+  characters: Character[];
 };
 
 export type MainAppWrapperProps = {

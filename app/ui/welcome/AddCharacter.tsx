@@ -5,12 +5,12 @@ import IgnField from "./IgnField";
 import LevelField from "./LevelField";
 import ClassField from "./ClassField";
 import type { AddCharacterProps } from "@/app/lib/definitions/welcome-definitions";
-import type { CharacterDetails } from "@/app/lib/definitions/general-definitions";
+import type { Character } from "@/app/lib/definitions/general-definitions";
 
 export default function AddCharacter({
   setUploadedFile,
-  characterDetails,
-  setCharacterDetails,
+  character,
+  setCharacter,
 }: AddCharacterProps) {
   const [ign, setIgn] = useState<string>("");
   const [level, setLevel] = useState<number>(0);
@@ -18,21 +18,21 @@ export default function AddCharacter({
 
   useEffect(() => {
     if (ign || level || maplestoryClass) {
-      const newCharacterDetails: CharacterDetails = { ...characterDetails };
+      const newCharacter: Character = { ...character };
 
-      if (characterDetails.ign !== ign) {
-        newCharacterDetails.ign = ign;
+      if (character.ign !== ign) {
+        newCharacter.ign = ign;
       }
 
-      if (characterDetails.level !== level) {
-        newCharacterDetails.level = level;
+      if (character.level !== level) {
+        newCharacter.level = level;
       }
 
-      if (characterDetails.maplestoryClass !== maplestoryClass) {
-        newCharacterDetails.maplestoryClass = maplestoryClass;
+      if (character.maplestoryClass !== maplestoryClass) {
+        newCharacter.maplestoryClass = maplestoryClass;
       }
 
-      setCharacterDetails(newCharacterDetails);
+      setCharacter(newCharacter);
     }
   }, [ign, level, maplestoryClass]);
 

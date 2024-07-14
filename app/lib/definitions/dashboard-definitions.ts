@@ -1,7 +1,7 @@
-import type { CharacterDetails } from "./general-definitions";
+import type { Character } from "./general-definitions";
 
 export type ActiveCharacterProps = {
-  character: CharacterDetails;
+  character: Character;
 };
 
 export type DailiesWeekliesProps = {

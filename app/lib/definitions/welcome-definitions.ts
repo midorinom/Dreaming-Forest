@@ -1,4 +1,4 @@
-import { CharacterDetails } from "./general-definitions";
+import { Character } from "./general-definitions";
 import { Classes } from "./general-definitions";
 
 export type WelcomeContextType = {
@@ -27,8 +27,8 @@ export type RegionAndCharacterProps = {
   region: string;
   setRegion: (region: string) => void;
   setUploadedFile: (file: File | null) => void;
-  characterDetails: CharacterDetails;
-  setCharacterDetails: (characterDetails: CharacterDetails) => void;
+  character: Character;
+  setCharacter: (character: Character) => void;
   setDialogueIndex: (dialogueIndex: DialogueIndex) => void;
   setProceedClicked: (proceedClicked: boolean) => void;
 };
@@ -40,8 +40,8 @@ export type SelectRegionProps = {
 
 export type AddCharacterProps = {
   setUploadedFile: (file: File | null) => void;
-  characterDetails: CharacterDetails;
-  setCharacterDetails: (characterDetails: CharacterDetails) => void;
+  character: Character;
+  setCharacter: (character: Character) => void;
 };
 
 export type ImageFieldProps = {

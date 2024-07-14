@@ -9,7 +9,7 @@ import type {
   WelcomeProps,
 } from "@/app/lib/definitions/welcome-definitions";
 import type {
-  CharacterDetails,
+  Character,
   UserDetails,
 } from "@/app/lib/definitions/general-definitions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
@@ -25,9 +25,10 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [region, setRegion] = useState<string>("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
+  const [character, setCharacter] = useState<Character>({
+    characterId: uuidv4() as UUID,
     image: "",
-  } as CharacterDetails);
+  } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
   const [done, setDone] = useState(false);
@@ -46,7 +47,7 @@ export default function Welcome({ classes }: WelcomeProps) {
 
   useEffect(() => {
     async function storeImage(newUserDetails: UserDetails, image: File) {
-      const imagePath = `characters/${newUserDetails.userId}/${characterDetails.ign}`;
+      const imagePath = `characters/${newUserDetails.userId}/${character.ign}`;
 
       const response = await fetch(
         `/api/character-images?imagepath=${imagePath}`,
@@ -73,7 +74,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       const newUserDetails: UserDetails = {
         userId: uuidv4() as UUID,
         region: region,
-        characters: [characterDetails],
+        characters: [character],
       };
 
       if (uploadedFile) {
@@ -118,8 +119,8 @@ export default function Welcome({ classes }: WelcomeProps) {
               region={region}
               setRegion={setRegion}
               setUploadedFile={setUploadedFile}
-              characterDetails={characterDetails}
-              setCharacterDetails={setCharacterDetails}
+              character={character}
+              setCharacter={setCharacter}
               setDialogueIndex={setDialogueIndex}
               setProceedClicked={setProceedClicked}
             />
