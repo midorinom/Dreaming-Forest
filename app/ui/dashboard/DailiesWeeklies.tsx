@@ -13,6 +13,7 @@ export default function DailiesWeeklies({
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
 
   useEffect(() => {
+    // Set Dailies and Weeklies
     setDailies(activeCharacter.dailies);
     setWeeklies(activeCharacter.weeklies);
 
@@ -50,7 +51,11 @@ export default function DailiesWeeklies({
         {dailies.length > 0 && (
           <input type="radio" name="accordion" defaultChecked />
         )}
-        <div className="pt-3 text-4xl font-medium collapse-title text-info underline-dreamy-neutral underline-offset-8">
+        <div
+          className={`${
+            dailies.length === 0 && "mb-1"
+          } text-4xl font-medium collapse-title text-info underline-dreamy-neutral pt-3 underline-offset-8`}
+        >
           Dailies
         </div>
         {dailiesTimer && dailies.length > 0 && (
@@ -68,7 +73,11 @@ export default function DailiesWeeklies({
         } bg-secondary`}
       >
         {weeklies.length > 0 && <input type="radio" name="accordion" />}
-        <div className="pt-3 text-4xl font-medium collapse-title text-info underline-dreamy-neutral underline-offset-8">
+        <div
+          className={`${
+            weeklies.length === 0 && "mb-1"
+          } pt-3 text-4xl font-medium collapse-title text-info underline-dreamy-neutral underline-offset-8`}
+        >
           Weeklies
         </div>
         {weeklies.length > 0 && (
