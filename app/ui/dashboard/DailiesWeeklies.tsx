@@ -3,7 +3,10 @@ import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-defin
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
-export default function DailiesWeeklies({ region }: DailiesWeekliesProps) {
+export default function DailiesWeeklies({
+  region,
+  characters,
+}: DailiesWeekliesProps) {
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
 
   useEffect(() => {

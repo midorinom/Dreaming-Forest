@@ -22,8 +22,8 @@ export default function Dashboard() {
         <>
           <ActiveCharacter character={user.characters[0]} />
           <CharactersWheel />
-          <DailiesWeeklies region={user.region} />
-          <Bosses region={user.region} />
+          <DailiesWeeklies region={user.region} characters={user.characters} />
+          <Bosses region={user.region} characters={user.characters} />
         </>
       )}
     </main>
