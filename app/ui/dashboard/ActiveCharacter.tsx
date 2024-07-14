@@ -2,21 +2,21 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { ActiveCharacterProps } from "@/app/lib/definitions/dashboard-definitions";
-import type { CharacterDetails } from "@/app/lib/definitions/general-definitions";
+import type { Character } from "@/app/lib/definitions/general-definitions";
 
-export default function ActiveCharacter({ character }: ActiveCharacterProps) {
-  const [activeCharacter, setActiveCharacter] = useState<CharacterDetails>(
-    {} as CharacterDetails
-  );
+export default function ActiveCharacter({
+  activeCharacter,
+}: ActiveCharacterProps) {
+  const [character, setCharacter] = useState<Character>({} as Character);
 
   useEffect(() => {
-    setActiveCharacter(character);
+    setCharacter(activeCharacter);
   }, []);
 
   return (
     <div className="flex justify-center w-full h-full">
       <div className={"w-full h-full flex items-center gap-4 ml-8"}>
-        {!activeCharacter.ign ? (
+        {!character.ign ? (
           <span className="w-auto mx-auto loading loading-spinner text-accent h-1/2"></span>
         ) : (
           <>
@@ -28,9 +28,7 @@ export default function ActiveCharacter({ character }: ActiveCharacterProps) {
             >
               <Image
                 src={
-                  activeCharacter.image
-                    ? activeCharacter.image
-                    : "/general/naked_char.png"
+                  character.image ? character.image : "/general/naked_char.png"
                 }
                 height={0}
                 width={0}
@@ -39,13 +37,13 @@ export default function ActiveCharacter({ character }: ActiveCharacterProps) {
                 className="absolute w-full h-full"
               />
             </div>
-            <div className="flex flex-col justify-center w-3/5 gap-4 mt-2">
-              <div className="text-6xl text-neutral font-medium underline-dreamy-accent underline-offset-[15px]">
-                {activeCharacter.ign}
+            <div className="flex flex-col justify-center w-3/5">
+              <div className="text-[2.75rem] text-neutral font-medium underline-dreamy-accent underline-offset-[8px]">
+                {character.ign}
               </div>
-              <div className="flex gap-2 text-2xl text-neutral">
-                <div>Lv {activeCharacter.level}</div>
-                <div> {activeCharacter.maplestoryClass}</div>
+              <div className="flex gap-2 text-3xl text-neutral">
+                <div>Lv {character.level}</div>
+                <div> {character.maplestoryClass}</div>
               </div>
             </div>
           </>

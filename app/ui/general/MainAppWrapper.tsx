@@ -12,8 +12,8 @@ export default function MainAppWrapper({ page }: MainAppWrapperProps) {
 
   // Check whether the user is a first-timer
   useEffect(() => {
-    const localUserDetails = localStorage.getItem("userDetails");
-    if (localUserDetails) {
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
       setIsLoading(false);
     } else {
       router.replace("welcome");

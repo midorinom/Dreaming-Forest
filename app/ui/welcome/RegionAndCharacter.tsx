@@ -8,8 +8,8 @@ export default function RegionAndCharacter({
   region,
   setRegion,
   setUploadedFile,
-  characterDetails,
-  setCharacterDetails,
+  character,
+  setCharacter,
   setDialogueIndex,
   setProceedClicked,
 }: RegionAndCharacterProps) {
@@ -29,15 +29,15 @@ export default function RegionAndCharacter({
   useEffect(() => {
     if (
       region ||
-      characterDetails.ign ||
-      characterDetails.level ||
-      characterDetails.maplestoryClass
+      character.ign ||
+      character.level ||
+      character.maplestoryClass
     ) {
       if (
         region &&
-        characterDetails.ign &&
-        characterDetails.level &&
-        characterDetails.maplestoryClass
+        character.ign &&
+        character.level &&
+        character.maplestoryClass
       ) {
         setReadyToProceed(true);
       } else {
@@ -46,12 +46,7 @@ export default function RegionAndCharacter({
         }
       }
     }
-  }, [
-    region,
-    characterDetails.ign,
-    characterDetails.level,
-    characterDetails.maplestoryClass,
-  ]);
+  }, [region, character.ign, character.level, character.maplestoryClass]);
 
   return (
     <div className="flex justify-center w-1/2">
@@ -86,8 +81,8 @@ export default function RegionAndCharacter({
           <div className="collapse-content">
             <AddCharacter
               setUploadedFile={setUploadedFile}
-              characterDetails={characterDetails}
-              setCharacterDetails={setCharacterDetails}
+              character={character}
+              setCharacter={setCharacter}
             />
           </div>
         </div>

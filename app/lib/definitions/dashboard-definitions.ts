@@ -1,13 +1,15 @@
-import type { CharacterDetails } from "./general-definitions";
+import type { Boss, Character, Daily, Weekly } from "./general-definitions";
 
 export type ActiveCharacterProps = {
-  character: CharacterDetails;
+  activeCharacter: Character;
 };
 
 export type DailiesWeekliesProps = {
   region: string;
+  activeCharacter: Character;
 };
 
 export type BossesProps = {
   region: string;
+  activeCharacter: Character;
 };

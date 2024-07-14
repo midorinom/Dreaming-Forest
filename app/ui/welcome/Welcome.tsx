@@ -9,8 +9,8 @@ import type {
   WelcomeProps,
 } from "@/app/lib/definitions/welcome-definitions";
 import type {
-  CharacterDetails,
-  UserDetails,
+  Character,
+  User,
 } from "@/app/lib/definitions/general-definitions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
@@ -25,9 +25,16 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [region, setRegion] = useState<string>("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [characterDetails, setCharacterDetails] = useState<CharacterDetails>({
+  const [character, setCharacter] = useState<Character>({
+    characterId: uuidv4() as UUID,
     image: "",
-  } as CharacterDetails);
+    ign: "",
+    level: 0,
+    maplestoryClass: "",
+    dailies: [],
+    weeklies: [],
+    bosses: [],
+  } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
   const [done, setDone] = useState(false);
@@ -36,8 +43,8 @@ export default function Welcome({ classes }: WelcomeProps) {
 
   // Check whether the user is a first-timer
   useEffect(() => {
-    const localUserDetails = localStorage.getItem("userDetails");
-    if (localUserDetails) {
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
       router.replace("/");
     } else {
       setIsLoading(false);
@@ -45,8 +52,8 @@ export default function Welcome({ classes }: WelcomeProps) {
   }, []);
 
   useEffect(() => {
-    async function storeImage(newUserDetails: UserDetails, image: File) {
-      const imagePath = `characters/${newUserDetails.userId}/${characterDetails.ign}`;
+    async function storeImage(newUser: User, image: File) {
+      const imagePath = `characters/${newUser.userId}/${character.ign}`;
 
       const response = await fetch(
         `/api/character-images?imagepath=${imagePath}`,
@@ -62,24 +69,24 @@ export default function Welcome({ classes }: WelcomeProps) {
       }
 
       const { url } = await response.json();
-      newUserDetails.characters[0].image = url;
-      localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+      newUser.characters[0].image = url;
+      localStorage.setItem("user", JSON.stringify(newUser));
       router.push("/");
     }
 
     if (done) {
       setIsUploadingToDatabase(true);
       setDialogueIndex("uploading");
-      const newUserDetails: UserDetails = {
+      const newUser: User = {
         userId: uuidv4() as UUID,
         region: region,
-        characters: [characterDetails],
+        characters: [character],
       };
 
       if (uploadedFile) {
-        storeImage(newUserDetails, uploadedFile);
+        storeImage(newUser, uploadedFile);
       } else {
-        localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+        localStorage.setItem("user", JSON.stringify(newUser));
         router.push("/");
       }
     }
@@ -118,8 +125,8 @@ export default function Welcome({ classes }: WelcomeProps) {
               region={region}
               setRegion={setRegion}
               setUploadedFile={setUploadedFile}
-              characterDetails={characterDetails}
-              setCharacterDetails={setCharacterDetails}
+              character={character}
+              setCharacter={setCharacter}
               setDialogueIndex={setDialogueIndex}
               setProceedClicked={setProceedClicked}
             />

@@ -19,17 +19,45 @@ export type Classes = {
   msea: string[];
 };
 
-export type CharacterDetails = {
+export type Daily = {
+  dailyId: UUID;
+  description: string;
+  done: Date | null;
+  position: number;
+};
+
+export type Weekly = {
+  weeklyId: UUID;
+  description: string;
+  done: Date | null;
+  position: number;
+  resetDate: Date;
+};
+
+export type Boss = {
+  bossId: UUID;
+  dashboardPosition: number;
+  bossesPosition: number;
+  done: Date | null;
+  partySize: number;
+  dashboardImage: string;
+};
+
+export type Character = {
+  characterId: UUID;
   image: string;
   ign: string;
   level: number;
   maplestoryClass: string;
+  dailies: Daily[];
+  weeklies: Weekly[];
+  bosses: Boss[];
 };
 
-export type UserDetails = {
+export type User = {
   userId: UUID;
   region: string;
-  characters: CharacterDetails[];
+  characters: Character[];
 };
 
 export type MainAppWrapperProps = {
@@ -37,5 +65,5 @@ export type MainAppWrapperProps = {
 };
 
 export type ResetButtonProps = {
-  userDetails: UserDetails;
+  user: User;
 };

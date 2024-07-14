@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { put, del } from "@vercel/blob";
-import { CharacterDetails } from "../../lib/definitions/general-definitions";
+import { Character } from "../../lib/definitions/general-definitions";
 
 export const runtime = "edge";
 
@@ -30,7 +30,7 @@ export async function PUT(request: Request): Promise<NextResponse> {
 
 export async function DELETE(request: Request) {
   const res = await request.json();
-  const characters: CharacterDetails[] = res.characters;
+  const characters: Character[] = res.characters;
   const images = [];
 
   for (const character of characters) {
