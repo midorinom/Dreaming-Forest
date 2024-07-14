@@ -26,6 +26,23 @@ export type Daily = {
   position: number;
 };
 
+export type Weekly = {
+  weeklyId: UUID;
+  description: string;
+  done: Date | null;
+  position: number;
+  resetDate: Date;
+};
+
+export type Boss = {
+  bossId: UUID;
+  dashboardPosition: number;
+  bossesPosition: number;
+  done: Date | null;
+  partySize: number;
+  dashboardImage: string;
+};
+
 export type Character = {
   characterId: UUID;
   image: string;
@@ -33,6 +50,8 @@ export type Character = {
   level: number;
   maplestoryClass: string;
   dailies: Daily[];
+  weeklies: Weekly[];
+  bosses: Boss[];
 };
 
 export type User = {
