@@ -19,11 +19,20 @@ export type Classes = {
   msea: string[];
 };
 
+export type Daily = {
+  dailyId: UUID;
+  description: string;
+  done: Date | null;
+  position: number;
+};
+
 export type CharacterDetails = {
+  characterId: UUID;
   image: string;
   ign: string;
   level: number;
   maplestoryClass: string;
+  dailies: Daily[];
 };
 
 export type UserDetails = {
