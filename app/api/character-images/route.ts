@@ -40,4 +40,5 @@ export async function DELETE(request: Request) {
   }
 
   await del(images);
+  return NextResponse.json({ message: "ok" });
 }
