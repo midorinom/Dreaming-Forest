@@ -2,14 +2,14 @@
 import { useRouter } from "next/navigation";
 import { ResetButtonProps } from "@/app/lib/definitions/general-definitions";
 
-export default function ResetButton({ userDetails }: ResetButtonProps) {
+export default function ResetButton({ user }: ResetButtonProps) {
   const router = useRouter();
 
   function handleClick() {
     async function deleteCharacters() {
       const images = [];
 
-      for (const character of userDetails.characters) {
+      for (const character of user.characters) {
         if (character.image) {
           images.push(character.image);
         }
@@ -21,11 +21,11 @@ export default function ResetButton({ userDetails }: ResetButtonProps) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ characters: userDetails.characters }),
+          body: JSON.stringify({ characters: user.characters }),
         });
       }
 
-      localStorage.removeItem("userDetails");
+      localStorage.removeItem("user");
       router.replace("/");
     }
 

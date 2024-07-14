@@ -10,7 +10,7 @@ import type {
 } from "@/app/lib/definitions/welcome-definitions";
 import type {
   Character,
-  UserDetails,
+  User,
 } from "@/app/lib/definitions/general-definitions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
@@ -37,8 +37,8 @@ export default function Welcome({ classes }: WelcomeProps) {
 
   // Check whether the user is a first-timer
   useEffect(() => {
-    const localUserDetails = localStorage.getItem("userDetails");
-    if (localUserDetails) {
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
       router.replace("/");
     } else {
       setIsLoading(false);
@@ -46,8 +46,8 @@ export default function Welcome({ classes }: WelcomeProps) {
   }, []);
 
   useEffect(() => {
-    async function storeImage(newUserDetails: UserDetails, image: File) {
-      const imagePath = `characters/${newUserDetails.userId}/${character.ign}`;
+    async function storeImage(newUser: User, image: File) {
+      const imagePath = `characters/${newUser.userId}/${character.ign}`;
 
       const response = await fetch(
         `/api/character-images?imagepath=${imagePath}`,
@@ -63,24 +63,24 @@ export default function Welcome({ classes }: WelcomeProps) {
       }
 
       const { url } = await response.json();
-      newUserDetails.characters[0].image = url;
-      localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+      newUser.characters[0].image = url;
+      localStorage.setItem("user", JSON.stringify(newUser));
       router.push("/");
     }
 
     if (done) {
       setIsUploadingToDatabase(true);
       setDialogueIndex("uploading");
-      const newUserDetails: UserDetails = {
+      const newUser: User = {
         userId: uuidv4() as UUID,
         region: region,
         characters: [character],
       };
 
       if (uploadedFile) {
-        storeImage(newUserDetails, uploadedFile);
+        storeImage(newUser, uploadedFile);
       } else {
-        localStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+        localStorage.setItem("user", JSON.stringify(newUser));
         router.push("/");
       }
     }

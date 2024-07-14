@@ -1,23 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
-import { UserDetails } from "@/app/lib/definitions/general-definitions";
+import { User } from "@/app/lib/definitions/general-definitions";
 import ResetButton from "@/app/ui/general/ResetButton";
 import UnderConstruction from "@/app/ui/general/UnderConstruction";
 
 export default function Settings() {
-  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const localUserDetails = localStorage.getItem("userDetails");
-    if (localUserDetails) {
-      setUserDetails(JSON.parse(localUserDetails));
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
+      setUser(JSON.parse(localUser));
     }
   }, []);
 
   return (
     <div className="relative">
       <UnderConstruction />
-      {userDetails && <ResetButton userDetails={userDetails} />}
+      {user && <ResetButton user={user} />}
     </div>
   );
 }

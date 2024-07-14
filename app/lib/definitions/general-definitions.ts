@@ -35,7 +35,7 @@ export type Character = {
   dailies: Daily[];
 };
 
-export type UserDetails = {
+export type User = {
   userId: UUID;
   region: string;
   characters: Character[];
@@ -46,5 +46,5 @@ export type MainAppWrapperProps = {
 };
 
 export type ResetButtonProps = {
-  userDetails: UserDetails;
+  user: User;
 };
