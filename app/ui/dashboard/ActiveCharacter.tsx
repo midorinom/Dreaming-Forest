@@ -39,11 +39,11 @@ export default function ActiveCharacter({ character }: ActiveCharacterProps) {
                 className="absolute w-full h-full"
               />
             </div>
-            <div className="flex flex-col justify-center w-3/5 gap-4 mt-2">
-              <div className="text-6xl text-neutral font-medium underline-dreamy-accent underline-offset-[15px]">
+            <div className="flex flex-col justify-center w-3/5">
+              <div className="text-[2.75rem] text-neutral font-medium underline-dreamy-accent underline-offset-[8px]">
                 {activeCharacter.ign}
               </div>
-              <div className="flex gap-2 text-2xl text-neutral">
+              <div className="flex gap-2 text-3xl text-neutral">
                 <div>Lv {activeCharacter.level}</div>
                 <div> {activeCharacter.maplestoryClass}</div>
               </div>
