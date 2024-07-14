@@ -40,18 +40,7 @@ export default function TopNav() {
             </div>
           </Link>
         </div>
-        <div className="relative flex gap-4 right-4">
-          <Link href="/profile">
-            <Image
-              src="/general/profile_icon.png"
-              height={0}
-              width={0}
-              alt="Profile Button"
-              sizes="100vw"
-              className="w-[3vw] h-[4vh] hover:cursor-pointer"
-              onClick={() => handleClick("/profile")}
-            />
-          </Link>
+        <div className="relative right-4">
           <Link href="/settings">
             <Image
               src="/general/settings_icon.png"
