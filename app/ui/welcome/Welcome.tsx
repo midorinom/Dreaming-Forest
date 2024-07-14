@@ -28,6 +28,12 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [character, setCharacter] = useState<Character>({
     characterId: uuidv4() as UUID,
     image: "",
+    ign: "",
+    level: 0,
+    maplestoryClass: "",
+    dailies: [],
+    weeklies: [],
+    bosses: [],
   } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
