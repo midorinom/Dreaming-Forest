@@ -44,7 +44,7 @@ export default function DailiesWeeklies({
     <div className="flex flex-col items-end w-full mt-2">
       <div
         className={`w-[36vw] collapse ${
-          dailies.length === 0 && "collapse-open"
+          (weeklies.length === 0 || dailies.length === 0) && "collapse-open"
         } bg-primary`}
       >
         {dailies.length > 0 && (
@@ -64,7 +64,7 @@ export default function DailiesWeeklies({
       </div>
       <div
         className={`w-[36vw] collapse ${
-          weeklies.length === 0 && "collapse-open"
+          (weeklies.length === 0 || dailies.length === 0) && "collapse-open"
         } bg-secondary`}
       >
         {weeklies.length > 0 && <input type="radio" name="accordion" />}
