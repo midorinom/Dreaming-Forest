@@ -5,7 +5,7 @@ import utc from "dayjs/plugin/utc";
 
 export default function DailiesWeeklies({
   region,
-  characters,
+  activeCharacter,
 }: DailiesWeekliesProps) {
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
 

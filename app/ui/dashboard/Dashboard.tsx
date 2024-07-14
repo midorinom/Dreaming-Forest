@@ -20,10 +20,13 @@ export default function Dashboard() {
     <main className="grid grid-rows-[27vh_1fr] grid-cols-[40vw_1fr]">
       {user && (
         <>
-          <ActiveCharacter character={user.characters[0]} />
+          <ActiveCharacter activeCharacter={user.characters[0]} />
           <CharactersWheel />
-          <DailiesWeeklies region={user.region} characters={user.characters} />
-          <Bosses region={user.region} characters={user.characters} />
+          <DailiesWeeklies
+            region={user.region}
+            activeCharacter={user.characters[0]}
+          />
+          <Bosses region={user.region} activeCharacter={user.characters[0]} />
         </>
       )}
     </main>

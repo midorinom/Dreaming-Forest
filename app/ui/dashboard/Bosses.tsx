@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
 
-export default function Bosses({ region, characters }: BossesProps) {
+export default function Bosses({ region, activeCharacter }: BossesProps) {
   const [bossesTimer, setBossesTimer] = useState<string>("");
 
   useEffect(() => {
