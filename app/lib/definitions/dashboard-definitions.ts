@@ -1,15 +1,15 @@
 import type { Boss, Character, Daily, Weekly } from "./general-definitions";
 
 export type ActiveCharacterProps = {
-  character: Character;
+  activeCharacter: Character;
 };
 
 export type DailiesWeekliesProps = {
   region: string;
-  characters: Character[];
+  activeCharacter: Character;
 };
 
 export type BossesProps = {
   region: string;
-  characters: Character[];
+  activeCharacter: Character;
 };
