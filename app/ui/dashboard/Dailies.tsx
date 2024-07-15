@@ -4,7 +4,12 @@ import type { DailiesProps } from "@/app/lib/definitions/dashboard-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
-export default function Dailies({ region, dailies, weeklies }: DailiesProps) {
+export default function Dailies({
+  region,
+  dailies,
+  weeklies,
+  setEditDailiesClicked,
+}: DailiesProps) {
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
 
@@ -44,21 +49,24 @@ export default function Dailies({ region, dailies, weeklies }: DailiesProps) {
       <div
         className={`${
           dailies.length === 0 && "mb-1"
-        } collapse-title relative pt-3 text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral`}
+        } collapse-title pt-3 text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral`}
         onMouseEnter={() => setHeadingHovered(true)}
         onMouseLeave={() => setHeadingHovered(false)}
       >
-        Dailies
-        {headingHovered && (
-          <Image
-            src="/general/ui_icons/edit_icon.png"
-            height={0}
-            width={0}
-            alt="Progression Button"
-            sizes="100vw"
-            className="absolute left-0 top-0 h-[5vh] w-[3vw] hover:cursor-pointer"
-          />
-        )}
+        <div className="flex gap-2">
+          <span>Dailies</span>
+          {headingHovered && (
+            <Image
+              src="/general/ui_icons/edit_icon.png"
+              height={0}
+              width={0}
+              alt="Progression Button"
+              sizes="100vw"
+              className="h-[2.5rem] w-[auto]"
+              onClick={() => setEditDailiesClicked(true)}
+            />
+          )}
+        </div>
       </div>
       {dailiesTimer && dailies.length > 0 && (
         <div className="absolute right-2 top-1 text-2xl text-info">

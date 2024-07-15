@@ -10,6 +10,7 @@ export default function DailiesWeeklies({
 }: DailiesWeekliesProps) {
   const [dailies, setDailies] = useState<Daily[]>([]);
   const [weeklies, setWeeklies] = useState<Weekly[]>([]);
+  const [editDailiesClicked, setEditDailiesClicked] = useState<boolean>(false);
 
   useEffect(() => {
     setDailies(activeCharacter.dailies);
@@ -18,7 +19,12 @@ export default function DailiesWeeklies({
 
   return (
     <div className="mt-2 flex w-full flex-col items-end">
-      <Dailies region={region} dailies={dailies} weeklies={weeklies} />
+      <Dailies
+        region={region}
+        dailies={dailies}
+        weeklies={weeklies}
+        setEditDailiesClicked={setEditDailiesClicked}
+      />
       <Weeklies dailies={dailies} weeklies={weeklies} />
     </div>
   );
