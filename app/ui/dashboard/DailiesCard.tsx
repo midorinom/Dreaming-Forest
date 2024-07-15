@@ -1,24 +1,36 @@
 "use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect, ChangeEvent } from "react";
 import type { DailiesCardProps } from "@/app/lib/definitions/dashboard-definitions";
-import type { Daily } from "@/app/lib/definitions/general-definitions";
-import DailyInput from "./DailyInput";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 
 export default function DailiesCard({
   dailyProp,
   dailies,
   setDailies,
 }: DailiesCardProps) {
-  const [daily, setDaily] = useState<Daily>(dailyProp);
+  const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
-    if (daily) {
+    dayjs.extend(utc);
+    if (dailyProp.done) {
+      setDone(true);
+    }
+  }, []);
+
+  function handleCheckboxChange(e: ChangeEvent<HTMLInputElement>) {
+    if (done) {
+      setDone(false);
       const newDailies = [...dailies];
-      newDailies[daily.position] = daily;
+      newDailies[dailyProp.position].done = null;
+      setDailies(newDailies);
+    } else {
+      setDone(true);
+      const newDailies = [...dailies];
+      newDailies[dailyProp.position].done = dayjs().toDate();
       setDailies(newDailies);
     }
-  }, [daily]);
+  }
 
   return (
     <div className="flex w-full items-center">
@@ -27,8 +39,10 @@ export default function DailiesCard({
           <input
             type="checkbox"
             className="checkbox-accent checkbox checkbox-lg border-info"
+            checked={done}
+            onChange={handleCheckboxChange}
           />
-          <span className="label-text text-lg">{daily.description}</span>
+          <span className="label-text text-lg">{dailyProp.description}</span>
         </label>
       </div>
     </div>
