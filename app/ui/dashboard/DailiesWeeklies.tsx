@@ -32,11 +32,10 @@ export default function DailiesWeeklies({
           region={region}
           dailies={dailies}
           setDailies={setDailies}
-          weeklies={weeklies}
           setEditDailiesClicked={setEditDailiesClicked}
         />
       )}
-      <Weeklies dailies={dailies} weeklies={weeklies} />
+      <Weeklies weeklies={weeklies} />
     </div>
   );
 }

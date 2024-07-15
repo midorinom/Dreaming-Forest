@@ -1,7 +1,7 @@
 "use client";
 import type { WeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 
-export default function Weeklies({ dailies, weeklies }: WeekliesProps) {
+export default function Weeklies({ weeklies }: WeekliesProps) {
   return (
     <div className={`collapse collapse-open w-[36vw] bg-secondary`}>
       <div

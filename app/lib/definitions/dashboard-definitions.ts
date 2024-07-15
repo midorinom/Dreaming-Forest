@@ -18,7 +18,6 @@ export type DailiesProps = {
   region: string;
   dailies: Daily[];
   setDailies: (dailies: Daily[]) => void;
-  weeklies: Weekly[];
   setEditDailiesClicked: (editDailiesClicked: boolean) => void;
 };
 
@@ -46,6 +45,5 @@ export type DailyInputProps = {
 };
 
 export type WeekliesProps = {
-  dailies: Daily[];
   weeklies: Weekly[];
 };

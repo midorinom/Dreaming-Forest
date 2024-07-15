@@ -10,7 +10,6 @@ export default function Dailies({
   region,
   dailies,
   setDailies,
-  weeklies,
   setEditDailiesClicked,
 }: DailiesProps) {
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
