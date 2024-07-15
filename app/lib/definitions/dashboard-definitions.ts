@@ -17,6 +17,7 @@ export type BossesProps = {
 export type DailiesProps = {
   region: string;
   dailies: Daily[];
+  setDailies: (dailies: Daily[]) => void;
   weeklies: Weekly[];
   setEditDailiesClicked: (editDailiesClicked: boolean) => void;
 };
@@ -25,6 +26,12 @@ export type DailiesEditProps = {
   dailies: Daily[];
   setDailies: (dailies: Daily[]) => void;
   setEditDailiesClicked: (editDailiesClicked: boolean) => void;
+};
+
+export type DailiesCardProps = {
+  dailyProp: Daily;
+  dailies: Daily[];
+  setDailies: (dailies: Daily[]) => void;
 };
 
 export type DailiesEditCardProps = {

@@ -31,6 +31,7 @@ export default function DailiesWeeklies({
         <Dailies
           region={region}
           dailies={dailies}
+          setDailies={setDailies}
           weeklies={weeklies}
           setEditDailiesClicked={setEditDailiesClicked}
         />

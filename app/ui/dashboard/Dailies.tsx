@@ -4,10 +4,12 @@ import Image from "next/image";
 import type { DailiesProps } from "@/app/lib/definitions/dashboard-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import DailiesCard from "./DailiesCard";
 
 export default function Dailies({
   region,
   dailies,
+  setDailies,
   weeklies,
   setEditDailiesClicked,
 }: DailiesProps) {
@@ -41,14 +43,11 @@ export default function Dailies({
   return (
     <div
       className={`collapse w-[36vw] ${
-        (weeklies.length === 0 || dailies.length === 0) && "collapse-open"
-      } bg-primary`}
+        dailies.length > 0 && "pb-3"
+      } collapse-open gap-2 bg-primary`}
     >
-      {dailies.length > 0 && (
-        <input type="radio" name="accordion" defaultChecked />
-      )}
       <div
-        className={`${dailies.length === 0 && "mb-1"} collapse-title pt-3`}
+        className={`${dailies.length === 0 && "mb-1"} collapse-title pb-0 pt-3`}
         onMouseEnter={() => setHeadingHovered(true)}
         onMouseLeave={() => setHeadingHovered(false)}
       >
@@ -75,7 +74,16 @@ export default function Dailies({
         </div>
       )}
       {dailies.length > 0 && (
-        <div className="collapse-content max-h-[41vh]"></div>
+        <div className="collapse-content max-h-[41vh] flex-col gap-1 overflow-scroll pb-0 pt-0 scrollbar-hide">
+          {dailies.map((daily) => (
+            <DailiesCard
+              key={daily.dailyId}
+              dailyProp={daily}
+              dailies={dailies}
+              setDailies={setDailies}
+            />
+          ))}
+        </div>
       )}
     </div>
   );
