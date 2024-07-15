@@ -14,6 +14,7 @@ const Autocomplete = (props: AutoCompleteProps) => {
     dropdown_content_className,
     ul_className,
     li_className,
+    label,
   } = props;
   const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
@@ -60,7 +61,7 @@ const Autocomplete = (props: AutoCompleteProps) => {
         tabIndex={0}
       />
       <label htmlFor={input_id} className={label_className}>
-        Class
+        {label}
       </label>
       {open && items && items[0] && (
         <div className={dropdown_content_className}>

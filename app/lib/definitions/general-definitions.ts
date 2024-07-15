@@ -12,6 +12,7 @@ export type AutoCompleteProps = {
   dropdown_content_className: string;
   ul_className: string;
   li_className: string;
+  label: string;
 };
 
 export type Classes = {

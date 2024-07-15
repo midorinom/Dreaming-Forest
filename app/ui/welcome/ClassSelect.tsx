@@ -62,6 +62,7 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
 
   return (
     <AutoComplete
+      label={"Class"}
       items={items}
       value={classInput}
       onChange={setClassInput}
