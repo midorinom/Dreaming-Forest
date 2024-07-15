@@ -21,6 +21,7 @@ export type DailiesProps = {
   setEditDailiesClicked: (editDailiesClicked: boolean) => void;
   selectedTab: string;
   setSelectedTab: (selectedTab: string) => void;
+  characterPosition: number;
 };
 
 export type DailiesEditProps = {

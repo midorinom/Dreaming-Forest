@@ -18,6 +18,7 @@ export default function DailiesEdit({
       done: null,
       position: dailies.length,
     };
+
     setDailies([...dailies, newDaily]);
   }
 
