@@ -47,7 +47,7 @@ export default function DailiesEdit({
         </div>
       </div>
       {dailies.length > 0 && (
-        <div className="collapse-content flex max-h-[41vh] flex-col gap-1 overflow-scroll pb-0 pt-0 scrollbar-hide">
+        <div className="collapse-content flex max-h-[41vh] flex-col gap-2 overflow-scroll pb-0 pt-0 scrollbar-hide">
           {dailies.map((daily) => (
             <DailiesEditCard
               key={daily.dailyId}
