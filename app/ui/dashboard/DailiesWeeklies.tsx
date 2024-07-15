@@ -9,6 +9,7 @@ import type {
 import Dailies from "./Dailies";
 import Weeklies from "./Weeklies";
 import DailiesEdit from "./DailiesEdit";
+import WeekliesEdit from "./WeekliesEdit";
 
 export default function DailiesWeeklies({
   region,
@@ -19,6 +20,8 @@ export default function DailiesWeeklies({
   const [weeklies, setWeeklies] = useState<Weekly[]>(activeCharacter.weeklies);
   const [selectedTab, setSelectedTab] = useState<string>("Dailies");
   const [editDailiesClicked, setEditDailiesClicked] = useState<boolean>(false);
+  const [editWeekliesClicked, setEditWeekliesClicked] =
+    useState<boolean>(false);
 
   useEffect(() => {
     if (!isMounted.current) {
@@ -30,12 +33,31 @@ export default function DailiesWeeklies({
     if (localUser) {
       const newUser: User = JSON.parse(localUser);
       newUser.characters[activeCharacter.position].dailies = dailies;
+      newUser.characters[activeCharacter.position].weeklies = weeklies;
       localStorage.setItem("user", JSON.stringify(newUser));
     }
-  }, [dailies]);
+  }, [dailies, weeklies]);
+
+  useEffect(() => {
+    if (editDailiesClicked && selectedTab === "Weeklies") {
+      if (editWeekliesClicked) {
+        setEditWeekliesClicked(false);
+      }
+      setSelectedTab("Dailies");
+    }
+  }, [editDailiesClicked]);
+
+  useEffect(() => {
+    if (editWeekliesClicked && selectedTab === "Dailies") {
+      if (editDailiesClicked) {
+        setEditDailiesClicked(false);
+      }
+      setSelectedTab("Weeklies");
+    }
+  }, [editWeekliesClicked]);
 
   return (
-    <div className="flex flex-col items-end w-full mt-2">
+    <div className="mt-2 flex w-full flex-col items-end">
       {editDailiesClicked ? (
         <DailiesEdit
           dailies={dailies}
@@ -53,11 +75,23 @@ export default function DailiesWeeklies({
           characterPosition={activeCharacter.position}
         />
       )}
-      <Weeklies
-        weeklies={weeklies}
-        selectedTab={selectedTab}
-        setSelectedTab={setSelectedTab}
-      />
+      {editWeekliesClicked ? (
+        <WeekliesEdit
+          weeklies={weeklies}
+          setWeeklies={setWeeklies}
+          setEditWeekliesClicked={setEditWeekliesClicked}
+        />
+      ) : (
+        <Weeklies
+          region={region}
+          weeklies={weeklies}
+          setWeeklies={setWeeklies}
+          setEditWeekliesClicked={setEditWeekliesClicked}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          characterPosition={activeCharacter.position}
+        />
+      )}
     </div>
   );
 }

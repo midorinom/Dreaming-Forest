@@ -49,7 +49,35 @@ export type DailyInputProps = {
 };
 
 export type WeekliesProps = {
+  region: string;
   weeklies: Weekly[];
+  setWeeklies: (weeklies: Weekly[]) => void;
+  setEditWeekliesClicked: (editWeekliesClicked: boolean) => void;
   selectedTab: string;
   setSelectedTab: (selectedTab: string) => void;
+  characterPosition: number;
+};
+
+export type WeekliesEditProps = {
+  weeklies: Weekly[];
+  setWeeklies: (weeklies: Weekly[]) => void;
+  setEditWeekliesClicked: (editWeekliesClicked: boolean) => void;
+};
+
+export type WeekliesCardProps = {
+  weeklyProp: Weekly;
+  weeklies: Weekly[];
+  setWeeklies: (weeklies: Weekly[]) => void;
+  region: string;
+};
+
+export type WeekliesEditCardProps = {
+  weeklyProp: Weekly;
+  weeklies: Weekly[];
+  setWeeklies: (dailies: Weekly[]) => void;
+};
+
+export type WeeklyInputProps = {
+  weekly: Weekly;
+  setWeekly: (weekly: Weekly) => void;
 };
