@@ -18,7 +18,7 @@ export default function Dailies({
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
 
   function handleHeadingClick() {
-    if (selectedTab === "Weeklies") {
+    if (selectedTab === "Weeklies" && dailies.length > 0) {
       setSelectedTab("Dailies");
     }
   }
@@ -51,7 +51,7 @@ export default function Dailies({
     <div
       className={`collapse w-[36vw] ${
         dailies.length > 0 && selectedTab === "Dailies" && "pb-3"
-      } ${selectedTab === "Dailies" && "collapse-open"} gap-2 bg-primary`}
+      } ${(dailies.length === 0 || selectedTab === "Dailies") && "collapse-open"} gap-2 bg-primary`}
     >
       <div
         className={`${(dailies.length === 0 || selectedTab !== "Dailies") && "mb-1"} collapse-title pb-0 pt-3`}
