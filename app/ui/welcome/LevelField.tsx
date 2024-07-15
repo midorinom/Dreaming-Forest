@@ -36,7 +36,7 @@ export default function LevelField({ level, setLevel }: LevelFieldProps) {
         ref={textInputRef}
         id="level_input"
         type="text"
-        className="peer block w-1/3 grow appearance-none rounded-t-lg border-0 border-b-2 border-secondary bg-neutral px-2.5 pb-2.5 pt-5 text-base text-primary-content focus:border-secondary focus:outline-none focus:ring-0 dark:border-secondary dark:bg-neutral dark:text-primary-content dark:focus:border-secondary"
+        className="peer block w-1/3 grow appearance-none rounded-t-lg border-0 border-b-2 border-secondary bg-neutral px-2.5 pb-2.5 pt-5 text-base text-primary-content focus:border-secondary focus:outline-none focus:ring-0"
         value={level ? level : ""}
         placeholder=""
         maxLength={3}
@@ -44,7 +44,7 @@ export default function LevelField({ level, setLevel }: LevelFieldProps) {
       />
       <label
         htmlFor="level_input"
-        className="absolute start-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform text-base text-secondary duration-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-secondary rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 dark:text-secondary peer-focus:dark:text-secondary"
+        className="absolute start-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform text-base text-secondary duration-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-secondary rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
       >
         Lv
       </label>
