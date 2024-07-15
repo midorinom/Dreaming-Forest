@@ -60,7 +60,7 @@ export default function Dailies({
               src="/general/ui_icons/edit_icon.png"
               height={0}
               width={0}
-              alt="Progression Button"
+              alt="Edit Button"
               sizes="100vw"
               className="h-[2.5rem] w-[auto] hover:cursor-pointer"
               onClick={() => setEditDailiesClicked(true)}
