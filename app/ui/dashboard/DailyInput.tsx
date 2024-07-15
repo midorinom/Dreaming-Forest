@@ -4,7 +4,8 @@ import type { DailyInputProps } from "@/app/lib/definitions/dashboard-definition
 
 const DailyInput = ({ daily, setDaily }: DailyInputProps) => {
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-    const allowedCharactersRegex = /[^a-zA-Z0-9\s!@#$%^&*()_+=\[\]{}:,.?~|`-]/g;
+    const allowedCharactersRegex =
+      /[^a-zA-Z0-9\s!@#$%^&*'"()_+=\[\]{}:,.?~|`-]/g;
     const newDescription = e.target.value.replace(allowedCharactersRegex, "");
 
     setDaily({ ...daily, description: newDescription });
