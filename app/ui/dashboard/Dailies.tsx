@@ -47,14 +47,14 @@ export default function Dailies({
         <input type="radio" name="accordion" defaultChecked />
       )}
       <div
-        className={`${
-          dailies.length === 0 && "mb-1"
-        } collapse-title pt-3 text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral`}
+        className={`${dailies.length === 0 && "mb-1"} collapse-title pt-3`}
         onMouseEnter={() => setHeadingHovered(true)}
         onMouseLeave={() => setHeadingHovered(false)}
       >
         <div className="flex gap-2">
-          <span>Dailies</span>
+          <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
+            Dailies
+          </span>
           {headingHovered && (
             <Image
               src="/general/ui_icons/edit_icon.png"
