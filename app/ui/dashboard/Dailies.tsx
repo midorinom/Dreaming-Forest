@@ -62,7 +62,7 @@ export default function Dailies({
               width={0}
               alt="Progression Button"
               sizes="100vw"
-              className="h-[2.5rem] w-[auto]"
+              className="h-[2.5rem] w-[auto] hover:cursor-pointer"
               onClick={() => setEditDailiesClicked(true)}
             />
           )}

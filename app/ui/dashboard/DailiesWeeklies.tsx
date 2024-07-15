@@ -3,6 +3,7 @@ import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-defin
 import { Daily, Weekly } from "@/app/lib/definitions/general-definitions";
 import Dailies from "./Dailies";
 import Weeklies from "./Weeklies";
+import DailiesEdit from "./DailiesEdit";
 
 export default function DailiesWeeklies({
   region,
@@ -19,12 +20,19 @@ export default function DailiesWeeklies({
 
   return (
     <div className="mt-2 flex w-full flex-col items-end">
-      <Dailies
-        region={region}
-        dailies={dailies}
-        weeklies={weeklies}
-        setEditDailiesClicked={setEditDailiesClicked}
-      />
+      {editDailiesClicked ? (
+        <DailiesEdit
+          dailies={dailies}
+          setEditDailiesClicked={setEditDailiesClicked}
+        />
+      ) : (
+        <Dailies
+          region={region}
+          dailies={dailies}
+          weeklies={weeklies}
+          setEditDailiesClicked={setEditDailiesClicked}
+        />
+      )}
       <Weeklies dailies={dailies} weeklies={weeklies} />
     </div>
   );

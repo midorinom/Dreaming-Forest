@@ -16,6 +16,11 @@ export type DailiesProps = {
   setEditDailiesClicked: (editDailiesClicked: boolean) => void;
 };
 
+export type DailiesEditProps = {
+  dailies: Daily[];
+  setEditDailiesClicked: (editDailiesClicked: boolean) => void;
+};
+
 export type WeekliesProps = {
   dailies: Daily[];
   weeklies: Weekly[];
