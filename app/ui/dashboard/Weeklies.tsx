@@ -7,7 +7,7 @@ export default function Weeklies({
   setSelectedTab,
 }: WeekliesProps) {
   function handleHeadingClick() {
-    if (selectedTab === "Dailies") {
+    if (selectedTab === "Dailies" && weeklies.length > 0) {
       setSelectedTab("Weeklies");
     }
   }
@@ -16,7 +16,7 @@ export default function Weeklies({
     <div
       className={`collapse w-[36vw] ${
         weeklies.length > 0 && selectedTab === "Weeklies" && "pb-3"
-      } ${selectedTab === "Weeklies" && "collapse-open"} gap-2 bg-secondary`}
+      } ${(weeklies.length === 0 || selectedTab === "Weeklies") && "collapse-open"} gap-2 bg-secondary`}
     >
       <div
         className={`${(weeklies.length === 0 || selectedTab !== "Weeklies") && "mb-1"} collapse-title pb-0 pt-3`}
