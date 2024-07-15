@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
@@ -14,7 +15,7 @@ export default function DailiesEdit({
   function addDaily() {
     const newDaily: Daily = {
       dailyId: uuidv4() as UUID,
-      description: "Test",
+      description: `Daily No.${dailies.length}`,
       done: null,
       position: dailies.length,
     };
@@ -23,7 +24,7 @@ export default function DailiesEdit({
 
   return (
     <div className="collapse collapse-open w-[36vw] bg-primary">
-      <div className="collapse-title pl-2 pr-5 pt-3">
+      <div className="pt-3 pl-2 pr-5 collapse-title">
         <div className="flex content-center justify-between">
           <Image
             src="/general/ui_icons/back_icon.png"
@@ -38,7 +39,7 @@ export default function DailiesEdit({
             Dailies
           </span>
           <button
-            className="btn btn-neutral text-3xl text-info"
+            className="text-3xl btn btn-neutral text-info"
             onClick={addDaily}
           >
             +
@@ -48,7 +49,11 @@ export default function DailiesEdit({
       {dailies.length > 0 && (
         <div className="collapse-content max-h-[41vh]">
           {dailies.map((daily) => (
-            <DailiesEditCard daily={daily} setDailies={setDailies} />
+            <DailiesEditCard
+              daily={daily}
+              dailies={dailies}
+              setDailies={setDailies}
+            />
           ))}
         </div>
       )}

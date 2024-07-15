@@ -1,3 +1,4 @@
+"use client"
 import type { WeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 
 export default function Weeklies({ dailies, weeklies }: WeekliesProps) {

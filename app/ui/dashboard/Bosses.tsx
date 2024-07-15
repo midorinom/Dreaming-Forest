@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect } from "react";
 import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
 import { Boss } from "@/app/lib/definitions/general-definitions";
@@ -57,8 +58,8 @@ export default function Bosses({ region, activeCharacter }: BossesProps) {
 
   return (
     <div className="w-full">
-      <div className="mt-2 flex w-full flex-col items-center">
-        <div className="collapse collapse-open w-4/5 bg-base-100">
+      <div className="flex flex-col items-center w-full mt-2">
+        <div className="w-4/5 collapse collapse-open bg-base-100">
           <div
             className={`${
               bosses.length === 0 && "mb-1"
@@ -67,7 +68,7 @@ export default function Bosses({ region, activeCharacter }: BossesProps) {
             Bosses
           </div>
           {bossesTimer && bosses.length > 0 && (
-            <div className="absolute right-2 top-1 text-2xl text-info">
+            <div className="absolute text-2xl right-2 top-1 text-info">
               {bossesTimer}
             </div>
           )}

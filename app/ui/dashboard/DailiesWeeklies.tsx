@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Daily, Weekly } from "@/app/lib/definitions/general-definitions";
