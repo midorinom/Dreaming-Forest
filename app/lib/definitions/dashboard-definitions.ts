@@ -9,6 +9,12 @@ export type DailiesWeekliesProps = {
   activeCharacter: Character;
 };
 
+export type DailiesProps = {
+  region: string;
+  dailies: Daily[];
+  weeklies: Weekly[];
+};
+
 export type BossesProps = {
   region: string;
   activeCharacter: Character;
