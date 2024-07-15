@@ -11,9 +11,17 @@ export default function Dailies({
   dailies,
   setDailies,
   setEditDailiesClicked,
+  selectedTab,
+  setSelectedTab,
 }: DailiesProps) {
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
+
+  function handleHeadingClick() {
+    if (selectedTab === "Weeklies") {
+      setSelectedTab("Dailies");
+    }
+  }
 
   useEffect(() => {
     dayjs.extend(utc);
@@ -42,19 +50,20 @@ export default function Dailies({
   return (
     <div
       className={`collapse w-[36vw] ${
-        dailies.length > 0 && "pb-3"
-      } collapse-open gap-2 bg-primary`}
+        dailies.length > 0 && selectedTab === "Dailies" && "pb-3"
+      } ${selectedTab === "Dailies" && "collapse-open"} gap-2 bg-primary`}
     >
       <div
-        className={`${dailies.length === 0 && "mb-1"} collapse-title pb-0 pt-3`}
+        className={`${(dailies.length === 0 || selectedTab !== "Dailies") && "mb-1"} collapse-title pb-0 pt-3`}
         onMouseEnter={() => setHeadingHovered(true)}
         onMouseLeave={() => setHeadingHovered(false)}
+        onClick={handleHeadingClick}
       >
         <div className="flex gap-2">
           <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
             Dailies
           </span>
-          {headingHovered && (
+          {headingHovered && selectedTab === "Dailies" && (
             <Image
               src="/general/ui_icons/edit_icon.png"
               height={0}
@@ -72,7 +81,7 @@ export default function Dailies({
           {dailiesTimer}
         </div>
       )}
-      {dailies.length > 0 && (
+      {dailies.length > 0 && selectedTab === "Dailies" && (
         <div className="collapse-content max-h-[41vh] flex-col gap-1 overflow-scroll pb-0 pt-0 scrollbar-hide">
           {dailies.map((daily) => (
             <DailiesCard

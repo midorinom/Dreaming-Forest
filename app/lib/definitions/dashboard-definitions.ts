@@ -19,6 +19,8 @@ export type DailiesProps = {
   dailies: Daily[];
   setDailies: (dailies: Daily[]) => void;
   setEditDailiesClicked: (editDailiesClicked: boolean) => void;
+  selectedTab: string;
+  setSelectedTab: (selectedTab: string) => void;
 };
 
 export type DailiesEditProps = {
@@ -46,4 +48,6 @@ export type DailyInputProps = {
 
 export type WeekliesProps = {
   weeklies: Weekly[];
+  selectedTab: string;
+  setSelectedTab: (selectedTab: string) => void;
 };

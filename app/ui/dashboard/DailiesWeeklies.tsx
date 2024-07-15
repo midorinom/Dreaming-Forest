@@ -12,6 +12,7 @@ export default function DailiesWeeklies({
 }: DailiesWeekliesProps) {
   const [dailies, setDailies] = useState<Daily[]>([]);
   const [weeklies, setWeeklies] = useState<Weekly[]>([]);
+  const [selectedTab, setSelectedTab] = useState<string>("Dailies");
   const [editDailiesClicked, setEditDailiesClicked] = useState<boolean>(false);
 
   useEffect(() => {
@@ -33,9 +34,15 @@ export default function DailiesWeeklies({
           dailies={dailies}
           setDailies={setDailies}
           setEditDailiesClicked={setEditDailiesClicked}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
         />
       )}
-      <Weeklies weeklies={weeklies} />
+      <Weeklies
+        weeklies={weeklies}
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+      />
     </div>
   );
 }
