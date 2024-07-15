@@ -34,6 +34,7 @@ export default function Welcome({ classes }: WelcomeProps) {
     dailies: [],
     weeklies: [],
     bosses: [],
+    position: 0,
   } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);

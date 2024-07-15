@@ -53,6 +53,7 @@ export type Character = {
   dailies: Daily[];
   weeklies: Weekly[];
   bosses: Boss[];
+  position: number;
 };
 
 export type User = {
