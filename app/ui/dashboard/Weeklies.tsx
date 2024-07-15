@@ -1,14 +1,9 @@
-"use client"
+"use client";
 import type { WeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 
 export default function Weeklies({ dailies, weeklies }: WeekliesProps) {
   return (
-    <div
-      className={`collapse w-[36vw] ${
-        (weeklies.length === 0 || dailies.length === 0) && "collapse-open"
-      } bg-secondary`}
-    >
-      {weeklies.length > 0 && <input type="radio" name="accordion" />}
+    <div className={`collapse collapse-open w-[36vw] bg-secondary`}>
       <div
         className={`${
           weeklies.length === 0 && "mb-1"
