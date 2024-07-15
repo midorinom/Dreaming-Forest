@@ -37,14 +37,14 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
         width={0}
         alt="Naked Character"
         sizes="100vw"
-        className="w-1/3 row-span-2 max-h-40 justify-self-center"
+        className="row-span-2 max-h-40 w-1/3 justify-self-center"
       />
-      <div className="relative w-4/5 col-start-1 row-start-3 justify-self-center">
+      <div className="relative col-start-1 row-start-3 w-4/5 justify-self-center">
         <input
           id="image_upload"
           accept="image/*"
           type="file"
-          className={`w-full file-input file-input-bordered ${
+          className={`file-input file-input-bordered w-full ${
             error ? "file-input-error" : "file-input-secondary"
           }`}
           onChange={handleFileChange}

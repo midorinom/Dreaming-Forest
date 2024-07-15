@@ -24,7 +24,7 @@ export default function MainAppWrapper({ page }: MainAppWrapperProps) {
     <DreamySkeleton />
   ) : (
     <div
-      className="grid grid-rows-[6vh_94vh] grid-cols-[4vw_1fr] bg-lucid_background bg-cover bg-center w-screen h-screen"
+      className="grid h-screen w-screen grid-cols-[4vw_1fr] grid-rows-[6vh_94vh] bg-lucid_background bg-cover bg-center"
       data-theme="dreamy"
     >
       <TopNav />

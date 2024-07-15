@@ -24,11 +24,11 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
       <input
         type="text"
         id="ign_input"
-        className={`grow block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-base text-primary-content bg-neutral dark:bg-neutral border-0 border-b-2 appearance-none dark:text-primary-content ${
+        className={`block w-full grow appearance-none rounded-t-lg border-0 border-b-2 bg-neutral px-2.5 pb-2.5 pt-5 text-base text-primary-content ${
           isInvalid
-            ? "border-error focus:border-error dark:border-error dark:focus:border-error"
-            : "border-secondary focus:border-secondary dark:border-secondary dark:focus:border-secondary"
-        }  focus:outline-none focus:ring-0  peer`}
+            ? "border-error focus:border-error"
+            : "border-secondary focus:border-secondary"
+        } peer focus:outline-none focus:ring-0`}
         placeholder=""
         maxLength={12}
         onChange={handleChange}
@@ -37,9 +37,9 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
         htmlFor="ign_input"
         className={`absolute text-base ${
           isInvalid
-            ? "text-error dark:text-error peer-focus:text-error peer-focus:dark:text-error"
-            : "text-secondary dark:text-secondary peer-focus:text-secondary peer-focus:dark:text-secondary"
-        } duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto`}
+            ? "text-error peer-focus:text-error"
+            : "text-secondary peer-focus:text-secondary"
+        } start-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4`}
       >
         IGN
       </label>

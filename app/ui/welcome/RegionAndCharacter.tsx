@@ -49,8 +49,8 @@ export default function RegionAndCharacter({
   }, [region, character.ign, character.level, character.maplestoryClass]);
 
   return (
-    <div className="flex justify-center w-1/2">
-      <div className="flex flex-col w-fit text-primary-content">
+    <div className="flex w-1/2 justify-center">
+      <div className="flex w-fit flex-col text-primary-content">
         <div className="collapse bg-secondary">
           <input
             type="radio"
@@ -75,7 +75,7 @@ export default function RegionAndCharacter({
           } collapse bg-primary`}
         >
           <input type="radio" name="accordion" onChange={handleRadioChange} />
-          <div className="text-xl font-medium collapse-title underline-offset-8 underline-elodin-neutral">
+          <div className="collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral">
             Add Character
           </div>
           <div className="collapse-content">
@@ -88,14 +88,14 @@ export default function RegionAndCharacter({
         </div>
         <button
           disabled={!readyToProceed}
-          className="self-end mt-4 text-xl font-medium rounded-full btn btn-lg glass btn-accent text-primary-content"
+          className="btn glass btn-accent btn-lg mt-4 self-end rounded-full text-xl font-medium text-primary-content"
           onClick={() => {
             setProceedClicked(true);
             setDialogueIndex("create_account");
           }}
         >
           <img
-            src="/general/butterfly_logo.png"
+            src="/general/ui_icons/butterfly_logo.png"
             alt="My Icon"
             className="h-7 w-7"
           />

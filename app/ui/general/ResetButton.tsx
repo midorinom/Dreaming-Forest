@@ -30,7 +30,7 @@ export default function ResetButton({ user }: ResetButtonProps) {
     }
 
     const confirmDelete = window.confirm(
-      "Are you sure you want to wipe all your data on this browser?"
+      "Are you sure you want to wipe all your data on this browser?",
     );
     if (confirmDelete) {
       deleteCharacters();
@@ -39,7 +39,7 @@ export default function ResetButton({ user }: ResetButtonProps) {
 
   return (
     <button
-      className="absolute text-xl font-medium rounded-full right-4 top-4 btn btn-accent text-primary-content"
+      className="btn btn-accent absolute right-4 top-4 rounded-full text-xl font-medium text-primary-content"
       onClick={handleClick}
     >
       Clear Data

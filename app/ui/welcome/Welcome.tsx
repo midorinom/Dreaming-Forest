@@ -34,6 +34,7 @@ export default function Welcome({ classes }: WelcomeProps) {
     dailies: [],
     weeklies: [],
     bosses: [],
+    position: 0,
   } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
@@ -60,7 +61,7 @@ export default function Welcome({ classes }: WelcomeProps) {
         {
           method: "PUT",
           body: image,
-        }
+        },
       );
 
       if (!response.ok) {
@@ -98,26 +99,26 @@ export default function Welcome({ classes }: WelcomeProps) {
         <DreamySkeleton />
       ) : (
         <main
-          className="flex flex-col items-center h-screen gap-4 p-6 bg-center bg-cover bg-elodin_background"
+          className="flex h-screen flex-col items-center gap-4 bg-elodin_background bg-cover bg-center p-6"
           data-theme="elodin"
         >
-          <div className="flex items-center w-1/2">
+          <div className="flex w-1/2 items-center">
             <Image
               src={smallSpiritImage[dialogueIndex]}
               height={0}
               width={0}
               alt="Small Spirit"
               sizes="100vw"
-              className="w-auto h-44"
+              className="h-44 w-auto"
             />
-            <div className="min-w-64 chat chat-start">
+            <div className="chat chat-start min-w-64">
               <div className="chat-bubble chat-bubble-accent">
                 {smallSpiritDialogue[dialogueIndex]}
               </div>
             </div>
           </div>
           {isUploadingToDatabase ? (
-            <span className="w-auto loading loading-spinner text-accent h-1/5 mt-36"></span>
+            <span className="loading loading-spinner mt-36 h-1/5 w-auto text-accent"></span>
           ) : proceedClicked ? (
             <CreateAccount setDone={setDone} />
           ) : (
