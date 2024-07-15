@@ -34,6 +34,7 @@ export type DailiesCardProps = {
   dailyProp: Daily;
   dailies: Daily[];
   setDailies: (dailies: Daily[]) => void;
+  region: string;
 };
 
 export type DailiesEditCardProps = {

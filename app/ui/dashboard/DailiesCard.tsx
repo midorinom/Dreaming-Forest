@@ -8,13 +8,37 @@ export default function DailiesCard({
   dailyProp,
   dailies,
   setDailies,
+  region,
 }: DailiesCardProps) {
   const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
-    dayjs.extend(utc);
     if (dailyProp.done) {
-      setDone(true);
+      dayjs.extend(utc);
+      let endOfDay = undefined;
+
+      switch (region) {
+        case "MSEA":
+          endOfDay = dayjs().utcOffset(8).endOf("day");
+          break;
+
+        case "GMS":
+          endOfDay = dayjs().utc().endOf("day");
+          break;
+
+        default:
+          console.error("No region");
+          return;
+      }
+
+      if (endOfDay.diff(dayjs(dailyProp.done), "minute") < 1440) {
+        setDone(true);
+      } else {
+        setDone(false);
+        const newDailies = [...dailies];
+        newDailies[dailyProp.position].done = null;
+        setDailies(newDailies);
+      }
     }
   }, []);
 

@@ -89,6 +89,7 @@ export default function Dailies({
               dailyProp={daily}
               dailies={dailies}
               setDailies={setDailies}
+              region={region}
             />
           ))}
         </div>
