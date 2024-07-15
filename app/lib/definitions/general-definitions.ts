@@ -8,11 +8,11 @@ export type AutoCompleteProps = {
   input_id: string;
   dropdown_className: {};
   input_className: string;
-  label_className: string;
+  label_className?: string;
   dropdown_content_className: string;
   ul_className: string;
   li_className: string;
-  label: string;
+  label?: string;
 };
 
 export type Classes = {

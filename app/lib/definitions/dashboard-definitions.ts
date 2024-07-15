@@ -28,9 +28,14 @@ export type DailiesEditProps = {
 };
 
 export type DailiesEditCardProps = {
-  daily: Daily;
+  dailyProp: Daily;
   dailies: Daily[];
   setDailies: (dailies: Daily[]) => void;
+};
+
+export type DailyInputProps = {
+  daily: Daily;
+  setDaily: (daily: Daily) => void;
 };
 
 export type WeekliesProps = {

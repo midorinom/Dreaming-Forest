@@ -1,5 +1,4 @@
-"use client"
-import { useState } from "react";
+"use client";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { UUID } from "crypto";
@@ -23,8 +22,8 @@ export default function DailiesEdit({
   }
 
   return (
-    <div className="collapse collapse-open w-[36vw] bg-primary">
-      <div className="pt-3 pl-2 pr-5 collapse-title">
+    <div className="collapse collapse-open flex w-[36vw] flex-col gap-2 bg-primary pb-3">
+      <div className="collapse-title pb-0 pl-2 pr-5 pt-3">
         <div className="flex content-center justify-between">
           <Image
             src="/general/ui_icons/back_icon.png"
@@ -39,7 +38,7 @@ export default function DailiesEdit({
             Dailies
           </span>
           <button
-            className="text-3xl btn btn-neutral text-info"
+            className="btn btn-neutral text-3xl text-info"
             onClick={addDaily}
           >
             +
@@ -47,10 +46,11 @@ export default function DailiesEdit({
         </div>
       </div>
       {dailies.length > 0 && (
-        <div className="collapse-content max-h-[41vh]">
+        <div className="collapse-content flex max-h-[41vh] flex-col gap-1 overflow-scroll pb-0 pt-0 scrollbar-hide">
           {dailies.map((daily) => (
             <DailiesEditCard
-              daily={daily}
+              key={daily.dailyId}
+              dailyProp={daily}
               dailies={dailies}
               setDailies={setDailies}
             />
