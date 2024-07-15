@@ -19,7 +19,7 @@ export default function Dashboard() {
       setUser(JSON.parse(localUser));
       setActiveCharacter(JSON.parse(localUser).characters[0]);
     }
-  }, [activeCharacter]);
+  }, []);
 
   return (
     <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
