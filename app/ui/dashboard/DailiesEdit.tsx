@@ -14,7 +14,7 @@ export default function DailiesEdit({
   function addDaily() {
     const newDaily: Daily = {
       dailyId: uuidv4() as UUID,
-      description: `Daily No.${dailies.length}`,
+      description: "",
       done: null,
       position: dailies.length,
     };
