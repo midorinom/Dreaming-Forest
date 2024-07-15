@@ -20,7 +20,7 @@ export default function SideNav() {
           ></div>
           <Link href="/characters">
             <Image
-              src="/general/characters_icon.png"
+              src="/general/ui_icons/characters_icon.png"
               id="characters"
               height={0}
               width={0}
@@ -33,7 +33,7 @@ export default function SideNav() {
           </Link>
           <Link href="/dailies-weeklies">
             <Image
-              src="/general/dailies_icon.png"
+              src="/general/ui_icons/dailies_icon.png"
               height={0}
               width={0}
               alt="Dailies Button"
@@ -45,7 +45,7 @@ export default function SideNav() {
           </Link>
           <Link href="/bosses">
             <Image
-              src="/general/bosses_icon.png"
+              src="/general/ui_icons/bosses_icon.png"
               height={0}
               width={0}
               alt="Bosses Button"
@@ -57,7 +57,7 @@ export default function SideNav() {
           </Link>
           <Link href="/progression">
             <Image
-              src="/general/progression_icon.png"
+              src="/general/ui_icons/progression_icon.png"
               height={0}
               width={0}
               alt="Progression Button"

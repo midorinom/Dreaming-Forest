@@ -22,7 +22,7 @@ export default function TopNav() {
         <div className="relative flex items-center gap-2.5 left-3">
           <Link href="/">
             <Image
-              src="/general/butterfly_logo.png"
+              src="/general/ui_icons/butterfly_logo.png"
               height={0}
               width={0}
               alt="Butterfly Logo"
@@ -43,7 +43,7 @@ export default function TopNav() {
         <div className="relative right-4">
           <Link href="/settings">
             <Image
-              src="/general/settings_icon.png"
+              src="/general/ui_icons/settings_icon.png"
               height={0}
               width={0}
               alt="Settings Button"
