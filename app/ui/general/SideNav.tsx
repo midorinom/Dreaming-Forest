@@ -12,9 +12,9 @@ export default function SideNav() {
   return (
     showNav && (
       <div className="col-span-1 col-start-1 row-span-1 row-start-2">
-        <div className="relative flex flex-col w-full h-[31vh] items-center justify-around">
+        <div className="relative flex h-[31vh] w-full flex-col items-center justify-around">
           <div
-            className={`absolute w-full h-full bg-accent ${
+            className={`absolute h-full w-full bg-accent ${
               buttonHovered ? "opacity-100" : "opacity-[.60]"
             }`}
           ></div>
@@ -26,7 +26,7 @@ export default function SideNav() {
               width={0}
               alt="Characters Button"
               sizes="100vw"
-              className="relative w-[3vw] h-[5vh] hover:cursor-pointer"
+              className="relative h-[5vh] w-[3vw] hover:cursor-pointer"
               onMouseEnter={() => setButtonHovered("characters")}
               onMouseLeave={() => setButtonHovered("")}
             />
@@ -38,7 +38,7 @@ export default function SideNav() {
               width={0}
               alt="Dailies Button"
               sizes="100vw"
-              className="relative w-[3vw] h-[5vh] hover:cursor-pointer"
+              className="relative h-[5vh] w-[3vw] hover:cursor-pointer"
               onMouseEnter={() => setButtonHovered("dailiesWeeklies")}
               onMouseLeave={() => setButtonHovered("")}
             />
@@ -50,7 +50,7 @@ export default function SideNav() {
               width={0}
               alt="Bosses Button"
               sizes="100vw"
-              className="relative w-[3vw] h-[5vh] hover:cursor-pointer"
+              className="relative h-[5vh] w-[3vw] hover:cursor-pointer"
               onMouseEnter={() => setButtonHovered("bosses")}
               onMouseLeave={() => setButtonHovered("")}
             />
@@ -62,28 +62,28 @@ export default function SideNav() {
               width={0}
               alt="Progression Button"
               sizes="100vw"
-              className="relative w-[3vw] h-[5vh] hover:cursor-pointer"
+              className="relative h-[5vh] w-[3vw] hover:cursor-pointer"
               onMouseEnter={() => setButtonHovered("progression")}
               onMouseLeave={() => setButtonHovered("")}
             />
           </Link>
           {buttonHovered === "characters" && (
-            <div className="absolute top-[1.5vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+            <div className="w-fit-content absolute left-[4vw] top-[1.5vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Characters
             </div>
           )}
           {buttonHovered === "dailiesWeeklies" && (
-            <div className="absolute top-[9.3vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+            <div className="w-fit-content absolute left-[4vw] top-[9.3vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Dailies/Weeklies
             </div>
           )}
           {buttonHovered === "bosses" && (
-            <div className="absolute top-[17.1vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+            <div className="w-fit-content absolute left-[4vw] top-[17.1vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Bosses
             </div>
           )}
           {buttonHovered === "progression" && (
-            <div className="absolute top-[24.7vh] z-10 left-[4vw] w-fit-content h-[5vh] bg-accent text-2xl text-info font-medium flex items-center p-2">
+            <div className="w-fit-content absolute left-[4vw] top-[24.7vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Progression
             </div>
           )}

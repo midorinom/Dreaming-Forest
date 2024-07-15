@@ -17,7 +17,7 @@ export default function DailiesWeeklies({
   }, []);
 
   return (
-    <div className="flex flex-col items-end w-full mt-2">
+    <div className="mt-2 flex w-full flex-col items-end">
       <Dailies region={region} dailies={dailies} weeklies={weeklies} />
       <Weeklies dailies={dailies} weeklies={weeklies} />
     </div>

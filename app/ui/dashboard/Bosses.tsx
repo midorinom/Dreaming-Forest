@@ -31,7 +31,7 @@ export default function Bosses({ region, activeCharacter }: BossesProps) {
         nextThursday = nextThursday.startOf("day");
 
         setBossesTimer(
-          `${nextThursday.diff(now, "day")}d${endOfDay.diff(now, "hour")}h`
+          `${nextThursday.diff(now, "day")}d${endOfDay.diff(now, "hour")}h`,
         );
         break;
 
@@ -45,7 +45,7 @@ export default function Bosses({ region, activeCharacter }: BossesProps) {
         nextThursday = nextThursday.startOf("day");
 
         setBossesTimer(
-          `${nextThursday.diff(now, "day")}d${endOfDay.diff(now, "hour")}h`
+          `${nextThursday.diff(now, "day")}d${endOfDay.diff(now, "hour")}h`,
         );
         break;
 
@@ -57,17 +57,17 @@ export default function Bosses({ region, activeCharacter }: BossesProps) {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col items-center w-full mt-2">
-        <div className="w-4/5 bg-base-100 collapse collapse-open">
+      <div className="mt-2 flex w-full flex-col items-center">
+        <div className="collapse collapse-open w-4/5 bg-base-100">
           <div
             className={`${
               bosses.length === 0 && "mb-1"
-            } pt-3 text-4xl font-medium collapse-title text-info underline-dreamy-neutral underline-offset-8`}
+            } collapse-title pt-3 text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral`}
           >
             Bosses
           </div>
           {bossesTimer && bosses.length > 0 && (
-            <div className="absolute text-2xl top-1 right-2 text-info">
+            <div className="absolute right-2 top-1 text-2xl text-info">
               {bossesTimer}
             </div>
           )}

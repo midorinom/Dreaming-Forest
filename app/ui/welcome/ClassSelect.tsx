@@ -49,7 +49,7 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
     }
 
     const newItems = classes.filter((p) =>
-      p.toLowerCase().startsWith(classInput.toLowerCase())
+      p.toLowerCase().startsWith(classInput.toLowerCase()),
     );
     setItems(newItems);
 

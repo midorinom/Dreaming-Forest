@@ -14,17 +14,17 @@ export default function ActiveCharacter({
   }, []);
 
   return (
-    <div className="flex justify-center w-full h-full">
-      <div className={"w-full h-full flex items-center gap-4 ml-8"}>
+    <div className="flex h-full w-full justify-center">
+      <div className={"ml-8 flex h-full w-full items-center gap-4"}>
         {!character.ign ? (
-          <span className="w-auto mx-auto loading loading-spinner text-accent h-1/2"></span>
+          <span className="loading loading-spinner mx-auto h-1/2 w-auto text-accent"></span>
         ) : (
           <>
             <div
               style={{
                 position: "relative",
               }}
-              className="h-4/5 w-[28%] ml-8"
+              className="ml-8 h-4/5 w-[28%]"
             >
               <Image
                 src={
@@ -34,11 +34,11 @@ export default function ActiveCharacter({
                 width={0}
                 alt="Active Character"
                 sizes="100vw"
-                className="absolute w-full h-full"
+                className="absolute h-full w-full"
               />
             </div>
-            <div className="flex flex-col justify-center w-3/5">
-              <div className="text-[2.75rem] text-neutral font-medium underline-dreamy-accent underline-offset-[8px]">
+            <div className="flex w-3/5 flex-col justify-center">
+              <div className="text-[2.75rem] font-medium text-neutral underline-offset-[8px] underline-dreamy-accent">
                 {character.ign}
               </div>
               <div className="flex gap-2 text-3xl text-neutral">

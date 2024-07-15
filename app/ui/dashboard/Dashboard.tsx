@@ -17,7 +17,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <main className="grid grid-rows-[27vh_1fr] grid-cols-[40vw_1fr]">
+    <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
       {user && (
         <>
           <ActiveCharacter activeCharacter={user.characters[0]} />

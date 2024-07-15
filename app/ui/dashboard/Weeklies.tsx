@@ -3,7 +3,7 @@ import type { WeekliesProps } from "@/app/lib/definitions/dashboard-definitions"
 export default function Weeklies({ dailies, weeklies }: WeekliesProps) {
   return (
     <div
-      className={`w-[36vw] collapse ${
+      className={`collapse w-[36vw] ${
         (weeklies.length === 0 || dailies.length === 0) && "collapse-open"
       } bg-secondary`}
     >
@@ -11,7 +11,7 @@ export default function Weeklies({ dailies, weeklies }: WeekliesProps) {
       <div
         className={`${
           weeklies.length === 0 && "mb-1"
-        } pt-3 text-4xl font-medium collapse-title text-info underline-dreamy-neutral underline-offset-8`}
+        } collapse-title pt-3 text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral`}
       >
         Weeklies
       </div>

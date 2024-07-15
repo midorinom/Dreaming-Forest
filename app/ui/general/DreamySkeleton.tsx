@@ -1,18 +1,18 @@
 export default function DreamySkeleton() {
   return (
     <div
-      className="flex items-center justify-center w-full h-screen bg-base-100"
+      className="flex h-screen w-full items-center justify-center bg-base-100"
       data-theme="dreamy"
     >
-      <div className="flex flex-col w-4/5 gap-4 h-4/5">
+      <div className="flex h-4/5 w-4/5 flex-col gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-32 h-32 rounded-full skeleton shrink-0"></div>
+          <div className="skeleton h-32 w-32 shrink-0 rounded-full"></div>
           <div className="flex flex-col gap-4">
-            <div className="h-4 skeleton w-80"></div>
-            <div className="h-4 skeleton w-96"></div>
+            <div className="skeleton h-4 w-80"></div>
+            <div className="skeleton h-4 w-96"></div>
           </div>
         </div>
-        <div className="w-full h-full skeleton"></div>
+        <div className="skeleton h-full w-full"></div>
       </div>
     </div>
   );

@@ -17,9 +17,9 @@ export default function TopNav() {
 
   return (
     showNav && (
-      <div className="relative flex items-center justify-between col-span-2 col-start-1 row-span-1 row-start-1 ">
-        <div className="absolute w-full h-full bg-info opacity-[.70]"></div>
-        <div className="relative flex items-center gap-2.5 left-3">
+      <div className="relative col-span-2 col-start-1 row-span-1 row-start-1 flex items-center justify-between">
+        <div className="absolute h-full w-full bg-info opacity-[.70]"></div>
+        <div className="relative left-3 flex items-center gap-2.5">
           <Link href="/">
             <Image
               src="/general/ui_icons/butterfly_logo.png"
@@ -27,13 +27,13 @@ export default function TopNav() {
               width={0}
               alt="Butterfly Logo"
               sizes="100vw"
-              className="w-[3.5vw] h-[4vh] mb-1 hover:cursor-pointer"
+              className="mb-1 h-[4vh] w-[3.5vw] hover:cursor-pointer"
               onClick={() => handleClick("/")}
             />
           </Link>
           <Link href="/">
             <div
-              className={`${rougeScript.className} text-primary text-3xl mt-0.5 hover:cursor-pointer`}
+              className={`${rougeScript.className} mt-0.5 text-3xl text-primary hover:cursor-pointer`}
               onClick={() => handleClick("/")}
             >
               Dreaming Forest
@@ -48,7 +48,7 @@ export default function TopNav() {
               width={0}
               alt="Settings Button"
               sizes="100vw"
-              className="w-[3vw] h-[4vh] hover:cursor-pointer"
+              className="h-[4vh] w-[3vw] hover:cursor-pointer"
               onClick={() => handleClick("/settings")}
             />
           </Link>

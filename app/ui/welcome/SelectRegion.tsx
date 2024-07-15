@@ -27,7 +27,7 @@ export default function SelectRegion({ region, setRegion }: SelectRegionProps) {
   };
 
   return (
-    <div className="flex items-center justify-start gap-5 min-h-14">
+    <div className="flex min-h-14 items-center justify-start gap-5">
       <button
         className={
           region === "MSEA" ? "btn btn-primary" : "btn btn-outline btn-neutral"
