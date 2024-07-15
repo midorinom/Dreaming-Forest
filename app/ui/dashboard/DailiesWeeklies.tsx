@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
-import { Daily, Weekly } from "@/app/lib/definitions/general-definitions";
+import type { Daily, Weekly } from "@/app/lib/definitions/general-definitions";
 import Dailies from "./Dailies";
 import Weeklies from "./Weeklies";
 import DailiesEdit from "./DailiesEdit";
@@ -23,6 +23,7 @@ export default function DailiesWeeklies({
       {editDailiesClicked ? (
         <DailiesEdit
           dailies={dailies}
+          setDailies={setDailies}
           setEditDailiesClicked={setEditDailiesClicked}
         />
       ) : (
