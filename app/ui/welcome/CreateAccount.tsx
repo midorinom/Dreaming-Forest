@@ -55,7 +55,7 @@ export default function CreateAccount({ setDone }: CreateAccountProps) {
           onClick={() => setDone(true)}
         >
           <img
-            src="/general/butterfly_logo.png"
+            src="/general/ui_icons/butterfly_logo.png"
             alt="My Icon"
             className="h-7 w-7"
           />
