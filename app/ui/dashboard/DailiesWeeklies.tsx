@@ -56,6 +56,16 @@ export default function DailiesWeeklies({
     }
   }, [editWeekliesClicked]);
 
+  useEffect(() => {
+    if (editDailiesClicked && selectedTab === "Weeklies") {
+      setEditDailiesClicked(false);
+    }
+
+    if (editWeekliesClicked && selectedTab === "Dailies") {
+      setEditWeekliesClicked(false);
+    }
+  }, [selectedTab]);
+
   return (
     <div className="mt-2 flex w-full flex-col items-end">
       {editDailiesClicked ? (
