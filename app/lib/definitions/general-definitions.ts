@@ -44,6 +44,14 @@ export type Boss = {
   dashboardImage: string;
 };
 
+export type BossInfo = {
+  bosses_position: number;
+  bosses_image: string;
+  dashboard_position: number;
+  dashboard_image: string;
+  meso: number;
+};
+
 export type Character = {
   characterId: UUID;
   image: string;
@@ -68,12 +76,4 @@ export type MainAppWrapperProps = {
 
 export type ResetButtonProps = {
   user: User;
-};
-
-export type BossInfo = {
-  bosses_position: number;
-  bosses_image: string;
-  dashboard_position: number;
-  dashboard_image: string;
-  meso: number;
 };
