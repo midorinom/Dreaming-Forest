@@ -80,6 +80,7 @@ export default function Bosses({
   useEffect(() => {
     if (!isMounted.current) {
       isMounted.current = true;
+      return;
     }
 
     const localUser = localStorage.getItem("user");
