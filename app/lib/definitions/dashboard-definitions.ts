@@ -9,11 +9,6 @@ export type DailiesWeekliesProps = {
   activeCharacter: Character;
 };
 
-export type BossesProps = {
-  region: string;
-  activeCharacter: Character;
-};
-
 export type DailiesProps = {
   region: string;
   dailies: Daily[];
@@ -88,4 +83,13 @@ export type WeeklyTimerSelectProps = {
   weekly: Weekly;
   setWeekly: (weekly: Weekly) => void;
   resetDates: Date[];
+};
+
+export type BossesProps = {
+  region: string;
+  activeCharacter: Character;
+};
+
+export type BossesEditProps = {
+  setEditBossesClicked: (editBossesClicked: boolean) => void;
 };
