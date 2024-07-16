@@ -1,12 +1,17 @@
 import { drizzle } from "drizzle-orm/vercel-postgres";
 import { migrate } from "drizzle-orm/vercel-postgres/migrator";
+import { loadEnvConfig } from "@next/env";
 import { sql } from "@vercel/postgres";
+import * as schema from "@/drizzle/schema";
 import { Regions, Classes, BossesInfo } from "@/drizzle/schema";
 import { regions } from "./seed-data/regions";
 import { classes } from "./seed-data/classes";
 import { bossesInfo } from "./seed-data/bosses_info";
 
-const db = drizzle(sql);
+const projectDir = process.cwd();
+loadEnvConfig(projectDir);
+
+const db = drizzle(sql, { schema });
 
 async function seedRegions() {
   try {
@@ -73,3 +78,5 @@ export async function seedDatabase() {
     throw error;
   }
 }
+
+seedDatabase();
