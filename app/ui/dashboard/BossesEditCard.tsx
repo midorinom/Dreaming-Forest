@@ -5,7 +5,6 @@ import type { BossesEditCardProps } from "@/app/lib/definitions/dashboard-defini
 import type { Boss } from "@/app/lib/definitions/general-definitions";
 import { v4 as uuidv4 } from "uuid";
 import { UUID } from "crypto";
-import dayjs from "dayjs";
 
 export default function BossesEditCard({
   bossInfoProp,
@@ -16,38 +15,30 @@ export default function BossesEditCard({
   const [selected, setSelected] = useState<boolean>(boss ? true : false);
 
   function manageToggle() {
-    // Define Variables
     let newBosses: Boss[] = [...bosses];
-    const newBoss: Boss = {
-      bossId: uuidv4() as UUID,
-      dashboardPosition: bossInfoProp.dashboard_position,
-      bossesPosition: bossInfoProp.bosses_position,
-      done: null,
-      partySize: 1,
-    };
 
-    // Manage Toggle and Update boss.done
     if (selected) {
       setSelected(false);
-      newBosses.forEach((boss) => {
+
+      const index = newBosses.findIndex((boss) => {
         if (boss.bossesPosition === bossInfoProp.bosses_position) {
-          boss.done = null;
+          return true;
         }
       });
+      newBosses.splice(index, 1);
     } else {
-      if (!boss) {
-        newBosses.push(newBoss);
-      } else {
-        newBosses.forEach((boss) => {
-          if (boss.bossesPosition === bossInfoProp.bosses_position) {
-            boss.done = dayjs().toDate();
-          }
-        });
-      }
+      const newBoss: Boss = {
+        bossId: uuidv4() as UUID,
+        dashboardPosition: bossInfoProp.dashboard_position,
+        bossesPosition: bossInfoProp.bosses_position,
+        dashboardImage: bossInfoProp.dashboard_image,
+        done: null,
+        partySize: 1,
+      };
+      newBosses.push(newBoss);
       setSelected(true);
     }
 
-    // Set Bosses
     setBosses(newBosses);
   }
 
