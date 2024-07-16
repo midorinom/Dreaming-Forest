@@ -105,6 +105,7 @@ export type BossesCardProps = {
   boss: Boss;
   bosses: Boss[];
   setBosses: (bosses: Boss[]) => void;
+  datesProp: DatesProp;
 };
 
 export type BossesEditProps = {
@@ -119,4 +120,9 @@ export type BossesEditCardProps = {
   boss: Boss | undefined;
   bosses: Boss[];
   setBosses: (bosses: Boss[]) => void;
+};
+
+export type DatesProp = {
+  now: Date;
+  resetDate: Date;
 };
