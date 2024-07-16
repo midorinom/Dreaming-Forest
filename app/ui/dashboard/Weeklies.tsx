@@ -1,8 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { WeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
+import type { Weekly } from "@/app/lib/definitions/general-definitions";
 import WeekliesCard from "./WeekliesCard";
+import dayjs from "dayjs";
 
 export default function Weeklies({
   region,
@@ -13,12 +15,21 @@ export default function Weeklies({
   setSelectedTab,
 }: WeekliesProps) {
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
+  const [sortedWeeklies, setSortedWeeklies] = useState<Weekly[]>([]);
 
   function handleHeadingClick() {
     if (selectedTab === "Dailies" && weeklies.length > 0) {
       setSelectedTab("Weeklies");
     }
   }
+
+  useEffect(() => {
+    const newWeeklies = [...weeklies].sort((a, b) => {
+      return dayjs(a.resetDate).unix() - dayjs(b.resetDate).unix();
+    });
+
+    setSortedWeeklies(newWeeklies);
+  }, []);
 
   return (
     <div
@@ -50,19 +61,21 @@ export default function Weeklies({
             )}
         </div>
       </div>
-      {weeklies.length > 0 && selectedTab === "Weeklies" && (
-        <div className="collapse-content max-h-[41vh] flex-col gap-1 overflow-scroll pb-0 pt-0 scrollbar-hide">
-          {weeklies.map((weekly) => (
-            <WeekliesCard
-              key={weekly.weeklyId}
-              weeklyProp={weekly}
-              weeklies={weeklies}
-              setWeeklies={setWeeklies}
-              region={region}
-            />
-          ))}
-        </div>
-      )}
+      {selectedTab === "Weeklies" &&
+        weeklies.length > 0 &&
+        sortedWeeklies.length > 0 && (
+          <div className="collapse-content max-h-[41vh] flex-col gap-1 overflow-scroll pb-0 pt-0 scrollbar-hide">
+            {sortedWeeklies.map((weekly) => (
+              <WeekliesCard
+                key={weekly.weeklyId}
+                weeklyProp={weekly}
+                weeklies={weeklies}
+                setWeeklies={setWeeklies}
+                region={region}
+              />
+            ))}
+          </div>
+        )}
     </div>
   );
 }
