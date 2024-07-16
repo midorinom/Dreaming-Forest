@@ -10,7 +10,6 @@ import { bossesInfo } from "./seed-data/bosses_info";
 
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);
-
 const db = drizzle(sql, { schema });
 
 async function seedRegions() {
@@ -64,6 +63,7 @@ async function seedBossesInfo() {
   }
 }
 
+// Main Function
 export async function seedDatabase() {
   try {
     await migrate(db, { migrationsFolder: "drizzle" });
