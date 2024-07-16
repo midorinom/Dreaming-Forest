@@ -1,7 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
+import type {
+  BossesProps,
+  DatesProp,
+} from "@/app/lib/definitions/dashboard-definitions";
 import type { Boss, User } from "@/app/lib/definitions/general-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -19,8 +22,7 @@ export default function Bosses({
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editBossesClicked, setEditBossesClicked] = useState<boolean>(false);
-
-  console.log(bosses);
+  const [datesProp, setDatesProp] = useState<DatesProp>({} as DatesProp);
 
   useEffect(() => {
     // Sort Bosses
@@ -71,6 +73,8 @@ export default function Bosses({
         console.error("No region");
         return;
     }
+
+    setDatesProp({ now: now.toDate(), resetDate: nextThursday.toDate() });
   }, []);
 
   useEffect(() => {
@@ -137,6 +141,7 @@ export default function Bosses({
                   boss={boss}
                   bosses={bosses}
                   setBosses={setBosses}
+                  datesProp={datesProp}
                 />
               ))}
             </div>

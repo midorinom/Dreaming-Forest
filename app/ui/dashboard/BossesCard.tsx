@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { BossesCardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Boss } from "@/app/lib/definitions/general-definitions";
@@ -9,6 +9,7 @@ export default function BossesCard({
   boss,
   bosses,
   setBosses,
+  datesProp,
 }: BossesCardProps) {
   const [selected, setSelected] = useState<boolean>(boss.done ? true : false);
 
@@ -33,6 +34,22 @@ export default function BossesCard({
 
     setBosses(newBosses);
   }
+
+  useEffect(() => {
+    if (boss.done) {
+      if (dayjs(datesProp.now).isBefore(dayjs(datesProp.resetDate))) {
+        setSelected(true);
+      } else {
+        const newBosses: Boss[] = [...bosses];
+        newBosses.forEach((newBoss) => {
+          if (newBoss.bossesPosition === boss.bossesPosition) {
+            newBoss.done = null;
+          }
+        });
+        setSelected(false);
+      }
+    }
+  }, []);
 
   return (
     <div className="inline-flex items-center justify-center">
