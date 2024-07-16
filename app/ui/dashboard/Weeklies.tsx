@@ -24,7 +24,7 @@ export default function Weeklies({
   }
 
   useEffect(() => {
-    const newWeeklies = [...weeklies].sort((a, b) => {
+    const newWeeklies: Weekly[] = [...weeklies].sort((a, b) => {
       return dayjs(a.resetDate).unix() - dayjs(b.resetDate).unix();
     });
 

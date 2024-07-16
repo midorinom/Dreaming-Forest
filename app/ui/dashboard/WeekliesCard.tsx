@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, ChangeEvent } from "react";
 import type { WeekliesCardProps } from "@/app/lib/definitions/dashboard-definitions";
+import type { Weekly } from "@/app/lib/definitions/general-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
@@ -42,7 +43,7 @@ export default function WeekliesCard({
         setDone(true);
       } else {
         setDone(false);
-        const newWeeklies = [...weeklies];
+        const newWeeklies: Weekly[] = [...weeklies];
         newWeeklies[weeklyProp.position].done = null;
         setWeeklies(newWeeklies);
       }
@@ -52,12 +53,12 @@ export default function WeekliesCard({
   function handleCheckboxChange(e: ChangeEvent<HTMLInputElement>) {
     if (done) {
       setDone(false);
-      const newWeeklies = [...weeklies];
+      const newWeeklies: Weekly[] = [...weeklies];
       newWeeklies[weeklyProp.position].done = null;
       setWeeklies(newWeeklies);
     } else {
       setDone(true);
-      const newWeeklies = [...weeklies];
+      const newWeeklies: Weekly[] = [...weeklies];
       newWeeklies[weeklyProp.position].done = dayjs().toDate();
       setWeeklies(newWeeklies);
     }
