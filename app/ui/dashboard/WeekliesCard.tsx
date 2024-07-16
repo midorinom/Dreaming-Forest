@@ -11,26 +11,33 @@ export default function WeekliesCard({
   region,
 }: WeekliesCardProps) {
   const [done, setDone] = useState<boolean>(false);
+  const [timer, setTimer] = useState<string>("");
 
   useEffect(() => {
+    dayjs.extend(utc);
+    let now = dayjs().utcOffset(8);
+    let endOfDay = undefined;
+
+    switch (region) {
+      case "MSEA":
+        now = dayjs().utcOffset(8);
+        endOfDay = dayjs().utcOffset(8).endOf("day");
+        break;
+
+      case "GMS":
+        now = dayjs().utc();
+        endOfDay = dayjs().utc().endOf("day");
+        break;
+
+      default:
+        console.error("No region");
+        return;
+    }
+
+    const timerString = `${dayjs(weeklyProp.resetDate).diff(now, "day")}d${endOfDay.diff(now, "hour")}h`;
+    setTimer(timerString);
+
     if (weeklyProp.done) {
-      dayjs.extend(utc);
-      let endOfDay = undefined;
-
-      switch (region) {
-        case "MSEA":
-          endOfDay = dayjs().utcOffset(8).endOf("day");
-          break;
-
-        case "GMS":
-          endOfDay = dayjs().utc().endOf("day");
-          break;
-
-        default:
-          console.error("No region");
-          return;
-      }
-
       if (endOfDay.diff(dayjs(weeklyProp.done), "minute") < 1440) {
         setDone(true);
       } else {
@@ -66,9 +73,11 @@ export default function WeekliesCard({
             checked={done}
             onChange={handleCheckboxChange}
           />
-          <div className="flex">
+          <div className="flex gap-2">
             <span className="label-text text-lg">{weeklyProp.description}</span>
-            <span>{weeklyProp.resetDate.toString()}</span>
+            {timer && (
+              <span className="text-lg font-medium text-info">{timer}</span>
+            )}
           </div>
         </label>
       </div>
