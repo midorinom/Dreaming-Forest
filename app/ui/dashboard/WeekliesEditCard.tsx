@@ -4,8 +4,10 @@ import Image from "next/image";
 import type { WeekliesEditCardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
 import WeeklyInput from "./WeeklyInput";
+import WeeklyTimerSelect from "./WeeklyTimerSelect";
 
 export default function WeekliesEditCard({
+  resetDates,
   weeklyProp,
   weeklies,
   setWeeklies,
@@ -37,7 +39,7 @@ export default function WeekliesEditCard({
   }
 
   return (
-    <div className="flex w-full items-center justify-around">
+    <div className="flex w-full items-center justify-between">
       <Image
         src="/general/ui_icons/dots_icon.png"
         height={0}
@@ -47,6 +49,11 @@ export default function WeekliesEditCard({
         className="h-[1.5rem] w-[auto] hover:cursor-pointer"
       />
       {weekly && <WeeklyInput weekly={weekly} setWeekly={setWeekly} />}
+      <WeeklyTimerSelect
+        weekly={weekly}
+        setWeekly={setWeekly}
+        resetDates={resetDates}
+      />
       <Image
         src="/general/ui_icons/minus_icon.png"
         height={0}

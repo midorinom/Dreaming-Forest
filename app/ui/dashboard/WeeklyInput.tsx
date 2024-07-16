@@ -14,7 +14,7 @@ const WeeklyInput = ({ weekly, setWeekly }: WeeklyInputProps) => {
   return (
     <input
       type="text"
-      className="input input-md input-bordered w-3/4 bg-neutral text-lg focus:outline-none"
+      className="input input-md input-bordered w-2/3 bg-neutral text-lg focus:outline-none"
       value={weekly.description}
       onChange={handleInputChange}
       maxLength={28}

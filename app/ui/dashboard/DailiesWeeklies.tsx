@@ -77,6 +77,7 @@ export default function DailiesWeeklies({
       )}
       {editWeekliesClicked ? (
         <WeekliesEdit
+          region={region}
           weeklies={weeklies}
           setWeeklies={setWeeklies}
           setEditWeekliesClicked={setEditWeekliesClicked}

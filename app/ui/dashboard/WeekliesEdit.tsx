@@ -1,27 +1,60 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { UUID } from "crypto";
 import type { WeekliesEditProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import WeekliesEditCard from "./WeekliesEditCard";
 
 export default function WeekliesEdit({
+  region,
   weeklies,
   setWeeklies,
   setEditWeekliesClicked,
 }: WeekliesEditProps) {
+  const [resetDates, setResetDates] = useState<Date[]>([]);
+
   function addWeekly() {
     const newWeekly: Weekly = {
       weeklyId: uuidv4() as UUID,
       description: "",
       done: null,
       position: weeklies.length,
-      resetDate: new Date(),
+      resetDate: resetDates[6],
     };
 
     setWeeklies([...weeklies, newWeekly]);
   }
+
+  useEffect(() => {
+    dayjs.extend(utc);
+    let endOfDay = undefined;
+
+    switch (region) {
+      case "MSEA":
+        endOfDay = dayjs().utcOffset(8).endOf("day");
+        break;
+
+      case "GMS":
+        endOfDay = dayjs().utc().endOf("day");
+        break;
+
+      default:
+        console.error("No region");
+        return;
+    }
+
+    const newResetDates = [endOfDay.toDate()];
+    for (let i = 1; i < 7; i++) {
+      const nextDate = endOfDay.add(i, "day");
+      newResetDates.push(nextDate.toDate());
+    }
+
+    setResetDates(newResetDates);
+  }, []);
 
   return (
     <div className="collapse collapse-open flex w-[36vw] flex-col gap-2 bg-secondary pb-3">
@@ -47,11 +80,12 @@ export default function WeekliesEdit({
           </button>
         </div>
       </div>
-      {weeklies.length > 0 && (
+      {weeklies.length > 0 && resetDates.length > 0 && (
         <div className="collapse-content flex max-h-[41vh] flex-col gap-2 overflow-scroll pb-0 pt-0 scrollbar-hide">
           {weeklies.map((weekly) => (
             <WeekliesEditCard
               key={weekly.weeklyId}
+              resetDates={resetDates}
               weeklyProp={weekly}
               weeklies={weeklies}
               setWeeklies={setWeeklies}
