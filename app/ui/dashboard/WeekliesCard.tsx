@@ -39,7 +39,7 @@ export default function WeekliesCard({
     setTimer(timerString);
 
     if (weeklyProp.done) {
-      if (now.isBefore(dayjs(weeklyProp.resetDate))) {
+      if (dayjs().isBefore(dayjs(weeklyProp.resetDate))) {
         setDone(true);
       } else {
         setDone(false);

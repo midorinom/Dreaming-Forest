@@ -9,7 +9,7 @@ export default function BossesCard({
   boss,
   bosses,
   setBosses,
-  datesProp,
+  resetDate,
 }: BossesCardProps) {
   const [selected, setSelected] = useState<boolean>(boss.done ? true : false);
 
@@ -37,7 +37,7 @@ export default function BossesCard({
 
   useEffect(() => {
     if (boss.done) {
-      if (dayjs(datesProp.now).isBefore(dayjs(datesProp.resetDate))) {
+      if (dayjs().isBefore(dayjs(resetDate))) {
         setSelected(true);
       } else {
         const newBosses: Boss[] = [...bosses];
