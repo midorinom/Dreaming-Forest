@@ -8,7 +8,11 @@ import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
 import BossesEdit from "./BossesEdit";
 
-export default function Bosses({ region, activeCharacter }: BossesProps) {
+export default function Bosses({
+  region,
+  activeCharacter,
+  bossesInfo,
+}: BossesProps) {
   const [bosses, setBosses] = useState<Boss[]>([]);
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);

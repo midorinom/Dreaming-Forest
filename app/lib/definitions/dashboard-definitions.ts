@@ -1,4 +1,8 @@
-import type { Character, Daily, Weekly } from "./general-definitions";
+import type { BossInfo, Character, Daily, Weekly } from "./general-definitions";
+
+export type DashboardProps = {
+  bossesInfo: BossInfo[];
+};
 
 export type ActiveCharacterProps = {
   activeCharacter: Character;
@@ -88,6 +92,7 @@ export type WeeklyTimerSelectProps = {
 export type BossesProps = {
   region: string;
   activeCharacter: Character;
+  bossesInfo: BossInfo[];
 };
 
 export type BossesEditProps = {
