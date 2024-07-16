@@ -3,7 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import type { BossesEditCardProps } from "@/app/lib/definitions/dashboard-definitions";
 
-export default function BossesEditCard({ bossInfoProp }: BossesEditCardProps) {
+export default function BossesEditCard({
+  bossInfoProp,
+  bosses,
+  setBosses,
+}: BossesEditCardProps) {
   return (
     <div className="inline-flex items-center justify-center">
       <Image
@@ -12,7 +16,7 @@ export default function BossesEditCard({ bossInfoProp }: BossesEditCardProps) {
         width={0}
         alt={bossInfoProp.dashboard_image}
         sizes="100vw"
-        className="h-auto max-h-[4.75rem] w-full hover:cursor-pointer"
+        className="h-auto max-h-[4.5rem] w-full hover:cursor-pointer"
       />
     </div>
   );
