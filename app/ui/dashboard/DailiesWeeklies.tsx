@@ -26,6 +26,7 @@ export default function DailiesWeeklies({
   useEffect(() => {
     if (!isMounted.current) {
       isMounted.current = true;
+      return;
     }
 
     const localUser = localStorage.getItem("user");
