@@ -101,6 +101,12 @@ export type BossesProps = {
   bossesInfo: BossInfo[];
 };
 
+export type BossesCardProps = {
+  boss: Boss;
+  bosses: Boss[];
+  setBosses: (bosses: Boss[]) => void;
+};
+
 export type BossesEditProps = {
   bossesInfo: BossInfo[];
   bosses: Boss[];

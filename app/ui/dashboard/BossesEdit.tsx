@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import type { BossesEditProps } from "@/app/lib/definitions/dashboard-definitions";
 import BossesEditCard from "./BossesEditCard";

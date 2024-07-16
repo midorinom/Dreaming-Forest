@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
 import BossesEdit from "./BossesEdit";
+import BossesCard from "./BossesCard";
 
 export default function Bosses({
   region,
@@ -18,6 +19,8 @@ export default function Bosses({
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editBossesClicked, setEditBossesClicked] = useState<boolean>(false);
+
+  console.log(bosses);
 
   useEffect(() => {
     dayjs.extend(utc);
@@ -118,7 +121,16 @@ export default function Bosses({
             </div>
           )}
           {bosses.length > 0 && (
-            <div className="collapse-content max-h-[50vh] pb-0 pt-0"></div>
+            <div className="collapse-content max-h-[50vh] pb-0 pt-0">
+              {bosses.map((boss) => (
+                <BossesCard
+                  key={boss.bossesPosition}
+                  boss={boss}
+                  bosses={bosses}
+                  setBosses={setBosses}
+                />
+              ))}
+            </div>
           )}
         </div>
       )}

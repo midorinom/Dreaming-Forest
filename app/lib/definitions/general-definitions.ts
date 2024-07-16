@@ -39,6 +39,7 @@ export type Boss = {
   bossId: UUID;
   dashboardPosition: number;
   bossesPosition: number;
+  dashboardImage: string;
   done: Date | null;
   partySize: number;
 };
