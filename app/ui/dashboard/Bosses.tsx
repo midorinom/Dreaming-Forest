@@ -22,7 +22,7 @@ export default function Bosses({
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editBossesClicked, setEditBossesClicked] = useState<boolean>(false);
-  const [datesProp, setDatesProp] = useState<DatesProp>({} as DatesProp);
+  const [resetDate, setResetDate] = useState<Date | null>(null);
 
   useEffect(() => {
     // Sort Bosses
@@ -73,8 +73,7 @@ export default function Bosses({
         console.error("No region");
         return;
     }
-
-    setDatesProp({ now: now.toDate(), resetDate: nextThursday.toDate() });
+    setResetDate(nextThursday.toDate());
   }, []);
 
   useEffect(() => {
@@ -134,7 +133,7 @@ export default function Bosses({
               {bossesTimer}
             </div>
           )}
-          {bosses.length > 0 && (
+          {bosses.length > 0 && resetDate && (
             <div className="collapse-content grid max-h-[50vh] auto-rows-fr grid-cols-6 gap-7 px-11 pb-5 pt-2">
               {bosses.map((boss) => (
                 <BossesCard
@@ -142,7 +141,7 @@ export default function Bosses({
                   boss={boss}
                   bosses={bosses}
                   setBosses={setBosses}
-                  datesProp={datesProp}
+                  resetDate={resetDate}
                 />
               ))}
             </div>
