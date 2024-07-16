@@ -1,0 +1,222 @@
+{
+  "id": "a7d41065-14b9-450e-8aa2-aca3b3d082a6",
+  "prevId": "548d8a83-7921-40a3-8acd-afe8b27a0555",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.bosses_info": {
+      "name": "bosses_info",
+      "schema": "",
+      "columns": {
+        "bosses_position": {
+          "name": "bosses_position",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "bosses_image": {
+          "name": "bosses_image",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dashboard_position": {
+          "name": "dashboard_position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dashboard_image": {
+          "name": "dashboard_image",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "meso": {
+          "name": "meso",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.characters": {
+      "name": "characters",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ign": {
+          "name": "ign",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "level": {
+          "name": "level",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "class_name": {
+          "name": "class_name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image": {
+          "name": "image",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "characters_username_users_class_name_fk": {
+          "name": "characters_username_users_class_name_fk",
+          "tableFrom": "characters",
+          "tableTo": "users",
+          "columnsFrom": [
+            "username"
+          ],
+          "columnsTo": [
+            "class_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "characters_class_name_classes_class_name_fk": {
+          "name": "characters_class_name_classes_class_name_fk",
+          "tableFrom": "characters",
+          "tableTo": "classes",
+          "columnsFrom": [
+            "class_name"
+          ],
+          "columnsTo": [
+            "class_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.classes": {
+      "name": "classes",
+      "schema": "",
+      "columns": {
+        "class_name": {
+          "name": "class_name",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "region": {
+          "name": "region",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "classes_region_regions_region_fk": {
+          "name": "classes_region_regions_region_fk",
+          "tableFrom": "classes",
+          "tableTo": "regions",
+          "columnsFrom": [
+            "region"
+          ],
+          "columnsTo": [
+            "region"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.regions": {
+      "name": "regions",
+      "schema": "",
+      "columns": {
+        "region": {
+          "name": "region",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "class_name": {
+          "name": "class_name",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "region": {
+          "name": "region",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pw_hash": {
+          "name": "pw_hash",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "users_region_regions_region_fk": {
+          "name": "users_region_regions_region_fk",
+          "tableFrom": "users",
+          "tableTo": "regions",
+          "columnsFrom": [
+            "region"
+          ],
+          "columnsTo": [
+            "region"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
