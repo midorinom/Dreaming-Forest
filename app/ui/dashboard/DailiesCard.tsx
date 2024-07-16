@@ -62,7 +62,7 @@ export default function DailiesCard({
         <label className="label flex cursor-pointer gap-3">
           <input
             type="checkbox"
-            className="checkbox-accent checkbox checkbox-lg border-info"
+            className={`checkbox-accent checkbox checkbox-lg border-info ${done ? "hover:border-accent" : "hover:border-neutral"}`}
             checked={done}
             onChange={handleCheckboxChange}
           />

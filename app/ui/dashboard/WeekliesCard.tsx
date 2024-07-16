@@ -62,11 +62,14 @@ export default function WeekliesCard({
         <label className="label flex cursor-pointer gap-3">
           <input
             type="checkbox"
-            className="checkbox-accent checkbox checkbox-lg border-info"
+            className={`checkbox-accent checkbox checkbox-lg border-info ${done ? "hover:border-accent" : "hover:border-neutral"}`}
             checked={done}
             onChange={handleCheckboxChange}
           />
-          <span className="label-text text-lg">{weeklyProp.description}</span>
+          <div className="flex">
+            <span className="label-text text-lg">{weeklyProp.description}</span>
+            <span>{weeklyProp.resetDate.toString()}</span>
+          </div>
         </label>
       </div>
     </div>
