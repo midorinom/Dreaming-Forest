@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, ChangeEvent } from "react";
 import type { DailiesCardProps } from "@/app/lib/definitions/dashboard-definitions";
+import type { Daily } from "@/app/lib/definitions/general-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
@@ -35,7 +36,7 @@ export default function DailiesCard({
         setDone(true);
       } else {
         setDone(false);
-        const newDailies = [...dailies];
+        const newDailies: Daily[] = [...dailies];
         newDailies[dailyProp.position].done = null;
         setDailies(newDailies);
       }
@@ -45,12 +46,12 @@ export default function DailiesCard({
   function handleCheckboxChange(e: ChangeEvent<HTMLInputElement>) {
     if (done) {
       setDone(false);
-      const newDailies = [...dailies];
+      const newDailies: Daily[] = [...dailies];
       newDailies[dailyProp.position].done = null;
       setDailies(newDailies);
     } else {
       setDone(true);
-      const newDailies = [...dailies];
+      const newDailies: Daily[] = [...dailies];
       newDailies[dailyProp.position].done = dayjs().toDate();
       setDailies(newDailies);
     }

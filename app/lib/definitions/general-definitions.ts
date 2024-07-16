@@ -39,9 +39,17 @@ export type Boss = {
   bossId: UUID;
   dashboardPosition: number;
   bossesPosition: number;
+  dashboardImage: string;
   done: Date | null;
   partySize: number;
-  dashboardImage: string;
+};
+
+export type BossInfo = {
+  bosses_position: number;
+  bosses_image: string;
+  dashboard_position: number;
+  dashboard_image: string;
+  meso: number;
 };
 
 export type Character = {
@@ -68,12 +76,4 @@ export type MainAppWrapperProps = {
 
 export type ResetButtonProps = {
   user: User;
-};
-
-export type BossInfo = {
-  bosses_position: number;
-  bosses_image: string;
-  dashboard_position: number;
-  dashboard_image: string;
-  meso: number;
 };

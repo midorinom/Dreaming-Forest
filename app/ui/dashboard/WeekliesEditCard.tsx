@@ -16,14 +16,14 @@ export default function WeekliesEditCard({
 
   useEffect(() => {
     if (weekly) {
-      const newWeeklies = [...weeklies];
+      const newWeeklies: Weekly[] = [...weeklies];
       newWeeklies[weekly.position] = weekly;
       setWeeklies(newWeeklies);
     }
   }, [weekly]);
 
   function removeWeekly() {
-    const newWeeklies = [];
+    const newWeeklies: Weekly[] = [];
 
     for (const newWeekly of weeklies) {
       if (newWeekly.position === weeklyProp.position) {

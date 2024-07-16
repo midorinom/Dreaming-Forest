@@ -14,14 +14,14 @@ export default function DailiesEditCard({
 
   useEffect(() => {
     if (daily) {
-      const newDailies = [...dailies];
+      const newDailies: Daily[] = [...dailies];
       newDailies[daily.position] = daily;
       setDailies(newDailies);
     }
   }, [daily]);
 
   function removeDaily() {
-    const newDailies = [];
+    const newDailies: Daily[] = [];
 
     for (const newDaily of dailies) {
       if (newDaily.position === dailyProp.position) {
