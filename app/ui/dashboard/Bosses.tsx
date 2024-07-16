@@ -23,6 +23,15 @@ export default function Bosses({
   console.log(bosses);
 
   useEffect(() => {
+    // Sort Bosses
+    if (activeCharacter.bosses.length > 1) {
+      const sortedBosses = activeCharacter.bosses.sort((a, b) => {
+        return a.bossesPosition - b.bossesPosition;
+      });
+      setBosses(sortedBosses);
+    }
+
+    // Set Timer
     dayjs.extend(utc);
     dayjs.extend(isoWeek);
     let now = undefined;
@@ -121,7 +130,7 @@ export default function Bosses({
             </div>
           )}
           {bosses.length > 0 && (
-            <div className="collapse-content max-h-[50vh] pb-0 pt-0">
+            <div className="collapse-content grid max-h-[50vh] auto-rows-fr grid-cols-6 gap-7 px-11 pb-5 pt-2">
               {bosses.map((boss) => (
                 <BossesCard
                   key={boss.bossesPosition}
