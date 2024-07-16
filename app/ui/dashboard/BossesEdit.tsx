@@ -39,7 +39,7 @@ export default function BossesEdit({
 
             return (
               <BossesEditCard
-                key={bossInfo.dashboard_image}
+                key={bossInfo.bosses_position}
                 bossInfoProp={bossInfo}
                 boss={bossProp}
                 bosses={bosses}
