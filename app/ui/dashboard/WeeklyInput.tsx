@@ -5,7 +5,7 @@ import type { WeeklyInputProps } from "@/app/lib/definitions/dashboard-definitio
 const WeeklyInput = ({ weekly, setWeekly }: WeeklyInputProps) => {
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const allowedCharactersRegex =
-      /[^a-zA-Z0-9\s!@#$%^&*'"()_+=\[\]{}:,.?~|`-]/g;
+      /[^a-zA-Z0-9\s!@#$%^&*'"()_+=\[\]{}:,.?~|`\/-]/g;
     const newDescription = e.target.value.replace(allowedCharactersRegex, "");
 
     setWeekly({ ...weekly, description: newDescription });
