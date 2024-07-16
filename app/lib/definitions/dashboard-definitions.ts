@@ -1,4 +1,10 @@
-import type { BossInfo, Character, Daily, Weekly } from "./general-definitions";
+import type {
+  Boss,
+  BossInfo,
+  Character,
+  Daily,
+  Weekly,
+} from "./general-definitions";
 
 export type DashboardProps = {
   bossesInfo: BossInfo[];
@@ -96,5 +102,12 @@ export type BossesProps = {
 };
 
 export type BossesEditProps = {
+  bossesInfo: BossInfo[];
+  bosses: Boss[];
+  setBosses: (bosses: Boss[]) => void;
   setEditBossesClicked: (editBossesClicked: boolean) => void;
+};
+
+export type BossesEditCardProps = {
+  bossInfoProp: BossInfo;
 };

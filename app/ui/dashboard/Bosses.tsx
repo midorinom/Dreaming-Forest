@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
-import { Boss } from "@/app/lib/definitions/general-definitions";
+import type { Boss, User } from "@/app/lib/definitions/general-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
@@ -13,16 +13,13 @@ export default function Bosses({
   activeCharacter,
   bossesInfo,
 }: BossesProps) {
-  const [bosses, setBosses] = useState<Boss[]>([]);
+  const isMounted = useRef(false);
+  const [bosses, setBosses] = useState<Boss[]>(activeCharacter.bosses);
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editBossesClicked, setEditBossesClicked] = useState<boolean>(false);
 
   useEffect(() => {
-    // Set Bosses
-    setBosses(activeCharacter.bosses);
-
-    // Set Timer
     dayjs.extend(utc);
     dayjs.extend(isoWeek);
     let now = undefined;
@@ -64,50 +61,67 @@ export default function Bosses({
     }
   }, []);
 
+  useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+    }
+
+    const localUser = localStorage.getItem("user");
+
+    if (localUser) {
+      const newUser: User = JSON.parse(localUser);
+      newUser.characters[activeCharacter.position].bosses = bosses;
+      localStorage.setItem("user", JSON.stringify(newUser));
+    }
+  }, [bosses]);
+
   return (
-    <>
+    <div className="mt-2 flex w-full flex-col items-center">
       {editBossesClicked ? (
-        <BossesEdit setEditBossesClicked={setEditBossesClicked} />
+        <BossesEdit
+          bossesInfo={bossesInfo}
+          bosses={bosses}
+          setBosses={setBosses}
+          setEditBossesClicked={setEditBossesClicked}
+        />
       ) : (
-        <div className="mt-2 flex w-full flex-col items-center">
+        <div
+          className={`${bosses.length > 0 && "pb3"} collapse collapse-open w-4/5 gap-2 bg-base-100`}
+        >
           <div
-            className={`${bosses.length > 0 && "pb3"} collapse collapse-open w-4/5 gap-2 bg-base-100`}
+            className={`${
+              bosses.length === 0 && "mb-1"
+            } collapse-title pb-0 pt-3`}
+            onMouseEnter={() => setHeadingHovered(true)}
+            onMouseLeave={() => setHeadingHovered(false)}
           >
-            <div
-              className={`${
-                bosses.length === 0 && "mb-1"
-              } collapse-title pb-0 pt-3`}
-              onMouseEnter={() => setHeadingHovered(true)}
-              onMouseLeave={() => setHeadingHovered(false)}
-            >
-              <div className="flex gap-2">
-                <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
-                  Bosses
-                </span>
-                {headingHovered && (
-                  <Image
-                    src="/general/ui_icons/edit_icon.png"
-                    height={0}
-                    width={0}
-                    alt="Edit Button"
-                    sizes="100vw"
-                    className="h-[2.5rem] w-[auto] hover:cursor-pointer"
-                    onClick={() => setEditBossesClicked(true)}
-                  />
-                )}
-              </div>
+            <div className="flex gap-2">
+              <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
+                Bosses
+              </span>
+              {headingHovered && (
+                <Image
+                  src="/general/ui_icons/edit_icon.png"
+                  height={0}
+                  width={0}
+                  alt="Edit Button"
+                  sizes="100vw"
+                  className="h-[2.5rem] w-[auto] hover:cursor-pointer"
+                  onClick={() => setEditBossesClicked(true)}
+                />
+              )}
             </div>
-            {bossesTimer && bosses.length > 0 && (
-              <div className="absolute right-2 top-1 text-2xl text-info">
-                {bossesTimer}
-              </div>
-            )}
-            {bosses.length > 0 && (
-              <div className="collapse-content max-h-[50vh] pb-0 pt-0"></div>
-            )}
           </div>
+          {bossesTimer && bosses.length > 0 && (
+            <div className="absolute right-2 top-1 text-2xl text-info">
+              {bossesTimer}
+            </div>
+          )}
+          {bosses.length > 0 && (
+            <div className="collapse-content max-h-[50vh] pb-0 pt-0"></div>
+          )}
         </div>
       )}
-    </>
+    </div>
   );
 }
