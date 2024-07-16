@@ -32,14 +32,20 @@ export default function BossesEdit({
       </div>
       {bossesInfo && (
         <div className="collapse-content grid max-h-[50vh] grid-cols-6 grid-rows-4 gap-7 px-11 pb-5 pt-2">
-          {bossesInfo.map((bossInfo) => (
-            <BossesEditCard
-              key={bossInfo.dashboard_image}
-              bossInfoProp={bossInfo}
-              bosses={bosses}
-              setBosses={setBosses}
-            />
-          ))}
+          {bossesInfo.map((bossInfo) => {
+            const bossProp = bosses.find(
+              (boss) => boss.dashboardPosition === bossInfo.dashboard_position,
+            );
+
+            return (
+              <BossesEditCard
+                key={bossInfo.dashboard_image}
+                bossInfoProp={bossInfo}
+                boss={bossProp}
+                setBosses={setBosses}
+              />
+            );
+          })}
         </div>
       )}
     </div>

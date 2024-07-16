@@ -110,4 +110,6 @@ export type BossesEditProps = {
 
 export type BossesEditCardProps = {
   bossInfoProp: BossInfo;
+  boss: Boss | undefined;
+  setBosses: (bosses: Boss[]) => void;
 };

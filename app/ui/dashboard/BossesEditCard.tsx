@@ -5,7 +5,7 @@ import type { BossesEditCardProps } from "@/app/lib/definitions/dashboard-defini
 
 export default function BossesEditCard({
   bossInfoProp,
-  bosses,
+  boss,
   setBosses,
 }: BossesEditCardProps) {
   return (
@@ -16,7 +16,7 @@ export default function BossesEditCard({
         width={0}
         alt={bossInfoProp.dashboard_image}
         sizes="100vw"
-        className="h-auto max-h-[4.5rem] w-full hover:cursor-pointer"
+        className={`${!boss && "grayscale"} h-auto max-h-[4.5rem] w-full hover:cursor-pointer`}
       />
     </div>
   );
