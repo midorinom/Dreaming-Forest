@@ -18,14 +18,14 @@ export default function BossesEditCard({
     let newBosses: Boss[] = [...bosses];
 
     if (selected) {
-      setSelected(false);
-
       const index = newBosses.findIndex((boss) => {
         if (boss.bossesPosition === bossInfoProp.bosses_position) {
           return true;
         }
       });
       newBosses.splice(index, 1);
+
+      setSelected(false);
     } else {
       const newBoss: Boss = {
         bossId: uuidv4() as UUID,
@@ -36,6 +36,7 @@ export default function BossesEditCard({
         partySize: 1,
       };
       newBosses.push(newBoss);
+
       setSelected(true);
     }
 
