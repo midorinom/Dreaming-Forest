@@ -38,7 +38,7 @@ export default function ActiveCharacter({
               />
             </div>
             <div className="flex w-3/5 flex-col justify-center">
-              <div className="text-[2.75rem] font-medium text-neutral underline-offset-[8px] underline-dreamy-accent">
+              <div className="overflow-scroll text-[2.75rem] font-medium text-neutral underline-offset-[8px] underline-dreamy-accent scrollbar-hide">
                 {character.ign}
               </div>
               <div className="flex gap-2 text-3xl text-neutral">
