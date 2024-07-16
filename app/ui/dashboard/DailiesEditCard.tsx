@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { DailiesEditCardProps } from "@/app/lib/definitions/dashboard-definitions";
-import type { Daily, User } from "@/app/lib/definitions/general-definitions";
+import type { Daily } from "@/app/lib/definitions/general-definitions";
 import DailyInput from "./DailyInput";
 
 export default function DailiesEditCard({

@@ -63,17 +63,18 @@ export default function Dailies({
           <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
             Dailies
           </span>
-          {headingHovered && selectedTab === "Dailies" && (
-            <Image
-              src="/general/ui_icons/edit_icon.png"
-              height={0}
-              width={0}
-              alt="Edit Button"
-              sizes="100vw"
-              className="h-[2.5rem] w-[auto] hover:cursor-pointer"
-              onClick={() => setEditDailiesClicked(true)}
-            />
-          )}
+          {headingHovered &&
+            (selectedTab === "Dailies" || dailies.length === 0) && (
+              <Image
+                src="/general/ui_icons/edit_icon.png"
+                height={0}
+                width={0}
+                alt="Edit Button"
+                sizes="100vw"
+                className="h-[2.5rem] w-[auto] hover:cursor-pointer"
+                onClick={() => setEditDailiesClicked(true)}
+              />
+            )}
         </div>
       </div>
       {dailiesTimer && dailies.length > 0 && (

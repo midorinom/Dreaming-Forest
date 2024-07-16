@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { DashboardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
   Character,
   User,
@@ -9,7 +10,7 @@ import Bosses from "./Bosses";
 import CharactersWheel from "./CharactersWheel";
 import DailiesWeeklies from "./DailiesWeeklies";
 
-export default function Dashboard() {
+export default function Dashboard({ bossesInfo }: DashboardProps) {
   const [user, setUser] = useState<User | null>(null);
   const [activeCharacter, setActiveCharacter] = useState<Character>();
 
@@ -31,7 +32,11 @@ export default function Dashboard() {
             region={user.region}
             activeCharacter={user.characters[0]}
           />
-          <Bosses region={user.region} activeCharacter={user.characters[0]} />
+          <Bosses
+            region={user.region}
+            activeCharacter={user.characters[0]}
+            bossesInfo={bossesInfo}
+          />
         </>
       )}
     </main>

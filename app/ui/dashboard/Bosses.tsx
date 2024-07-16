@@ -1,20 +1,28 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
 import { Boss } from "@/app/lib/definitions/general-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
+import BossesEdit from "./BossesEdit";
 
-export default function Bosses({ region, activeCharacter }: BossesProps) {
+export default function Bosses({
+  region,
+  activeCharacter,
+  bossesInfo,
+}: BossesProps) {
   const [bosses, setBosses] = useState<Boss[]>([]);
   const [bossesTimer, setBossesTimer] = useState<string>("");
+  const [headingHovered, setHeadingHovered] = useState<boolean>(false);
+  const [editBossesClicked, setEditBossesClicked] = useState<boolean>(false);
 
   useEffect(() => {
-    // Set Dailies and Weeklies
+    // Set Bosses
     setBosses(activeCharacter.bosses);
 
-    // Set Dailies Timer
+    // Set Timer
     dayjs.extend(utc);
     dayjs.extend(isoWeek);
     let now = undefined;
@@ -57,26 +65,49 @@ export default function Bosses({ region, activeCharacter }: BossesProps) {
   }, []);
 
   return (
-    <div className="w-full">
-      <div className="mt-2 flex w-full flex-col items-center">
-        <div className="collapse collapse-open w-4/5 bg-base-100">
+    <>
+      {editBossesClicked ? (
+        <BossesEdit setEditBossesClicked={setEditBossesClicked} />
+      ) : (
+        <div className="mt-2 flex w-full flex-col items-center">
           <div
-            className={`${
-              bosses.length === 0 && "mb-1"
-            } collapse-title pt-3 text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral`}
+            className={`${bosses.length > 0 && "pb3"} collapse collapse-open w-4/5 gap-2 bg-base-100`}
           >
-            Bosses
-          </div>
-          {bossesTimer && bosses.length > 0 && (
-            <div className="absolute right-2 top-1 text-2xl text-info">
-              {bossesTimer}
+            <div
+              className={`${
+                bosses.length === 0 && "mb-1"
+              } collapse-title pb-0 pt-3`}
+              onMouseEnter={() => setHeadingHovered(true)}
+              onMouseLeave={() => setHeadingHovered(false)}
+            >
+              <div className="flex gap-2">
+                <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
+                  Bosses
+                </span>
+                {headingHovered && (
+                  <Image
+                    src="/general/ui_icons/edit_icon.png"
+                    height={0}
+                    width={0}
+                    alt="Edit Button"
+                    sizes="100vw"
+                    className="h-[2.5rem] w-[auto] hover:cursor-pointer"
+                    onClick={() => setEditBossesClicked(true)}
+                  />
+                )}
+              </div>
             </div>
-          )}
-          {bosses.length > 0 && (
-            <div className="collapse-content max-h-[50vh]"></div>
-          )}
+            {bossesTimer && bosses.length > 0 && (
+              <div className="absolute right-2 top-1 text-2xl text-info">
+                {bossesTimer}
+              </div>
+            )}
+            {bosses.length > 0 && (
+              <div className="collapse-content max-h-[50vh] pb-0 pt-0"></div>
+            )}
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
