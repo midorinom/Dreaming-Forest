@@ -41,7 +41,6 @@ export type Boss = {
   bossesPosition: number;
   done: Date | null;
   partySize: number;
-  dashboardImage: string;
 };
 
 export type BossInfo = {

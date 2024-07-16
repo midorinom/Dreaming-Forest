@@ -42,6 +42,7 @@ export default function BossesEdit({
                 key={bossInfo.dashboard_image}
                 bossInfoProp={bossInfo}
                 boss={bossProp}
+                bosses={bosses}
                 setBosses={setBosses}
               />
             );
