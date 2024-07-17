@@ -65,7 +65,7 @@ export default function Bosses({
         nextThursday = nextThursday.startOf("day");
 
         setBossesTimer(
-          `${nextThursday.diff(now, "day")}d${endOfDay.diff(now, "hour")}h`,
+          `${nextThursday.diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`,
         );
         break;
 

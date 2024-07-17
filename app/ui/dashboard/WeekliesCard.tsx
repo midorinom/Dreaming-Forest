@@ -35,7 +35,7 @@ export default function WeekliesCard({
         return;
     }
 
-    const timerString = `${dayjs(weeklyProp.resetDate).diff(now, "day")}d${endOfDay.diff(now, "hour")}h`;
+    const timerString = `${dayjs(weeklyProp.resetDate).diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`;
     setTimer(timerString);
 
     if (weeklyProp.done) {
