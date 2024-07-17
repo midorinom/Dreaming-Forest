@@ -129,7 +129,7 @@ export default function Bosses({
             </div>
           </div>
           {bossesTimer && bosses.length > 0 && (
-            <div className="absolute right-2 top-1 text-2xl text-info">
+            <div className="absolute right-4 top-2 text-2xl text-info">
               {bossesTimer}
             </div>
           )}
