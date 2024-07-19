@@ -6,7 +6,11 @@
 
 <a name="Introduction"></a>
 ## Introduction
-This is still a work in progress!
+This is still a work in progress! 
+
+The website is hosted on Vercel and can be accessed <a href="https://dreaming-forest.vercel.app/">here</a>.
+
+This project is the first time where I used Figma to create extensive prototypes before developing the website and I found it to be extremely useful, making the development process more productive and effective! You can view my designs on Figma <a href="https://www.figma.com/design/IohBAXXF9Q7OTlyMF99BhX/Dreaming-Forest?t=LR5oNgodlYfqsClm-1">here</a>.
 
 <a name="Technologies"></a>
 ## Technologies Used
