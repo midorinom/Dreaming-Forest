@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import type { User } from "@/app/lib/definitions/general-definitions";
-import CharacterCard from "./CharacterCard";
 import ViewCharacters from "./ViewCharacters";
 
 export default function Characters() {
