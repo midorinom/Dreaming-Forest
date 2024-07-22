@@ -13,7 +13,10 @@ export default function ViewCharacters({
     <div className="grid grid-cols-2 grid-rows-2 items-center justify-items-center">
       {characters &&
         characters.map((character) => (
-          <CharacterCard characterProp={character} />
+          <CharacterCard
+            key={character.characterId}
+            characterProp={character}
+          />
         ))}
     </div>
   );
