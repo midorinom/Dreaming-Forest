@@ -59,6 +59,10 @@ const config: Config = {
           "text-decoration": "underline",
           "text-decoration-color": "#FFFFFF",
         },
+        ".underline-dreamy-base-100": {
+          "text-decoration": "underline",
+          "text-decoration-color": "#FFA6C4",
+        },
         ".scrollbar-hide": {
           /* Hide scrollbar for WebKit browsers */
           "&::-webkit-scrollbar": {
