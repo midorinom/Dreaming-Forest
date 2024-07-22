@@ -53,10 +53,10 @@ export type BossInfo = {
 };
 
 export type Tracking = {
-  dailies: true;
-  weeklies: true;
-  bosses: true;
-  progression: true;
+  dailies: boolean;
+  weeklies: boolean;
+  bosses: boolean;
+  progression: boolean;
 };
 
 export type Character = {
