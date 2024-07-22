@@ -20,6 +20,7 @@ import {
 import RegionAndCharacter from "./RegionAndCharacter";
 import CreateAccount from "./CreateAccount";
 import DreamySkeleton from "../general/DreamySkeleton";
+import ElodinSkeleton from "../general/ElodinSkeleton";
 
 export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -96,7 +97,7 @@ export default function Welcome({ classes }: WelcomeProps) {
   return (
     <WelcomeProvider value={{ classes, region }}>
       {isLoading ? (
-        <DreamySkeleton />
+        <ElodinSkeleton />
       ) : (
         <main
           className="flex h-screen flex-col items-center gap-4 bg-elodin_background bg-cover bg-center p-6"
