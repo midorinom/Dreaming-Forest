@@ -36,6 +36,15 @@ export default function DailiesEditCard({
     setDailies(newDailies);
   }
 
+  function moveDaily(offset: number) {
+    const newDailies: Daily[] = [...dailies];
+
+    newDailies[dailyProp.position + offset].position -= offset;
+    newDailies[dailyProp.position].position += offset;
+    newDailies.sort((a, b) => a.position - b.position);
+    setDailies(newDailies);
+  }
+
   return (
     <div className="flex w-full items-center justify-around">
       <div>
@@ -47,6 +56,7 @@ export default function DailiesEditCard({
             alt="Up Arrow"
             sizes="100vw"
             className="h-[1.5rem] w-[auto] hover:cursor-pointer"
+            onClick={() => moveDaily(-1)}
           />
         )}
         {dailyProp.position + 1 !== dailies.length && (
@@ -57,6 +67,7 @@ export default function DailiesEditCard({
             alt="Down Arrow"
             sizes="100vw"
             className="h-[1.5rem] w-[auto] hover:cursor-pointer"
+            onClick={() => moveDaily(1)}
           />
         )}
       </div>
