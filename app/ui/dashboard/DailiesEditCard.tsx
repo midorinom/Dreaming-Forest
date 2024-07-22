@@ -38,14 +38,28 @@ export default function DailiesEditCard({
 
   return (
     <div className="flex w-full items-center justify-around">
-      <Image
-        src="/general/ui_icons/dots_icon.png"
-        height={0}
-        width={0}
-        alt="Rearrange Button"
-        sizes="100vw"
-        className="h-[1.5rem] w-[auto] hover:cursor-pointer"
-      />
+      <div>
+        {dailyProp.position !== 0 && (
+          <Image
+            src="/general/ui_icons/up_arrow_icon.png"
+            height={0}
+            width={0}
+            alt="Up Arrow"
+            sizes="100vw"
+            className="h-[1.5rem] w-[auto] hover:cursor-pointer"
+          />
+        )}
+        {dailyProp.position + 1 !== dailies.length && (
+          <Image
+            src="/general/ui_icons/down_arrow_icon.png"
+            height={0}
+            width={0}
+            alt="Down Arrow"
+            sizes="100vw"
+            className="h-[1.5rem] w-[auto] hover:cursor-pointer"
+          />
+        )}
+      </div>
       {daily && <DailyInput daily={daily} setDaily={setDaily} />}
       <Image
         src="/general/ui_icons/minus_icon.png"
