@@ -26,7 +26,7 @@ export default function BossesCard({
     } else {
       newBosses.forEach((newBoss) => {
         if (newBoss.bossesPosition === boss.bossesPosition) {
-          newBoss.done = dayjs().toDate();
+          newBoss.done = resetDate;
         }
       });
       setSelected(true);
@@ -37,7 +37,13 @@ export default function BossesCard({
 
   useEffect(() => {
     if (boss.done) {
-      if (dayjs().isBefore(dayjs(resetDate))) {
+      // Check whether the boss is Black Mage
+      if (
+        dayjs(resetDate).diff(
+          dayjs(boss.done),
+          boss.dashboardPosition === 3 ? "month" : "week",
+        ) < 1
+      ) {
         setSelected(true);
       } else {
         const newBosses: Boss[] = [...bosses];
@@ -47,6 +53,7 @@ export default function BossesCard({
           }
         });
         setSelected(false);
+        setBosses(newBosses);
       }
     }
   }, []);
