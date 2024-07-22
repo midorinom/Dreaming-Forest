@@ -40,7 +40,10 @@ export default function BossesEditCard({
       setSelected(true);
     }
 
-    setBosses(newBosses);
+    const sortedBosses = newBosses.sort((a, b) => {
+      return a.bossesPosition - b.bossesPosition;
+    });
+    setBosses(sortedBosses);
   }
 
   return (
