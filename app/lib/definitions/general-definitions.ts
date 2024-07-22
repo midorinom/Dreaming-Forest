@@ -52,6 +52,13 @@ export type BossInfo = {
   meso: number;
 };
 
+export type Tracking = {
+  dailies: true;
+  weeklies: true;
+  bosses: true;
+  progression: true;
+};
+
 export type Character = {
   characterId: UUID;
   image: string;
@@ -62,6 +69,7 @@ export type Character = {
   weeklies: Weekly[];
   bosses: Boss[];
   position: number;
+  tracking: Tracking;
 };
 
 export type User = {
