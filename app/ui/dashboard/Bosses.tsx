@@ -28,8 +28,13 @@ export default function Bosses({
     // Sort Bosses
     if (activeCharacter.bosses.length > 1) {
       const sortedBosses = activeCharacter.bosses.sort((a, b) => {
+        if (a.done !== b.done) {
+          return a.done ? 1 : -1;
+        }
+
         return a.bossesPosition - b.bossesPosition;
       });
+
       setBosses(sortedBosses);
     }
 
