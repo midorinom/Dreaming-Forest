@@ -32,7 +32,7 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
     <>
       {character && (
         <div
-          className={`grid h-[84%] w-[83%] grid-rows-[25vh_1fr] justify-items-center rounded-3xl ${!primaryBackgroundIndexes.includes(character.position) ? "bg-primary" : "bg-secondary"}`}
+          className={`grid h-[84%] w-[83%] grid-rows-[25vh_1fr] justify-items-center rounded-3xl ${primaryBackgroundIndexes.includes(character.position) ? "bg-primary/75" : "bg-secondary/75"}`}
         >
           <CharacterDetails character={character} />
           <CharacterTracking
