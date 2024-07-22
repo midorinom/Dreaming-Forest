@@ -31,15 +31,15 @@ export default function WeekliesEdit({
 
   useEffect(() => {
     dayjs.extend(utc);
-    let endOfDay = undefined;
+    let startOfDay = undefined;
 
     switch (region) {
       case "MSEA":
-        endOfDay = dayjs().utcOffset(8).endOf("day");
+        startOfDay = dayjs().utcOffset(8).startOf("day");
         break;
 
       case "GMS":
-        endOfDay = dayjs().utc().endOf("day");
+        startOfDay = dayjs().utc().startOf("day");
         break;
 
       default:
@@ -47,9 +47,9 @@ export default function WeekliesEdit({
         return;
     }
 
-    const newResetDates = [endOfDay.toDate()];
-    for (let i = 1; i < 7; i++) {
-      const nextDate = endOfDay.add(i, "day");
+    const newResetDates = [];
+    for (let i = 1; i < 8; i++) {
+      const nextDate = startOfDay.add(i, "day");
       newResetDates.push(nextDate.toDate());
     }
 
