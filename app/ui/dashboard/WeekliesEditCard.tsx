@@ -38,6 +38,15 @@ export default function WeekliesEditCard({
     setWeeklies(newWeeklies);
   }
 
+  function moveWeekly(offset: number) {
+    const newWeeklies: Weekly[] = [...weeklies];
+
+    newWeeklies[weeklyProp.position + offset].position -= offset;
+    newWeeklies[weeklyProp.position].position += offset;
+    newWeeklies.sort((a, b) => a.position - b.position);
+    setWeeklies(newWeeklies);
+  }
+
   return (
     <div className="flex w-full items-center justify-between">
       <div>
@@ -49,6 +58,7 @@ export default function WeekliesEditCard({
             alt="Up Arrow"
             sizes="100vw"
             className="h-[1.5rem] w-[auto] hover:cursor-pointer"
+            onClick={() => moveWeekly(-1)}
           />
         )}
         {weeklyProp.position + 1 !== weeklies.length && (
@@ -59,6 +69,7 @@ export default function WeekliesEditCard({
             alt="Down Arrow"
             sizes="100vw"
             className="h-[1.5rem] w-[auto] hover:cursor-pointer"
+            onClick={() => moveWeekly(1)}
           />
         )}
       </div>
