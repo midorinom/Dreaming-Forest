@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import type { User } from "@/app/lib/definitions/general-definitions";
 import ViewCharacters from "./ViewCharacters";
 import NavBar from "./NavBar";
+import Pagination from "./Pagination";
 
 export default function Characters() {
   const [user, setUser] = useState<User | null>(null);
@@ -19,9 +20,9 @@ export default function Characters() {
       {user && (
         <>
           <ViewCharacters charactersProp={user.characters} />
-          <div>
+          <div className="flex flex-col items-center">
             <NavBar />
-            <div>Pagination</div>
+            <Pagination />
           </div>
         </>
       )}
