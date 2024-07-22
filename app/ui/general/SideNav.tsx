@@ -21,7 +21,6 @@ export default function SideNav() {
           <Link href="/characters">
             <Image
               src="/general/ui_icons/characters_icon.png"
-              id="characters"
               height={0}
               width={0}
               alt="Characters Button"

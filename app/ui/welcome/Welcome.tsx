@@ -19,7 +19,6 @@ import {
 } from "@/public/welcome/small_spirit";
 import RegionAndCharacter from "./RegionAndCharacter";
 import CreateAccount from "./CreateAccount";
-import DreamySkeleton from "../general/DreamySkeleton";
 import ElodinSkeleton from "../general/ElodinSkeleton";
 
 export default function Welcome({ classes }: WelcomeProps) {
@@ -36,6 +35,12 @@ export default function Welcome({ classes }: WelcomeProps) {
     weeklies: [],
     bosses: [],
     position: 0,
+    tracking: {
+      dailies: true,
+      weeklies: true,
+      bosses: true,
+      progression: true,
+    },
   } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState(false);
