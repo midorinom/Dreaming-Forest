@@ -3,12 +3,7 @@ import type { CharacterDetailsProps } from "@/app/lib/definitions/characters-def
 import Image from "next/image";
 
 export default function CharacterDetails({ character }: CharacterDetailsProps) {
-  // const character = {
-  //   ign: "WWWWWWWWWWWW",
-  //   level: 250,
-  //   maplestoryClass: "Night Lord",
-  //   image: "/general/naked_char.png",
-  // };
+  const primaryBackgroundIndexes = [0, 3, 4, 7, 8, 11, 12, 15, 16, 19];
 
   return (
     <div
@@ -38,7 +33,9 @@ export default function CharacterDetails({ character }: CharacterDetailsProps) {
             />
           </div>
           <div className="flex w-3/5 flex-col justify-center">
-            <div className="text-[2.75rem] font-medium text-neutral underline-offset-[8px] underline-dreamy-accent">
+            <div
+              className={`text-[2.75rem] font-medium text-neutral underline-offset-[8px] ${primaryBackgroundIndexes.includes(character.position) ? "underline-dreamy-base-100" : "underline-dreamy-accent"}`}
+            >
               {character.ign}
             </div>
             <div className="flex gap-2 text-3xl text-neutral">
