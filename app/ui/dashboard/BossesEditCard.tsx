@@ -41,6 +41,10 @@ export default function BossesEditCard({
     }
 
     const sortedBosses = newBosses.sort((a, b) => {
+      if (a.done !== b.done) {
+        return a.done ? 1 : -1;
+      }
+
       return a.bossesPosition - b.bossesPosition;
     });
     setBosses(sortedBosses);
