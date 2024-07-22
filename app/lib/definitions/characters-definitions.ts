@@ -10,4 +10,6 @@ export type CharacterCardProps = {
 
 export type CharacterTrackingProps = {
   trackingProp: Tracking;
+  character: Character;
+  setCharacter: (character: Character) => void;
 };
