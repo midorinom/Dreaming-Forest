@@ -28,10 +28,10 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
   }, [character]);
 
   return (
-    <div className="grid h-[84%] w-4/5 grid-rows-[25vh_1fr] justify-items-center rounded-3xl bg-primary">
+    <div className="grid h-[84%] w-[83%] grid-rows-[25vh_1fr] justify-items-center rounded-3xl bg-primary">
       {character && (
         <>
-          <CharacterDetails />
+          <CharacterDetails character={character} />
           <CharacterTracking
             trackingProp={character.tracking}
             character={character}

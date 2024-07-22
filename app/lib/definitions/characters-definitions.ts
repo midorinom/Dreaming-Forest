@@ -8,6 +8,10 @@ export type CharacterCardProps = {
   characterProp: Character;
 };
 
+export type CharacterDetailsProps = {
+  character: Character;
+};
+
 export type CharacterTrackingProps = {
   trackingProp: Tracking;
   character: Character;

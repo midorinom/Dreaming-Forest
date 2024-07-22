@@ -1,13 +1,14 @@
 "use client";
+import type { CharacterDetailsProps } from "@/app/lib/definitions/characters-definitions";
 import Image from "next/image";
 
-export default function CharacterDetails() {
-  const character = {
-    ign: "WWWWWWWWWWWW",
-    level: 250,
-    maplestoryClass: "Night Lord",
-    image: "/general/naked_char.png",
-  };
+export default function CharacterDetails({ character }: CharacterDetailsProps) {
+  // const character = {
+  //   ign: "WWWWWWWWWWWW",
+  //   level: 250,
+  //   maplestoryClass: "Night Lord",
+  //   image: "/general/naked_char.png",
+  // };
 
   return (
     <div
