@@ -32,7 +32,8 @@ export default function DailiesCard({
           return;
       }
 
-      if (endOfDay.diff(dayjs(dailyProp.done), "minute") < 1440) {
+      // Check whether at least 1 day has passed
+      if (endOfDay.diff(dayjs(dailyProp.done), "second") < 86400) {
         setDone(true);
       } else {
         setDone(false);

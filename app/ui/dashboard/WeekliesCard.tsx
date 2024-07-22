@@ -4,6 +4,7 @@ import type { WeekliesCardProps } from "@/app/lib/definitions/dashboard-definiti
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import isoWeek from "dayjs/plugin/isoWeek";
 
 export default function WeekliesCard({
   weeklyProp,
@@ -16,18 +17,35 @@ export default function WeekliesCard({
 
   useEffect(() => {
     dayjs.extend(utc);
+    dayjs.extend(isoWeek);
     let now = dayjs().utcOffset(8);
     let endOfDay = undefined;
+    let dayOfWeek = undefined;
+    let nextResetDay = undefined;
 
     switch (region) {
       case "MSEA":
         now = dayjs().utcOffset(8);
         endOfDay = dayjs().utcOffset(8).endOf("day");
+
+        dayOfWeek = dayjs(weeklyProp.resetDate).utcOffset(8).isoWeekday();
+        nextResetDay = now.isoWeekday(dayOfWeek);
+        if (now.isoWeekday() >= dayOfWeek) {
+          nextResetDay = nextResetDay.add(1, "week");
+        }
+        nextResetDay = nextResetDay.startOf("day");
         break;
 
       case "GMS":
         now = dayjs().utc();
         endOfDay = dayjs().utc().endOf("day");
+
+        dayOfWeek = dayjs(weeklyProp.resetDate).utc().isoWeekday();
+        nextResetDay = now.isoWeekday(dayOfWeek);
+        if (now.isoWeekday() >= dayOfWeek) {
+          nextResetDay = nextResetDay.add(1, "week");
+        }
+        nextResetDay = nextResetDay.startOf("day");
         break;
 
       default:
@@ -35,11 +53,11 @@ export default function WeekliesCard({
         return;
     }
 
-    const timerString = `${dayjs(weeklyProp.resetDate).diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`;
+    const timerString = `${nextResetDay.diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`;
     setTimer(timerString);
 
     if (weeklyProp.done) {
-      if (dayjs().isBefore(dayjs(weeklyProp.resetDate))) {
+      if (dayjs().isBefore(nextResetDay)) {
         setDone(true);
       } else {
         setDone(false);
