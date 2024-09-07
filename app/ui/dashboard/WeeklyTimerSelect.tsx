@@ -21,7 +21,9 @@ export default function WeeklyTimerSelect({
   useEffect(() => {
     if (weekly) {
       for (const resetDate of resetDates) {
-        if (dayjs(resetDate).isSame(dayjs(weekly.resetDate))) {
+        if (
+          dayjs(resetDate).isoWeekday() === dayjs(weekly.resetDate).isoWeekday()
+        ) {
           setTimerInput(`${resetDates.indexOf(resetDate)}d`);
         }
       }
