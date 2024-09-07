@@ -2,6 +2,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import type { WeeklyTimerSelectProps } from "@/app/lib/definitions/dashboard-definitions";
 import dayjs from "dayjs";
+import isoWeek from "dayjs/plugin/isoWeek";
 
 export default function WeeklyTimerSelect({
   weekly,
@@ -19,6 +20,8 @@ export default function WeeklyTimerSelect({
   }
 
   useEffect(() => {
+    dayjs.extend(isoWeek);
+
     if (weekly) {
       for (const resetDate of resetDates) {
         if (
