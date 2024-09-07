@@ -44,7 +44,7 @@ export default function BossesCard({
 
   useEffect(() => {
     if (boss.done) {
-      // Check whether the boss is Black Mage
+      // Use month if the boss is Black Mage, otherwise use week
       if (
         dayjs(resetDate).diff(
           dayjs(boss.done),
