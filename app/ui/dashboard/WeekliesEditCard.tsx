@@ -11,6 +11,7 @@ export default function WeekliesEditCard({
   weeklyProp,
   weeklies,
   setWeeklies,
+  region
 }: WeekliesEditCardProps) {
   const [weekly, setWeekly] = useState<Weekly>(weeklyProp);
 
@@ -78,6 +79,7 @@ export default function WeekliesEditCard({
         weekly={weekly}
         setWeekly={setWeekly}
         resetDates={resetDates}
+        region={region}
       />
       <Image
         src="/general/ui_icons/minus_icon.png"

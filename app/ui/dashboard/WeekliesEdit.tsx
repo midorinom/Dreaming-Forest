@@ -89,6 +89,7 @@ export default function WeekliesEdit({
               weeklyProp={weekly}
               weeklies={weeklies}
               setWeeklies={setWeeklies}
+              region={region}
             />
           ))}
         </div>

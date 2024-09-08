@@ -8,6 +8,7 @@ export default function WeeklyTimerSelect({
   weekly,
   setWeekly,
   resetDates,
+  region,
 }: WeeklyTimerSelectProps) {
   const [timerInput, setTimerInput] = useState<string>("0d");
 
@@ -19,14 +20,26 @@ export default function WeeklyTimerSelect({
     setTimerInput(e.target.value);
   }
 
+  function getIsoWeekday(date: Date) {
+    switch (region) {
+      case "MSEA":
+        return dayjs(date).utcOffset(8).isoWeekday();
+
+      case "GMS":
+        return dayjs(date).utc().isoWeekday();
+
+      default:
+        console.error("No region");
+        return;
+    }
+  }
+
   useEffect(() => {
     dayjs.extend(isoWeek);
 
     if (weekly) {
       for (const resetDate of resetDates) {
-        if (
-          dayjs(resetDate).isoWeekday() === dayjs(weekly.resetDate).isoWeekday()
-        ) {
+        if (getIsoWeekday(resetDate) === getIsoWeekday(weekly.resetDate)) {
           setTimerInput(`${resetDates.indexOf(resetDate)}d`);
         }
       }
