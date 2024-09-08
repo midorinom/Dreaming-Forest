@@ -3,10 +3,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { UUID } from "crypto";
-import type { WeekliesEditProps } from "@/app/lib/definitions/dashboard-definitions";
+import type {
+  WeekliesEditProps,
+  WeeklyMapping,
+} from "@/app/lib/definitions/dashboard-definitions";
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import isoWeek from "dayjs/plugin/isoWeek";
 import WeekliesEditCard from "./WeekliesEditCard";
 
 export default function WeekliesEdit({
@@ -16,7 +20,9 @@ export default function WeekliesEdit({
   setEditWeekliesClicked,
 }: WeekliesEditProps) {
   dayjs.extend(utc);
+  dayjs.extend(isoWeek);
   const [resetDates, setResetDates] = useState<Date[]>([]);
+  const [sortedWeeklies, setSortedWeeklies] = useState<Weekly[]>([]);
 
   function addWeekly() {
     const newWeekly: Weekly = {
@@ -30,7 +36,22 @@ export default function WeekliesEdit({
     setWeeklies([...weeklies, newWeekly]);
   }
 
+  function getIsoWeekday(date: Date): number {
+    switch (region) {
+      case "MSEA":
+        return dayjs(date).utcOffset(8).isoWeekday();
+
+      case "GMS":
+        return dayjs(date).utc().isoWeekday();
+
+      default:
+        console.error("No region");
+        return -1;
+    }
+  }
+
   useEffect(() => {
+    // Set Reset Dates
     let startOfDay = undefined;
 
     switch (region) {
@@ -54,6 +75,30 @@ export default function WeekliesEdit({
     }
 
     setResetDates(newResetDates);
+
+    // Create New Mapping
+    const currentDayOfWeek = getIsoWeekday(new Date());
+    const newMapping: WeeklyMapping = {};
+
+    for (let i = 0; i < 7; i++) {
+      let key = currentDayOfWeek + i;
+
+      if (key > 7) {
+        key -= 7;
+      }
+
+      newMapping[key] = i;
+    }
+
+    // Sort Weeklies
+    const newWeeklies: Weekly[] = [...weeklies].sort((a, b) => {
+      return (
+        newMapping[getIsoWeekday(a.resetDate)] -
+        newMapping[getIsoWeekday(b.resetDate)]
+      );
+    });
+
+    setSortedWeeklies(newWeeklies);
   }, []);
 
   return (
@@ -80,20 +125,22 @@ export default function WeekliesEdit({
           </button>
         </div>
       </div>
-      {weeklies.length > 0 && resetDates.length > 0 && (
-        <div className="collapse-content flex max-h-[41vh] flex-col gap-2 overflow-scroll pb-0 pt-0 scrollbar-hide">
-          {weeklies.map((weekly) => (
-            <WeekliesEditCard
-              key={weekly.weeklyId}
-              resetDates={resetDates}
-              weeklyProp={weekly}
-              weeklies={weeklies}
-              setWeeklies={setWeeklies}
-              region={region}
-            />
-          ))}
-        </div>
-      )}
+      {weeklies.length > 0 &&
+        sortedWeeklies.length > 0 &&
+        resetDates.length > 0 && (
+          <div className="collapse-content flex max-h-[41vh] flex-col gap-2 overflow-scroll pb-0 pt-0 scrollbar-hide">
+            {sortedWeeklies.map((weekly) => (
+              <WeekliesEditCard
+                key={weekly.weeklyId}
+                resetDates={resetDates}
+                weeklyProp={weekly}
+                weeklies={weeklies}
+                setWeeklies={setWeeklies}
+                region={region}
+              />
+            ))}
+          </div>
+        )}
     </div>
   );
 }
