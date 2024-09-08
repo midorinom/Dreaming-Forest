@@ -17,6 +17,8 @@ export default function Bosses({
   activeCharacter,
   bossesInfo,
 }: BossesProps) {
+  dayjs.extend(utc);
+  dayjs.extend(isoWeek);
   const isMounted = useRef(false);
   const [bosses, setBosses] = useState<Boss[]>(activeCharacter.bosses);
   const [bossesTimer, setBossesTimer] = useState<string>("");
@@ -39,8 +41,6 @@ export default function Bosses({
     }
 
     // Set Timer
-    dayjs.extend(utc);
-    dayjs.extend(isoWeek);
     let now = undefined;
     let endOfDay = undefined;
     let nextThursday = undefined;

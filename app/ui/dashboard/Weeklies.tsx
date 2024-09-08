@@ -1,10 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import type { WeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
+import type {
+  WeekliesProps,
+  WeeklyMapping,
+} from "@/app/lib/definitions/dashboard-definitions";
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
 import WeekliesCard from "./WeekliesCard";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/isoWeek";
+import isoWeek from "dayjs/plugin/isoWeek";
 
 export default function Weeklies({
   region,
@@ -14,6 +19,8 @@ export default function Weeklies({
   selectedTab,
   setSelectedTab,
 }: WeekliesProps) {
+  dayjs.extend(utc);
+  dayjs.extend(isoWeek);
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [sortedWeeklies, setSortedWeeklies] = useState<Weekly[]>([]);
 
@@ -23,9 +30,41 @@ export default function Weeklies({
     }
   }
 
+  function getIsoWeekday(date: Date): number {
+    switch (region) {
+      case "MSEA":
+        return dayjs(date).utcOffset(8).isoWeekday();
+
+      case "GMS":
+        return dayjs(date).utc().isoWeekday();
+
+      default:
+        console.error("No region");
+        return -1;
+    }
+  }
+
   useEffect(() => {
+    // Create New Mapping
+    const currentDayOfWeek = getIsoWeekday(new Date());
+    const newMapping: WeeklyMapping = {};
+
+    for (let i = 0; i < 7; i++) {
+      let key = currentDayOfWeek + i;
+
+      if (key > 7) {
+        key -= 7;
+      }
+
+      newMapping[key] = i;
+    }
+
+    // Sort Weeklies
     const newWeeklies: Weekly[] = [...weeklies].sort((a, b) => {
-      return dayjs(a.resetDate).unix() - dayjs(b.resetDate).unix();
+      return (
+        newMapping[getIsoWeekday(a.resetDate)] -
+        newMapping[getIsoWeekday(b.resetDate)]
+      );
     });
 
     setSortedWeeklies(newWeeklies);

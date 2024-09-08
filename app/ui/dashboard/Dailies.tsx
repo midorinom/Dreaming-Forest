@@ -14,6 +14,7 @@ export default function Dailies({
   selectedTab,
   setSelectedTab,
 }: DailiesProps) {
+  dayjs.extend(utc);
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
 
@@ -24,7 +25,6 @@ export default function Dailies({
   }
 
   useEffect(() => {
-    dayjs.extend(utc);
     let now = undefined;
     let endOfDay = undefined;
 

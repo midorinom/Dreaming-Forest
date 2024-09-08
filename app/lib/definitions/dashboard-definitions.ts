@@ -82,6 +82,7 @@ export type WeekliesEditCardProps = {
   weeklyProp: Weekly;
   weeklies: Weekly[];
   setWeeklies: (dailies: Weekly[]) => void;
+  region: string;
 };
 
 export type WeeklyInputProps = {
@@ -93,6 +94,7 @@ export type WeeklyTimerSelectProps = {
   weekly: Weekly;
   setWeekly: (weekly: Weekly) => void;
   resetDates: Date[];
+  region: string;
 };
 
 export type BossesProps = {
@@ -125,4 +127,8 @@ export type BossesEditCardProps = {
 export type DatesProp = {
   now: Date;
   resetDate: Date;
+};
+
+export type WeeklyMapping = {
+  [key: number]: number;
 };

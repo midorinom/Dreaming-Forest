@@ -11,6 +11,7 @@ export default function WeekliesEditCard({
   weeklyProp,
   weeklies,
   setWeeklies,
+  region,
 }: WeekliesEditCardProps) {
   const [weekly, setWeekly] = useState<Weekly>(weeklyProp);
 
@@ -38,46 +39,15 @@ export default function WeekliesEditCard({
     setWeeklies(newWeeklies);
   }
 
-  function moveWeekly(offset: number) {
-    const newWeeklies: Weekly[] = [...weeklies];
-
-    newWeeklies[weeklyProp.position + offset].position -= offset;
-    newWeeklies[weeklyProp.position].position += offset;
-    newWeeklies.sort((a, b) => a.position - b.position);
-    setWeeklies(newWeeklies);
-  }
-
   return (
     <div className="flex w-full items-center justify-between">
-      <div>
-        {weeklyProp.position !== 0 && (
-          <Image
-            src="/general/ui_icons/up_arrow_icon.png"
-            height={0}
-            width={0}
-            alt="Up Arrow"
-            sizes="100vw"
-            className="h-[1.5rem] w-[auto] hover:cursor-pointer"
-            onClick={() => moveWeekly(-1)}
-          />
-        )}
-        {weeklyProp.position + 1 !== weeklies.length && (
-          <Image
-            src="/general/ui_icons/down_arrow_icon.png"
-            height={0}
-            width={0}
-            alt="Down Arrow"
-            sizes="100vw"
-            className="h-[1.5rem] w-[auto] hover:cursor-pointer"
-            onClick={() => moveWeekly(1)}
-          />
-        )}
-      </div>
+      <div></div>
       {weekly && <WeeklyInput weekly={weekly} setWeekly={setWeekly} />}
       <WeeklyTimerSelect
         weekly={weekly}
         setWeekly={setWeekly}
         resetDates={resetDates}
+        region={region}
       />
       <Image
         src="/general/ui_icons/minus_icon.png"

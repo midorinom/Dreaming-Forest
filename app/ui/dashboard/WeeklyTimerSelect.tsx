@@ -1,14 +1,19 @@
 "use client";
 import { useState, useEffect, ChangeEvent } from "react";
 import type { WeeklyTimerSelectProps } from "@/app/lib/definitions/dashboard-definitions";
+import utc from "dayjs";
 import dayjs from "dayjs";
+import isoWeek from "dayjs/plugin/isoWeek";
 
 export default function WeeklyTimerSelect({
   weekly,
   setWeekly,
   resetDates,
+  region,
 }: WeeklyTimerSelectProps) {
   const [timerInput, setTimerInput] = useState<string>("0d");
+  dayjs.extend(utc);
+  dayjs.extend(isoWeek);
 
   function handleSelectChange(e: ChangeEvent<HTMLSelectElement>) {
     const numberOfDays = parseInt(e.target.value, 10);
@@ -18,10 +23,24 @@ export default function WeeklyTimerSelect({
     setTimerInput(e.target.value);
   }
 
+  function getIsoWeekday(date: Date) {
+    switch (region) {
+      case "MSEA":
+        return dayjs(date).utcOffset(8).isoWeekday();
+
+      case "GMS":
+        return dayjs(date).utc().isoWeekday();
+
+      default:
+        console.error("No region");
+        return;
+    }
+  }
+
   useEffect(() => {
     if (weekly) {
       for (const resetDate of resetDates) {
-        if (dayjs(resetDate).isSame(dayjs(weekly.resetDate))) {
+        if (getIsoWeekday(resetDate) === getIsoWeekday(weekly.resetDate)) {
           setTimerInput(`${resetDates.indexOf(resetDate)}d`);
         }
       }
