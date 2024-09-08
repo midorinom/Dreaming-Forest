@@ -11,11 +11,11 @@ export default function DailiesCard({
   setDailies,
   region,
 }: DailiesCardProps) {
+  dayjs.extend(utc);
   const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
     if (dailyProp.done) {
-      dayjs.extend(utc);
       let endOfDay = undefined;
 
       switch (region) {

@@ -15,6 +15,7 @@ export default function WeekliesEdit({
   setWeeklies,
   setEditWeekliesClicked,
 }: WeekliesEditProps) {
+  dayjs.extend(utc);
   const [resetDates, setResetDates] = useState<Date[]>([]);
 
   function addWeekly() {
@@ -30,7 +31,6 @@ export default function WeekliesEdit({
   }
 
   useEffect(() => {
-    dayjs.extend(utc);
     let startOfDay = undefined;
 
     switch (region) {

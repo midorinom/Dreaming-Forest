@@ -14,10 +14,10 @@ export default function WeekliesCard({
 }: WeekliesCardProps) {
   const [done, setDone] = useState<boolean>(false);
   const [timer, setTimer] = useState<string>("");
+  dayjs.extend(utc);
+  dayjs.extend(isoWeek);
 
   useEffect(() => {
-    dayjs.extend(utc);
-    dayjs.extend(isoWeek);
     let now = dayjs().utcOffset(8);
     let endOfDay = undefined;
     let dayOfWeek = undefined;
