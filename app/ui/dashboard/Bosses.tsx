@@ -1,14 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import type {
-  BossesProps,
-  DatesProp,
-} from "@/app/lib/definitions/dashboard-definitions";
+import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Boss, User } from "@/app/lib/definitions/general-definitions";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import isoWeek from "dayjs/plugin/isoWeek";
+import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
 import BossesEdit from "./BossesEdit";
 import BossesCard from "./BossesCard";
 
@@ -17,8 +12,6 @@ export default function Bosses({
   activeCharacter,
   bossesInfo,
 }: BossesProps) {
-  dayjs.extend(utc);
-  dayjs.extend(isoWeek);
   const isMounted = useRef(false);
   const [bosses, setBosses] = useState<Boss[]>(activeCharacter.bosses);
   const [bossesTimer, setBossesTimer] = useState<string>("");
@@ -41,43 +34,18 @@ export default function Bosses({
     }
 
     // Set Timer
-    let now = undefined;
-    let endOfDay = undefined;
-    let nextThursday = undefined;
-
-    switch (region) {
-      case "MSEA":
-        now = dayjs().utcOffset(8);
-        endOfDay = dayjs().utcOffset(8).endOf("day");
-        nextThursday = now.isoWeekday(4);
-        if (now.isoWeekday() >= 4) {
-          nextThursday = nextThursday.add(1, "week");
-        }
-        nextThursday = nextThursday.startOf("day");
-
-        setBossesTimer(
-          `${nextThursday.diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`,
-        );
-        break;
-
-      case "GMS":
-        now = dayjs().utc();
-        endOfDay = dayjs().utc().endOf("day");
-        nextThursday = now.isoWeekday(4);
-        if (now.isoWeekday() >= 4) {
-          nextThursday = nextThursday.add(1, "week");
-        }
-        nextThursday = nextThursday.startOf("day");
-
-        setBossesTimer(
-          `${nextThursday.diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`,
-        );
-        break;
-
-      default:
-        console.error("No region");
-        return;
+    let dateTimes = getDateTimes(region);
+    if (!dateTimes) {
+      return;
     }
+
+    let now = dateTimes.now;
+    let endOfDay = dateTimes.endOfDay;
+    let nextThursday = dateTimes.nextThursday;
+
+    setBossesTimer(
+      `${nextThursday.diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`,
+    );
     setResetDate(nextThursday.toDate());
   }, []);
 

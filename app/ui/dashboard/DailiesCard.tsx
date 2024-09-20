@@ -2,8 +2,8 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import type { DailiesCardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Daily } from "@/app/lib/definitions/general-definitions";
+import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 
 export default function DailiesCard({
   dailyProp,
@@ -11,26 +11,16 @@ export default function DailiesCard({
   setDailies,
   region,
 }: DailiesCardProps) {
-  dayjs.extend(utc);
   const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
     if (dailyProp.done) {
-      let endOfDay = undefined;
-
-      switch (region) {
-        case "MSEA":
-          endOfDay = dayjs().utcOffset(8).endOf("day");
-          break;
-
-        case "GMS":
-          endOfDay = dayjs().utc().endOf("day");
-          break;
-
-        default:
-          console.error("No region");
-          return;
+      let dateTimes = getDateTimes(region);
+      if (!dateTimes) {
+        return;
       }
+
+      let endOfDay = dateTimes.endOfDay;
 
       // Check whether at least 1 day has passed
       if (endOfDay.diff(dayjs(dailyProp.done), "second") < 86400) {

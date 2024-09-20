@@ -5,6 +5,7 @@ import type { DailiesProps } from "@/app/lib/definitions/dashboard-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import DailiesCard from "./DailiesCard";
+import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
 
 export default function Dailies({
   region,
@@ -25,26 +26,15 @@ export default function Dailies({
   }
 
   useEffect(() => {
-    let now = undefined;
-    let endOfDay = undefined;
-
-    switch (region) {
-      case "MSEA":
-        now = dayjs().utcOffset(8);
-        endOfDay = dayjs().utcOffset(8).endOf("day");
-        setDailiesTimer(`${endOfDay.diff(now, "hour")}h`);
-        break;
-
-      case "GMS":
-        now = dayjs().utc();
-        endOfDay = dayjs().utc().endOf("day");
-        setDailiesTimer(`${endOfDay.diff(now, "hour")}h`);
-        break;
-
-      default:
-        console.error("No region");
-        return;
+    let dateTimes = getDateTimes(region);
+    if (!dateTimes) {
+      return;
     }
+
+    let now = dateTimes.now;
+    let endOfDay = dateTimes.endOfDay;
+
+    setDailiesTimer(`${endOfDay.diff(now, "hour")}h`);
   }, []);
 
   return (

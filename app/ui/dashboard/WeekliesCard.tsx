@@ -2,9 +2,8 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import type { WeekliesCardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
+import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import isoWeek from "dayjs/plugin/isoWeek";
 
 export default function WeekliesCard({
   weeklyProp,
@@ -14,44 +13,16 @@ export default function WeekliesCard({
 }: WeekliesCardProps) {
   const [done, setDone] = useState<boolean>(false);
   const [timer, setTimer] = useState<string>("");
-  dayjs.extend(utc);
-  dayjs.extend(isoWeek);
 
   useEffect(() => {
-    let now = dayjs().utcOffset(8);
-    let endOfDay = undefined;
-    let dayOfWeek = undefined;
-    let nextResetDay = undefined;
-
-    switch (region) {
-      case "MSEA":
-        now = dayjs().utcOffset(8);
-        endOfDay = dayjs().utcOffset(8).endOf("day");
-
-        dayOfWeek = dayjs(weeklyProp.resetDate).utcOffset(8).isoWeekday();
-        nextResetDay = now.isoWeekday(dayOfWeek);
-        if (now.isoWeekday() >= dayOfWeek) {
-          nextResetDay = nextResetDay.add(1, "week");
-        }
-        nextResetDay = nextResetDay.startOf("day");
-        break;
-
-      case "GMS":
-        now = dayjs().utc();
-        endOfDay = dayjs().utc().endOf("day");
-
-        dayOfWeek = dayjs(weeklyProp.resetDate).utc().isoWeekday();
-        nextResetDay = now.isoWeekday(dayOfWeek);
-        if (now.isoWeekday() >= dayOfWeek) {
-          nextResetDay = nextResetDay.add(1, "week");
-        }
-        nextResetDay = nextResetDay.startOf("day");
-        break;
-
-      default:
-        console.error("No region");
-        return;
+    let dateTimes = getDateTimes(region, weeklyProp.resetDate);
+    if (!dateTimes || !dateTimes.nextResetDay) {
+      return;
     }
+
+    let now = dateTimes.now;
+    let endOfDay = dateTimes.endOfDay;
+    let nextResetDay = dateTimes.nextResetDay;
 
     const timerString = `${nextResetDay.diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`;
     setTimer(timerString);

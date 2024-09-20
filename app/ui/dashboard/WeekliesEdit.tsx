@@ -8,6 +8,7 @@ import type {
   WeeklyMapping,
 } from "@/app/lib/definitions/dashboard-definitions";
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
+import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
@@ -52,21 +53,11 @@ export default function WeekliesEdit({
 
   useEffect(() => {
     // Set Reset Dates
-    let startOfDay = undefined;
-
-    switch (region) {
-      case "MSEA":
-        startOfDay = dayjs().utcOffset(8).startOf("day");
-        break;
-
-      case "GMS":
-        startOfDay = dayjs().utc().startOf("day");
-        break;
-
-      default:
-        console.error("No region");
-        return;
+    let dateTimes = getDateTimes(region);
+    if (!dateTimes) {
+      return;
     }
+    let startOfDay = dateTimes.startOfDay;
 
     const newResetDates = [];
     for (let i = 1; i < 8; i++) {
