@@ -1,4 +1,5 @@
 import { UUID } from "crypto";
+import { Dayjs } from "dayjs";
 import { ReactElement } from "react";
 
 export type AutoCompleteProps = {
@@ -84,4 +85,12 @@ export type MainAppWrapperProps = {
 
 export type ResetButtonProps = {
   user: User;
+};
+
+export type DateTimes = {
+  now: Dayjs;
+  startOfDay: Dayjs;
+  endOfDay: Dayjs;
+  nextThursday: Dayjs;
+  nextResetDay: Dayjs | undefined;
 };
