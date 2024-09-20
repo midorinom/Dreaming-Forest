@@ -34,6 +34,8 @@ export default function WeekliesEdit({
       resetDate: resetDates[6],
     };
 
+    console.log(newWeekly, weeklies);
+
     setWeeklies([...weeklies, newWeekly]);
   }
 
@@ -90,7 +92,7 @@ export default function WeekliesEdit({
     });
 
     setSortedWeeklies(newWeeklies);
-  }, []);
+  }, [weeklies]);
 
   return (
     <div className="collapse collapse-open flex w-[36vw] flex-col gap-2 bg-secondary pb-3">

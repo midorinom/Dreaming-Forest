@@ -68,7 +68,7 @@ export default function Weeklies({
     });
 
     setSortedWeeklies(newWeeklies);
-  }, []);
+  }, [weeklies]);
 
   return (
     <div
