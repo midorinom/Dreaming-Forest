@@ -17,8 +17,8 @@ import {
   smallSpiritDialogue,
   smallSpiritImage,
 } from "@/public/welcome/small_spirit";
-import RegionAndCharacter from "./RegionAndCharacter";
-import CreateAccount from "./CreateAccount";
+import RegionAndCharacter from "./region-and-character/RegionAndCharacter";
+import CreateAccount from "./create-account/CreateAccount";
 import ElodinSkeleton from "../general/ElodinSkeleton";
 
 export default function Welcome({ classes }: WelcomeProps) {

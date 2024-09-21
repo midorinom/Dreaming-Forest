@@ -34,8 +34,6 @@ export default function WeekliesEdit({
       resetDate: resetDates[6],
     };
 
-    console.log(newWeekly, weeklies);
-
     setWeeklies([...weeklies, newWeekly]);
   }
 

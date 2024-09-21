@@ -15,7 +15,7 @@ export function getDateTimes(
   let endOfDay: Dayjs;
   let dayOfWeek: number;
   let nextResetDay: Dayjs | undefined;
-  let nextThursday: Dayjs | undefined;
+  let nextThursday: Dayjs;
 
   switch (region) {
     case "MSEA":
