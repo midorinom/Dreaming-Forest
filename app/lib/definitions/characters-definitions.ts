@@ -17,3 +17,9 @@ export type CharacterTrackingProps = {
   character: Character;
   setCharacter: (character: Character) => void;
 };
+
+export type Page =
+  | "view"
+  | "add"
+  | "rearrange"
+  | "delete";
