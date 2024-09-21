@@ -49,12 +49,12 @@ export default function AddCharacter() {
 
       setCharacter(newCharacter);
     }
-  }, [ign, level, maplestoryClass]);
+  }, [uploadedFile, ign, level, maplestoryClass]);
 
   return (
     <div className="flex items-center justify-center">
       <div className="flex h-1/2 min-h-64 w-1/2 flex-col gap-4">
-        <div className="collapse relative grid h-4/5 grid-cols-2 grid-rows-3 items-center bg-primary">
+        <div className="collapse relative grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
           <ImageField setUploadedFile={setUploadedFile} />
           <IgnField setIgn={setIgn} />
           <LevelField level={level} setLevel={setLevel} />
