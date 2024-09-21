@@ -1,10 +1,5 @@
 import type { Character, Tracking } from "./general-definitions";
 
-export type ViewCharactersProps = {
-  charactersProp: Character[];
-  setCurrentPage: (currentPage: Page) => void
-};
-
 export type CharacterCardProps = {
   characterProp: Character;
 };
@@ -24,3 +19,13 @@ export type Page =
   | "add"
   | "rearrange"
   | "delete";
+
+  export type NavBarProps = {
+    currentPage: Page;
+    setCurrentPage: (currentPage: Page) => void
+  };
+
+  export type ViewCharactersProps = {
+    charactersProp: Character[];
+    setCurrentPage: (currentPage: Page) => void
+  };

@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { NavBarProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function NavBar() {
+export default function NavBar({currentPage, setCurrentPage}: NavBarProps) {
   const [buttonHovered, setButtonHovered] = useState<boolean>(false);
 
   return (
