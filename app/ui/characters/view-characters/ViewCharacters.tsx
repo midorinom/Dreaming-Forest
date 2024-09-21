@@ -6,7 +6,6 @@ import CharacterCard from "./CharacterCard";
 
 export default function ViewCharacters({
   charactersProp,
-  setCurrentPage,
 }: ViewCharactersProps) {
   const [characters, setCharacters] = useState<Character[]>(charactersProp);
 

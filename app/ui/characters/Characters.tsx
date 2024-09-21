@@ -25,10 +25,7 @@ export default function Characters() {
       {user && (
         <>
           {currentPage === "view" && (
-            <ViewCharacters
-              charactersProp={user.characters}
-              setCurrentPage={setCurrentPage}
-            />
+            <ViewCharacters charactersProp={user.characters} />
           )}
           {currentPage === "rearrange" && <RearrangeCharacters />}
           {currentPage === "add" && <AddCharacter />}

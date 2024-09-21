@@ -29,5 +29,4 @@ export type NavBarIconProps = {
 
 export type ViewCharactersProps = {
   charactersProp: Character[];
-  setCurrentPage: (currentPage: Page) => void;
 };
