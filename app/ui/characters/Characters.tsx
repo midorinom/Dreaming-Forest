@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Page } from "@/app/lib/definitions/characters-definitions";
 import type { User } from "@/app/lib/definitions/general-definitions";
-import ViewCharacters from "./ViewCharacters";
+import ViewCharacters from "./view-characters/ViewCharacters";
 import NavBar from "./NavBar";
 import Pagination from "./Pagination";
 
