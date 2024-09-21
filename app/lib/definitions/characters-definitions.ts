@@ -2,6 +2,7 @@ import type { Character, Tracking } from "./general-definitions";
 
 export type ViewCharactersProps = {
   charactersProp: Character[];
+  setCurrentPage: (currentPage: Page) => void
 };
 
 export type CharacterCardProps = {
