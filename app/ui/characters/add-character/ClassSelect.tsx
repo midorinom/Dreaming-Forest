@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useWelcome } from "@/app/ui/contexts/WelcomeContext";
+import { useCharacters } from "@/app/ui/contexts/CharactersContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
 import type { ClassFieldProps } from "@/app/lib/definitions/welcome-definitions";
 
 const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
-  const welcomeCtx = useWelcome();
+  const charactersCtx = useCharacters();
   const [classInput, setClassInput] = useState<string>("");
   const [classes, setClasses] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
@@ -24,14 +24,14 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
   const li_className = "border-b border-b-base-content/10 w-full";
 
   useEffect(() => {
-    if (welcomeCtx) {
-      switch (welcomeCtx.region) {
+    if (charactersCtx) {
+      switch (charactersCtx.region) {
         case "GMS":
-          setClasses(welcomeCtx.classes.gms);
+          setClasses(charactersCtx.classes.gms);
           break;
 
         case "MSEA":
-          setClasses(welcomeCtx.classes.msea);
+          setClasses(charactersCtx.classes.msea);
           break;
 
         default:
@@ -39,7 +39,7 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
           return;
       }
     }
-  }, [welcomeCtx]);
+  }, [charactersCtx]);
 
   useEffect(() => {
     if (!classInput) {
