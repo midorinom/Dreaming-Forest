@@ -21,9 +21,14 @@ export default function Characters() {
     <main className="grid grid-cols-[1fr_12vw]">
       {user && (
         <>
-          {currentPage === "view" && <ViewCharacters charactersProp={user.characters} setCurrentPage={setCurrentPage}/>}
+          {currentPage === "view" && (
+            <ViewCharacters
+              charactersProp={user.characters}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
           <div className="flex flex-col items-center">
-            <NavBar />
+            <NavBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
             <Pagination />
           </div>
         </>
