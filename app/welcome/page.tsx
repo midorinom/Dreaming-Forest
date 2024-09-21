@@ -1,4 +1,4 @@
-import { fetchClasses } from "@/app/lib/fetches/welcome-fetches";
+import { fetchClasses } from "@/app/lib/fetches/general-fetches";
 import Welcome from "@/app/ui/welcome/Welcome";
 
 export default async function Page() {
