@@ -36,6 +36,7 @@ export default function NavBarIcon({
       className="relative h-[5vh] w-[3vw] hover:cursor-pointer"
       onMouseEnter={() => setButtonHovered(true)}
       onMouseLeave={() => setButtonHovered(false)}
+      onClick={() => setCurrentPage(icon)}
     />
   );
 }
