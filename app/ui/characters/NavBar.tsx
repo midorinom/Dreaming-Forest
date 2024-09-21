@@ -19,25 +19,15 @@ export default function NavBar({ currentPage, setCurrentPage }: NavBarProps) {
         setCurrentPage={setCurrentPage}
         setButtonHovered={setButtonHovered}
       />
-      <Image
-        src="/general/ui_icons/add_character_icon.png"
-        height={0}
-        width={0}
-        alt="Add Character Button"
-        sizes="100vw"
-        className="relative h-[5vh] w-[3vw] hover:cursor-pointer"
-        onMouseEnter={() => setButtonHovered(true)}
-        onMouseLeave={() => setButtonHovered(false)}
+      <NavBarIcon
+        icon={currentPage === "view" ? "add" : "view"}
+        setCurrentPage={setCurrentPage}
+        setButtonHovered={setButtonHovered}
       />
-      <Image
-        src="/general/ui_icons/delete_character_icon.png"
-        height={0}
-        width={0}
-        alt="Delete Character Button"
-        sizes="100vw"
-        className="relative h-[5vh] w-[3vw] hover:cursor-pointer"
-        onMouseEnter={() => setButtonHovered(true)}
-        onMouseLeave={() => setButtonHovered(false)}
+      <NavBarIcon
+        icon={currentPage === "view" ? "delete" : "view"}
+        setCurrentPage={setCurrentPage}
+        setButtonHovered={setButtonHovered}
       />
     </div>
   );
