@@ -37,7 +37,7 @@ export default function AddCharacter({
   }, [ign, level, maplestoryClass]);
 
   return (
-    <div className="relative grid min-h-64 grid-cols-2 grid-rows-3 items-center gap-4">
+    <div className="relative grid min-h-64 grid-cols-2 grid-rows-3 items-center">
       <ImageField setUploadedFile={setUploadedFile} />
       <IgnField setIgn={setIgn} />
       <LevelField level={level} setLevel={setLevel} />
