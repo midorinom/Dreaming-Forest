@@ -5,7 +5,8 @@ import type { Character } from "@/app/lib/definitions/general-definitions";
 import CharacterCard from "./CharacterCard";
 
 export default function ViewCharacters({
-  charactersProp, setCurrentPage
+  charactersProp,
+  setCurrentPage,
 }: ViewCharactersProps) {
   const [characters, setCharacters] = useState<Character[]>(charactersProp);
 
