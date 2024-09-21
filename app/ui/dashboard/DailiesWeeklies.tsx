@@ -6,10 +6,10 @@ import type {
   User,
   Weekly,
 } from "@/app/lib/definitions/general-definitions";
-import Dailies from "./Dailies";
-import Weeklies from "./Weeklies";
-import DailiesEdit from "./DailiesEdit";
-import WeekliesEdit from "./WeekliesEdit";
+import Dailies from "./dailies/Dailies";
+import Weeklies from "./weeklies/Weeklies";
+import DailiesEdit from "./dailies/DailiesEdit";
+import WeekliesEdit from "./weeklies/WeekliesEdit";
 
 export default function DailiesWeeklies({
   region,

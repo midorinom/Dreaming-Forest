@@ -6,7 +6,7 @@ import type {
   User,
 } from "@/app/lib/definitions/general-definitions";
 import ActiveCharacter from "./ActiveCharacter";
-import Bosses from "./Bosses";
+import Bosses from "./bosses/Bosses";
 import CharactersWheel from "./CharactersWheel";
 import DailiesWeeklies from "./DailiesWeeklies";
 
