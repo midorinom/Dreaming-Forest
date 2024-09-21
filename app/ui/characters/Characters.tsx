@@ -2,9 +2,12 @@
 import { useState, useEffect } from "react";
 import { Page } from "@/app/lib/definitions/characters-definitions";
 import type { User } from "@/app/lib/definitions/general-definitions";
-import ViewCharacters from "./view-characters/ViewCharacters";
 import NavBar from "./NavBar";
 import Pagination from "./Pagination";
+import ViewCharacters from "./view-characters/ViewCharacters";
+import RearrangeCharacters from "./rearrange-characters/RearrangeCharacters";
+import AddCharacter from "./add-character/AddCharacter";
+import DeleteCharacters from "./delete-characters/DeleteCharacters";
 
 export default function Characters() {
   const [user, setUser] = useState<User | null>(null);
@@ -27,6 +30,9 @@ export default function Characters() {
               setCurrentPage={setCurrentPage}
             />
           )}
+          {currentPage === "rearrange" && <RearrangeCharacters />}
+          {currentPage === "add" && <AddCharacter />}
+          {currentPage === "delete" && <DeleteCharacters />}
           <div className="flex flex-col items-center">
             <NavBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
             <Pagination />
