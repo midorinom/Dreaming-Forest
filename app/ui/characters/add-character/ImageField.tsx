@@ -19,6 +19,8 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
       if (file.size > MAX_FILE_SIZE) {
         setError("File size exceeds 10KB");
         setUploadedFile(null);
+        URL.revokeObjectURL(fileURL);
+        setFileURL("");
       } else {
         if (error) {
           setError("");
