@@ -14,17 +14,17 @@ export default function NavBar({ currentPage, setCurrentPage }: NavBarProps) {
         }`}
       ></div>
       <NavBarIcon
-        icon={currentPage === "view" ? "rearrange" : "view"}
+        icon={currentPage === "rearrange" ? "view" : "rearrange"}
         setCurrentPage={setCurrentPage}
         setButtonHovered={setButtonHovered}
       />
       <NavBarIcon
-        icon={currentPage === "view" ? "add" : "view"}
+        icon={currentPage === "add" ? "view" : "add"}
         setCurrentPage={setCurrentPage}
         setButtonHovered={setButtonHovered}
       />
       <NavBarIcon
-        icon={currentPage === "view" ? "delete" : "view"}
+        icon={currentPage === "delete" ? "view" : "delete"}
         setCurrentPage={setCurrentPage}
         setButtonHovered={setButtonHovered}
       />
