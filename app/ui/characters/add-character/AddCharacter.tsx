@@ -60,7 +60,7 @@ export default function AddCharacter() {
           <LevelField level={level} setLevel={setLevel} />
           <ClassField setMaplestoryClass={setMaplestoryClass} />
         </div>
-        <button className="btn btn-neutral w-1/3 self-end text-3xl text-info">
+        <button className="w-fit-content btn btn-neutral self-end text-3xl text-info">
           Add Character
         </button>
       </div>
