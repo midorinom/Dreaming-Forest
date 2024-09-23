@@ -92,6 +92,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
       }
     } catch (error) {
       console.error("Error adding character", error);
+      throw new Error("Error adding character");
     }
 
     setIsUploadingToDatabase(false);
