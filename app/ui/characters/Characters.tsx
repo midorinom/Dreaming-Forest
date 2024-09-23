@@ -26,7 +26,7 @@ export default function Characters({ classes }: CharactersProps) {
     const localUser = localStorage.getItem("user");
 
     if (localUser) {
-      const parsedLocalUser = JSON.parse(localUser);
+      const parsedLocalUser: User = JSON.parse(localUser);
 
       setUser(parsedLocalUser);
       setRegion(parsedLocalUser.region);
@@ -44,7 +44,9 @@ export default function Characters({ classes }: CharactersProps) {
                 <ViewCharacters charactersProp={characters} />
               )}
               {currentPage === "rearrange" && <RearrangeCharacters />}
-              {currentPage === "add" && <AddCharacter setCharacters={setCharacters}/>}
+              {currentPage === "add" && (
+                <AddCharacter setCharacters={setCharacters} />
+              )}
               {currentPage === "delete" && <DeleteCharacters />}
               <div className="flex flex-col items-center">
                 <NavBar
