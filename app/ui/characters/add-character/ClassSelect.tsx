@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useCharacters } from "@/app/ui/contexts/CharactersContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
-import type { ClassFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import type { ClassFieldProps } from "@/app/lib/definitions/characters-definitions";
 
 const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
   const charactersCtx = useCharacters();

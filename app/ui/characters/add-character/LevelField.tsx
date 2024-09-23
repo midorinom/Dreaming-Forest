@@ -1,8 +1,12 @@
 "use client";
-import { useRef, ChangeEvent } from "react";
-import type { LevelFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import { useRef, ChangeEvent, useEffect } from "react";
+import type { LevelFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function LevelField({ level, setLevel }: LevelFieldProps) {
+export default function LevelField({
+  level,
+  setLevel,
+  displaySuccessMessage,
+}: LevelFieldProps) {
   const textInputRef = useRef<HTMLInputElement | null>(null);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -29,6 +33,18 @@ export default function LevelField({ level, setLevel }: LevelFieldProps) {
     const levelInput = parseInt(e.target.value);
     setLevel(levelInput);
   }
+
+  useEffect(() => {
+    if (displaySuccessMessage) {
+      if (textInputRef.current) {
+        textInputRef.current.value = "";
+      }
+      if (rangeInputRef.current) {
+        rangeInputRef.current.value = "";
+      }
+      setLevel(0);
+    }
+  }, [displaySuccessMessage]);
 
   return (
     <div className="relative col-start-2 row-start-2 flex w-4/5 items-center gap-4">

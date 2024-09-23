@@ -11,7 +11,15 @@ import CharacterTracking from "./CharacterTracking";
 export default function CharacterCard({ characterProp }: CharacterCardProps) {
   const isMounted = useRef(false);
   const [character, setCharacter] = useState<Character>(characterProp);
-  const primaryBackgroundIndexes = [0, 3, 4, 7, 8, 11, 12, 15, 16, 19];
+
+  function isPrimaryBackground(): boolean {
+    if (character.position % 4 === 0 || character.position % 4 === 3) {
+      console.log(character.ign, character.position % 4);
+      return true;
+    }
+
+    return false;
+  }
 
   useEffect(() => {
     if (!isMounted.current) {
@@ -32,7 +40,7 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
     <>
       {character && (
         <div
-          className={`grid h-[84%] w-[83%] grid-rows-[25vh_1fr] justify-items-center rounded-3xl ${primaryBackgroundIndexes.includes(character.position) ? "bg-primary/75" : "bg-secondary/75"}`}
+          className={`grid h-[84%] w-[83%] grid-rows-[24vh_1fr] justify-items-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground() ? "bg-primary/75" : "bg-secondary/75"}`}
         >
           <CharacterDetails character={character} />
           <CharacterTracking

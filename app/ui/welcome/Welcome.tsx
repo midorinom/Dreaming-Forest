@@ -43,9 +43,10 @@ export default function Welcome({ classes }: WelcomeProps) {
     },
   } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
-  const [proceedClicked, setProceedClicked] = useState(false);
-  const [done, setDone] = useState(false);
-  const [isUploadingToDatabase, setIsUploadingToDatabase] = useState(false);
+  const [proceedClicked, setProceedClicked] = useState<boolean>(false);
+  const [done, setDone] = useState<boolean>(false);
+  const [isUploadingToDatabase, setIsUploadingToDatabase] =
+    useState<boolean>(false);
   const router = useRouter();
 
   // Check whether the user is a first-timer

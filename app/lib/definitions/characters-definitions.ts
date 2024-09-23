@@ -42,3 +42,25 @@ export type NavBarIconProps = {
 export type ViewCharactersProps = {
   charactersProp: Character[];
 };
+
+export type AddCharactersProps = {
+  setCharacters: (characters: Character[]) => void;
+};
+
+export type ImageFieldProps = {
+  setUploadedFile: (image: File | null) => void;
+};
+
+export type IgnFieldProps = {
+  setIgn: (ign: string) => void;
+};
+
+export type LevelFieldProps = {
+  level: number;
+  setLevel: (level: number) => void;
+  displaySuccessMessage: boolean;
+};
+
+export type ClassFieldProps = {
+  setMaplestoryClass: (maplestoryClass: string) => void;
+};
