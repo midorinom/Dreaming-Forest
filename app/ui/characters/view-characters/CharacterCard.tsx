@@ -13,7 +13,8 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
   const [character, setCharacter] = useState<Character>(characterProp);
 
   function isPrimaryBackground(): boolean {
-    if (character.position % 4 === 0 || 3) {
+    if (character.position % 4 === 0 || character.position % 4 === 3) {
+      console.log(character.ign, character.position % 4);
       return true;
     }
 
