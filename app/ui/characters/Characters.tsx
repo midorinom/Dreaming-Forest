@@ -44,7 +44,7 @@ export default function Characters({ classes }: CharactersProps) {
                 <ViewCharacters charactersProp={characters} />
               )}
               {currentPage === "rearrange" && <RearrangeCharacters />}
-              {currentPage === "add" && <AddCharacter />}
+              {currentPage === "add" && <AddCharacter setCharacters={setCharacters}/>}
               {currentPage === "delete" && <DeleteCharacters />}
               <div className="flex flex-col items-center">
                 <NavBar

@@ -42,3 +42,7 @@ export type NavBarIconProps = {
 export type ViewCharactersProps = {
   charactersProp: Character[];
 };
+
+export type AddCharactersProps = {
+  setCharacters: (characters: Character[]) => void;
+};
