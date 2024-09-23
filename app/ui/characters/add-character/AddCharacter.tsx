@@ -163,7 +163,11 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
             <div className="collapse grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
               <ImageField setUploadedFile={setUploadedFile} />
               <IgnField setIgn={setIgn} />
-              <LevelField level={level} setLevel={setLevel} />
+              <LevelField
+                level={level}
+                setLevel={setLevel}
+                displaySuccessMessage={displaySuccessMessage}
+              />
               <ClassField setMaplestoryClass={setMaplestoryClass} />
             </div>
             <button
