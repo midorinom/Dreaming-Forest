@@ -10,7 +10,7 @@ export default function ViewCharacters({
   const [characters, setCharacters] = useState<Character[]>(charactersProp);
 
   return (
-    <div className="grid grid-cols-2 grid-rows-2 items-center justify-items-center">
+    <div className="grid grid-cols-2 grid-rows-2 items-center justify-items-center gap-y-6">
       {characters &&
         characters.map((character) => (
           <CharacterCard
