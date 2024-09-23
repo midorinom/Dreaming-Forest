@@ -1,15 +1,18 @@
 # Dreaming Forest
 
 ## Table of Contents
-* [Introduction](#Introduction)
-* [Technologies Used](#Technologies)
-* [Data Model](#Data)
-* [Folder Structure](#Structure)
-* [Component Hierarchy](#Hierarchy)
-* [Pictures](#Pictures)
+
+- [Introduction](#Introduction)
+- [Technologies Used](#Technologies)
+- [Data Model](#Data)
+- [Folder Structure](#Structure)
+- [Component Hierarchy](#Hierarchy)
+- [Pictures](#Pictures)
 
 <a name="Introduction"></a>
+
 ## Introduction
+
 This is still a work in progress! The aim of this project is to remaster my previous <a href="https://github.com/midorinom/maplestory_tracker">Maplestory Tracker</a> website. I want to make big improvements all around in performance, scalability, serch engine optimisation (SEO), user experience, aesthetics and design, as well as a more organised and maintainable codebase. It is also an opportunity for me to learn and implement new technologies, mainly Next.js with its host of features to optimise React projects such as server-side rendering and many more.
 
 This project is also the first time where I used Figma to create extensive prototypes before developing the website. I found it to be extremely useful, making the development process more productive and effective! You can view my designs on Figma <a href="https://www.figma.com/design/IohBAXXF9Q7OTlyMF99BhX/Dreaming-Forest?t=LR5oNgodlYfqsClm-1">here</a>.
@@ -17,7 +20,9 @@ This project is also the first time where I used Figma to create extensive proto
 The website is deployed to Vercel and can be accessed <a href="https://dreaming-forest.vercel.app/">here</a>. As Next.js is developed by Vercel, they have naturally made it easy to integrate Next.js projects with Vercel hosting solutions. I hosted my entire project on Vercel with my Next.js app that includes both the frontend and backend server, using Vercel Postgres as my database and Vercel Blob as file storage.
 
 <a name="Technologies"></a>
+
 ## Technologies Used
+
 <div style="display:flex">
 <img src="/documentation/readme/Typescript.png" alt="Typescript" title="Typescript">
 <img src="/documentation/readme/Next.png" alt="NextJS" title="NextJS">
@@ -34,54 +39,59 @@ The website is deployed to Vercel and can be accessed <a href="https://dreaming-
 </div>
 
 <a name="Structure"></a>
+
 ## Folder Structure
+
 ### app
-```Pages```
+
+`Pages`
 
 The name of the folder corresponds to each of the URL routes. Each folder contains page.tsx, loading.tsx and layout.tsx. All pages apart from "welcome" are stored in the "(main-app)" folder.
 
-```api```
+`api`
 
 API endpoints. Each folder inside "api" that contains a route.ts file is an endpoint, with the endpoint following the folder structure.
 
-```lib```
+`lib`
 
 Server actions, definitions and fetch functions.
+
 - Server actions are used inside client components to make requests to the server.
 - Definitions contain Typescript type definitions.
 - Fetch functions are used in server components to fetch data from the server that are then propped down to client components.
 
-```ui```
+`ui`
 
 React components that make up the frontend of the website.
 
-```documentation```
+`documentation`
 
 Diagrams for planning and designing various aspects of the website, as well as images that are used in the README file.
 
-```drizzle```
+`drizzle`
 
 Schema used for Drizzle ORM and storing migrations logs.
 
-
-```public```
+`public`
 
 Static assets such as images.
 
-```scripts```
+`scripts`
 
 Scripts and data that are used to seed the database, mainly to populate static data or enums.
 
 ### Root
-```Config Files```
 
- Various files used in configuration of Next, Typescript, Tailwind, Drizzle and project dependencies.
+`Config Files`
+
+Various files used in configuration of Next, Typescript, Tailwind, Drizzle and project dependencies.
 
 <a name="Hierarchy"></a>
+
 ## Component Hierarchy
 
 ```
-"/" 
+"/"
 Page (Server Component)
   MainAppWrapper
     TopNav
@@ -155,11 +165,15 @@ Page (Server Component)
 ```
 
 <a name="Data"></a>
+
 ## Data Model
+
 <img src="/documentation/readme/Data_Model.png" alt="Data Model" title="Data Model">
 
 <a name="Pictures"></a>
+
 ## Pictures
+
 Some pictures of what the website looks like so far!
 
 <img src="/documentation/readme/Welcome_Select_Region.png" alt="Welcome Page - Select Region" title="Welcome Page - Select Region">
@@ -170,3 +184,5 @@ Some pictures of what the website looks like so far!
 <img src="/documentation/readme/Dashboard_Edit_Weeklies.png" alt="Dashboard Page - Edit Weeklies" title="Dashboard Page - Edit Weeklies">
 <img src="/documentation/readme/Dashboard_Edit_Bosses.png" alt="Dashboard Page - Edit Bosses" title="Dashboard Page - Edit Bosses">
 <img src="/documentation/readme/Dashboard_Done.png" alt="Dashboard Page - Fully Set Up" title="Dashboard Page - Fully Set Up">
+<img src="/documentation/readme/Characters_View_Characters.png" alt="Characters Page - View Characters" title="Characters Page - View Characters">
+<img src="/documentation/readme/Characters__Add_Character.png" alt="Characters Page - Add Character" title="Characters Page - Add Character">
