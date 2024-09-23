@@ -37,6 +37,8 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
   const [readyToProceed, setReadyToProceed] = useState<boolean>(false);
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
+  const [displaySuccessMessage, setDisplaySuccessMessage] =
+    useState<boolean>(false);
 
   async function handleSubmit() {
     // Get local user
@@ -93,6 +95,8 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     }
 
     setIsUploadingToDatabase(false);
+    setDisplaySuccessMessage(true);
+    setTimeout(() => setDisplaySuccessMessage(false), 5000);
   }
 
   useEffect(() => {
@@ -129,25 +133,48 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
 
   return (
     <div className="flex items-center justify-center">
-      {isUploadingToDatabase ? (
-        <span className="loading loading-spinner h-1/5 w-auto text-accent"></span>
-      ) : (
-        <div className="flex h-1/2 min-h-64 w-1/2 flex-col gap-4">
-          <div className="collapse relative grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
-            <ImageField setUploadedFile={setUploadedFile} />
-            <IgnField setIgn={setIgn} />
-            <LevelField level={level} setLevel={setLevel} />
-            <ClassField setMaplestoryClass={setMaplestoryClass} />
-          </div>
-          <button
-            disabled={!readyToProceed}
-            className="w-fit-content btn btn-neutral self-end text-3xl text-info"
-            onClick={handleSubmit}
+      <div className="relative flex h-full w-full flex-col items-center justify-center">
+        {displaySuccessMessage && (
+          <div
+            role="alert"
+            className="alert alert-success absolute left-[25%] top-[15%] w-1/4 self-start"
           >
-            Add Character
-          </button>
-        </div>
-      )}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>Character has been added!</span>
+          </div>
+        )}
+        {isUploadingToDatabase ? (
+          <span className="loading loading-spinner h-1/5 w-auto text-accent"></span>
+        ) : (
+          <div className="flex h-1/2 min-h-64 w-1/2 flex-col gap-4">
+            <div className="collapse grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
+              <ImageField setUploadedFile={setUploadedFile} />
+              <IgnField setIgn={setIgn} />
+              <LevelField level={level} setLevel={setLevel} />
+              <ClassField setMaplestoryClass={setMaplestoryClass} />
+            </div>
+            <button
+              disabled={!readyToProceed}
+              className="w-fit-content btn btn-neutral self-end text-3xl text-info"
+              onClick={handleSubmit}
+            >
+              Add Character
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
