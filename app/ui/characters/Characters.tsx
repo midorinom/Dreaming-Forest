@@ -4,7 +4,10 @@ import {
   CharactersProps,
   Page,
 } from "@/app/lib/definitions/characters-definitions";
-import type { User } from "@/app/lib/definitions/general-definitions";
+import type {
+  Character,
+  User,
+} from "@/app/lib/definitions/general-definitions";
 import CharactersProvider from "@/app/ui/contexts/CharactersContext";
 import NavBar from "./NavBar";
 import Pagination from "./Pagination";
@@ -16,6 +19,7 @@ import DeleteCharacters from "./delete-characters/DeleteCharacters";
 export default function Characters({ classes }: CharactersProps) {
   const [user, setUser] = useState<User | null>(null);
   const [region, setRegion] = useState<string>("");
+  const [characters, setCharacters] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState<Page>("view");
 
   useEffect(() => {
@@ -24,19 +28,20 @@ export default function Characters({ classes }: CharactersProps) {
     if (localUser) {
       const parsedLocalUser = JSON.parse(localUser);
 
-      setRegion(parsedLocalUser.region);
       setUser(parsedLocalUser);
+      setRegion(parsedLocalUser.region);
+      setCharacters(parsedLocalUser.characters);
     }
   }, []);
 
   return (
     <>
-      {user && (
+      {user && region && characters && (
         <CharactersProvider value={{ classes, region }}>
           <main className="grid grid-cols-[1fr_12vw]">
             <>
               {currentPage === "view" && (
-                <ViewCharacters charactersProp={user.characters} />
+                <ViewCharacters charactersProp={characters} />
               )}
               {currentPage === "rearrange" && <RearrangeCharacters />}
               {currentPage === "add" && <AddCharacter />}
