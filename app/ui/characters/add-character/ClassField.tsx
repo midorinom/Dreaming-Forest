@@ -1,4 +1,4 @@
-import type { ClassFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import type { ClassFieldProps } from "@/app/lib/definitions/characters-definitions";
 import ClassSelect from "./ClassSelect";
 
 export default function ClassField({ setMaplestoryClass }: ClassFieldProps) {
