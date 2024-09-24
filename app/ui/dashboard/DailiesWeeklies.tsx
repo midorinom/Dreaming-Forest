@@ -16,7 +16,7 @@ export default function DailiesWeeklies({
   region,
   activeCharacter,
 }: DailiesWeekliesProps) {
-  const [prevCharacterId, setPrevCharacterId] = useState<string>("");
+  const [currentCharacterId, setCurrentCharacterId] = useState<string>("");
   const [dailies, setDailies] = useState<Daily[]>([]);
   const [weeklies, setWeeklies] = useState<Weekly[]>([]);
   const [selectedTab, setSelectedTab] = useState<string>("Dailies");
@@ -52,8 +52,8 @@ export default function DailiesWeeklies({
   }, [activeCharacter]);
 
   useEffect(() => {
-    if (prevCharacterId !== activeCharacter.characterId) {
-      setPrevCharacterId(activeCharacter.characterId);
+    if (currentCharacterId !== activeCharacter.characterId) {
+      setCurrentCharacterId(activeCharacter.characterId);
       return;
     }
 

@@ -16,7 +16,7 @@ export default function Bosses({
   activeCharacter,
   bossesInfo,
 }: BossesProps) {
-  const [prevCharacterId, setPrevCharacterId] = useState<string>("");
+  const [currentCharacterId, setCurrentCharacterId] = useState<string>("");
   const [bosses, setBosses] = useState<Boss[]>([]);
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
@@ -65,8 +65,8 @@ export default function Bosses({
   }, [activeCharacter]);
 
   useEffect(() => {
-    if (prevCharacterId !== activeCharacter.characterId) {
-      setPrevCharacterId(activeCharacter.characterId);
+    if (currentCharacterId !== activeCharacter.characterId) {
+      setCurrentCharacterId(activeCharacter.characterId);
       return;
     }
 
