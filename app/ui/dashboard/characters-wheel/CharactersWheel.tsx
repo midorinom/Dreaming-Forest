@@ -19,7 +19,7 @@ export default function CharactersWheel({
       (character) => character.characterId !== activeCharacter.characterId,
     );
     setCharacters(charactersWithoutActiveChar);
-  }, []);
+  }, [activeCharacter]);
 
   return (
     <div
