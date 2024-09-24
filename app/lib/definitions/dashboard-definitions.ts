@@ -136,4 +136,7 @@ export type WeeklyMapping = {
 export type CharactersWheelProps = {
   activeCharacter: Character;
   setActiveCharacter: (activeCharacter: Character) => void;
+  charactersProp: Character[];
 };
+
+export type CharactersWheelCardProps = {};
