@@ -12,12 +12,16 @@ export default function ViewCharacters({
   return (
     <div className="grid grid-cols-2 grid-rows-2 items-center justify-items-center gap-y-6">
       {characters &&
-        characters.map((character) => (
-          <CharacterCard
-            key={character.characterId}
-            characterProp={character}
-          />
-        ))}
+        characters.map((character, index) => {
+          if (index < 4) {
+            return (
+              <CharacterCard
+                key={character.characterId}
+                characterProp={character}
+              />
+            );
+          }
+        })}
     </div>
   );
 }
