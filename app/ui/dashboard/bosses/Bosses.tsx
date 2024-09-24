@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Boss, User } from "@/app/lib/definitions/general-definitions";
@@ -12,14 +12,16 @@ export default function Bosses({
   activeCharacter,
   bossesInfo,
 }: BossesProps) {
-  const isMounted = useRef(false);
-  const [bosses, setBosses] = useState<Boss[]>(activeCharacter.bosses);
+  const [firstRender, setFirstRender] = useState<boolean>(true);
+  const [bosses, setBosses] = useState<Boss[]>([]);
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editBossesClicked, setEditBossesClicked] = useState<boolean>(false);
   const [resetDate, setResetDate] = useState<Date | null>(null);
 
   useEffect(() => {
+    setFirstRender(true);
+
     // Sort Bosses
     if (activeCharacter.bosses.length > 1) {
       const sortedBosses = activeCharacter.bosses.sort((a, b) => {
@@ -31,6 +33,8 @@ export default function Bosses({
       });
 
       setBosses(sortedBosses);
+    } else {
+      setBosses(activeCharacter.bosses);
     }
 
     // Set Timer
@@ -47,11 +51,11 @@ export default function Bosses({
       `${nextThursday.diff(now, "day")}d ${endOfDay.diff(now, "hour")}h`,
     );
     setResetDate(nextThursday.toDate());
-  }, []);
+  }, [activeCharacter]);
 
   useEffect(() => {
-    if (!isMounted.current) {
-      isMounted.current = true;
+    if (firstRender) {
+      setFirstRender(false);
       return;
     }
 

@@ -17,9 +17,11 @@ export default function CharactersWheel({
         }
         height={0}
         width={0}
-        alt="Naked Character"
+        alt="Character Image"
         sizes="100vw"
-        className={`h-${characterHovered ? "4/5" : "3/5"} w-auto hover:cursor-pointer`}
+        className={`${
+          characterHovered ? "h-4/5" : "h-3/5"
+        } w-auto hover:cursor-pointer`}
         onMouseEnter={() => setCharacterHovered(true)}
         onMouseLeave={() => setCharacterHovered(false)}
         onClick={() => setActiveCharacter(characterProp)}
