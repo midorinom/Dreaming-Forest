@@ -7,7 +7,7 @@ import type {
 } from "@/app/lib/definitions/general-definitions";
 import ActiveCharacter from "./ActiveCharacter";
 import Bosses from "./bosses/Bosses";
-import CharactersWheel from "./CharactersWheel";
+import CharactersWheel from "./characters-wheel/CharactersWheel";
 import DailiesWeeklies from "./DailiesWeeklies";
 
 export default function Dashboard({ bossesInfo }: DashboardProps) {
@@ -30,6 +30,7 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
           <CharactersWheel
             activeCharacter={activeCharacter}
             setActiveCharacter={setActiveCharacter}
+            charactersProp={user.characters}
           />
           <DailiesWeeklies
             region={user.region}
