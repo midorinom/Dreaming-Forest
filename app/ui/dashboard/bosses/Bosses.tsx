@@ -2,7 +2,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { BossesProps } from "@/app/lib/definitions/dashboard-definitions";
-import type { Boss, User } from "@/app/lib/definitions/general-definitions";
+import type {
+  Boss,
+  Character,
+  User,
+} from "@/app/lib/definitions/general-definitions";
 import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
 import BossesEdit from "./BossesEdit";
 import BossesCard from "./BossesCard";
@@ -12,7 +16,7 @@ export default function Bosses({
   activeCharacter,
   bossesInfo,
 }: BossesProps) {
-  const [firstRender, setFirstRender] = useState<boolean>(true);
+  const [prevCharacterId, setPrevCharacterId] = useState<string>("");
   const [bosses, setBosses] = useState<Boss[]>([]);
   const [bossesTimer, setBossesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
@@ -20,21 +24,28 @@ export default function Bosses({
   const [resetDate, setResetDate] = useState<Date | null>(null);
 
   useEffect(() => {
-    setFirstRender(true);
+    setEditBossesClicked(false);
+    setHeadingHovered(false);
 
-    // Sort Bosses
-    if (activeCharacter.bosses.length > 1) {
-      const sortedBosses = activeCharacter.bosses.sort((a, b) => {
-        if (a.done !== b.done) {
-          return a.done ? 1 : -1;
-        }
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
+      // Sort Bosses
+      const parsedCharacter: Character =
+        JSON.parse(localUser).characters[activeCharacter.position];
 
-        return a.bossesPosition - b.bossesPosition;
-      });
+      if (parsedCharacter.bosses.length > 1) {
+        const sortedBosses = parsedCharacter.bosses.sort((a, b) => {
+          if (a.done !== b.done) {
+            return a.done ? 1 : -1;
+          }
 
-      setBosses(sortedBosses);
-    } else {
-      setBosses(activeCharacter.bosses);
+          return a.bossesPosition - b.bossesPosition;
+        });
+
+        setBosses(sortedBosses);
+      } else {
+        setBosses(parsedCharacter.bosses);
+      }
     }
 
     // Set Timer
@@ -54,8 +65,8 @@ export default function Bosses({
   }, [activeCharacter]);
 
   useEffect(() => {
-    if (firstRender) {
-      setFirstRender(false);
+    if (prevCharacterId !== activeCharacter.characterId) {
+      setPrevCharacterId(activeCharacter.characterId);
       return;
     }
 

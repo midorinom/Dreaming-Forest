@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
+  Character,
   Daily,
   User,
   Weekly,
@@ -15,7 +16,7 @@ export default function DailiesWeeklies({
   region,
   activeCharacter,
 }: DailiesWeekliesProps) {
-  const [firstRender, setFirstRender] = useState<boolean>(true);
+  const [prevCharacterId, setPrevCharacterId] = useState<string>("");
   const [dailies, setDailies] = useState<Daily[]>([]);
   const [weeklies, setWeeklies] = useState<Weekly[]>([]);
   const [selectedTab, setSelectedTab] = useState<string>("Dailies");
@@ -24,14 +25,35 @@ export default function DailiesWeeklies({
     useState<boolean>(false);
 
   useEffect(() => {
-    setFirstRender(true);
-    setDailies(activeCharacter.dailies);
-    setWeeklies(activeCharacter.weeklies);
+    setEditDailiesClicked(false);
+    setEditWeekliesClicked(false);
+
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
+      const parsedCharacter: Character =
+        JSON.parse(localUser).characters[activeCharacter.position];
+      setDailies(parsedCharacter.dailies);
+      setWeeklies(parsedCharacter.weeklies);
+
+      if (
+        !parsedCharacter.tracking.dailies &&
+        parsedCharacter.tracking.weeklies
+      ) {
+        setSelectedTab("Weeklies");
+      } else if (
+        !parsedCharacter.tracking.weeklies &&
+        parsedCharacter.tracking.dailies
+      ) {
+        setSelectedTab("Dailies");
+      } else {
+        setSelectedTab("Dailies");
+      }
+    }
   }, [activeCharacter]);
 
   useEffect(() => {
-    if (firstRender) {
-      setFirstRender(false);
+    if (prevCharacterId !== activeCharacter.characterId) {
+      setPrevCharacterId(activeCharacter.characterId);
       return;
     }
 
@@ -41,6 +63,7 @@ export default function DailiesWeeklies({
       const newUser: User = JSON.parse(localUser);
       newUser.characters[activeCharacter.position].dailies = dailies;
       newUser.characters[activeCharacter.position].weeklies = weeklies;
+      console.log(newUser);
       localStorage.setItem("user", JSON.stringify(newUser));
     }
   }, [dailies, weeklies]);
