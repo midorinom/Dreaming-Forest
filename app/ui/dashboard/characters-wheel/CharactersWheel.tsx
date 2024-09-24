@@ -26,7 +26,7 @@ export default function CharactersWheel({
       className="relative mx-16 mt-2 flex items-center justify-around"
       onMouseLeave={() => setWheelHovered(false)}
     >
-      {characters.length > 1 && wheelHovered ? (
+      {characters.length >= 1 && wheelHovered ? (
         <>
           {currentPage !== 0 && (
             <Image
@@ -65,7 +65,7 @@ export default function CharactersWheel({
           )}
         </>
       ) : (
-        characters.length > 1 && (
+        characters.length >= 1 && (
           <Image
             src={"/general/ui_icons/switch_characters_icon.png"}
             height={0}
