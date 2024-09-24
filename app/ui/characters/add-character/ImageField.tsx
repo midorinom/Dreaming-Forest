@@ -33,14 +33,21 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
 
   return (
     <>
-      <Image
-        src={fileURL ? fileURL : "/general/naked_char.png"}
-        height={0}
-        width={0}
-        alt="Naked Character"
-        sizes="100vw"
-        className="row-span-2 max-h-40 w-1/3 justify-self-center"
-      />
+      <div
+        style={{
+          position: "relative",
+        }}
+        className="row-span-2 flex h-full max-h-40 w-1/3 place-self-center"
+      >
+        <Image
+          src={fileURL ? fileURL : "/general/naked_char.png"}
+          height={0}
+          width={0}
+          alt="Character Image"
+          sizes="100vw"
+          className="absolute h-full w-full"
+        />
+      </div>
       <div className="relative col-start-1 row-start-3 w-4/5 justify-self-center">
         <input
           id="image_upload"
