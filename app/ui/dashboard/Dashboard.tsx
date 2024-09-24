@@ -36,11 +36,13 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
             region={user.region}
             activeCharacter={activeCharacter}
           />
-          <Bosses
-            region={user.region}
-            activeCharacter={activeCharacter}
-            bossesInfo={bossesInfo}
-          />
+          {activeCharacter.tracking.bosses && (
+            <Bosses
+              region={user.region}
+              activeCharacter={activeCharacter}
+              bossesInfo={bossesInfo}
+            />
+          )}
         </>
       )}
     </main>

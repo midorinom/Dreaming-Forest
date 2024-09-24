@@ -75,41 +75,43 @@ export default function DailiesWeeklies({
 
   return (
     <div className="mt-2 flex w-full flex-col items-end">
-      {editDailiesClicked ? (
-        <DailiesEdit
-          dailies={dailies}
-          setDailies={setDailies}
-          setEditDailiesClicked={setEditDailiesClicked}
-        />
-      ) : (
-        <Dailies
-          region={region}
-          dailies={dailies}
-          setDailies={setDailies}
-          setEditDailiesClicked={setEditDailiesClicked}
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-          characterPosition={activeCharacter.position}
-        />
-      )}
-      {editWeekliesClicked ? (
-        <WeekliesEdit
-          region={region}
-          weeklies={weeklies}
-          setWeeklies={setWeeklies}
-          setEditWeekliesClicked={setEditWeekliesClicked}
-        />
-      ) : (
-        <Weeklies
-          region={region}
-          weeklies={weeklies}
-          setWeeklies={setWeeklies}
-          setEditWeekliesClicked={setEditWeekliesClicked}
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-          characterPosition={activeCharacter.position}
-        />
-      )}
+      {activeCharacter.tracking.dailies &&
+        (editDailiesClicked ? (
+          <DailiesEdit
+            dailies={dailies}
+            setDailies={setDailies}
+            setEditDailiesClicked={setEditDailiesClicked}
+          />
+        ) : (
+          <Dailies
+            region={region}
+            dailies={dailies}
+            setDailies={setDailies}
+            setEditDailiesClicked={setEditDailiesClicked}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            characterPosition={activeCharacter.position}
+          />
+        ))}
+      {activeCharacter.tracking.weeklies &&
+        (editWeekliesClicked ? (
+          <WeekliesEdit
+            region={region}
+            weeklies={weeklies}
+            setWeeklies={setWeeklies}
+            setEditWeekliesClicked={setEditWeekliesClicked}
+          />
+        ) : (
+          <Weeklies
+            region={region}
+            weeklies={weeklies}
+            setWeeklies={setWeeklies}
+            setEditWeekliesClicked={setEditWeekliesClicked}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            characterPosition={activeCharacter.position}
+          />
+        ))}
     </div>
   );
 }
