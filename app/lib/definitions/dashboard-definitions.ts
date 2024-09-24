@@ -132,3 +132,8 @@ export type DatesProp = {
 export type WeeklyMapping = {
   [key: number]: number;
 };
+
+export type CharactersWheelProps = {
+  activeCharacter: Character;
+  setActiveCharacter: (activeCharacter: Character) => void;
+};

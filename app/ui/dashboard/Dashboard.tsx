@@ -27,7 +27,10 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
       {user && activeCharacter && (
         <>
           <ActiveCharacter activeCharacter={user.characters[0]} />
-          <CharactersWheel />
+          <CharactersWheel
+            activeCharacter={activeCharacter}
+            setActiveCharacter={setActiveCharacter}
+          />
           <DailiesWeeklies
             region={user.region}
             activeCharacter={user.characters[0]}
