@@ -63,7 +63,6 @@ export default function DailiesWeeklies({
       const newUser: User = JSON.parse(localUser);
       newUser.characters[activeCharacter.position].dailies = dailies;
       newUser.characters[activeCharacter.position].weeklies = weeklies;
-      console.log(newUser);
       localStorage.setItem("user", JSON.stringify(newUser));
     }
   }, [dailies, weeklies]);
