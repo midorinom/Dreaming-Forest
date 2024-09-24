@@ -3,7 +3,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { CharactersWheelCardProps } from "@/app/lib/definitions/dashboard-definitions";
 
-export default function CharactersWheel({}: CharactersWheelCardProps) {
+export default function CharactersWheel({
+  characterProp,
+  setActiveCharacter,
+}: CharactersWheelCardProps) {
   const [wheelHovered, setWheelHovered] = useState<boolean>(false);
 
   return (

@@ -139,4 +139,7 @@ export type CharactersWheelProps = {
   charactersProp: Character[];
 };
 
-export type CharactersWheelCardProps = {};
+export type CharactersWheelCardProps = {
+  characterProp: Character;
+  setActiveCharacter: (activeCharacter: Character) => void;
+};
