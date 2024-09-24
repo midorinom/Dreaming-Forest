@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
   Daily,
@@ -15,17 +15,23 @@ export default function DailiesWeeklies({
   region,
   activeCharacter,
 }: DailiesWeekliesProps) {
-  const isMounted = useRef(false);
-  const [dailies, setDailies] = useState<Daily[]>(activeCharacter.dailies);
-  const [weeklies, setWeeklies] = useState<Weekly[]>(activeCharacter.weeklies);
+  const [firstRender, setFirstRender] = useState<boolean>(true);
+  const [dailies, setDailies] = useState<Daily[]>([]);
+  const [weeklies, setWeeklies] = useState<Weekly[]>([]);
   const [selectedTab, setSelectedTab] = useState<string>("Dailies");
   const [editDailiesClicked, setEditDailiesClicked] = useState<boolean>(false);
   const [editWeekliesClicked, setEditWeekliesClicked] =
     useState<boolean>(false);
 
   useEffect(() => {
-    if (!isMounted.current) {
-      isMounted.current = true;
+    setFirstRender(true);
+    setDailies(activeCharacter.dailies);
+    setWeeklies(activeCharacter.weeklies);
+  }, [activeCharacter]);
+
+  useEffect(() => {
+    if (firstRender) {
+      setFirstRender(false);
       return;
     }
 
