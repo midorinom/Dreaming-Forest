@@ -26,7 +26,7 @@ export default function CharactersWheel({
       className="relative mx-16 mt-2 flex items-center justify-around"
       onMouseLeave={() => setWheelHovered(false)}
     >
-      {wheelHovered ? (
+      {characters.length > 1 && wheelHovered ? (
         <>
           {currentPage !== 0 && (
             <Image
@@ -65,15 +65,17 @@ export default function CharactersWheel({
           )}
         </>
       ) : (
-        <Image
-          src={"/general/ui_icons/switch_characters_icon.png"}
-          height={0}
-          width={0}
-          alt="Switch Characters Button"
-          sizes="100vw"
-          className="mt-2 h-[40%] w-auto"
-          onMouseEnter={() => setWheelHovered(true)}
-        />
+        characters.length > 1 && (
+          <Image
+            src={"/general/ui_icons/switch_characters_icon.png"}
+            height={0}
+            width={0}
+            alt="Switch Characters Button"
+            sizes="100vw"
+            className="mt-2 h-[40%] w-auto"
+            onMouseEnter={() => setWheelHovered(true)}
+          />
+        )
       )}
     </div>
   );

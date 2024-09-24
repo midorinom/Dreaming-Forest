@@ -27,13 +27,11 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
       {user && activeCharacter && (
         <>
           <ActiveCharacter activeCharacter={activeCharacter} />
-          {user.characters.length > 1 && (
-            <CharactersWheel
-              activeCharacter={activeCharacter}
-              setActiveCharacter={setActiveCharacter}
-              charactersProp={user.characters}
-            />
-          )}
+          <CharactersWheel
+            activeCharacter={activeCharacter}
+            setActiveCharacter={setActiveCharacter}
+            charactersProp={user.characters}
+          />
           <DailiesWeeklies
             region={user.region}
             activeCharacter={activeCharacter}
