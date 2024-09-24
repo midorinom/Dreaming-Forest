@@ -49,6 +49,8 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     }
 
     const newUser: User = JSON.parse(localUser);
+    const newCharacter = { ...character };
+    newCharacter.characterId = uuidv4() as UUID;
 
     // Define fetch function for storing image
     async function storeImage(user: User, image: File) {
@@ -69,12 +71,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
 
       const { url } = await response.json();
 
-      const newCharacter = { ...character };
       newCharacter.image = url;
-      newCharacter.position = newUser.characters.length;
-      newUser.characters.push(newCharacter);
-      localStorage.setItem("user", JSON.stringify(newUser));
-      setCharacters([...newUser.characters]);
     }
 
     // Set new user in local storage, upload image to database if there is one
@@ -83,17 +80,16 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     try {
       if (uploadedFile) {
         await storeImage(newUser, uploadedFile);
-      } else {
-        const newCharacter = { ...character };
-        newCharacter.position = newUser.characters.length;
-        newUser.characters.push(newCharacter);
-        localStorage.setItem("user", JSON.stringify(newUser));
-        setCharacters([...newUser.characters]);
       }
     } catch (error) {
       console.error("Error adding character", error);
       throw new Error("Error adding character");
     }
+
+    newCharacter.position = newUser.characters.length;
+    newUser.characters.push(newCharacter);
+    localStorage.setItem("user", JSON.stringify(newUser));
+    setCharacters([...newUser.characters]);
 
     setIsUploadingToDatabase(false);
     setDisplaySuccessMessage(true);

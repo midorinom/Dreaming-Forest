@@ -47,10 +47,11 @@ export default function Weeklies({
   useEffect(() => {
     // Create New Mapping
     const currentDayOfWeek = getIsoWeekday(new Date());
+    const nextDayOfWeek = currentDayOfWeek + 1;
     const newMapping: WeeklyMapping = {};
 
     for (let i = 0; i < 7; i++) {
-      let key = currentDayOfWeek + i;
+      let key = nextDayOfWeek + i;
 
       if (key > 7) {
         key -= 7;
