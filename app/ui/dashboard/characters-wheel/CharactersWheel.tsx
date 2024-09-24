@@ -12,7 +12,7 @@ export default function CharactersWheel({
 }: CharactersWheelProps) {
   const [wheelHovered, setWheelHovered] = useState<boolean>(false);
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [currentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
   useEffect(() => {
     const charactersWithoutActiveChar = charactersProp.filter(
@@ -28,14 +28,17 @@ export default function CharactersWheel({
     >
       {wheelHovered ? (
         <>
-          <Image
-            src={"/general/ui_icons/left_arrow_icon.png"}
-            height={0}
-            width={0}
-            alt="Left Arrow Button"
-            sizes="100vw"
-            className="h-[40%] w-auto hover:cursor-pointer"
-          />
+          {currentPage !== 0 && (
+            <Image
+              src={"/general/ui_icons/left_arrow_icon.png"}
+              height={0}
+              width={0}
+              alt="Left Arrow Button"
+              sizes="100vw"
+              className="h-[40%] w-auto hover:cursor-pointer"
+              onClick={() => setCurrentPage(currentPage - 1)}
+            />
+          )}
           <div className="grid h-full w-full grid-cols-4 items-center justify-items-center">
             {characters &&
               characters.map((character, index) => {
@@ -49,14 +52,17 @@ export default function CharactersWheel({
                   );
               })}
           </div>
-          <Image
-            src={"/general/ui_icons/right_arrow_icon.png"}
-            height={0}
-            width={0}
-            alt="Right Arrow Button"
-            sizes="100vw"
-            className="h-[40%] w-auto hover:cursor-pointer"
-          />
+          {currentPage <= Math.trunc(characters.length / 4) - 1 && (
+            <Image
+              src={"/general/ui_icons/right_arrow_icon.png"}
+              height={0}
+              width={0}
+              alt="Right Arrow Button"
+              sizes="100vw"
+              className="h-[40%] w-auto hover:cursor-pointer"
+              onClick={() => setCurrentPage(currentPage + 1)}
+            />
+          )}
         </>
       ) : (
         <Image
