@@ -68,8 +68,6 @@ export default function Weeklies({
       );
     });
 
-    console.log(newWeeklies);
-
     setSortedWeeklies(newWeeklies);
   }, [weeklies]);
 
