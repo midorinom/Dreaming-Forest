@@ -37,7 +37,7 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
         style={{
           position: "relative",
         }}
-        className="row-span-2 flex h-full max-h-40 w-1/3 place-self-center"
+        className="row-span-2 h-full max-h-40 w-1/3 place-self-center"
       >
         <Image
           src={fileURL ? fileURL : "/general/naked_char.png"}
