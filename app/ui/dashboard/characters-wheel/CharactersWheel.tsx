@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { CharactersWheelProps } from "@/app/lib/definitions/dashboard-definitions";
+import { Character } from "@/app/lib/definitions/general-definitions";
 import CharactersWheelCard from "./CharactersWheelCard";
 
 export default function CharactersWheel({
@@ -10,6 +11,15 @@ export default function CharactersWheel({
   charactersProp,
 }: CharactersWheelProps) {
   const [wheelHovered, setWheelHovered] = useState<boolean>(false);
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [currentPage] = useState<number>(0);
+
+  useEffect(() => {
+    const charactersWithoutActiveChar = charactersProp.filter(
+      (character) => character.characterId !== activeCharacter.characterId,
+    );
+    setCharacters(charactersWithoutActiveChar);
+  }, []);
 
   return (
     <div
@@ -27,7 +37,17 @@ export default function CharactersWheel({
             className="h-[40%] w-auto hover:cursor-pointer"
           />
           <div className="grid h-full w-full grid-cols-4 items-center justify-items-center">
-            <CharactersWheelCard />
+            {characters &&
+              characters.map((character, index) => {
+                if (Math.trunc(index / 4) === currentPage)
+                  return (
+                    <CharactersWheelCard
+                      key={character.characterId}
+                      characterProp={character}
+                      setActiveCharacter={setActiveCharacter}
+                    />
+                  );
+              })}
           </div>
           <Image
             src={"/general/ui_icons/right_arrow_icon.png"}

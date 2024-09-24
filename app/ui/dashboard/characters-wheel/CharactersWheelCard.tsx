@@ -7,17 +7,22 @@ export default function CharactersWheel({
   characterProp,
   setActiveCharacter,
 }: CharactersWheelCardProps) {
-  const [wheelHovered, setWheelHovered] = useState<boolean>(false);
+  const [characterHovered, setCharacterHovered] = useState<boolean>(false);
 
   return (
     <>
       <Image
-        src={"/general/naked_char.png"}
+        src={
+          characterProp.image ? characterProp.image : "/general/naked_char.png"
+        }
         height={0}
         width={0}
         alt="Naked Character"
         sizes="100vw"
-        className="h-[50%] w-auto"
+        className={`h-${characterHovered ? "4/5" : "3/5"} w-auto hover:cursor-pointer`}
+        onMouseEnter={() => setCharacterHovered(true)}
+        onMouseLeave={() => setCharacterHovered(false)}
+        onClick={() => setActiveCharacter(characterProp)}
       />
     </>
   );
