@@ -11,7 +11,7 @@ export default function ActiveCharacter({
 
   useEffect(() => {
     setCharacter(activeCharacter);
-  }, []);
+  }, [activeCharacter]);
 
   return (
     <div className="flex h-full w-full justify-center">
