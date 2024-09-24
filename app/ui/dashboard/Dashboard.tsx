@@ -26,7 +26,7 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
     <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
       {user && activeCharacter && (
         <>
-          <ActiveCharacter activeCharacter={user.characters[0]} />
+          <ActiveCharacter activeCharacter={activeCharacter} />
           <CharactersWheel
             activeCharacter={activeCharacter}
             setActiveCharacter={setActiveCharacter}
@@ -34,11 +34,11 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
           />
           <DailiesWeeklies
             region={user.region}
-            activeCharacter={user.characters[0]}
+            activeCharacter={activeCharacter}
           />
           <Bosses
             region={user.region}
-            activeCharacter={user.characters[0]}
+            activeCharacter={activeCharacter}
             bossesInfo={bossesInfo}
           />
         </>
