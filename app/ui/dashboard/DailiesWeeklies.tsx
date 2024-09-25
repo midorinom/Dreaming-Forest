@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
+  Character,
   Daily,
   User,
   Weekly,
@@ -15,7 +16,7 @@ export default function DailiesWeeklies({
   region,
   activeCharacter,
 }: DailiesWeekliesProps) {
-  const [firstRender, setFirstRender] = useState<boolean>(true);
+  const [currentCharacterId, setCurrentCharacterId] = useState<string>("");
   const [dailies, setDailies] = useState<Daily[]>([]);
   const [weeklies, setWeeklies] = useState<Weekly[]>([]);
   const [selectedTab, setSelectedTab] = useState<string>("Dailies");
@@ -24,14 +25,35 @@ export default function DailiesWeeklies({
     useState<boolean>(false);
 
   useEffect(() => {
-    setFirstRender(true);
-    setDailies(activeCharacter.dailies);
-    setWeeklies(activeCharacter.weeklies);
+    setEditDailiesClicked(false);
+    setEditWeekliesClicked(false);
+
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
+      const parsedCharacter: Character =
+        JSON.parse(localUser).characters[activeCharacter.position];
+      setDailies(parsedCharacter.dailies);
+      setWeeklies(parsedCharacter.weeklies);
+
+      if (
+        !parsedCharacter.tracking.dailies &&
+        parsedCharacter.tracking.weeklies
+      ) {
+        setSelectedTab("Weeklies");
+      } else if (
+        !parsedCharacter.tracking.weeklies &&
+        parsedCharacter.tracking.dailies
+      ) {
+        setSelectedTab("Dailies");
+      } else {
+        setSelectedTab("Dailies");
+      }
+    }
   }, [activeCharacter]);
 
   useEffect(() => {
-    if (firstRender) {
-      setFirstRender(false);
+    if (currentCharacterId !== activeCharacter.characterId) {
+      setCurrentCharacterId(activeCharacter.characterId);
       return;
     }
 
@@ -75,41 +97,43 @@ export default function DailiesWeeklies({
 
   return (
     <div className="mt-2 flex w-full flex-col items-end">
-      {editDailiesClicked ? (
-        <DailiesEdit
-          dailies={dailies}
-          setDailies={setDailies}
-          setEditDailiesClicked={setEditDailiesClicked}
-        />
-      ) : (
-        <Dailies
-          region={region}
-          dailies={dailies}
-          setDailies={setDailies}
-          setEditDailiesClicked={setEditDailiesClicked}
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-          characterPosition={activeCharacter.position}
-        />
-      )}
-      {editWeekliesClicked ? (
-        <WeekliesEdit
-          region={region}
-          weeklies={weeklies}
-          setWeeklies={setWeeklies}
-          setEditWeekliesClicked={setEditWeekliesClicked}
-        />
-      ) : (
-        <Weeklies
-          region={region}
-          weeklies={weeklies}
-          setWeeklies={setWeeklies}
-          setEditWeekliesClicked={setEditWeekliesClicked}
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-          characterPosition={activeCharacter.position}
-        />
-      )}
+      {activeCharacter.tracking.dailies &&
+        (editDailiesClicked ? (
+          <DailiesEdit
+            dailies={dailies}
+            setDailies={setDailies}
+            setEditDailiesClicked={setEditDailiesClicked}
+          />
+        ) : (
+          <Dailies
+            region={region}
+            dailies={dailies}
+            setDailies={setDailies}
+            setEditDailiesClicked={setEditDailiesClicked}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            characterPosition={activeCharacter.position}
+          />
+        ))}
+      {activeCharacter.tracking.weeklies &&
+        (editWeekliesClicked ? (
+          <WeekliesEdit
+            region={region}
+            weeklies={weeklies}
+            setWeeklies={setWeeklies}
+            setEditWeekliesClicked={setEditWeekliesClicked}
+          />
+        ) : (
+          <Weeklies
+            region={region}
+            weeklies={weeklies}
+            setWeeklies={setWeeklies}
+            setEditWeekliesClicked={setEditWeekliesClicked}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            characterPosition={activeCharacter.position}
+          />
+        ))}
     </div>
   );
 }
