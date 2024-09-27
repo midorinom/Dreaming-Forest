@@ -36,6 +36,14 @@ export default function Characters({ classes }: CharactersProps) {
     }
   }, []);
 
+  useEffect(() => {
+    if (characters.length > 0 && currentPage !== "add") {
+      if (currentPage === "view")
+        setTotalPagesPagination(Math.ceil(characters.length / 4));
+      else setTotalPagesPagination(Math.ceil(characters.length / 10));
+    }
+  }, [characters, currentPage]);
+
   return (
     <>
       {user && region && characters && (
