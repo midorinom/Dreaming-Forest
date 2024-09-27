@@ -70,4 +70,5 @@ export type PaginationProps = {
   currentPage: Page;
   currentPagePagination: number;
   setCurrentPagePagination: (currentPagePagination: number) => void;
+  totalPagesPagination: number;
 };

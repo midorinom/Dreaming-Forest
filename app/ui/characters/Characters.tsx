@@ -22,6 +22,7 @@ export default function Characters({ classes }: CharactersProps) {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState<Page>("view");
   const [currentPagePagination, setCurrentPagePagination] = useState<number>(0);
+  const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
@@ -61,6 +62,7 @@ export default function Characters({ classes }: CharactersProps) {
                   currentPage={currentPage}
                   currentPagePagination={currentPagePagination}
                   setCurrentPagePagination={setCurrentPagePagination}
+                  totalPagesPagination={totalPagesPagination}
                 />
               </div>
             </>
