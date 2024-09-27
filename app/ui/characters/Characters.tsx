@@ -53,7 +53,7 @@ export default function Characters({ classes }: CharactersProps) {
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                 />
-                <Pagination />
+                <Pagination currentPage={currentPage} />
               </div>
             </>
           </main>

@@ -64,3 +64,7 @@ export type LevelFieldProps = {
 export type ClassFieldProps = {
   setMaplestoryClass: (maplestoryClass: string) => void;
 };
+
+export type PaginationProps = {
+  currentPage: Page;
+};
