@@ -1,7 +1,7 @@
 "use client";
 import { PaginationProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function Pagination({ currentPage }: PaginationProps) {
+export default function Pagination({ currentPage, currentPagePagination, setCurrentPagePagination }: PaginationProps) {
   return (
     <div className="join join-vertical my-auto flex -translate-y-[3.5vh] flex-col">
       {currentPage === "view" && (
