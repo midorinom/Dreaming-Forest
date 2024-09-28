@@ -21,6 +21,8 @@ export default function Characters({ classes }: CharactersProps) {
   const [region, setRegion] = useState<string>("");
   const [characters, setCharacters] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState<Page>("view");
+  const [currentPagePagination, setCurrentPagePagination] = useState<number>(0);
+  const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
@@ -34,6 +36,14 @@ export default function Characters({ classes }: CharactersProps) {
     }
   }, []);
 
+  useEffect(() => {
+    if (characters.length > 0 && currentPage !== "add") {
+      if (currentPage === "view")
+        setTotalPagesPagination(Math.ceil(characters.length / 4));
+      else setTotalPagesPagination(Math.ceil(characters.length / 10));
+    }
+  }, [characters, currentPage]);
+
   return (
     <>
       {user && region && characters && (
@@ -41,7 +51,10 @@ export default function Characters({ classes }: CharactersProps) {
           <main className="grid grid-cols-[1fr_12vw]">
             <>
               {currentPage === "view" && (
-                <ViewCharacters charactersProp={characters} />
+                <ViewCharacters
+                  charactersProp={characters}
+                  currentPagePagination={currentPagePagination}
+                />
               )}
               {currentPage === "rearrange" && <RearrangeCharacters />}
               {currentPage === "add" && (
@@ -53,7 +66,12 @@ export default function Characters({ classes }: CharactersProps) {
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                 />
-                <Pagination currentPage={currentPage} />
+                <Pagination
+                  currentPage={currentPage}
+                  currentPagePagination={currentPagePagination}
+                  setCurrentPagePagination={setCurrentPagePagination}
+                  totalPagesPagination={totalPagesPagination}
+                />
               </div>
             </>
           </main>

@@ -41,6 +41,7 @@ export type NavBarIconProps = {
 
 export type ViewCharactersProps = {
   charactersProp: Character[];
+  currentPagePagination: number;
 };
 
 export type AddCharactersProps = {
@@ -67,4 +68,7 @@ export type ClassFieldProps = {
 
 export type PaginationProps = {
   currentPage: Page;
+  currentPagePagination: number;
+  setCurrentPagePagination: (currentPagePagination: number) => void;
+  totalPagesPagination: number;
 };
