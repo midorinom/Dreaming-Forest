@@ -9,7 +9,7 @@ export default function Pagination({
 }: PaginationProps) {
   return (
     <div className="join join-vertical my-auto flex -translate-y-[3.5vh] flex-col">
-      {currentPage === "view" && (
+      {currentPage === "view" && totalPagesPagination > 1 && (
         <>
           <input
             className="btn btn-info join-item btn-lg h-[10vh] outline outline-accent"
@@ -17,18 +17,6 @@ export default function Pagination({
             name="options"
             aria-label=""
             defaultChecked
-          />
-          <input
-            className="btn btn-info join-item btn-lg h-[10vh] outline outline-accent"
-            type="radio"
-            name="options"
-            aria-label=""
-          />
-          <input
-            className="btn btn-info join-item btn-lg h-[10vh] outline outline-accent"
-            type="radio"
-            name="options"
-            aria-label=""
           />
           <input
             className="btn btn-info join-item btn-lg h-[10vh] outline outline-accent"
