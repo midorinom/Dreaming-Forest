@@ -38,6 +38,8 @@ export default function Characters({ classes }: CharactersProps) {
 
   useEffect(() => {
     if (characters.length > 0 && currentPage !== "add") {
+      setCurrentPagePagination(1);
+
       if (currentPage === "view")
         setTotalPagesPagination(Math.ceil(characters.length / 4));
       else setTotalPagesPagination(Math.ceil(characters.length / 10));
