@@ -21,7 +21,7 @@ export default function Characters({ classes }: CharactersProps) {
   const [region, setRegion] = useState<string>("");
   const [characters, setCharacters] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState<Page>("view");
-  const [currentPagePagination, setCurrentPagePagination] = useState<number>(0);
+  const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
   const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
 
   useEffect(() => {
