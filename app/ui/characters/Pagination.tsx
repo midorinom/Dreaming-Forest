@@ -12,6 +12,11 @@ export default function Pagination({
     [],
   );
 
+  function changePage(e: React.MouseEvent<HTMLInputElement>) {
+    const target = e.target as HTMLInputElement;
+    setCurrentPagePagination(Number(target.value));
+  }
+
   useEffect(() => {
     if (totalPagesPagination > 1) {
       const paginationButtonsArray: ReactElement[] = [];
@@ -20,11 +25,13 @@ export default function Pagination({
         paginationButtonsArray.push(
           <input
             key={i}
+            value={i + 1}
             className={`btn btn-info ${i === 0 ? "" : "join-item"} btn-lg h-[10vh] outline outline-accent`}
             type="radio"
             name="options"
             aria-label=""
-            defaultChecked={i === 0 ? true : false}
+            defaultChecked={currentPagePagination === i + 1 ? true : false}
+            onClick={changePage}
           />,
         );
       }
