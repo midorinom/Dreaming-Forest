@@ -14,7 +14,7 @@ export default function ViewCharacters({
     <div className="grid grid-cols-2 grid-rows-2 items-center justify-items-center gap-y-6">
       {characters &&
         characters.map((character, index) => {
-          if (index < 4) {
+          if (index < 4 * currentPagePagination) {
             return (
               <CharacterCard
                 key={character.characterId}
