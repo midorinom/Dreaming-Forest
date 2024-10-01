@@ -21,7 +21,7 @@ export default function Characters({ classes }: CharactersProps) {
   const [region, setRegion] = useState<string>("");
   const [characters, setCharacters] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState<Page>("view");
-  const [currentPagePagination, setCurrentPagePagination] = useState<number>(0);
+  const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
   const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
 
   useEffect(() => {
@@ -38,6 +38,8 @@ export default function Characters({ classes }: CharactersProps) {
 
   useEffect(() => {
     if (characters.length > 0 && currentPage !== "add") {
+      setCurrentPagePagination(1);
+
       if (currentPage === "view")
         setTotalPagesPagination(Math.ceil(characters.length / 4));
       else setTotalPagesPagination(Math.ceil(characters.length / 10));
