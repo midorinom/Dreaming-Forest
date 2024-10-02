@@ -40,6 +40,38 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
   const [displaySuccessMessage, setDisplaySuccessMessage] =
     useState<boolean>(false);
 
+  useEffect(() => {
+    if (ign || level || maplestoryClass) {
+      const newCharacter: Character = { ...character };
+
+      if (character.ign !== ign) {
+        newCharacter.ign = ign;
+      }
+
+      if (character.level !== level) {
+        newCharacter.level = level;
+      }
+
+      if (character.maplestoryClass !== maplestoryClass) {
+        newCharacter.maplestoryClass = maplestoryClass;
+      }
+
+      setCharacter(newCharacter);
+    }
+  }, [ign, level, maplestoryClass]);
+
+  useEffect(() => {
+    if (character.ign || character.level || character.maplestoryClass) {
+      if (character.ign && character.level && character.maplestoryClass) {
+        setReadyToProceed(true);
+      } else {
+        if (readyToProceed) {
+          setReadyToProceed(false);
+        }
+      }
+    }
+  }, [character.ign, character.level, character.maplestoryClass]);
+
   async function handleSubmit() {
     // Get local user
     const localUser = localStorage.getItem("user");
@@ -51,38 +83,6 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     const newUser: User = JSON.parse(localUser);
     const newCharacter = { ...character };
     newCharacter.characterId = uuidv4() as UUID;
-
-    useEffect(() => {
-      if (ign || level || maplestoryClass) {
-        const newCharacter: Character = { ...character };
-
-        if (character.ign !== ign) {
-          newCharacter.ign = ign;
-        }
-
-        if (character.level !== level) {
-          newCharacter.level = level;
-        }
-
-        if (character.maplestoryClass !== maplestoryClass) {
-          newCharacter.maplestoryClass = maplestoryClass;
-        }
-
-        setCharacter(newCharacter);
-      }
-    }, [ign, level, maplestoryClass]);
-
-    useEffect(() => {
-      if (character.ign || character.level || character.maplestoryClass) {
-        if (character.ign && character.level && character.maplestoryClass) {
-          setReadyToProceed(true);
-        } else {
-          if (readyToProceed) {
-            setReadyToProceed(false);
-          }
-        }
-      }
-    }, [character.ign, character.level, character.maplestoryClass]);
 
     // Define fetch function for storing image
     async function storeImage(user: User, image: File) {
