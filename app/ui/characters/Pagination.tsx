@@ -12,11 +12,6 @@ export default function Pagination({
     [],
   );
 
-  function changePage(e: React.MouseEvent<HTMLInputElement>) {
-    const target = e.target as HTMLInputElement;
-    setCurrentPagePagination(Number(target.value));
-  }
-
   useEffect(() => {
     if (totalPagesPagination > 1) {
       const paginationButtonsArray: ReactElement[] = [];
@@ -38,6 +33,11 @@ export default function Pagination({
       setPaginationButtons(paginationButtonsArray);
     }
   }, [totalPagesPagination]);
+
+  function changePage(e: React.MouseEvent<HTMLInputElement>) {
+    const target = e.target as HTMLInputElement;
+    setCurrentPagePagination(Number(target.value));
+  }
 
   return (
     <div className="join join-vertical my-auto flex -translate-y-[3.5vh] flex-col">

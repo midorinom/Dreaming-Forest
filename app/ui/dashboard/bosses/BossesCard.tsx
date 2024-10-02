@@ -13,6 +13,29 @@ export default function BossesCard({
 }: BossesCardProps) {
   const [selected, setSelected] = useState<boolean>(boss.done ? true : false);
 
+  useEffect(() => {
+    if (boss.done) {
+      // Use month if the boss is Black Mage, otherwise use week
+      if (
+        dayjs(resetDate).diff(
+          dayjs(boss.done),
+          boss.dashboardPosition === 3 ? "month" : "week",
+        ) < 1
+      ) {
+        setSelected(true);
+      } else {
+        const newBosses: Boss[] = [...bosses];
+        newBosses.forEach((newBoss) => {
+          if (newBoss.bossesPosition === boss.bossesPosition) {
+            newBoss.done = null;
+          }
+        });
+        setSelected(false);
+        setBosses(newBosses);
+      }
+    }
+  }, []);
+
   function manageToggle() {
     let newBosses: Boss[] = [...bosses];
 
@@ -41,29 +64,6 @@ export default function BossesCard({
     });
     setBosses(sortedBosses);
   }
-
-  useEffect(() => {
-    if (boss.done) {
-      // Use month if the boss is Black Mage, otherwise use week
-      if (
-        dayjs(resetDate).diff(
-          dayjs(boss.done),
-          boss.dashboardPosition === 3 ? "month" : "week",
-        ) < 1
-      ) {
-        setSelected(true);
-      } else {
-        const newBosses: Boss[] = [...bosses];
-        newBosses.forEach((newBoss) => {
-          if (newBoss.bossesPosition === boss.bossesPosition) {
-            newBoss.done = null;
-          }
-        });
-        setSelected(false);
-        setBosses(newBosses);
-      }
-    }
-  }, []);
 
   return (
     <div className="inline-flex items-center justify-center">

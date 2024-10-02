@@ -19,12 +19,6 @@ export default function Dailies({
   const [dailiesTimer, setDailiesTimer] = useState<string>("");
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
 
-  function handleHeadingClick() {
-    if (selectedTab === "Weeklies" && dailies.length > 0) {
-      setSelectedTab("Dailies");
-    }
-  }
-
   useEffect(() => {
     let dateTimes = getDateTimes(region);
     if (!dateTimes) {
@@ -36,6 +30,12 @@ export default function Dailies({
 
     setDailiesTimer(`${endOfDay.diff(now, "hour")}h`);
   }, []);
+
+  function handleHeadingClick() {
+    if (selectedTab === "Weeklies" && dailies.length > 0) {
+      setSelectedTab("Dailies");
+    }
+  }
 
   return (
     <div

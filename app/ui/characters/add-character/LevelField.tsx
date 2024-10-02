@@ -10,6 +10,18 @@ export default function LevelField({
   const textInputRef = useRef<HTMLInputElement | null>(null);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
 
+  useEffect(() => {
+    if (displaySuccessMessage) {
+      if (textInputRef.current) {
+        textInputRef.current.value = "";
+      }
+      if (rangeInputRef.current) {
+        rangeInputRef.current.value = "";
+      }
+      setLevel(0);
+    }
+  }, [displaySuccessMessage]);
+
   function handleTextChange(e: ChangeEvent<HTMLInputElement>) {
     const levelInput = parseInt(e.target.value);
 
@@ -33,18 +45,6 @@ export default function LevelField({
     const levelInput = parseInt(e.target.value);
     setLevel(levelInput);
   }
-
-  useEffect(() => {
-    if (displaySuccessMessage) {
-      if (textInputRef.current) {
-        textInputRef.current.value = "";
-      }
-      if (rangeInputRef.current) {
-        rangeInputRef.current.value = "";
-      }
-      setLevel(0);
-    }
-  }, [displaySuccessMessage]);
 
   return (
     <div className="relative col-start-2 row-start-2 flex w-4/5 items-center gap-4">

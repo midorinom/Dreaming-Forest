@@ -15,6 +15,16 @@ export default function WeeklyTimerSelect({
   dayjs.extend(utc);
   dayjs.extend(isoWeek);
 
+  useEffect(() => {
+    if (weekly) {
+      for (const resetDate of resetDates) {
+        if (getIsoWeekday(resetDate) === getIsoWeekday(weekly.resetDate)) {
+          setTimerInput(`${resetDates.indexOf(resetDate)}d`);
+        }
+      }
+    }
+  }, []);
+
   function handleSelectChange(e: ChangeEvent<HTMLSelectElement>) {
     const numberOfDays = parseInt(e.target.value, 10);
     const newWeekly = { ...weekly, resetDate: resetDates[numberOfDays] };
@@ -36,16 +46,6 @@ export default function WeeklyTimerSelect({
         return;
     }
   }
-
-  useEffect(() => {
-    if (weekly) {
-      for (const resetDate of resetDates) {
-        if (getIsoWeekday(resetDate) === getIsoWeekday(weekly.resetDate)) {
-          setTimerInput(`${resetDates.indexOf(resetDate)}d`);
-        }
-      }
-    }
-  }, []);
 
   return (
     <select
