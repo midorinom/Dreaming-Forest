@@ -25,32 +25,6 @@ export default function WeekliesEdit({
   const [resetDates, setResetDates] = useState<Date[]>([]);
   const [sortedWeeklies, setSortedWeeklies] = useState<Weekly[]>([]);
 
-  function addWeekly() {
-    const newWeekly: Weekly = {
-      weeklyId: uuidv4() as UUID,
-      description: "",
-      done: null,
-      position: weeklies.length,
-      resetDate: resetDates[6],
-    };
-
-    setWeeklies([...weeklies, newWeekly]);
-  }
-
-  function getIsoWeekday(date: Date): number {
-    switch (region) {
-      case "MSEA":
-        return dayjs(date).utcOffset(8).isoWeekday();
-
-      case "GMS":
-        return dayjs(date).utc().isoWeekday();
-
-      default:
-        console.error("No region");
-        return -1;
-    }
-  }
-
   useEffect(() => {
     // Set Reset Dates
     let dateTimes = getDateTimes(region);
@@ -92,6 +66,32 @@ export default function WeekliesEdit({
 
     setSortedWeeklies(newWeeklies);
   }, [weeklies]);
+
+  function addWeekly() {
+    const newWeekly: Weekly = {
+      weeklyId: uuidv4() as UUID,
+      description: "",
+      done: null,
+      position: weeklies.length,
+      resetDate: resetDates[6],
+    };
+
+    setWeeklies([...weeklies, newWeekly]);
+  }
+
+  function getIsoWeekday(date: Date): number {
+    switch (region) {
+      case "MSEA":
+        return dayjs(date).utcOffset(8).isoWeekday();
+
+      case "GMS":
+        return dayjs(date).utc().isoWeekday();
+
+      default:
+        console.error("No region");
+        return -1;
+    }
+  }
 
   return (
     <div className="collapse collapse-open flex w-[36vw] flex-col gap-2 bg-secondary pb-3">

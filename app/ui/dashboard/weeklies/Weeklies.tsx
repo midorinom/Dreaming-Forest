@@ -24,26 +24,6 @@ export default function Weeklies({
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [sortedWeeklies, setSortedWeeklies] = useState<Weekly[]>([]);
 
-  function handleHeadingClick() {
-    if (selectedTab === "Dailies" && weeklies.length > 0) {
-      setSelectedTab("Weeklies");
-    }
-  }
-
-  function getIsoWeekday(date: Date): number {
-    switch (region) {
-      case "MSEA":
-        return dayjs(date).utcOffset(8).isoWeekday();
-
-      case "GMS":
-        return dayjs(date).utc().isoWeekday();
-
-      default:
-        console.error("No region");
-        return -1;
-    }
-  }
-
   useEffect(() => {
     // Create New Mapping
     const currentDayOfWeek = getIsoWeekday(new Date());
@@ -70,6 +50,26 @@ export default function Weeklies({
 
     setSortedWeeklies(newWeeklies);
   }, [weeklies]);
+
+  function handleHeadingClick() {
+    if (selectedTab === "Dailies" && weeklies.length > 0) {
+      setSelectedTab("Weeklies");
+    }
+  }
+
+  function getIsoWeekday(date: Date): number {
+    switch (region) {
+      case "MSEA":
+        return dayjs(date).utcOffset(8).isoWeekday();
+
+      case "GMS":
+        return dayjs(date).utc().isoWeekday();
+
+      default:
+        console.error("No region");
+        return -1;
+    }
+  }
 
   return (
     <div
