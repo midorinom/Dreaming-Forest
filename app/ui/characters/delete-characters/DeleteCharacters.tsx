@@ -1,7 +1,11 @@
 "use client";
 import Image from "next/image";
+import { DeleteCharactersProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function DeleteCharacters() {
+export default function DeleteCharacters({
+  charactersProp,
+  currentPagePagination,
+}: DeleteCharactersProps) {
   return (
     <div className="flex h-full w-full items-center justify-center">
       <div className="flex h-full w-full items-center justify-center gap-2">

@@ -72,3 +72,8 @@ export type PaginationProps = {
   setCurrentPagePagination: (currentPagePagination: number) => void;
   totalPagesPagination: number;
 };
+
+export type DeleteCharactersProps = {
+  charactersProp: Character[];
+  currentPagePagination: number;
+};

@@ -62,7 +62,12 @@ export default function Characters({ classes }: CharactersProps) {
               {currentPage === "add" && (
                 <AddCharacter setCharacters={setCharacters} />
               )}
-              {currentPage === "delete" && <DeleteCharacters />}
+              {currentPage === "delete" && (
+                <DeleteCharacters
+                  charactersProp={characters}
+                  currentPagePagination={currentPagePagination}
+                />
+              )}
               <div className="flex flex-col items-center">
                 <NavBar
                   currentPage={currentPage}
