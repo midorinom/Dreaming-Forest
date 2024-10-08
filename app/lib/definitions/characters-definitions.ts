@@ -77,3 +77,8 @@ export type DeleteCharactersProps = {
   charactersProp: Character[];
   currentPagePagination: number;
 };
+
+export type RearrangeCharactersProps = {
+  charactersProp: Character[];
+  currentPagePagination: number;
+};
