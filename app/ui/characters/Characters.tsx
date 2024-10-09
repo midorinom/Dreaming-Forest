@@ -58,7 +58,12 @@ export default function Characters({ classes }: CharactersProps) {
                   currentPagePagination={currentPagePagination}
                 />
               )}
-              {currentPage === "rearrange" && <RearrangeCharacters />}
+              {currentPage === "rearrange" && (
+                <RearrangeCharacters
+                  charactersProp={characters}
+                  currentPagePagination={currentPagePagination}
+                />
+              )}
               {currentPage === "add" && (
                 <AddCharacter setCharacters={setCharacters} />
               )}
