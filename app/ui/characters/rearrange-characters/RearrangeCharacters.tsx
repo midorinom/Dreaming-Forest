@@ -2,12 +2,10 @@
 import { RearrangeCharactersProps } from "@/app/lib/definitions/characters-definitions";
 import Image from "next/image";
 
-export default function RearrangeCharacters(
-  {
-    charactersProp,
-    currentPagePagination,
-  }: RearrangeCharactersProps
-) {
+export default function RearrangeCharacters({
+  charactersProp,
+  currentPagePagination,
+}: RearrangeCharactersProps) {
   return (
     <div className="flex h-full w-full items-center justify-center">
       <div className="flex h-full w-full items-center justify-center gap-2">
