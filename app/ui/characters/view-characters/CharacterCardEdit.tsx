@@ -52,6 +52,7 @@ export default function CharacterCardEdit({
             alt="Back Button"
             sizes="100vw"
             className="absolute left-2 top-2 h-[3rem] w-[auto] hover:cursor-pointer"
+            onClick={() => setEditClicked(false)}
           />
           <CharacterDetails character={character} />
           <CharacterTracking
