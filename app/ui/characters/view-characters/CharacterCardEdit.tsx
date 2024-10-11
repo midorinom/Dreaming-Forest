@@ -56,13 +56,13 @@ export default function CharacterCardEdit({
     <>
       {character && (
         <div
-          className={`relative flex h-[84%] w-[83%] items-center justify-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground ? "bg-primary/75" : "bg-secondary/75"}`}
+          className={`relative flex h-[84%] w-[83%] items-center justify-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground ? "bg-primary" : "bg-secondary"}`}
         >
           {isUploadingToDatabase ? (
             <span className="loading loading-spinner h-1/5 w-auto text-accent"></span>
           ) : (
             <div className="flex h-full w-full flex-col gap-4">
-              <div className="collapse grid h-full grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
+              <div className="collapse grid h-full grid-cols-2 grid-rows-3 items-center overflow-visible">
                 <Image
                   src="/general/ui_icons/back_icon.png"
                   height={0}
