@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import type { CharacterCardProps } from "@/app/lib/definitions/characters-definitions";
 import type {
   Character,
@@ -39,8 +40,16 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
     <>
       {character && (
         <div
-          className={`grid h-[84%] w-[83%] grid-rows-[24vh_1fr] justify-items-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground() ? "bg-primary/75" : "bg-secondary/75"}`}
+          className={`relative grid h-[84%] w-[83%] grid-rows-[24vh_1fr] justify-items-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground() ? "bg-primary/75" : "bg-secondary/75"}`}
         >
+          <Image
+            src="/general/ui_icons/edit_icon.png"
+            height={0}
+            width={0}
+            alt="Edit Button"
+            sizes="100vw"
+            className="absolute right-2 top-2 h-[3rem] w-[auto] hover:cursor-pointer"
+          />
           <CharacterDetails character={character} />
           <CharacterTracking
             trackingProp={character.tracking}
