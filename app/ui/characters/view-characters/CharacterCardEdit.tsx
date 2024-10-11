@@ -78,6 +78,7 @@ export default function CharacterCardEdit({
                   image={character.image}
                 />
                 <IgnField
+                  ign={character.ign}
                   setIgn={setIgn}
                   isPrimaryBackground={isPrimaryBackground}
                 />

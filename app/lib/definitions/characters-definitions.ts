@@ -60,6 +60,7 @@ export type ImageFieldProps = {
 };
 
 export type IgnFieldProps = {
+  ign?: string;
   setIgn: (ign: string) => void;
   isPrimaryBackground?: boolean;
 };
