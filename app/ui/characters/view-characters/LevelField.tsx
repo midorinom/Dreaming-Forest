@@ -1,26 +1,10 @@
 "use client";
-import { useRef, ChangeEvent, useEffect } from "react";
+import { useRef, ChangeEvent } from "react";
 import type { LevelFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function LevelField({
-  level,
-  setLevel,
-  displaySuccessMessage,
-}: LevelFieldProps) {
+export default function LevelField({ level, setLevel }: LevelFieldProps) {
   const textInputRef = useRef<HTMLInputElement | null>(null);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (displaySuccessMessage) {
-      if (textInputRef.current) {
-        textInputRef.current.value = "";
-      }
-      if (rangeInputRef.current) {
-        rangeInputRef.current.value = "";
-      }
-      setLevel(0);
-    }
-  }, [displaySuccessMessage]);
 
   function handleTextChange(e: ChangeEvent<HTMLInputElement>) {
     const levelInput = parseInt(e.target.value);
