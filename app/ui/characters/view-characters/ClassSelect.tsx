@@ -11,8 +11,8 @@ const ClassSelect = ({
   isPrimaryBackground,
 }: ClassFieldProps) => {
   const charactersCtx = useCharacters();
-  const [classInput, setClassInput] = useState<string | undefined>(
-    maplestoryClass,
+  const [classInput, setClassInput] = useState<string | "">(
+    maplestoryClass ? maplestoryClass : "",
   );
   const [classes, setClasses] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
