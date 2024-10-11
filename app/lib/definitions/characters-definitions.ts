@@ -69,6 +69,7 @@ export type LevelFieldProps = {
 
 export type ClassFieldProps = {
   setMaplestoryClass: (maplestoryClass: string) => void;
+  isTopCard?: boolean;
 };
 
 export type PaginationProps = {
