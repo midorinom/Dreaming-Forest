@@ -3,6 +3,7 @@ import { useState, ChangeEvent } from "react";
 import type { IgnFieldProps } from "@/app/lib/definitions/characters-definitions";
 
 export default function IgnField({
+  ign,
   setIgn,
   isPrimaryBackground,
 }: IgnFieldProps) {
@@ -34,7 +35,7 @@ export default function IgnField({
               ? "border-secondary focus:border-secondary"
               : "border-primary focus:border-primary"
         } peer focus:outline-none focus:ring-0`}
-        placeholder=""
+        defaultValue={ign}
         maxLength={12}
         onChange={handleChange}
       />
