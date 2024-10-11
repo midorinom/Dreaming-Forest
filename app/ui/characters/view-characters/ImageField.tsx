@@ -6,6 +6,7 @@ import type { ImageFieldProps } from "@/app/lib/definitions/characters-definitio
 export default function ImageField({
   setUploadedFile,
   isPrimaryBackground,
+  image,
 }: ImageFieldProps) {
   const [fileURL, setFileURL] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -40,10 +41,10 @@ export default function ImageField({
         style={{
           position: "relative",
         }}
-        className="row-span-2 h-full max-h-40 w-[45%] place-self-center"
+        className="row-span-2 h-4/5 max-h-40 w-[55%] place-self-center"
       >
         <Image
-          src={fileURL ? fileURL : "/general/naked_char.png"}
+          src={fileURL ? fileURL : image ? image : "/general/naked_char.png"}
           height={0}
           width={0}
           alt="Character Image"
