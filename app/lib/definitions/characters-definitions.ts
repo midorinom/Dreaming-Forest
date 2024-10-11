@@ -56,9 +56,11 @@ export type AddCharactersProps = {
 export type ImageFieldProps = {
   setUploadedFile: (image: File | null) => void;
   isPrimaryBackground?: boolean;
+  image?: string;
 };
 
 export type IgnFieldProps = {
+  ign?: string;
   setIgn: (ign: string) => void;
   isPrimaryBackground?: boolean;
 };
@@ -71,6 +73,7 @@ export type LevelFieldProps = {
 };
 
 export type ClassFieldProps = {
+  maplestoryClass?: string;
   setMaplestoryClass: (maplestoryClass: string) => void;
   isTopCard?: boolean;
   isPrimaryBackground?: boolean;

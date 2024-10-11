@@ -19,7 +19,7 @@ export default function CharacterCardEdit({
   const [character, setCharacter] = useState<Character>(characterProp);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
-  const [level, setLevel] = useState<number>(0);
+  const [level, setLevel] = useState<number>(character.level);
   const [maplestoryClass, setMaplestoryClass] = useState<string>("");
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
@@ -75,8 +75,10 @@ export default function CharacterCardEdit({
                 <ImageField
                   setUploadedFile={setUploadedFile}
                   isPrimaryBackground={isPrimaryBackground}
+                  image={character.image}
                 />
                 <IgnField
+                  ign={character.ign}
                   setIgn={setIgn}
                   isPrimaryBackground={isPrimaryBackground}
                 />
@@ -86,6 +88,7 @@ export default function CharacterCardEdit({
                   isPrimaryBackground={isPrimaryBackground}
                 />
                 <ClassField
+                  maplestoryClass={character.maplestoryClass}
                   setMaplestoryClass={setMaplestoryClass}
                   isTopCard={isTopCard}
                   isPrimaryBackground={isPrimaryBackground}
