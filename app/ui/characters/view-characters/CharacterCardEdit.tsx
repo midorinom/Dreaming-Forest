@@ -23,6 +23,14 @@ export default function CharacterCardEdit({
   const [maplestoryClass, setMaplestoryClass] = useState<string>("");
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
+  const [isPrimaryBackground, setIsPrimaryBackground] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    if (character.position % 4 === 0 || character.position % 4 === 3) {
+      setIsPrimaryBackground(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isMounted.current) {
@@ -39,19 +47,11 @@ export default function CharacterCardEdit({
     }
   }, [character]);
 
-  function isPrimaryBackground(): boolean {
-    if (character.position % 4 === 0 || character.position % 4 === 3) {
-      return true;
-    }
-
-    return false;
-  }
-
   return (
     <>
       {character && (
         <div
-          className={`relative flex h-[84%] w-[83%] items-center justify-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground() ? "bg-primary/75" : "bg-secondary/75"}`}
+          className={`relative flex h-[84%] w-[83%] items-center justify-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground ? "bg-primary/75" : "bg-secondary/75"}`}
         >
           {isUploadingToDatabase ? (
             <span className="loading loading-spinner h-1/5 w-auto text-accent"></span>
