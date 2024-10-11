@@ -18,8 +18,7 @@ const ClassSelect = ({ setMaplestoryClass, isTopCard }: ClassFieldProps) => {
     "grow block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-base text-primary-content bg-neutral border-0 border-b-2 border-secondary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer";
   const label_className =
     "absolute text-base text-secondary duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto";
-  const dropdown_content_className =
-    "dropdown-content bg-base-200 top-14 max-h-40 overflow-scroll scrollbar-hide flex-col rounded-md z-10";
+  const dropdown_content_className = `dropdown-content bg-base-200 ${isTopCard ? "top-14" : "bottom-14"} max-h-40 overflow-scroll scrollbar-hide flex-col rounded-md z-10`;
   const ul_className = "menu bg-secondary";
   const li_className = "border-b border-b-base-content/10 w-full";
 
