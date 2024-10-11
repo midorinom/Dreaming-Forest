@@ -64,7 +64,7 @@ export type IgnFieldProps = {
 export type LevelFieldProps = {
   level: number;
   setLevel: (level: number) => void;
-  displaySuccessMessage: boolean;
+  displaySuccessMessage?: boolean;
 };
 
 export type ClassFieldProps = {
