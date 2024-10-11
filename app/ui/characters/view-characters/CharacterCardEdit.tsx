@@ -25,10 +25,15 @@ export default function CharacterCardEdit({
     useState<boolean>(false);
   const [isPrimaryBackground, setIsPrimaryBackground] =
     useState<boolean>(false);
+  const [isTopCard, setIsTopCard] = useState<boolean>(false);
 
   useEffect(() => {
     if (character.position % 4 === 0 || character.position % 4 === 3) {
       setIsPrimaryBackground(true);
+    }
+
+    if (character.position % 4 === 0 || character.position % 4 === 1) {
+      setIsTopCard(true);
     }
   }, []);
 
