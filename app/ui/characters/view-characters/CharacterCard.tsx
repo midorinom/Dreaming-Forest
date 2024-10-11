@@ -42,7 +42,10 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
   return (
     <>
       {character && editClicked ? (
-        <CharacterCardEdit characterProp={character} />
+        <CharacterCardEdit
+          characterProp={character}
+          setEditClicked={setEditClicked}
+        />
       ) : (
         <div
           className={`relative grid h-[84%] w-[83%] grid-rows-[24vh_1fr] justify-items-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground() ? "bg-primary/75" : "bg-secondary/75"}`}

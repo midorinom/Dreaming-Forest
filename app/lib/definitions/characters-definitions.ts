@@ -28,6 +28,7 @@ export type CharacterTrackingProps = {
 
 export type CharacterCardEditProps = {
   characterProp: Character;
+  setEditClicked: (editClicked: boolean) => void;
 };
 
 export type Page = "view" | "add" | "rearrange" | "delete";

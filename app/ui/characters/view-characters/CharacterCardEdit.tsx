@@ -11,6 +11,7 @@ import CharacterTracking from "./CharacterTracking";
 
 export default function CharacterCardEdit({
   characterProp,
+  setEditClicked,
 }: CharacterCardEditProps) {
   const isMounted = useRef(false);
   const [character, setCharacter] = useState<Character>(characterProp);
