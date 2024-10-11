@@ -57,7 +57,11 @@ export default function ImageField({
           accept="image/*"
           type="file"
           className={`file-input file-input-bordered w-full ${
-            error ? "file-input-error" : "file-input-secondary"
+            error
+              ? "file-input-error"
+              : isPrimaryBackground
+                ? "file-input-secondary"
+                : "file-input-primary"
           }`}
           onChange={handleFileChange}
         />
