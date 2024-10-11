@@ -26,6 +26,11 @@ export type CharacterTrackingProps = {
   setCharacter: (character: Character) => void;
 };
 
+export type CharacterCardEditProps = {
+  characterProp: Character;
+  setEditClicked: (editClicked: boolean) => void;
+};
+
 export type Page = "view" | "add" | "rearrange" | "delete";
 
 export type NavBarProps = {
@@ -50,20 +55,25 @@ export type AddCharactersProps = {
 
 export type ImageFieldProps = {
   setUploadedFile: (image: File | null) => void;
+  isPrimaryBackground?: boolean;
 };
 
 export type IgnFieldProps = {
   setIgn: (ign: string) => void;
+  isPrimaryBackground?: boolean;
 };
 
 export type LevelFieldProps = {
   level: number;
   setLevel: (level: number) => void;
-  displaySuccessMessage: boolean;
+  displaySuccessMessage?: boolean;
+  isPrimaryBackground?: boolean;
 };
 
 export type ClassFieldProps = {
   setMaplestoryClass: (maplestoryClass: string) => void;
+  isTopCard?: boolean;
+  isPrimaryBackground?: boolean;
 };
 
 export type PaginationProps = {
