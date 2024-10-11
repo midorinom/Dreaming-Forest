@@ -40,7 +40,7 @@ export default function LevelField({
         ref={textInputRef}
         id="level_input"
         type="text"
-        className="peer block w-1/3 grow appearance-none rounded-t-lg border-0 border-b-2 border-secondary bg-neutral px-2.5 pb-2.5 pt-5 text-base text-primary-content focus:border-secondary focus:outline-none focus:ring-0"
+        className={`peer block w-1/3 grow appearance-none rounded-t-lg border-0 border-b-2 ${isPrimaryBackground ? "border-secondary" : "border-primary"} bg-neutral px-2.5 pb-2.5 pt-5 text-base text-primary-content ${isPrimaryBackground ? "focus:border-secondary" : "focus:border-primary"} focus:outline-none focus:ring-0`}
         value={level ? level : ""}
         placeholder=""
         maxLength={3}
@@ -48,7 +48,7 @@ export default function LevelField({
       />
       <label
         htmlFor="level_input"
-        className="absolute start-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform text-base text-secondary duration-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-secondary rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
+        className={`absolute start-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform text-base ${isPrimaryBackground ? "text-secondary" : "text-primary"} duration-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 ${isPrimaryBackground ? "peer-focus:text-secondary" : "peer-focus:text-primary"} rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4`}
       >
         Lv
       </label>
@@ -58,7 +58,7 @@ export default function LevelField({
         min="200"
         max="300"
         value={level}
-        className="range range-secondary"
+        className={`range ${isPrimaryBackground ? "range-secondary" : "range-primary"}`}
         onChange={handleRangeChange}
       />
     </div>
