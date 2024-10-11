@@ -73,6 +73,7 @@ export type LevelFieldProps = {
 };
 
 export type ClassFieldProps = {
+  maplestoryClass?: string;
   setMaplestoryClass: (maplestoryClass: string) => void;
   isTopCard?: boolean;
   isPrimaryBackground?: boolean;

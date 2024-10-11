@@ -88,6 +88,7 @@ export default function CharacterCardEdit({
                   isPrimaryBackground={isPrimaryBackground}
                 />
                 <ClassField
+                  maplestoryClass={character.maplestoryClass}
                   setMaplestoryClass={setMaplestoryClass}
                   isTopCard={isTopCard}
                   isPrimaryBackground={isPrimaryBackground}
