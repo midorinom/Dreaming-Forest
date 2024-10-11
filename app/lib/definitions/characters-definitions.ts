@@ -56,6 +56,7 @@ export type AddCharactersProps = {
 export type ImageFieldProps = {
   setUploadedFile: (image: File | null) => void;
   isPrimaryBackground?: boolean;
+  image?: string;
 };
 
 export type IgnFieldProps = {

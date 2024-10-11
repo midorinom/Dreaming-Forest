@@ -75,6 +75,7 @@ export default function CharacterCardEdit({
                 <ImageField
                   setUploadedFile={setUploadedFile}
                   isPrimaryBackground={isPrimaryBackground}
+                  image={character.image}
                 />
                 <IgnField
                   setIgn={setIgn}
