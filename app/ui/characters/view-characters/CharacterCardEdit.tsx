@@ -44,6 +44,14 @@ export default function CharacterCardEdit({
         <div
           className={`relative grid h-[84%] w-[83%] grid-rows-[24vh_1fr] justify-items-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground() ? "bg-primary/75" : "bg-secondary/75"}`}
         >
+          <Image
+            src="/general/ui_icons/back_icon.png"
+            height={0}
+            width={0}
+            alt="Back Button"
+            sizes="100vw"
+            className="absolute left-2 top-2 h-[3rem] w-[auto] hover:cursor-pointer"
+          />
           <CharacterDetails character={character} />
           <CharacterTracking
             trackingProp={character.tracking}
