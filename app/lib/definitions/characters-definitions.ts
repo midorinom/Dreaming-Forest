@@ -26,6 +26,10 @@ export type CharacterTrackingProps = {
   setCharacter: (character: Character) => void;
 };
 
+export type CharacterCardEditProps = {
+  characterProp: Character;
+};
+
 export type Page = "view" | "add" | "rearrange" | "delete";
 
 export type NavBarProps = {
