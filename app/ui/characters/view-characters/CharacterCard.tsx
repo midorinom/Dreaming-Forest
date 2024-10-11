@@ -8,6 +8,7 @@ import type {
 } from "@/app/lib/definitions/general-definitions";
 import CharacterDetails from "./CharacterDetails";
 import CharacterTracking from "./CharacterTracking";
+import CharacterCardEdit from "./CharacterCardEdit";
 
 export default function CharacterCard({ characterProp }: CharacterCardProps) {
   const isMounted = useRef(false);
@@ -40,7 +41,9 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
 
   return (
     <>
-      {character && (
+      {character && editClicked ? (
+        <CharacterCardEdit characterProp={character} />
+      ) : (
         <div
           className={`relative grid h-[84%] w-[83%] grid-rows-[24vh_1fr] justify-items-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground() ? "bg-primary/75" : "bg-secondary/75"}`}
           onMouseEnter={() => setHeadingHovered(true)}
