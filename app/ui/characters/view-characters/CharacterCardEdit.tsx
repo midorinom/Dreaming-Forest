@@ -75,7 +75,10 @@ export default function CharacterCardEdit({
                 <ImageField setUploadedFile={setUploadedFile} />
                 <IgnField setIgn={setIgn} />
                 <LevelField level={level} setLevel={setLevel} />
-                <ClassField setMaplestoryClass={setMaplestoryClass} />
+                <ClassField
+                  setMaplestoryClass={setMaplestoryClass}
+                  isTopCard={isTopCard}
+                />
               </div>
             </div>
           )}
