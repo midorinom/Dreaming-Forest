@@ -5,12 +5,15 @@ import AutoComplete from "@/app/ui/general/AutoComplete";
 import type { ClassFieldProps } from "@/app/lib/definitions/characters-definitions";
 
 const ClassSelect = ({
+  maplestoryClass,
   setMaplestoryClass,
   isTopCard,
   isPrimaryBackground,
 }: ClassFieldProps) => {
   const charactersCtx = useCharacters();
-  const [classInput, setClassInput] = useState<string>("");
+  const [classInput, setClassInput] = useState<string | undefined>(
+    maplestoryClass,
+  );
   const [classes, setClasses] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
 
