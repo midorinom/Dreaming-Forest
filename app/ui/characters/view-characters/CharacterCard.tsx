@@ -13,6 +13,7 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
   const isMounted = useRef(false);
   const [character, setCharacter] = useState<Character>(characterProp);
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
+  const [editClicked, setEditClicked] = useState<boolean>(false);
 
   function isPrimaryBackground(): boolean {
     if (character.position % 4 === 0 || character.position % 4 === 3) {
@@ -53,6 +54,7 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
               alt="Edit Button"
               sizes="100vw"
               className="absolute right-2 top-2 h-[3rem] w-[auto] hover:cursor-pointer"
+              onClick={() => setEditClicked(true)}
             />
           )}
           <CharacterDetails character={character} />
