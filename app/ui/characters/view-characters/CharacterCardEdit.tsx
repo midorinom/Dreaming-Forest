@@ -19,7 +19,7 @@ export default function CharacterCardEdit({
   const [character, setCharacter] = useState<Character>(characterProp);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
-  const [level, setLevel] = useState<number>(0);
+  const [level, setLevel] = useState<number>(character.level);
   const [maplestoryClass, setMaplestoryClass] = useState<string>("");
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
