@@ -24,14 +24,6 @@ export default function CharacterCardEdit({
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
 
-  function isPrimaryBackground(): boolean {
-    if (character.position % 4 === 0 || character.position % 4 === 3) {
-      return true;
-    }
-
-    return false;
-  }
-
   useEffect(() => {
     if (!isMounted.current) {
       isMounted.current = true;
@@ -46,6 +38,14 @@ export default function CharacterCardEdit({
       localStorage.setItem("user", JSON.stringify(newUser));
     }
   }, [character]);
+
+  function isPrimaryBackground(): boolean {
+    if (character.position % 4 === 0 || character.position % 4 === 3) {
+      return true;
+    }
+
+    return false;
+  }
 
   return (
     <>

@@ -16,14 +16,6 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editClicked, setEditClicked] = useState<boolean>(false);
 
-  function isPrimaryBackground(): boolean {
-    if (character.position % 4 === 0 || character.position % 4 === 3) {
-      return true;
-    }
-
-    return false;
-  }
-
   useEffect(() => {
     if (!isMounted.current) {
       isMounted.current = true;
@@ -38,6 +30,14 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
       localStorage.setItem("user", JSON.stringify(newUser));
     }
   }, [character]);
+
+  function isPrimaryBackground(): boolean {
+    if (character.position % 4 === 0 || character.position % 4 === 3) {
+      return true;
+    }
+
+    return false;
+  }
 
   return (
     <>
