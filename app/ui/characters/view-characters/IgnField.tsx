@@ -2,7 +2,10 @@
 import { useState, ChangeEvent } from "react";
 import type { IgnFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function IgnField({ setIgn }: IgnFieldProps) {
+export default function IgnField({
+  setIgn,
+  isPrimaryBackground,
+}: IgnFieldProps) {
   const [isInvalid, setIsInvalid] = useState<boolean>(false);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {

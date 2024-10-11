@@ -4,6 +4,7 @@ import ClassSelect from "./ClassSelect";
 export default function ClassField({
   setMaplestoryClass,
   isTopCard,
+  isPrimaryBackground,
 }: ClassFieldProps) {
   return (
     <div className="relative col-start-2 row-start-3 w-2/3">

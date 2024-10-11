@@ -72,12 +72,23 @@ export default function CharacterCardEdit({
                   className="absolute left-2 top-2 z-10 h-[3rem] w-[auto] hover:cursor-pointer"
                   onClick={() => setEditClicked(false)}
                 />
-                <ImageField setUploadedFile={setUploadedFile} />
-                <IgnField setIgn={setIgn} />
-                <LevelField level={level} setLevel={setLevel} />
+                <ImageField
+                  setUploadedFile={setUploadedFile}
+                  isPrimaryBackground={isPrimaryBackground}
+                />
+                <IgnField
+                  setIgn={setIgn}
+                  isPrimaryBackground={isPrimaryBackground}
+                />
+                <LevelField
+                  level={level}
+                  setLevel={setLevel}
+                  isPrimaryBackground={isPrimaryBackground}
+                />
                 <ClassField
                   setMaplestoryClass={setMaplestoryClass}
                   isTopCard={isTopCard}
+                  isPrimaryBackground={isPrimaryBackground}
                 />
               </div>
             </div>

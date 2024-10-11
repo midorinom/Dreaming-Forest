@@ -3,7 +3,10 @@ import { useState, ChangeEvent } from "react";
 import Image from "next/image";
 import type { ImageFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function ImageField({ setUploadedFile }: ImageFieldProps) {
+export default function ImageField({
+  setUploadedFile,
+  isPrimaryBackground,
+}: ImageFieldProps) {
   const [fileURL, setFileURL] = useState<string>("");
   const [error, setError] = useState<string>("");
 

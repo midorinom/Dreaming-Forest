@@ -2,7 +2,11 @@
 import { useRef, ChangeEvent } from "react";
 import type { LevelFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function LevelField({ level, setLevel }: LevelFieldProps) {
+export default function LevelField({
+  level,
+  setLevel,
+  isPrimaryBackground,
+}: LevelFieldProps) {
   const textInputRef = useRef<HTMLInputElement | null>(null);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
 
