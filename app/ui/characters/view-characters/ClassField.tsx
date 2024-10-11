@@ -11,6 +11,7 @@ export default function ClassField({
       <ClassSelect
         setMaplestoryClass={setMaplestoryClass}
         isTopCard={isTopCard}
+        isPrimaryBackground={isPrimaryBackground}
       />
     </div>
   );
