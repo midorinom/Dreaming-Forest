@@ -46,7 +46,7 @@ export type NavBarIconProps = {
 };
 
 export type ViewCharactersProps = {
-  charactersProp: Character[];
+  characters: Character[];
   currentPagePagination: number;
 };
 

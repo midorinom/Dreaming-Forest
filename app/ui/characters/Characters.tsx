@@ -70,7 +70,7 @@ export default function Characters({ classes }: CharactersProps) {
             <>
               {currentPage === "view" && (
                 <ViewCharacters
-                  charactersProp={characters}
+                  characters={characters}
                   currentPagePagination={currentPagePagination}
                 />
               )}
