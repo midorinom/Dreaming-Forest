@@ -1,9 +1,10 @@
 "use client";
-import { useState, ChangeEvent } from "react";
+import { useState, useRef, ChangeEvent } from "react";
 import type { IgnFieldProps } from "@/app/lib/definitions/characters-definitions";
 
 export default function IgnField({ setIgn }: IgnFieldProps) {
   const [isInvalid, setIsInvalid] = useState<boolean>(false);
+  const ignRef = useRef<HTMLInputElement>(null);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const ignInput = e.target.value;
@@ -32,6 +33,7 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
         placeholder=""
         maxLength={12}
         onChange={handleChange}
+        ref={ignRef}
       />
       <label
         htmlFor="ign_input"
