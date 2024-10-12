@@ -14,9 +14,6 @@ export default function IgnField({
       if (ignRef.current) {
         ignRef.current.value = "";
       }
-      if (ignRef.current) {
-        ignRef.current.value = "";
-      }
       setIgn("");
     }
   }, [displaySuccessMessage]);
