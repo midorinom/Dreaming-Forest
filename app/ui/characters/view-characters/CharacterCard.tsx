@@ -1,11 +1,8 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { CharacterCardProps } from "@/app/lib/definitions/characters-definitions";
-import type {
-  Character,
-  User,
-} from "@/app/lib/definitions/general-definitions";
+import type { Character } from "@/app/lib/definitions/general-definitions";
 import CharacterDetails from "./CharacterDetails";
 import CharacterTracking from "./CharacterTracking";
 import CharacterCardEdit from "./CharacterCardEdit";
@@ -15,24 +12,18 @@ export default function CharacterCard({
   characters,
   setCharacters,
 }: CharacterCardProps) {
-  const isMounted = useRef(false);
   const [character, setCharacter] = useState<Character>(characterProp);
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editClicked, setEditClicked] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!isMounted.current) {
-      isMounted.current = true;
+    if ((characters[character.position] = characterProp)) {
       return;
     }
 
-    const localUser = localStorage.getItem("user");
-
-    if (localUser) {
-      const newUser: User = JSON.parse(localUser);
-      newUser.characters[character.position] = character;
-      localStorage.setItem("user", JSON.stringify(newUser));
-    }
+    const newCharacters = [...characters];
+    newCharacters[character.position] = character;
+    setCharacters(newCharacters);
   }, [character]);
 
   function isPrimaryBackground(): boolean {
