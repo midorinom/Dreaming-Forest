@@ -2,7 +2,7 @@
 import { useState, ChangeEvent } from "react";
 import type { IgnFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function IgnField({ setIgn }: IgnFieldProps) {
+export default function IgnField({ ign, setIgn }: IgnFieldProps) {
   const [isInvalid, setIsInvalid] = useState<boolean>(false);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -29,7 +29,7 @@ export default function IgnField({ setIgn }: IgnFieldProps) {
             ? "border-error focus:border-error"
             : "border-secondary focus:border-secondary"
         } peer focus:outline-none focus:ring-0`}
-        placeholder=""
+        value={ign}
         maxLength={12}
         onChange={handleChange}
       />
