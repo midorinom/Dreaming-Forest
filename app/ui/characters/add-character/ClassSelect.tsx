@@ -63,6 +63,12 @@ const ClassSelect = ({
     }
   }, [classes, classInput]);
 
+  useEffect(() => {
+    if (displaySuccessMessage) {
+      setClassInput("");
+    }
+  }, [displaySuccessMessage]);
+
   return (
     <AutoComplete
       label={"Class"}
