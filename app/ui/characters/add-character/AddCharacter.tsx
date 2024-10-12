@@ -112,6 +112,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     try {
       if (uploadedFile) {
         await storeImage(newUser, uploadedFile);
+        setUploadedFile(null);
       }
     } catch (error) {
       console.error("Error adding character", error);
