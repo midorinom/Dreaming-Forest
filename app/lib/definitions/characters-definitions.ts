@@ -30,6 +30,7 @@ export type CharacterTrackingProps = {
 export type CharacterCardEditProps = {
   characterProp: Character;
   setEditClicked: (editClicked: boolean) => void;
+  setCharacters: (characters: Character[]) => void;
 };
 
 export type Page = "view" | "add" | "rearrange" | "delete";
