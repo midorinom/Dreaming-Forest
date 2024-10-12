@@ -120,7 +120,6 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
 
     newCharacter.position = newUser.characters.length;
     newUser.characters.push(newCharacter);
-    localStorage.setItem("user", JSON.stringify(newUser));
     setCharacters([...newUser.characters]);
 
     setIsUploadingToDatabase(false);
