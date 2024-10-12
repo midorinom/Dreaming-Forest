@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { CharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
+import { User } from "@/app/lib/definitions/general-definitions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
@@ -12,6 +13,7 @@ export default function CharacterCardEdit({
   setCharacter,
   setEditClicked,
 }: CharacterCardEditProps) {
+  const [userId, setUserId] = useState<string>("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
   const [level, setLevel] = useState<number>(character.level);
@@ -23,6 +25,15 @@ export default function CharacterCardEdit({
   const [isTopCard, setIsTopCard] = useState<boolean>(false);
 
   useEffect(() => {
+    const localUser = localStorage.getItem("user");
+
+    if (!localUser) {
+      return console.error("No user");
+    } else {
+      const parsedUser: User = JSON.parse(localUser);
+      setUserId(parsedUser.userId);
+    }
+
     if (character.position % 4 === 0 || character.position % 4 === 3) {
       setIsPrimaryBackground(true);
     }
