@@ -43,6 +43,86 @@ export default function CharacterCardEdit({
     }
   }, []);
 
+  useEffect(() => {
+    if (!ign && !level && !uploadedFile && !maplestoryClass) {
+      return;
+    }
+
+    updateCharacter();
+  }, [uploadedFile, ign, level, maplestoryClass]);
+
+  async function updateCharacter() {
+    const newCharacter = { ...character };
+
+    // Define fetch function for deleting image
+    async function deleteImage() {
+      const response = await fetch(`/api/character-images`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ characters: [character] }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+    }
+
+    // Define fetch function for storing image
+    async function storeImage(image: File) {
+      const imagePath = `characters/${userId}/${character.ign}`;
+
+      const response = await fetch(
+        `/api/character-images?imagepath=${imagePath}`,
+        {
+          method: "PUT",
+          body: image,
+        },
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+
+      const { url } = await response.json();
+
+      newCharacter.image = url;
+    }
+
+    if (uploadedFile) {
+      // Set new user in local storage, upload image to database if there is one
+      setIsUploadingToDatabase(true);
+
+      try {
+        await deleteImage();
+        await storeImage(uploadedFile);
+        setUploadedFile(null);
+      } catch (error) {
+        console.error("Error adding character", error);
+        throw new Error("Error adding character");
+      }
+
+      setIsUploadingToDatabase(false);
+    }
+
+    if (ign) {
+      newCharacter.ign = ign;
+    }
+
+    if (level) {
+      newCharacter.level = level;
+    }
+
+    if (maplestoryClass) {
+      newCharacter.maplestoryClass = maplestoryClass;
+    }
+
+    setCharacter(newCharacter);
+  }
+
   return (
     <>
       {character && (

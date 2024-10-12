@@ -5,6 +5,7 @@ import CharacterCard from "./CharacterCard";
 
 export default function ViewCharacters({
   characters,
+  setCharacters,
   currentPagePagination,
 }: ViewCharactersProps) {
   const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
