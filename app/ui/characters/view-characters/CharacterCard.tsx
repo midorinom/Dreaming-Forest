@@ -17,9 +17,17 @@ export default function CharacterCard({
   const [editClicked, setEditClicked] = useState<boolean>(false);
 
   useEffect(() => {
-    if ((characters[character.position] = characterProp)) {
+    if (
+      character.ign === characterProp.ign &&
+      character.level === characterProp.level &&
+      character.image === characterProp.image &&
+      character.maplestoryClass === characterProp.maplestoryClass
+    ) {
+      console.log("same reference", characterProp);
       return;
     }
+
+    console.log("setting new character", character);
 
     const newCharacters = [...characters];
     newCharacters[character.position] = character;
