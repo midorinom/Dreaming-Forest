@@ -7,7 +7,10 @@ export default function ClassField({
 }: ClassFieldProps) {
   return (
     <div className="relative col-start-2 row-start-3 w-3/5">
-      <ClassSelect setMaplestoryClass={setMaplestoryClass} />
+      <ClassSelect
+        setMaplestoryClass={setMaplestoryClass}
+        displaySuccessMessage={displaySuccessMessage}
+      />
     </div>
   );
 }
