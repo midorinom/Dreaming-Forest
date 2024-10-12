@@ -21,6 +21,7 @@ export default function ViewCharacters({
           <CharacterCard
             key={characters[i].characterId}
             characterProp={characters[i]}
+            characters={characters}
             setCharacters={setCharacters}
           />,
         );

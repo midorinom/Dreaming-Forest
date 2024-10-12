@@ -12,6 +12,7 @@ import CharacterCardEdit from "./CharacterCardEdit";
 
 export default function CharacterCard({
   characterProp,
+  characters,
   setCharacters,
 }: CharacterCardProps) {
   const isMounted = useRef(false);
