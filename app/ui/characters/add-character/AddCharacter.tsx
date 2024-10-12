@@ -134,7 +134,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
         {displaySuccessMessage && (
           <div
             role="alert"
-            className="alert alert-success absolute left-[25%] top-[15%] w-1/4 self-start"
+            className="alert alert-success absolute left-[25%] top-[12%] w-1/4 self-start"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
