@@ -79,6 +79,7 @@ export type LevelFieldProps = {
 export type ClassFieldProps = {
   maplestoryClass?: string;
   setMaplestoryClass: (maplestoryClass: string) => void;
+  displaySuccessMessage?: boolean;
   isTopCard?: boolean;
   isPrimaryBackground?: boolean;
 };

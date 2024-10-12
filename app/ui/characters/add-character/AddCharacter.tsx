@@ -163,7 +163,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
                 setLevel={setLevel}
                 displaySuccessMessage={displaySuccessMessage}
               />
-              <ClassField setMaplestoryClass={setMaplestoryClass} />
+              <ClassField setMaplestoryClass={setMaplestoryClass} displaySuccessMessage={displaySuccessMessage}/>
             </div>
             <button
               disabled={!readyToProceed}
