@@ -14,6 +14,7 @@ export type CharactersProps = {
 
 export type CharacterCardProps = {
   characterProp: Character;
+  setCharacter: (character: Character) => void;
 };
 
 export type CharacterDetailsProps = {
