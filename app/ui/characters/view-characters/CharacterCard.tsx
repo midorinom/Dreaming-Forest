@@ -23,11 +23,8 @@ export default function CharacterCard({
       character.image === characterProp.image &&
       character.maplestoryClass === characterProp.maplestoryClass
     ) {
-      console.log("same reference", characterProp);
       return;
     }
-
-    console.log("setting new character", character);
 
     const newCharacters = [...characters];
     newCharacters[character.position] = character;
