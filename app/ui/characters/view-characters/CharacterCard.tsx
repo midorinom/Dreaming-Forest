@@ -10,7 +10,10 @@ import CharacterDetails from "./CharacterDetails";
 import CharacterTracking from "./CharacterTracking";
 import CharacterCardEdit from "./CharacterCardEdit";
 
-export default function CharacterCard({ characterProp }: CharacterCardProps) {
+export default function CharacterCard({
+  characterProp,
+  setCharacters,
+}: CharacterCardProps) {
   const isMounted = useRef(false);
   const [character, setCharacter] = useState<Character>(characterProp);
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);

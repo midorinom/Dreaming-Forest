@@ -14,6 +14,7 @@ export type CharactersProps = {
 
 export type CharacterCardProps = {
   characterProp: Character;
+  setCharacters: (characters: Character[]) => void;
 };
 
 export type CharacterDetailsProps = {
@@ -47,6 +48,7 @@ export type NavBarIconProps = {
 
 export type ViewCharactersProps = {
   characters: Character[];
+  setCharacters: (characters: Character[]) => void;
   currentPagePagination: number;
 };
 
