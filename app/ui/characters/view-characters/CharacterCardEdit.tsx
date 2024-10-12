@@ -13,6 +13,7 @@ import ClassField from "./ClassField";
 
 export default function CharacterCardEdit({
   character,
+  setCharacter,
   setEditClicked,
 }: CharacterCardEditProps) {
   const isMounted = useRef(false);

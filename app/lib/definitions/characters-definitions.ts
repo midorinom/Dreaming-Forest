@@ -28,6 +28,7 @@ export type CharacterTrackingProps = {
 
 export type CharacterCardEditProps = {
   character: Character;
+  setCharacter: (character: Character) => void;
   setEditClicked: (editClicked: boolean) => void;
 };
 
