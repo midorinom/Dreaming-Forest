@@ -70,9 +70,9 @@ export default function Characters({ classes }: CharactersProps) {
             <>
               {currentPage === "view" && (
                 <ViewCharacters
-                  charactersProp={characters}
-                  currentPagePagination={currentPagePagination}
+                  characters={characters}
                   setCharacters={setCharacters}
+                  currentPagePagination={currentPagePagination}
                 />
               )}
               {currentPage === "rearrange" && (

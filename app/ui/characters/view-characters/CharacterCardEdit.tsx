@@ -1,26 +1,22 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { CharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
-import type {
-  Character,
-  User,
-} from "@/app/lib/definitions/general-definitions";
+import { User } from "@/app/lib/definitions/general-definitions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
 import ClassField from "./ClassField";
 
 export default function CharacterCardEdit({
-  characterProp,
+  character,
+  setCharacter,
   setEditClicked,
-  setCharacters,
 }: CharacterCardEditProps) {
-  const isMounted = useRef(false);
-  const [character, setCharacter] = useState<Character>(characterProp);
+  const [userId, setUserId] = useState<string>("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
-  const [level, setLevel] = useState<number>(character.level);
+  const [level, setLevel] = useState<number>(0);
   const [maplestoryClass, setMaplestoryClass] = useState<string>("");
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
@@ -29,6 +25,15 @@ export default function CharacterCardEdit({
   const [isTopCard, setIsTopCard] = useState<boolean>(false);
 
   useEffect(() => {
+    const localUser = localStorage.getItem("user");
+
+    if (!localUser) {
+      return console.error("No user");
+    } else {
+      const parsedUser: User = JSON.parse(localUser);
+      setUserId(parsedUser.userId);
+    }
+
     if (character.position % 4 === 0 || character.position % 4 === 3) {
       setIsPrimaryBackground(true);
     }
@@ -39,19 +44,84 @@ export default function CharacterCardEdit({
   }, []);
 
   useEffect(() => {
-    if (!isMounted.current) {
-      isMounted.current = true;
+    if (!ign && !level && !uploadedFile && !maplestoryClass) {
       return;
     }
 
-    const localUser = localStorage.getItem("user");
+    updateCharacter();
+  }, [uploadedFile, ign, level, maplestoryClass]);
 
-    if (localUser) {
-      const newUser: User = JSON.parse(localUser);
-      newUser.characters[character.position] = character;
-      localStorage.setItem("user", JSON.stringify(newUser));
+  async function updateCharacter() {
+    const newCharacter = { ...character };
+
+    // Define fetch function for deleting image
+    async function deleteImage() {
+      const response = await fetch(`/api/character-images`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ characters: [character] }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
     }
-  }, [character]);
+
+    // Define fetch function for storing image
+    async function storeImage(image: File) {
+      const imagePath = `characters/${userId}/${character.ign}`;
+
+      const response = await fetch(
+        `/api/character-images?imagepath=${imagePath}`,
+        {
+          method: "PUT",
+          body: image,
+        },
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+
+      const { url } = await response.json();
+
+      newCharacter.image = url;
+    }
+
+    if (uploadedFile) {
+      // Set new user in local storage, upload image to database if there is one
+      setIsUploadingToDatabase(true);
+
+      try {
+        await deleteImage();
+        await storeImage(uploadedFile);
+        setUploadedFile(null);
+      } catch (error) {
+        console.error("Error adding character", error);
+        throw new Error("Error adding character");
+      }
+
+      setIsUploadingToDatabase(false);
+    }
+
+    if (ign) {
+      newCharacter.ign = ign;
+    }
+
+    if (level) {
+      newCharacter.level = level;
+    }
+
+    if (maplestoryClass) {
+      newCharacter.maplestoryClass = maplestoryClass;
+    }
+
+    setCharacter(newCharacter);
+  }
 
   return (
     <>
@@ -84,7 +154,7 @@ export default function CharacterCardEdit({
                   isPrimaryBackground={isPrimaryBackground}
                 />
                 <LevelField
-                  level={level}
+                  level={character.level}
                   setLevel={setLevel}
                   isPrimaryBackground={isPrimaryBackground}
                 />

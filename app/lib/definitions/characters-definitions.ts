@@ -14,6 +14,7 @@ export type CharactersProps = {
 
 export type CharacterCardProps = {
   characterProp: Character;
+  characters: Character[];
   setCharacters: (characters: Character[]) => void;
 };
 
@@ -28,9 +29,9 @@ export type CharacterTrackingProps = {
 };
 
 export type CharacterCardEditProps = {
-  characterProp: Character;
+  character: Character;
+  setCharacter: (character: Character) => void;
   setEditClicked: (editClicked: boolean) => void;
-  setCharacters: (characters: Character[]) => void;
 };
 
 export type Page = "view" | "add" | "rearrange" | "delete";
@@ -47,9 +48,9 @@ export type NavBarIconProps = {
 };
 
 export type ViewCharactersProps = {
-  charactersProp: Character[];
-  currentPagePagination: number;
+  characters: Character[];
   setCharacters: (characters: Character[]) => void;
+  currentPagePagination: number;
 };
 
 export type AddCharactersProps = {

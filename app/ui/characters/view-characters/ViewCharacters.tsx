@@ -4,26 +4,24 @@ import type { ViewCharactersProps } from "@/app/lib/definitions/characters-defin
 import CharacterCard from "./CharacterCard";
 
 export default function ViewCharacters({
-  charactersProp,
-  currentPagePagination,
+  characters,
   setCharacters,
+  currentPagePagination,
 }: ViewCharactersProps) {
   const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
 
   useEffect(() => {
-    if (charactersProp.length > 0) {
+    if (characters.length > 0) {
       const characterCardsArray: ReactElement[] = [];
       const firstIndex = (currentPagePagination - 1) * 4;
-      const lastIndex = Math.min(
-        4 * currentPagePagination,
-        charactersProp.length,
-      );
+      const lastIndex = Math.min(4 * currentPagePagination, characters.length);
 
       for (let i = firstIndex; i < lastIndex; i++) {
         characterCardsArray.push(
           <CharacterCard
-            key={charactersProp[i].characterId}
-            characterProp={charactersProp[i]}
+            key={characters[i].characterId}
+            characterProp={characters[i]}
+            characters={characters}
             setCharacters={setCharacters}
           />,
         );
@@ -31,7 +29,7 @@ export default function ViewCharacters({
 
       setCharacterCards(characterCardsArray);
     }
-  }, [charactersProp, currentPagePagination]);
+  }, [characters, currentPagePagination]);
 
   return (
     <div className="grid grid-cols-2 grid-rows-2 items-center justify-items-center gap-y-6">
