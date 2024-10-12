@@ -10,10 +10,7 @@ import CharacterDetails from "./CharacterDetails";
 import CharacterTracking from "./CharacterTracking";
 import CharacterCardEdit from "./CharacterCardEdit";
 
-export default function CharacterCard({
-  characterProp,
-  setCharacters,
-}: CharacterCardProps) {
+export default function CharacterCard({ characterProp }: CharacterCardProps) {
   const isMounted = useRef(false);
   const [character, setCharacter] = useState<Character>(characterProp);
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
@@ -48,7 +45,6 @@ export default function CharacterCard({
         <CharacterCardEdit
           characterProp={character}
           setEditClicked={setEditClicked}
-          setCharacters={setCharacters}
         />
       ) : (
         <div
