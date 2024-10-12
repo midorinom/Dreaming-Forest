@@ -1,11 +1,7 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { CharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
-import type {
-  Character,
-  User,
-} from "@/app/lib/definitions/general-definitions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
@@ -16,7 +12,6 @@ export default function CharacterCardEdit({
   setCharacter,
   setEditClicked,
 }: CharacterCardEditProps) {
-  const isMounted = useRef(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
   const [level, setLevel] = useState<number>(character.level);
@@ -36,21 +31,6 @@ export default function CharacterCardEdit({
       setIsTopCard(true);
     }
   }, []);
-
-  useEffect(() => {
-    if (!isMounted.current) {
-      isMounted.current = true;
-      return;
-    }
-
-    const localUser = localStorage.getItem("user");
-
-    if (localUser) {
-      const newUser: User = JSON.parse(localUser);
-      newUser.characters[character.position] = character;
-      localStorage.setItem("user", JSON.stringify(newUser));
-    }
-  }, [character]);
 
   return (
     <>
