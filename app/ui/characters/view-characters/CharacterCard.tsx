@@ -43,8 +43,9 @@ export default function CharacterCard({ characterProp }: CharacterCardProps) {
     <>
       {character && editClicked ? (
         <CharacterCardEdit
-          characterProp={character}
+          character={character}
           setEditClicked={setEditClicked}
+          setCharacter={setCharacter}
         />
       ) : (
         <div

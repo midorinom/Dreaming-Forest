@@ -12,11 +12,10 @@ import LevelField from "./LevelField";
 import ClassField from "./ClassField";
 
 export default function CharacterCardEdit({
-  characterProp,
+  character,
   setEditClicked,
 }: CharacterCardEditProps) {
   const isMounted = useRef(false);
-  const [character, setCharacter] = useState<Character>(characterProp);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
   const [level, setLevel] = useState<number>(character.level);
