@@ -52,7 +52,7 @@ export default function CharactersWheel({
                   );
               })}
           </div>
-          {currentPage <= Math.trunc(characters.length / 4) - 1 && (
+          {currentPage < Math.trunc((characters.length - 1) / 4) && (
             <Image
               src={"/general/ui_icons/right_arrow_icon.png"}
               height={0}
