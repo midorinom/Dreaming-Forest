@@ -58,6 +58,7 @@ export type AddCharactersProps = {
 
 export type ImageFieldProps = {
   setUploadedFile: (image: File | null) => void;
+  displaySuccessMessage?: boolean;
   isPrimaryBackground?: boolean;
   image?: string;
 };

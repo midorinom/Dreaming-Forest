@@ -156,14 +156,23 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
         ) : (
           <div className="flex h-[55%] min-h-64 w-1/2 flex-col gap-4">
             <div className="collapse grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
-              <ImageField setUploadedFile={setUploadedFile} />
-              <IgnField setIgn={setIgn} displaySuccessMessage={displaySuccessMessage}/>
+              <ImageField
+                setUploadedFile={setUploadedFile}
+                displaySuccessMessage={displaySuccessMessage}
+              />
+              <IgnField
+                setIgn={setIgn}
+                displaySuccessMessage={displaySuccessMessage}
+              />
               <LevelField
                 level={level}
                 setLevel={setLevel}
                 displaySuccessMessage={displaySuccessMessage}
               />
-              <ClassField setMaplestoryClass={setMaplestoryClass} displaySuccessMessage={displaySuccessMessage}/>
+              <ClassField
+                setMaplestoryClass={setMaplestoryClass}
+                displaySuccessMessage={displaySuccessMessage}
+              />
             </div>
             <button
               disabled={!readyToProceed}
