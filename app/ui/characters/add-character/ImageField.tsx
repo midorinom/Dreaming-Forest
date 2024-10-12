@@ -1,5 +1,5 @@
 "use client";
-import { useState, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import Image from "next/image";
 import type { ImageFieldProps } from "@/app/lib/definitions/characters-definitions";
 
@@ -9,6 +9,12 @@ export default function ImageField({
 }: ImageFieldProps) {
   const [fileURL, setFileURL] = useState<string>("");
   const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    if (displaySuccessMessage) {
+      setFileURL("");
+    }
+  }, [displaySuccessMessage]);
 
   function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
     const MAX_FILE_SIZE = 1024 * 10; // 10KB
