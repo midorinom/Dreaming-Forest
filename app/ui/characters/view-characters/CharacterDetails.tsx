@@ -27,7 +27,7 @@ export default function CharacterDetails({ character }: CharacterDetailsProps) {
               }
               height={0}
               width={0}
-              alt="Active Character"
+              alt="Character Image"
               sizes="100vw"
               className="absolute h-full w-full"
             />
