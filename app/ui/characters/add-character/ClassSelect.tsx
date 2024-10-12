@@ -4,7 +4,10 @@ import { useCharacters } from "@/app/ui/contexts/CharactersContext";
 import AutoComplete from "@/app/ui/general/AutoComplete";
 import type { ClassFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
+const ClassSelect = ({
+  setMaplestoryClass,
+  displaySuccessMessage,
+}: ClassFieldProps) => {
   const charactersCtx = useCharacters();
   const [classInput, setClassInput] = useState<string>("");
   const [classes, setClasses] = useState<string[]>([]);
@@ -59,6 +62,12 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
       setMaplestoryClass("");
     }
   }, [classes, classInput]);
+
+  useEffect(() => {
+    if (displaySuccessMessage) {
+      setClassInput("");
+    }
+  }, [displaySuccessMessage]);
 
   return (
     <AutoComplete

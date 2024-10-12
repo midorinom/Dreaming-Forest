@@ -14,6 +14,7 @@ import ClassField from "./ClassField";
 export default function CharacterCardEdit({
   characterProp,
   setEditClicked,
+  setCharacters,
 }: CharacterCardEditProps) {
   const isMounted = useRef(false);
   const [character, setCharacter] = useState<Character>(characterProp);

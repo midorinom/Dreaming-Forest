@@ -112,6 +112,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     try {
       if (uploadedFile) {
         await storeImage(newUser, uploadedFile);
+        setUploadedFile(null);
       }
     } catch (error) {
       console.error("Error adding character", error);
@@ -120,7 +121,6 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
 
     newCharacter.position = newUser.characters.length;
     newUser.characters.push(newCharacter);
-    localStorage.setItem("user", JSON.stringify(newUser));
     setCharacters([...newUser.characters]);
 
     setIsUploadingToDatabase(false);
@@ -134,7 +134,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
         {displaySuccessMessage && (
           <div
             role="alert"
-            className="alert alert-success absolute left-[25%] top-[15%] w-1/4 self-start"
+            className="alert alert-success absolute left-[25%] top-[12%] w-1/4 self-start"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -157,14 +157,23 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
         ) : (
           <div className="flex h-[55%] min-h-64 w-1/2 flex-col gap-4">
             <div className="collapse grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
-              <ImageField setUploadedFile={setUploadedFile} />
-              <IgnField setIgn={setIgn} />
+              <ImageField
+                setUploadedFile={setUploadedFile}
+                displaySuccessMessage={displaySuccessMessage}
+              />
+              <IgnField
+                setIgn={setIgn}
+                displaySuccessMessage={displaySuccessMessage}
+              />
               <LevelField
                 level={level}
                 setLevel={setLevel}
                 displaySuccessMessage={displaySuccessMessage}
               />
-              <ClassField setMaplestoryClass={setMaplestoryClass} />
+              <ClassField
+                setMaplestoryClass={setMaplestoryClass}
+                displaySuccessMessage={displaySuccessMessage}
+              />
             </div>
             <button
               disabled={!readyToProceed}
