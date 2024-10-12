@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   CharactersProps,
   Page,
@@ -17,6 +17,7 @@ import AddCharacter from "./add-character/AddCharacter";
 import DeleteCharacters from "./delete-characters/DeleteCharacters";
 
 export default function Characters({ classes }: CharactersProps) {
+  const isMounted = useRef(false);
   const [user, setUser] = useState<User | null>(null);
   const [region, setRegion] = useState<string>("");
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -45,6 +46,21 @@ export default function Characters({ classes }: CharactersProps) {
       else setTotalPagesPagination(Math.ceil(characters.length / 10));
     }
   }, [characters, currentPage]);
+
+  useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
+
+    const localUser = localStorage.getItem("user");
+
+    if (localUser) {
+      const newUser: User = JSON.parse(localUser);
+      newUser.characters = characters;
+      localStorage.setItem("user", JSON.stringify(newUser));
+    }
+  }, [characters]);
 
   return (
     <>
