@@ -65,6 +65,7 @@ export type ImageFieldProps = {
 export type IgnFieldProps = {
   ign?: string;
   setIgn: (ign: string) => void;
+  displaySuccessMessage?: boolean;
   isPrimaryBackground?: boolean;
 };
 
