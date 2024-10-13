@@ -116,6 +116,29 @@ Page (Server Component)
       BossesEdit
         BossesEditCard
 
+"/characters"
+Page (Server Component)
+  MainAppWrapper
+    Characters
+      ViewCharacters
+        CharacterCard
+          CharacterCardEdit
+            ImageField
+            IgnField
+            LevelField
+            ClassField
+              ClassSelect
+          CharacterDetails
+          CharacterTracking
+      RearrangeCharacters
+      AddCharacter
+        ImageField
+        IgnField
+        LevelField
+        ClassField
+          ClassSelect
+      DeleteCharacters
+
 "/dailies-weeklies"
 Page (Server Component)
   MainAppWrapper
