@@ -3,7 +3,7 @@ import Image from "next/image";
 import { DeleteCharactersProps } from "@/app/lib/definitions/characters-definitions";
 
 export default function DeleteCharacters({
-  charactersProp,
+  characters,
   currentPagePagination,
 }: DeleteCharactersProps) {
   return (
