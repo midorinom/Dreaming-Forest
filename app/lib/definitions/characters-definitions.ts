@@ -99,6 +99,6 @@ export type DeleteCharactersProps = {
 };
 
 export type RearrangeCharactersProps = {
-  charactersProp: Character[];
+  characters: Character[];
   currentPagePagination: number;
 };
