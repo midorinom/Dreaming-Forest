@@ -77,7 +77,7 @@ export default function Characters({ classes }: CharactersProps) {
               )}
               {currentPage === "rearrange" && (
                 <RearrangeCharacters
-                  charactersProp={characters}
+                  characters={characters}
                   currentPagePagination={currentPagePagination}
                 />
               )}
@@ -86,7 +86,7 @@ export default function Characters({ classes }: CharactersProps) {
               )}
               {currentPage === "delete" && (
                 <DeleteCharacters
-                  charactersProp={characters}
+                  characters={characters}
                   currentPagePagination={currentPagePagination}
                 />
               )}

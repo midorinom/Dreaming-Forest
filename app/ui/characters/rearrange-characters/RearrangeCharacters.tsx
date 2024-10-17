@@ -3,7 +3,7 @@ import { RearrangeCharactersProps } from "@/app/lib/definitions/characters-defin
 import Image from "next/image";
 
 export default function RearrangeCharacters({
-  charactersProp,
+  characters,
   currentPagePagination,
 }: RearrangeCharactersProps) {
   return (

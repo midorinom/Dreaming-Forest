@@ -94,11 +94,11 @@ export type PaginationProps = {
 };
 
 export type DeleteCharactersProps = {
-  charactersProp: Character[];
+  characters: Character[];
   currentPagePagination: number;
 };
 
 export type RearrangeCharactersProps = {
-  charactersProp: Character[];
+  characters: Character[];
   currentPagePagination: number;
 };
