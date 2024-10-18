@@ -5,7 +5,7 @@ import type { ViewCharacterCardProps } from "@/app/lib/definitions/characters-de
 import type { Character } from "@/app/lib/definitions/general-definitions";
 import CharacterDetails from "./CharacterDetails";
 import CharacterTracking from "./CharacterTracking";
-import CharacterCardEdit from "./ViewCharacterCardEdit";
+import ViewCharacterCardEdit from "./ViewCharacterCardEdit";
 
 export default function ViewCharacterCard({
   characterProp,
@@ -42,7 +42,7 @@ export default function ViewCharacterCard({
   return (
     <>
       {character && editClicked ? (
-        <CharacterCardEdit
+        <ViewCharacterCardEdit
           character={character}
           setEditClicked={setEditClicked}
           setCharacter={setCharacter}
