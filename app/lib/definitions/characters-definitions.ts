@@ -108,5 +108,12 @@ export type DeleteCharacterCardProps = {
 
 export type RearrangeCharactersProps = {
   characters: Character[];
+  setCharacters: (characters: Character[]) => void;
   currentPagePagination: number;
+};
+
+export type RearrangeCharacterCardProps = {
+  characterProp: Character;
+  characters: Character[];
+  setCharacters: (characters: Character[]) => void;
 };
