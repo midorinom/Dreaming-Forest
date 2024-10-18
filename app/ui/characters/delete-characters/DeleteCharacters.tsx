@@ -24,6 +24,7 @@ export default function DeleteCharacters({
             characterProp={characters[i]}
             characters={characters}
             setCharacters={setCharacters}
+            setIsLoading={setIsLoading}
           />,
         );
       }

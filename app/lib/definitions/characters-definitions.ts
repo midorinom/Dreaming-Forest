@@ -103,6 +103,7 @@ export type DeleteCharacterCardProps = {
   characterProp: Character;
   characters: Character[];
   setCharacters: (characters: Character[]) => void;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 export type RearrangeCharactersProps = {
