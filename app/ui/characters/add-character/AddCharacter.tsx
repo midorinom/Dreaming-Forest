@@ -79,8 +79,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     const localUser = localStorage.getItem("user");
 
     if (!localUser) {
-      setDisplayErrorMessage(true);
-      return;
+      return console.error("No user");
     }
 
     const newUser: User = JSON.parse(localUser);
@@ -159,6 +158,27 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
               />
             </svg>
             <span>Character has been added!</span>
+          </div>
+        )}
+        {displayErrorMessage && (
+          <div
+            role="error"
+            className="alert alert-error absolute left-[25%] top-[12%] w-1/4 self-start"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>You have too many characters!</span>
           </div>
         )}
         {isUploadingToDatabase ? (
