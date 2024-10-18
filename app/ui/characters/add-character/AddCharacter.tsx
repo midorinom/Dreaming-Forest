@@ -86,7 +86,8 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
 
     // Character Limit
     if (newUser.characters.length >= 20) {
-      window.alert("You have too many characters");
+      setDisplayErrorMessage(true);
+      return;
     }
 
     const newCharacter = { ...character };
