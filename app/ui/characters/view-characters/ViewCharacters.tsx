@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, ReactElement } from "react";
 import type { ViewCharactersProps } from "@/app/lib/definitions/characters-definitions";
-import CharacterCard from "./CharacterCard";
+import ViewCharacterCard from "./ViewCharacterCard";
 
 export default function ViewCharacters({
   characters,
@@ -18,7 +18,7 @@ export default function ViewCharacters({
 
       for (let i = firstIndex; i < lastIndex; i++) {
         characterCardsArray.push(
-          <CharacterCard
+          <ViewCharacterCard
             key={characters[i].characterId}
             characterProp={characters[i]}
             characters={characters}

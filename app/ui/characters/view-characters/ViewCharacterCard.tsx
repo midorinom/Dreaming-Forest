@@ -1,17 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import type { CharacterCardProps } from "@/app/lib/definitions/characters-definitions";
+import type { ViewCharacterCardProps } from "@/app/lib/definitions/characters-definitions";
 import type { Character } from "@/app/lib/definitions/general-definitions";
 import CharacterDetails from "./CharacterDetails";
 import CharacterTracking from "./CharacterTracking";
-import CharacterCardEdit from "./CharacterCardEdit";
+import ViewCharacterCardEdit from "./ViewCharacterCardEdit";
 
-export default function CharacterCard({
+export default function ViewCharacterCard({
   characterProp,
   characters,
   setCharacters,
-}: CharacterCardProps) {
+}: ViewCharacterCardProps) {
   const [character, setCharacter] = useState<Character>(characterProp);
   const [headingHovered, setHeadingHovered] = useState<boolean>(false);
   const [editClicked, setEditClicked] = useState<boolean>(false);
@@ -42,7 +42,7 @@ export default function CharacterCard({
   return (
     <>
       {character && editClicked ? (
-        <CharacterCardEdit
+        <ViewCharacterCardEdit
           character={character}
           setEditClicked={setEditClicked}
           setCharacter={setCharacter}

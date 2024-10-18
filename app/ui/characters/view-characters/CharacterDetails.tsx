@@ -17,7 +17,7 @@ export default function CharacterDetails({ character }: CharacterDetailsProps) {
             style={{
               position: "relative",
             }}
-            className="ml-8 h-4/5 w-[28%]"
+            className="ml-8 flex h-4/5 w-[28%] items-center justify-center"
           >
             <Image
               src={
@@ -27,7 +27,7 @@ export default function CharacterDetails({ character }: CharacterDetailsProps) {
               width={0}
               alt="Character Image"
               sizes="100vw"
-              className="absolute h-full w-full"
+              className="absolute h-full w-auto"
             />
           </div>
           <div className="flex w-3/5 flex-col justify-center">

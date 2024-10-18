@@ -39,7 +39,7 @@ export default function ImageField({ setUploadedFile }: ImageFieldProps) {
         width={0}
         alt="Character Image"
         sizes="100vw"
-        className="row-span-2 max-h-40 w-1/3 justify-self-center"
+        className="row-span-2 h-full max-h-40 w-auto justify-self-center"
       />
       <div className="relative col-start-1 row-start-3 w-4/5 justify-self-center">
         <input

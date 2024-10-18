@@ -25,14 +25,15 @@ export default function Pagination({
             type="radio"
             name="options"
             aria-label=""
-            defaultChecked={currentPagePagination === i + 1 ? true : false}
+            checked={currentPagePagination === i + 1 ? true : false}
             onClick={changePage}
+            readOnly={true}
           />,
         );
       }
       setPaginationButtons(paginationButtonsArray);
     }
-  }, [totalPagesPagination]);
+  }, [totalPagesPagination, currentPagePagination]);
 
   function changePage(e: React.MouseEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
@@ -41,9 +42,10 @@ export default function Pagination({
 
   return (
     <div className="join join-vertical my-auto flex -translate-y-[3.5vh] flex-col">
-      {currentPage === "view" && totalPagesPagination > 1 && (
-        <>{paginationButtons.map((paginationButton) => paginationButton)}</>
-      )}
+      {(currentPage === "view" || currentPage === "delete") &&
+        totalPagesPagination > 1 && (
+          <>{paginationButtons.map((paginationButton) => paginationButton)}</>
+        )}
     </div>
   );
 }
