@@ -41,9 +41,19 @@ export default function Characters({ classes }: CharactersProps) {
     if (characters.length > 0 && currentPage !== "add") {
       setCurrentPagePagination(1);
 
-      if (currentPage === "view")
-        setTotalPagesPagination(Math.ceil(characters.length / 4));
-      else setTotalPagesPagination(Math.ceil(characters.length / 10));
+      switch (currentPage) {
+        case "view":
+          setTotalPagesPagination(Math.ceil(characters.length / 4));
+          break;
+        case "rearrange":
+          setTotalPagesPagination(Math.ceil(characters.length / 5));
+          break;
+        case "delete":
+          setTotalPagesPagination(Math.ceil(characters.length / 10));
+          break;
+        default:
+          break;
+      }
     }
   }, [characters, currentPage]);
 
