@@ -18,7 +18,7 @@ export default function AddCharacter({
 
   useEffect(() => {
     if (ign || level || maplestoryClass) {
-      const newCharacter: Character = { ...character };
+      const newCharacter: Character = JSON.parse(JSON.stringify(character));
 
       if (character.ign !== ign) {
         newCharacter.ign = ign;
