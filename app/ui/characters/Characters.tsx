@@ -52,6 +52,7 @@ export default function Characters({ classes }: CharactersProps) {
           setTotalPagesPagination(Math.ceil(characters.length / 10));
           break;
         default:
+          console.error("No Page");
           break;
       }
     }
