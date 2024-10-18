@@ -9,6 +9,7 @@ export default function DeleteCharacters({
   currentPagePagination,
 }: DeleteCharactersProps) {
   const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (characters.length > 0) {
@@ -32,9 +33,15 @@ export default function DeleteCharacters({
   }, [characters, currentPagePagination]);
 
   return (
-    <div className="grid grid-cols-5 grid-rows-2 items-center justify-items-center">
-      {characterCards.length > 0 &&
-        characterCards.map((charactersCard) => charactersCard)}
+    <div
+      className={`${isLoading ? "flex" : "grid grid-cols-5 grid-rows-2"} items-center justify-items-center`}
+    >
+      {isLoading ? (
+        <span className="loading loading-spinner mx-auto h-1/2 w-auto text-accent"></span>
+      ) : (
+        characterCards.length > 0 &&
+        characterCards.map((charactersCard) => charactersCard)
+      )}
     </div>
   );
 }
