@@ -97,7 +97,7 @@ export default function CharacterCardEdit({
       setIsUploadingToDatabase(true);
 
       try {
-        await deleteImage();
+        if (character.image) await deleteImage();
         await storeImage(uploadedFile);
         setUploadedFile(null);
       } catch (error) {
