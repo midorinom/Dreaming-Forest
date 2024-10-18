@@ -44,7 +44,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
 
   useEffect(() => {
     if (ign || level || maplestoryClass) {
-      const newCharacter: Character = { ...character };
+      const newCharacter: Character = JSON.parse(JSON.stringify(character));
 
       if (character.ign !== ign) {
         newCharacter.ign = ign;
@@ -90,7 +90,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
       return;
     }
 
-    const newCharacter = { ...character };
+    const newCharacter = JSON.parse(JSON.stringify(character));
     newCharacter.characterId = uuidv4() as UUID;
 
     // Define fetch function for storing image
@@ -130,7 +130,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
 
     newCharacter.position = newUser.characters.length;
     newUser.characters.push(newCharacter);
-    setCharacters([...newUser.characters]);
+    setCharacters(JSON.parse(JSON.stringify(newUser.characters)));
 
     setIsUploadingToDatabase(false);
     setDisplaySuccessMessage(true);

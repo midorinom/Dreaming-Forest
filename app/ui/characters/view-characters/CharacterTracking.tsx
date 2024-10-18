@@ -13,7 +13,7 @@ export default function CharacterTracking({
     label: "dailies" | "weeklies" | "bosses" | "progression",
     done: boolean,
   ) {
-    const newCharacter: Character = { ...character };
+    const newCharacter: Character = JSON.parse(JSON.stringify(character));
 
     if (done) {
       newCharacter.tracking[label] = false;

@@ -26,7 +26,7 @@ export default function ViewCharacterCard({
       return;
     }
 
-    const newCharacters = [...characters];
+    const newCharacters = [JSON.parse(JSON.stringify(characters))];
     newCharacters[character.position] = character;
     setCharacters(newCharacters);
   }, [character]);

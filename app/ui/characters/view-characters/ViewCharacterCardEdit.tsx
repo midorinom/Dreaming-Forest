@@ -52,7 +52,7 @@ export default function CharacterCardEdit({
   }, [uploadedFile, ign, level, maplestoryClass]);
 
   async function updateCharacter() {
-    const newCharacter = { ...character };
+    const newCharacter = JSON.parse(JSON.stringify(character));
 
     // Define fetch function for deleting image
     async function deleteImage() {

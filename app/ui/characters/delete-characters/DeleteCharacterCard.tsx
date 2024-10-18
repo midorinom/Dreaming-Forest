@@ -38,7 +38,7 @@ export default function DeleteCharacterCard({
       for (let i = 0; i < characters.length; i++) {
         if (characters[i].characterId === characterProp.characterId) continue;
 
-        const newCharacter = { ...characters[i] };
+        const newCharacter = JSON.parse(JSON.stringify(characters[i]));
         if (i > characterProp.position) {
           newCharacter.position = i - 1;
         }
