@@ -39,8 +39,6 @@ export default function Characters({ classes }: CharactersProps) {
 
   useEffect(() => {
     if (characters.length > 0 && currentPage !== "add") {
-      setCurrentPagePagination(1);
-
       switch (currentPage) {
         case "view":
           setTotalPagesPagination(Math.ceil(characters.length / 4));
@@ -72,6 +70,10 @@ export default function Characters({ classes }: CharactersProps) {
       localStorage.setItem("user", JSON.stringify(newUser));
     }
   }, [characters]);
+
+  useEffect(() => {
+    if (currentPage !== "add") setCurrentPagePagination(1);
+  }, [currentPage]);
 
   return (
     <>
