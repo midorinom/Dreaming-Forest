@@ -39,6 +39,8 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     useState<boolean>(false);
   const [displaySuccessMessage, setDisplaySuccessMessage] =
     useState<boolean>(false);
+  const [displayErrorMessage, setDisplayErrorMessage] =
+    useState<boolean>(false);
 
   useEffect(() => {
     if (ign || level || maplestoryClass) {
@@ -77,10 +79,17 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     const localUser = localStorage.getItem("user");
 
     if (!localUser) {
-      return console.error("No user");
+      setDisplayErrorMessage(true);
+      return;
     }
 
     const newUser: User = JSON.parse(localUser);
+
+    // Character Limit
+    if (newUser.characters.length >= 20) {
+      window.alert("You have too many characters");
+    }
+
     const newCharacter = { ...character };
     newCharacter.characterId = uuidv4() as UUID;
 
