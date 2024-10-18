@@ -7,18 +7,36 @@ export default function RearrangeCharacterCard({
   characters,
   setCharacters,
 }: RearrangeCharacterCardProps) {
-  async function handleRearrange(direction: "left" | "right") {
-    // const newCharacters = [];
-    // for (let i = 0; i < characters.length; i++) {
-    //   if (characters[i].characterId === characterProp.characterId) continue;
-    //   const newCharacter = { ...characters[i] };
-    //   if (i > characterProp.position) {
-    //     newCharacter.position = i - 1;
-    //   }
-    //   newCharacters.push(newCharacter);
-    // }
-    // setCharacters(newCharacters);
-    console.log(direction);
+  function handleRearrange(direction: "left" | "right") {
+    const newCharacters = JSON.parse(JSON.stringify(characters));
+
+    switch (direction) {
+      case "left":
+        newCharacters[characterProp.position].position -= 1;
+        newCharacters[characterProp.position - 1].position += 1;
+
+        const temp = newCharacters[characterProp.position];
+        newCharacters[characterProp.position] =
+          newCharacters[characterProp.position - 1];
+        newCharacters[characterProp.position - 1] = temp;
+        break;
+
+      case "right":
+        newCharacters[characterProp.position].position += 1;
+        newCharacters[characterProp.position + 1].position -= 1;
+
+        const temp2 = newCharacters[characterProp.position];
+        newCharacters[characterProp.position] =
+          newCharacters[characterProp.position + 1];
+        newCharacters[characterProp.position + 1] = temp2;
+        break;
+
+      default:
+        console.error("No direction");
+        break;
+    }
+
+    setCharacters(newCharacters);
   }
 
   return (
