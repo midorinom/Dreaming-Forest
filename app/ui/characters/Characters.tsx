@@ -87,6 +87,7 @@ export default function Characters({ classes }: CharactersProps) {
               {currentPage === "delete" && (
                 <DeleteCharacters
                   characters={characters}
+                  setCharacters={setCharacters}
                   currentPagePagination={currentPagePagination}
                 />
               )}

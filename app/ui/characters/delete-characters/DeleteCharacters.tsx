@@ -1,26 +1,40 @@
 "use client";
-import Image from "next/image";
+import { useState, useEffect, ReactElement } from "react";
 import { DeleteCharactersProps } from "@/app/lib/definitions/characters-definitions";
+import DeleteCharacterCard from "./DeleteCharacterCard";
 
 export default function DeleteCharacters({
   characters,
+  setCharacters,
   currentPagePagination,
 }: DeleteCharactersProps) {
+  const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
+
+  useEffect(() => {
+    if (characters.length > 0) {
+      const characterCardsArray: ReactElement[] = [];
+      const firstIndex = (currentPagePagination - 1) * 10;
+      const lastIndex = Math.min(10 * currentPagePagination, characters.length);
+
+      for (let i = firstIndex; i < lastIndex; i++) {
+        characterCardsArray.push(
+          <DeleteCharacterCard
+            key={characters[i].characterId}
+            characterProp={characters[i]}
+            characters={characters}
+            setCharacters={setCharacters}
+          />,
+        );
+      }
+
+      setCharacterCards(characterCardsArray);
+    }
+  }, [characters, currentPagePagination]);
+
   return (
-    <div className="flex h-full w-full items-center justify-center">
-      <div className="flex h-full w-full items-center justify-center gap-2">
-        <Image
-          src="/general/small_spirit_crying.png"
-          height={0}
-          width={0}
-          alt="Small Spirit Crying"
-          sizes="100vw"
-          className="mb-16 w-1/5"
-        />
-        <div className="text-5xl font-medium text-primary-content">
-          Under Construction
-        </div>
-      </div>
+    <div className="grid grid-cols-5 grid-rows-2 items-center justify-items-center gap-y-6">
+      {characterCards.length > 0 &&
+        characterCards.map((charactersCard) => charactersCard)}
     </div>
   );
 }

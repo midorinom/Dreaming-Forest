@@ -95,7 +95,14 @@ export type PaginationProps = {
 
 export type DeleteCharactersProps = {
   characters: Character[];
+  setCharacters: (characters: Character[]) => void;
   currentPagePagination: number;
+};
+
+export type DeleteCharacterCardProps = {
+  characterProp: Character;
+  characters: Character[];
+  setCharacters: (characters: Character[]) => void;
 };
 
 export type RearrangeCharactersProps = {
