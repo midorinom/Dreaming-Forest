@@ -78,6 +78,7 @@ export default function Characters({ classes }: CharactersProps) {
               {currentPage === "rearrange" && (
                 <RearrangeCharacters
                   characters={characters}
+                  setCharacters={setCharacters}
                   currentPagePagination={currentPagePagination}
                 />
               )}
