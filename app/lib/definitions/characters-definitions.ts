@@ -12,7 +12,7 @@ export type CharactersProps = {
   classes: Classes;
 };
 
-export type CharacterCardProps = {
+export type ViewCharacterCardProps = {
   characterProp: Character;
   characters: Character[];
   setCharacters: (characters: Character[]) => void;
@@ -28,7 +28,7 @@ export type CharacterTrackingProps = {
   setCharacter: (character: Character) => void;
 };
 
-export type CharacterCardEditProps = {
+export type ViewCharacterCardEditProps = {
   character: Character;
   setCharacter: (character: Character) => void;
   setEditClicked: (editClicked: boolean) => void;

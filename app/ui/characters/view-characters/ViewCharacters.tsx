@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, ReactElement } from "react";
 import type { ViewCharactersProps } from "@/app/lib/definitions/characters-definitions";
-import CharacterCard from "./CharacterCard";
+import CharacterCard from "./ViewCharacterCard";
 
 export default function ViewCharacters({
   characters,

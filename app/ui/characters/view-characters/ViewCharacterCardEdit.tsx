@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import type { CharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
+import type { ViewCharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
 import { User } from "@/app/lib/definitions/general-definitions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
@@ -12,7 +12,7 @@ export default function CharacterCardEdit({
   character,
   setCharacter,
   setEditClicked,
-}: CharacterCardEditProps) {
+}: ViewCharacterCardEditProps) {
   const [userId, setUserId] = useState<string>("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
