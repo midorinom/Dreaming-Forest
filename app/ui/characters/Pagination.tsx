@@ -25,14 +25,14 @@ export default function Pagination({
             type="radio"
             name="options"
             aria-label=""
-            defaultChecked={currentPagePagination === i + 1 ? true : false}
+            checked={currentPagePagination === i + 1 ? true : false}
             onClick={changePage}
           />,
         );
       }
       setPaginationButtons(paginationButtonsArray);
     }
-  }, [totalPagesPagination]);
+  }, [totalPagesPagination, currentPagePagination]);
 
   function changePage(e: React.MouseEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
