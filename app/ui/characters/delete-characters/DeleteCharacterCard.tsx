@@ -30,7 +30,6 @@ export default function DeleteCharacterCard({
       `Are you sure you want to delete ${characterProp.ign}?`,
     );
     if (confirmDelete) {
-      console.log("original", characters);
       setIsLoading(true);
 
       if (characterProp.image) await deleteImage();
@@ -48,7 +47,6 @@ export default function DeleteCharacterCard({
       }
 
       setCharacters(newCharacters);
-      console.log("new", newCharacters);
       setIsLoading(false);
     }
   }
