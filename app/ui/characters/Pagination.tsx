@@ -27,6 +27,7 @@ export default function Pagination({
             aria-label=""
             checked={currentPagePagination === i + 1 ? true : false}
             onClick={changePage}
+            readOnly={true}
           />,
         );
       }
