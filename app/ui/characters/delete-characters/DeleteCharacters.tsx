@@ -32,7 +32,7 @@ export default function DeleteCharacters({
   }, [characters, currentPagePagination]);
 
   return (
-    <div className="grid grid-cols-5 grid-rows-2 items-center justify-items-center gap-y-6">
+    <div className="grid grid-cols-5 grid-rows-2 items-center justify-items-center">
       {characterCards.length > 0 &&
         characterCards.map((charactersCard) => charactersCard)}
     </div>
