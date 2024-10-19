@@ -208,4 +208,7 @@ Some pictures of what the website looks like so far!
 <img src="/documentation/readme/Dashboard_Edit_Bosses.png" alt="Dashboard Page - Edit Bosses" title="Dashboard Page - Edit Bosses">
 <img src="/documentation/readme/Dashboard_Done.png" alt="Dashboard Page - Fully Set Up" title="Dashboard Page - Fully Set Up">
 <img src="/documentation/readme/Characters_View_Characters.png" alt="Characters Page - View Characters" title="Characters Page - View Characters">
+<img src="/documentation/readme/Characters_Edit_Character.png" alt="Characters Page - View Characters (Edit)" title="Characters Page - View Characters (Edit)">
+<img src="/documentation/readme/Characters_Rearrange_Characters.png" alt="Characters Page - Rearrange Characters" title="Characters Page - Rearrange Characters">
 <img src="/documentation/readme/Characters_Add_Character.png" alt="Characters Page - Add Character" title="Characters Page - Add Character">
+<img src="/documentation/readme/Characters_Delete_Characters.png" alt="Characters Page - Delete Characters" title="Characters Page - Delete Characters">
