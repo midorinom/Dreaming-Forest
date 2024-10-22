@@ -202,10 +202,10 @@ Some pictures of what the website looks like so far!
 <img src="/documentation/readme/Welcome_Select_Region.png" alt="Welcome Page - Select Region" title="Welcome Page - Select Region">
 <img src="/documentation/readme/Welcome_Add_Character.png" alt="Welcome Page - Add Character" title="Welcome Page - Add Character">
 <img src="/documentation/readme/Welcome_Create_Account.png" alt="Welcome Page - Create Account" title="Welcome Page - Create Account">
-<img src="/documentation/readme/Dashboard_New_User.png" alt="Dashboard Page - New User" title="Dashboard Page - New User">
-<img src="/documentation/readme/Dashboard_Edit_Dailies.png" alt="Dashboard Page - Edit Dailies" title="Dashboard Page - Edit Dailies">
-<img src="/documentation/readme/Dashboard_Edit_Weeklies.png" alt="Dashboard Page - Edit Weeklies" title="Dashboard Page - Edit Weeklies">
-<img src="/documentation/readme/Dashboard_Edit_Bosses.png" alt="Dashboard Page - Edit Bosses" title="Dashboard Page - Edit Bosses">
+<img src="/documentation/readme/Dashboard_New_Usera.png" alt="Dashboard Page - New User" title="Dashboard Page - New User">
+<img src="/documentation/readme/Dashboard_Edit_Dailiesa.png" alt="Dashboard Page - Edit Dailies" title="Dashboard Page - Edit Dailies">
+<img src="/documentation/readme/Dashboard_Edit_Weekliesa.png" alt="Dashboard Page - Edit Weeklies" title="Dashboard Page - Edit Weeklies">
+<img src="/documentation/readme/Dashboard_Edit_Bossesa.png" alt="Dashboard Page - Edit Bosses" title="Dashboard Page - Edit Bosses">
 <img src="/documentation/readme/Dashboard_Done.png" alt="Dashboard Page - Fully Set Up" title="Dashboard Page - Fully Set Up">
 <img src="/documentation/readme/Characters_View_Characters.png" alt="Characters Page - View Characters" title="Characters Page - View Characters">
 <img src="/documentation/readme/Characters_Add_Character.png" alt="Characters Page - Add Character" title="Characters Page - Add Character">
