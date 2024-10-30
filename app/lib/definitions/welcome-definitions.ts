@@ -79,6 +79,6 @@ export type ConfirmPasswordFieldProps = {
   confirmPasswordError: string;
 };
 
-export type NewUserProps = {
-  setNewUser: (newUser: boolean) => void;
+export type LoginProps = {
+  setLoginPage: (loginPage: boolean) => void;
 };
