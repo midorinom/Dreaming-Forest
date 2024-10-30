@@ -200,6 +200,9 @@ Page (Server Component)
 Some pictures of what the website looks like so far!
 
 <img src="/documentation/readme/Welcome_Login.png" alt="Welcome Page - Login" title="Welcome Page - Login">
+<img src="/documentation/readme/Welcome_Select_Region.png" alt="Welcome Page - Select Region" title="Welcome Page - Select Region">
+<img src="/documentation/readme/Welcome_Add_Character.png" alt="Welcome Page - Add Character" title="Welcome Page - Add Character">
+<img src="/documentation/readme/Welcome_Create_Account.png" alt="Welcome Page - Create Account" title="Welcome Page - Create Account">
 <img src="/documentation/readme/Dashboard_New_User.png" alt="Dashboard Page - New User" title="Dashboard Page - New User">
 <img src="/documentation/readme/Dashboard_Edit_Dailies.png" alt="Dashboard Page - Edit Dailies" title="Dashboard Page - Edit Dailies">
 <img src="/documentation/readme/Dashboard_Edit_Weeklies.png" alt="Dashboard Page - Edit Weeklies" title="Dashboard Page - Edit Weeklies">
