@@ -129,7 +129,7 @@ export default function Welcome({ classes }: WelcomeProps) {
           {isUploadingToDatabase ? (
             <span className="loading loading-spinner mt-36 h-1/5 w-auto text-accent"></span>
           ) : newUser ? (
-            <NewUser />
+            <NewUser setNewUser={setNewUser} />
           ) : proceedClicked ? (
             <CreateAccount setDone={setDone} />
           ) : (

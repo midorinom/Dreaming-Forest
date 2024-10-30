@@ -78,3 +78,7 @@ export type ConfirmPasswordFieldProps = {
   setConfirmPassword: (confirmPassword: string) => void;
   confirmPasswordError: string;
 };
+
+export type NewUserProps = {
+  setNewUser: (newUser: boolean) => void;
+};

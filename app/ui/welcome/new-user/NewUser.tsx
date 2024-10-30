@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
+import { NewUserProps } from "@/app/lib/definitions/welcome-definitions";
 import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
 
 // TODO: option to either login or create a new account
-export default function NewUser() {
+export default function NewUser({ setNewUser }: NewUserProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -19,7 +20,7 @@ export default function NewUser() {
       <div className="mt-5 flex w-full justify-between">
         <button
           className="btn btn-secondary btn-lg text-xl font-medium text-primary-content"
-          // onClick={() => setDone(true)}
+          onClick={() => setNewUser(false)}
         >
           I am new!
         </button>
