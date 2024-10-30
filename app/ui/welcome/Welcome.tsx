@@ -17,6 +17,7 @@ import {
   smallSpiritDialogue,
   smallSpiritImage,
 } from "@/public/welcome/small_spirit";
+import NewUser from "./new-user/NewUser";
 import RegionAndCharacter from "./region-and-character/RegionAndCharacter";
 import CreateAccount from "./create-account/CreateAccount";
 import ElodinSkeleton from "../general/ElodinSkeleton";
@@ -47,9 +48,10 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [done, setDone] = useState<boolean>(false);
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
+  const [newUser, setNewUser] = useState<boolean>(true);
   const router = useRouter();
 
-  // Check whether the user is a first-timer
+  // Check whether the user is a new user
   useEffect(() => {
     const localUser = localStorage.getItem("user");
     if (localUser) {
@@ -126,6 +128,8 @@ export default function Welcome({ classes }: WelcomeProps) {
           </div>
           {isUploadingToDatabase ? (
             <span className="loading loading-spinner mt-36 h-1/5 w-auto text-accent"></span>
+          ) : newUser ? (
+            <NewUser />
           ) : proceedClicked ? (
             <CreateAccount setDone={setDone} />
           ) : (
