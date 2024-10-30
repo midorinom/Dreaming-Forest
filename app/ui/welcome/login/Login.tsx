@@ -11,7 +11,7 @@ export default function Login({ setLoginPage }: LoginProps) {
 
   return (
     <div className="flex w-1/4 flex-col items-center">
-      <div className="collapse collapse-open flex min-h-48 flex-col items-center gap-3 bg-base-100 pt-6">
+      <div className="collapse collapse-open flex min-h-48 flex-col items-center gap-3 bg-base-100 pt-8">
         <div className="flex flex-col gap-8">
           <UsernameField setUsername={setUsername} />
           <PasswordField setPassword={setPassword} confirmPasswordError="" />
