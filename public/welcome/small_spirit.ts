@@ -13,7 +13,7 @@ const smallSpiritDialogue: Dialogue = {
 
 const smallSpiritImage: Dialogue = {
   welcome: "/welcome/small_spirit_happy.png",
-  select_region: "/welcome/small_spirit_happy.png",
+  select_region: "/welcome/small_spirit_smiling.png",
   add_character: "/welcome/small_spirit_smiling.png",
   create_account: "/welcome/small_spirit_smiling.png",
   uploading: "/welcome/small_spirit_neutral.png",
