@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
-import UsernameField from "./UsernameField";
-import PasswordField from "./PasswordField";
+import UsernameField from "../create-account/UsernameField";
+import PasswordField from "../create-account/PasswordField";
 
 // TODO: option to either login or create a new account
 export default function Login({ setLoginPage }: LoginProps) {
@@ -14,7 +14,7 @@ export default function Login({ setLoginPage }: LoginProps) {
       <div className="collapse collapse-open flex min-h-48 flex-col items-center gap-3 bg-base-100 pt-6">
         <div className="flex flex-col gap-8">
           <UsernameField setUsername={setUsername} />
-          {/* <PasswordField setPassword={setPassword} /> */}
+          <PasswordField setPassword={setPassword} confirmPasswordError="" />
         </div>
       </div>
       <div className="mt-5 flex w-full justify-between">
