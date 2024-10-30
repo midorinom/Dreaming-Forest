@@ -27,7 +27,7 @@ export default function Login({ setLoginPage }: LoginProps) {
         <button
           className="btn glass btn-accent btn-lg rounded-full text-xl font-medium text-primary-content"
           disabled={username && password ? false : true}
-          // onClick={() => setDone(true)}
+          onClick={() => setLoginPage(false)}
         >
           <img
             src="/general/ui_icons/butterfly_logo.png"
