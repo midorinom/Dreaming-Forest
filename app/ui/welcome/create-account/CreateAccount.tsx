@@ -56,7 +56,7 @@ export default function CreateAccount({ setDone }: CreateAccountProps) {
         >
           <img
             src="/general/ui_icons/butterfly_logo.png"
-            alt="My Icon"
+            alt="Butterfly Logo"
             className="h-7 w-7"
           />
           Create

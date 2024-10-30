@@ -19,6 +19,7 @@ export type Dialogue = {
 
 export type DialogueIndex =
   | "welcome"
+  | "select_region"
   | "add_character"
   | "create_account"
   | "uploading";
@@ -77,4 +78,9 @@ export type PasswordFieldProps = {
 export type ConfirmPasswordFieldProps = {
   setConfirmPassword: (confirmPassword: string) => void;
   confirmPasswordError: string;
+};
+
+export type LoginProps = {
+  setLoginPage: (loginPage: boolean) => void;
+  setDialogueIndex: (dialogueIndex: DialogueIndex) => void;
 };
