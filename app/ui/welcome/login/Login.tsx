@@ -19,7 +19,7 @@ export default function Login({ setLoginPage }: LoginProps) {
       </div>
       <div className="mt-5 flex w-full justify-between">
         <button
-          className="btn btn-warning btn-lg text-xl font-medium text-primary-content"
+          className="btn btn-warning btn-lg rounded-full text-xl font-medium text-primary-content"
           onClick={() => setLoginPage(false)}
         >
           I am new!
