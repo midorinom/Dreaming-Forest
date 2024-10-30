@@ -96,7 +96,7 @@ export default function RegionAndCharacter({
         >
           <img
             src="/general/ui_icons/butterfly_logo.png"
-            alt="My Icon"
+            alt="Butterfly Logo"
             className="h-7 w-7"
           />
           Proceed
