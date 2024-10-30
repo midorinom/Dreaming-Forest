@@ -5,7 +5,7 @@ import UsernameField from "../create-account/UsernameField";
 import PasswordField from "../create-account/PasswordField";
 
 // TODO: option to either login or create a new account
-export default function Login({ setLoginPage }: LoginProps) {
+export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -20,14 +20,20 @@ export default function Login({ setLoginPage }: LoginProps) {
       <div className="mt-5 flex w-full justify-between">
         <button
           className="btn btn-warning btn-lg rounded-full text-xl font-medium text-primary-content"
-          onClick={() => setLoginPage(false)}
+          onClick={() => {
+            setLoginPage(false);
+            setDialogueIndex("select_region");
+          }}
         >
           I am new!
         </button>
         <button
           className="btn glass btn-accent btn-lg rounded-full text-xl font-medium text-primary-content"
           disabled={username && password ? false : true}
-          onClick={() => setLoginPage(false)}
+          onClick={() => {
+            setLoginPage(false);
+            setDialogueIndex("select_region");
+          }}
         >
           <img
             src="/general/ui_icons/butterfly_logo.png"
