@@ -12,7 +12,7 @@ export const Classes = pgTable("classes", {
 });
 
 export const Users = pgTable("users", {
-  username: varchar("class_name").primaryKey().notNull(),
+  username: varchar("username").primaryKey().notNull(),
   region: varchar("region")
     .references(() => Regions.region)
     .notNull(),
