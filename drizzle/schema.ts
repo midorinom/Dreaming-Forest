@@ -37,7 +37,7 @@ export const Characters = pgTable("characters", {
   class_name: varchar("class_name")
     .references(() => Classes.class_name)
     .notNull(),
-  image: uuid("image").notNull(),
+  image: varchar("image").notNull(),
   position: integer("position").notNull(),
 });
 
