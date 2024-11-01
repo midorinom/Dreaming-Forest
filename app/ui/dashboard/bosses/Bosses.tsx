@@ -129,7 +129,9 @@ export default function Bosses({
                   boss={boss}
                   bosses={bosses}
                   setBosses={setBosses}
-                  resetDate={resetDate}
+                  resetDate={
+                    boss.dashboardPosition === 3 ? new Date() : resetDate
+                  }
                 />
               ))}
             </div>

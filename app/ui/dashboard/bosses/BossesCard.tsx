@@ -73,7 +73,7 @@ export default function BossesCard({
         width={0}
         alt={boss.dashboardImage}
         sizes="100vw"
-        className={`${!selected && "grayscale"} h-auto max-h-[4.5rem] w-full hover:cursor-pointer`}
+        className={`${!selected && "grayscale"} h-auto max-h-[4.5rem] w-full ${selected && "rounded-lg border-2 border-neutral"} hover:cursor-pointer`}
         onClick={manageToggle}
       />
     </div>
