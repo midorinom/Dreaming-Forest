@@ -58,3 +58,14 @@ export const Dailies = pgTable("dailies", {
   done: date("done"),
   position: integer("position").notNull(),
 });
+
+export const Weeklies = pgTable("weeklies", {
+  weekly_id: uuid("weekly_id").primaryKey().notNull(),
+  character_id: varchar("character_id")
+    .references(() => Characters.character_id)
+    .notNull(),
+  description: varchar("description").notNull(),
+  done: date("done"),
+  reset_date: date("reset_date").notNull(),
+  position: integer("position").notNull(),
+});
