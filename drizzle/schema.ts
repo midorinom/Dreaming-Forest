@@ -5,6 +5,7 @@ import {
   integer,
   bigint,
   date,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 export const Regions = pgTable("regions", {
@@ -80,4 +81,15 @@ export const Bosses = pgTable("bosses", {
   dashboard_image: varchar("dashboard_image").notNull(),
   done: date("done"),
   party_size: integer("party_size").notNull(),
+});
+
+export const Tracking = pgTable("tracking", {
+  tracking_id: uuid("tracking_id").primaryKey().notNull(),
+  character_id: varchar("character_id")
+    .references(() => Characters.character_id)
+    .notNull(),
+  dailies: boolean("dailies").notNull(),
+  weeklies: boolean("weeklies").notNull(),
+  bosses: boolean("bosses").notNull(),
+  progression: boolean("progression").notNull(),
 });
