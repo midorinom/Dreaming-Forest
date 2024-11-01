@@ -1,4 +1,11 @@
-import { pgTable, varchar, uuid, integer, bigint } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  varchar,
+  uuid,
+  integer,
+  bigint,
+  date,
+} from "drizzle-orm/pg-core";
 
 export const Regions = pgTable("regions", {
   region: varchar("region").primaryKey().notNull(),
@@ -43,15 +50,11 @@ export const BossesInfo = pgTable("bosses_info", {
 });
 
 export const Dailies = pgTable("dailies", {
-  character_id: uuid("id").primaryKey().notNull(),
-  user_id: varchar("user_id")
-    .references(() => Users.user_id)
+  daily_id: uuid("daily_id").primaryKey().notNull(),
+  character_id: varchar("character_id")
+    .references(() => Characters.character_id)
     .notNull(),
-  ign: varchar("ign").notNull(),
-  level: integer("level").notNull(),
-  class_name: varchar("class_name")
-    .references(() => Classes.class_name)
-    .notNull(),
-  image: uuid("image").notNull(),
+  description: varchar("description").notNull(),
+  done: date("done"),
   position: integer("position").notNull(),
 });
