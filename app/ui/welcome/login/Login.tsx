@@ -4,7 +4,6 @@ import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
 import UsernameField from "../create-account/UsernameField";
 import PasswordField from "../create-account/PasswordField";
 
-// TODO: option to either login or create a new account
 export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
