@@ -20,7 +20,7 @@ export const Classes = pgTable("classes", {
 });
 
 export const Users = pgTable("users", {
-  user_id: varchar("user_id").primaryKey().notNull(),
+  user_id: uuid("user_id").primaryKey().notNull(),
   username: varchar("username").notNull(),
   region: varchar("region")
     .references(() => Regions.region)
@@ -30,7 +30,7 @@ export const Users = pgTable("users", {
 
 export const Characters = pgTable("characters", {
   character_id: uuid("character_id").primaryKey().notNull(),
-  user_id: varchar("user_id")
+  user_id: uuid("user_id")
     .references(() => Users.user_id)
     .notNull(),
   ign: varchar("ign").notNull(),
@@ -52,7 +52,7 @@ export const BossesInfo = pgTable("bosses_info", {
 
 export const Dailies = pgTable("dailies", {
   daily_id: uuid("daily_id").primaryKey().notNull(),
-  character_id: varchar("character_id")
+  character_id: uuid("character_id")
     .references(() => Characters.character_id)
     .notNull(),
   description: varchar("description").notNull(),
@@ -62,7 +62,7 @@ export const Dailies = pgTable("dailies", {
 
 export const Weeklies = pgTable("weeklies", {
   weekly_id: uuid("weekly_id").primaryKey().notNull(),
-  character_id: varchar("character_id")
+  character_id: uuid("character_id")
     .references(() => Characters.character_id)
     .notNull(),
   description: varchar("description").notNull(),
@@ -73,7 +73,7 @@ export const Weeklies = pgTable("weeklies", {
 
 export const Bosses = pgTable("bosses", {
   boss_id: uuid("boss_id").primaryKey().notNull(),
-  character_id: varchar("character_id")
+  character_id: uuid("character_id")
     .references(() => Characters.character_id)
     .notNull(),
   dashboard_position: integer("dashboard_position").notNull(),
@@ -85,7 +85,7 @@ export const Bosses = pgTable("bosses", {
 
 export const Tracking = pgTable("tracking", {
   tracking_id: uuid("tracking_id").primaryKey().notNull(),
-  character_id: varchar("character_id")
+  character_id: uuid("character_id")
     .references(() => Characters.character_id)
     .notNull(),
   dailies: boolean("dailies").notNull(),
