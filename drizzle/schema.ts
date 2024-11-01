@@ -22,8 +22,8 @@ export const Users = pgTable("users", {
 
 export const Characters = pgTable("characters", {
   id: uuid("id").primaryKey().notNull(),
-  username: varchar("username")
-    .references(() => Users.username)
+  user_id: varchar("user_id")
+    .references(() => Users.user_id)
     .notNull(),
   ign: varchar("ign").notNull(),
   level: integer("level").notNull(),
