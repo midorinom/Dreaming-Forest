@@ -21,7 +21,7 @@ export const Users = pgTable("users", {
 });
 
 export const Characters = pgTable("characters", {
-  id: uuid("id").primaryKey().notNull(),
+  character_id: uuid("character_id").primaryKey().notNull(),
   user_id: varchar("user_id")
     .references(() => Users.user_id)
     .notNull(),
@@ -40,4 +40,18 @@ export const BossesInfo = pgTable("bosses_info", {
   dashboard_position: integer("dashboard_position").notNull(),
   dashboard_image: varchar("dashboard_image").notNull(),
   meso: bigint("meso", { mode: "number" }).notNull(),
+});
+
+export const Dailies = pgTable("dailies", {
+  character_id: uuid("id").primaryKey().notNull(),
+  user_id: varchar("user_id")
+    .references(() => Users.user_id)
+    .notNull(),
+  ign: varchar("ign").notNull(),
+  level: integer("level").notNull(),
+  class_name: varchar("class_name")
+    .references(() => Classes.class_name)
+    .notNull(),
+  image: uuid("image").notNull(),
+  position: integer("position").notNull(),
 });
