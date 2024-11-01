@@ -19,14 +19,14 @@ export const Classes = pgTable("classes", {
     .notNull(),
 });
 
-export const Users = pgTable("users", {
-  user_id: uuid("user_id").primaryKey().notNull(),
-  username: varchar("username").notNull(),
-  region: varchar("region")
-    .references(() => Regions.region)
-    .notNull(),
-  pw_hash: varchar("pw_hash").notNull(),
-});
+// export const Users = pgTable("users", {
+//   user_id: uuid("user_id").primaryKey().notNull(),
+//   username: varchar("username").notNull(),
+//   region: varchar("region")
+//     .references(() => Regions.region)
+//     .notNull(),
+//   pw_hash: varchar("pw_hash").notNull(),
+// });
 
 // export const Characters = pgTable("characters", {
 //   character_id: uuid("character_id").primaryKey().notNull(),
