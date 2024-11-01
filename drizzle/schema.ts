@@ -69,3 +69,15 @@ export const Weeklies = pgTable("weeklies", {
   reset_date: date("reset_date").notNull(),
   position: integer("position").notNull(),
 });
+
+export const Bosses = pgTable("bosses", {
+  boss_id: uuid("boss_id").primaryKey().notNull(),
+  character_id: varchar("character_id")
+    .references(() => Characters.character_id)
+    .notNull(),
+  dashboard_position: integer("dashboard_position").notNull(),
+  bosses_position: integer("bosses_position").notNull(),
+  dashboard_image: varchar("dashboard_image").notNull(),
+  done: date("done"),
+  party_size: integer("party_size").notNull(),
+});
