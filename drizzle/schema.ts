@@ -31,6 +31,7 @@ export const Characters = pgTable("characters", {
     .references(() => Classes.class_name)
     .notNull(),
   image: uuid("image").notNull(),
+  position: integer("position").notNull(),
 });
 
 export const BossesInfo = pgTable("bosses_info", {
