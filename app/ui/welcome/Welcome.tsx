@@ -77,6 +77,10 @@ export default function Welcome({ classes }: WelcomeProps) {
         storeImage(newUser, uploadedFile);
       }
 
+      if (username) {
+        newUser.username = username;
+      }
+
       localStorage.setItem("user", JSON.stringify(newUser));
       router.push("/");
     }
