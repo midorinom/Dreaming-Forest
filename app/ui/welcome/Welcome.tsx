@@ -62,6 +62,23 @@ export default function Welcome({ classes }: WelcomeProps) {
   }, []);
 
   useEffect(() => {
+    if (done) {
+      setIsUploadingToDatabase(true);
+      setDialogueIndex("uploading");
+      const newUser: User = {
+        userId: uuidv4() as UUID,
+        region: region,
+        characters: [character],
+      };
+
+      if (uploadedFile) {
+        storeImage(newUser, uploadedFile);
+      } else {
+        localStorage.setItem("user", JSON.stringify(newUser));
+        router.push("/");
+      }
+    }
+
     async function storeImage(newUser: User, image: File) {
       const imagePath = `characters/${newUser.userId}/${character.ign}`;
 
@@ -82,23 +99,6 @@ export default function Welcome({ classes }: WelcomeProps) {
       newUser.characters[0].image = url;
       localStorage.setItem("user", JSON.stringify(newUser));
       router.push("/");
-    }
-
-    if (done) {
-      setIsUploadingToDatabase(true);
-      setDialogueIndex("uploading");
-      const newUser: User = {
-        userId: uuidv4() as UUID,
-        region: region,
-        characters: [character],
-      };
-
-      if (uploadedFile) {
-        storeImage(newUser, uploadedFile);
-      } else {
-        localStorage.setItem("user", JSON.stringify(newUser));
-        router.push("/");
-      }
     }
   }, [done]);
 
