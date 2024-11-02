@@ -49,6 +49,8 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
   const [loginPage, setLoginPage] = useState<boolean>(true);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const router = useRouter();
 
   // Check whether the user is a new user
@@ -62,6 +64,28 @@ export default function Welcome({ classes }: WelcomeProps) {
   }, []);
 
   useEffect(() => {
+    if (done) {
+      setIsUploadingToDatabase(true);
+      setDialogueIndex("uploading");
+      const newUser: User = {
+        userId: uuidv4() as UUID,
+        region: region,
+        characters: [character],
+      };
+
+      if (uploadedFile) {
+        storeImage(newUser, uploadedFile);
+      }
+
+      if (username) {
+        newUser.username = username;
+        // TODO: Send to Database
+      }
+
+      localStorage.setItem("user", JSON.stringify(newUser));
+      router.push("/");
+    }
+
     async function storeImage(newUser: User, image: File) {
       const imagePath = `characters/${newUser.userId}/${character.ign}`;
 
@@ -80,25 +104,6 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       const { url } = await response.json();
       newUser.characters[0].image = url;
-      localStorage.setItem("user", JSON.stringify(newUser));
-      router.push("/");
-    }
-
-    if (done) {
-      setIsUploadingToDatabase(true);
-      setDialogueIndex("uploading");
-      const newUser: User = {
-        userId: uuidv4() as UUID,
-        region: region,
-        characters: [character],
-      };
-
-      if (uploadedFile) {
-        storeImage(newUser, uploadedFile);
-      } else {
-        localStorage.setItem("user", JSON.stringify(newUser));
-        router.push("/");
-      }
     }
   }, [done]);
 
@@ -134,7 +139,13 @@ export default function Welcome({ classes }: WelcomeProps) {
               setDialogueIndex={setDialogueIndex}
             />
           ) : proceedClicked ? (
-            <CreateAccount setDone={setDone} />
+            <CreateAccount
+              setDone={setDone}
+              username={username}
+              setUsername={setUsername}
+              password={password}
+              setPassword={setPassword}
+            />
           ) : (
             <RegionAndCharacter
               region={region}

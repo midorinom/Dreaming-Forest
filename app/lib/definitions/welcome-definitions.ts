@@ -64,6 +64,10 @@ export type ClassFieldProps = {
 
 export type CreateAccountProps = {
   setDone: (done: boolean) => void;
+  username: string;
+  setUsername: (username: string) => void;
+  password: string;
+  setPassword: (password: string) => void;
 };
 
 export type UsernameFieldProps = {
