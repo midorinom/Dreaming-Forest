@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import type { UUID } from "crypto";
+import bcrypt from "bcrypt";
 import type {
   DialogueIndex,
   WelcomeProps,
@@ -109,13 +110,22 @@ export default function Welcome({ classes }: WelcomeProps) {
     }
 
     async function updateDatabase(newUser: User) {
+      const hashedPassword = await hashPassword(password);
+
       await fetch(`/api/users`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user: newUser, password: password }),
+        body: JSON.stringify({ user: newUser, hashedPassword: hashedPassword }),
       });
+    }
+
+    async function hashPassword(plainPassword: string) {
+      const saltRounds = 10; // Defines the complexity of the hashing
+      const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+
+      return hashedPassword;
     }
   }, [done]);
 
