@@ -5,6 +5,7 @@ import { sql } from "@vercel/postgres";
 import * as schema from "@/drizzle/schema";
 import { Users } from "@/drizzle/schema";
 import { User } from "../../lib/definitions/general-definitions";
+import bcrypt from "bcrypt";
 
 export const runtime = "edge";
 const projectDir = process.cwd();
@@ -14,7 +15,8 @@ const db = drizzle(sql, { schema });
 export async function PUT(request: Request): Promise<NextResponse> {
   const res = await request.json();
   const user: User = res.user;
-  const hashedPassword: string = res.hashedPassword;
+  const password: string = res.password;
+  const hashedPassword = await hashPassword(password);
 
   const newUser = {
     user_id: user.userId,
@@ -31,4 +33,11 @@ export async function PUT(request: Request): Promise<NextResponse> {
   }
 
   return NextResponse.json({ message: "ok" });
+
+  async function hashPassword(plainPassword: string) {
+    const saltRounds = 10; // Defines the complexity of the hashing
+    const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+
+    return hashedPassword;
+  }
 }
