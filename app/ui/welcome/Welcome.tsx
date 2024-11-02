@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import type { UUID } from "crypto";
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcryptjs";
 import type {
   DialogueIndex,
   WelcomeProps,
@@ -123,7 +123,7 @@ export default function Welcome({ classes }: WelcomeProps) {
 
     async function hashPassword(plainPassword: string) {
       const saltRounds = 10; // Defines the complexity of the hashing
-      const hashedPassword = await bcryptjs.hash(plainPassword, saltRounds);
+      const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
 
       return hashedPassword;
     }
