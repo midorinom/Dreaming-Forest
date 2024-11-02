@@ -6,9 +6,13 @@ import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
 import ConfirmPasswordField from "./ConfirmPasswordField";
 
-export default function CreateAccount({ setDone }: CreateAccountProps) {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+export default function CreateAccount({
+  setDone,
+  username,
+  setUsername,
+  password,
+  setPassword,
+}: CreateAccountProps) {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
 

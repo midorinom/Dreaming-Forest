@@ -49,6 +49,8 @@ export default function Welcome({ classes }: WelcomeProps) {
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
     useState<boolean>(false);
   const [loginPage, setLoginPage] = useState<boolean>(true);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const router = useRouter();
 
   // Check whether the user is a new user
@@ -134,7 +136,13 @@ export default function Welcome({ classes }: WelcomeProps) {
               setDialogueIndex={setDialogueIndex}
             />
           ) : proceedClicked ? (
-            <CreateAccount setDone={setDone} />
+            <CreateAccount
+              setDone={setDone}
+              username={username}
+              setUsername={setUsername}
+              password={password}
+              setPassword={setPassword}
+            />
           ) : (
             <RegionAndCharacter
               region={region}
