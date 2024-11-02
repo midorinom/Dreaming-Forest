@@ -75,10 +75,10 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       if (uploadedFile) {
         storeImage(newUser, uploadedFile);
-      } else {
-        localStorage.setItem("user", JSON.stringify(newUser));
-        router.push("/");
       }
+
+      localStorage.setItem("user", JSON.stringify(newUser));
+      router.push("/");
     }
 
     async function storeImage(newUser: User, image: File) {
@@ -99,8 +99,6 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       const { url } = await response.json();
       newUser.characters[0].image = url;
-      localStorage.setItem("user", JSON.stringify(newUser));
-      router.push("/");
     }
   }, [done]);
 
