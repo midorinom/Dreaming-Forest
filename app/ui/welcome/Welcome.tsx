@@ -69,6 +69,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       setDialogueIndex("uploading");
       const newUser: User = {
         userId: uuidv4() as UUID,
+        username: username,
         region: region,
         characters: [character],
       };
