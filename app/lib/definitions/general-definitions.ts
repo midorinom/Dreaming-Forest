@@ -75,7 +75,7 @@ export type Character = {
 
 export type User = {
   userId: UUID;
-  username?: string;
+  username: string;
   region: string;
   characters: Character[];
 };
