@@ -11,13 +11,13 @@ export async function PUT(request: Request): Promise<NextResponse> {
   if (!imagepath) {
     return NextResponse.json(
       { error: "imagepath is required" },
-      { status: 400 }
+      { status: 400 },
     );
   }
   if (!request.body) {
     return NextResponse.json(
       { error: "Request body is required" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
