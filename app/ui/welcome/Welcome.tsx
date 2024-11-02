@@ -69,6 +69,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       setDialogueIndex("uploading");
       const newUser: User = {
         userId: uuidv4() as UUID,
+        username: username,
         region: region,
         characters: [character],
       };
@@ -79,7 +80,7 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       if (username) {
         newUser.username = username;
-        // TODO: Send to Database
+        updateDatabase(newUser);
       }
 
       localStorage.setItem("user", JSON.stringify(newUser));
@@ -104,6 +105,16 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       const { url } = await response.json();
       newUser.characters[0].image = url;
+    }
+
+    async function updateDatabase(newUser: User) {
+      await fetch(`/api/users`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: newUser, password: password }),
+      });
     }
   }, [done]);
 
