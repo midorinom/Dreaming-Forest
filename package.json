@@ -10,9 +10,10 @@
     "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@vercel/blob": "^0.23.4",
     "@vercel/postgres": "^0.8.0",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.11",
     "dotenv": "^16.4.5",
@@ -23,7 +24,6 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
