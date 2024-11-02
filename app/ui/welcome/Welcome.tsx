@@ -80,7 +80,6 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       if (username) {
         newUser.username = username;
-        // TODO: Send to Database
         updateDatabase(newUser);
       }
 
