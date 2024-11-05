@@ -75,17 +75,21 @@ export default function Welcome({ classes }: WelcomeProps) {
         characters: [character],
       };
 
+      updateDatabase(newUser);
+
+      localStorage.setItem("user", JSON.stringify(newUser));
+      router.push("/");
+    }
+
+    async function updateDatabase(newUser: User) {
       if (uploadedFile) {
-        storeImage(newUser, uploadedFile);
+        await storeImage(newUser, uploadedFile);
       }
 
       if (username) {
         newUser.username = username;
-        insertUserAndCharacter(newUser);
+        await insertUserAndCharacter(newUser);
       }
-
-      localStorage.setItem("user", JSON.stringify(newUser));
-      router.push("/");
     }
 
     async function storeImage(newUser: User, image: File) {
