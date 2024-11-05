@@ -81,7 +81,7 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       if (username) {
         newUser.username = username;
-        updateDatabase(newUser);
+        insertUserAndCharacter(newUser);
       }
 
       localStorage.setItem("user", JSON.stringify(newUser));
@@ -108,7 +108,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       newUser.characters[0].image = url;
     }
 
-    async function updateDatabase(newUser: User) {
+    async function insertUserAndCharacter(newUser: User) {
       await fetch(`/api/users`, {
         method: "PUT",
         headers: {
