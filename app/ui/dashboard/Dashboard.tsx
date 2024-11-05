@@ -30,7 +30,6 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
 
     async function getAndSet(parsedUser: User) {
       const fetchedUser = await fetchUser(parsedUser.userId);
-      console.log(fetchedUser);
     }
 
     async function fetchUser(userId: UUID) {
