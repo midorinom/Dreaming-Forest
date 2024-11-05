@@ -54,3 +54,29 @@ export async function fetchUser(userId: UUID) {
   const res = await response.json();
   return res;
 }
+
+export async function fetchCharacters(userId: UUID) {
+  const response = await fetch(`/api/characters`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId: userId }),
+  });
+
+  const res = await response.json();
+  return res;
+}
+
+export async function fetchTracking(characterId: UUID) {
+  const response = await fetch(`/api/tracking`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ characterId: characterId }),
+  });
+
+  const res = await response.json();
+  return res;
+}
