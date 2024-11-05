@@ -3,6 +3,7 @@ import { eq, or, asc } from "drizzle-orm";
 import { sql } from "@vercel/postgres";
 import { Classes } from "@/drizzle/schema";
 import { unstable_noStore as noStore } from "next/cache";
+import { UUID } from "crypto";
 import { Character, User } from "../definitions/general-definitions";
 
 export async function fetchClasses(region: string) {
@@ -39,4 +40,17 @@ export async function insertNewCharacter(character: Character, user: User) {
     },
     body: JSON.stringify({ character: character }),
   });
+}
+
+export async function fetchUser(userId: UUID) {
+  const response = await fetch(`/api/users`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId: userId }),
+  });
+
+  const res = await response.json();
+  return res;
 }

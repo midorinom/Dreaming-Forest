@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { UUID } from "crypto";
 import { DashboardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
+import { fetchUser } from "@/app/lib/fetches/general-fetches";
 import ActiveCharacter from "./ActiveCharacter";
 import Bosses from "./bosses/Bosses";
 import CharactersWheel from "./characters-wheel/CharactersWheel";
@@ -30,19 +30,6 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
 
     async function getAndSet(parsedUser: User) {
       const fetchedUser = await fetchUser(parsedUser.userId);
-    }
-
-    async function fetchUser(userId: UUID) {
-      const response = await fetch(`/api/users`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: userId }),
-      });
-
-      const res = await response.json();
-      return res;
     }
   }, []);
 
