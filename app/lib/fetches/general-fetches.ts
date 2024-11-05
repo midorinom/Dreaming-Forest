@@ -31,4 +31,12 @@ export async function insertNewCharacter(character: Character, user: User) {
     },
     body: JSON.stringify({ character: character, user: user }),
   });
+
+  await fetch(`/api/tracking`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ character: character }),
+  });
 }
