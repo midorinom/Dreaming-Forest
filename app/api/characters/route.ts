@@ -27,10 +27,9 @@ export async function PUT(request: Request): Promise<NextResponse> {
 
   try {
     await db.insert(Characters).values(newCharacter).onConflictDoNothing();
+    return NextResponse.json({ message: "ok" });
   } catch (error) {
     console.error("Error inserting character", error);
     throw error;
   }
-
-  return NextResponse.json({ message: "ok" });
 }

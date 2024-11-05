@@ -27,10 +27,9 @@ export async function PUT(request: Request): Promise<NextResponse> {
 
   try {
     await db.insert(Tracking).values(newTracking).onConflictDoNothing();
+    return NextResponse.json({ message: "ok" });
   } catch (error) {
     console.error("Error inserting tracking", error);
     throw error;
   }
-
-  return NextResponse.json({ message: "ok" });
 }
