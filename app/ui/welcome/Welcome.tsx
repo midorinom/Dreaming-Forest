@@ -115,6 +115,14 @@ export default function Welcome({ classes }: WelcomeProps) {
         },
         body: JSON.stringify({ user: newUser, password: password }),
       });
+
+      await fetch(`/api/characters`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ character: character, user: newUser }),
+      });
     }
   }, [done]);
 
