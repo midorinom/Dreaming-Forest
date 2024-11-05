@@ -22,6 +22,7 @@ export async function PUT(request: Request): Promise<NextResponse> {
     username: user.username,
     pw_hash: hashedPassword,
     region: user.region,
+    last_logged_in: new Date().toDateString(),
   };
 
   try {
