@@ -51,7 +51,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       .select()
       .from(Users)
       .where(eq(Users.user_id, userId));
-    return NextResponse.json(fetchedUser);
+    return NextResponse.json(fetchedUser[0]);
   } catch (error) {
     console.error("Error getting user", error);
     throw error;

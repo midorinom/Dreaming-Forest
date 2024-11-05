@@ -44,7 +44,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       .select()
       .from(Tracking)
       .where(eq(Tracking.character_id, characterId));
-    return NextResponse.json(fetchedTracking);
+    return NextResponse.json(fetchedTracking[0]);
   } catch (error) {
     console.error("Error getting tracking", error);
     throw error;
