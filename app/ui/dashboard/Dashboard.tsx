@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { UUID } from "crypto";
 import { DashboardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
   Character,
@@ -17,8 +18,32 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
   useEffect(() => {
     const localUser = localStorage.getItem("user");
     if (localUser) {
-      setUser(JSON.parse(localUser));
-      setActiveCharacter(JSON.parse(localUser).characters[0]);
+      const parsedUser: User = JSON.parse(localUser);
+
+      if (parsedUser.username) {
+        getAndSet(parsedUser);
+      } else {
+        setUser(JSON.parse(localUser));
+        setActiveCharacter(JSON.parse(localUser).characters[0]);
+      }
+    }
+
+    async function getAndSet(parsedUser: User) {
+      const fetchedUser = await fetchUser(parsedUser.userId);
+      console.log(fetchedUser);
+    }
+
+    async function fetchUser(userId: UUID) {
+      const response = await fetch(`/api/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: userId }),
+      });
+
+      const res = await response.json();
+      return res;
     }
   }, []);
 
