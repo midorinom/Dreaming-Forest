@@ -12,6 +12,7 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
+import { insertNewCharacter } from "@/app/lib/fetches/general-fetches";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
   smallSpiritDialogue,
@@ -116,13 +117,7 @@ export default function Welcome({ classes }: WelcomeProps) {
         body: JSON.stringify({ user: newUser, password: password }),
       });
 
-      await fetch(`/api/characters`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ character: character, user: newUser }),
-      });
+      await insertNewCharacter(character, newUser);
     }
   }, [done]);
 
