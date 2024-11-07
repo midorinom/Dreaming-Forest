@@ -12,6 +12,7 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
+import { insertNewCharacter } from "@/app/lib/fetches/general-fetches";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
   smallSpiritDialogue,
@@ -74,17 +75,21 @@ export default function Welcome({ classes }: WelcomeProps) {
         characters: [character],
       };
 
+      updateDatabase(newUser);
+
+      localStorage.setItem("user", JSON.stringify(newUser));
+      router.push("/");
+    }
+
+    async function updateDatabase(newUser: User) {
       if (uploadedFile) {
-        storeImage(newUser, uploadedFile);
+        await storeImage(newUser, uploadedFile);
       }
 
       if (username) {
         newUser.username = username;
-        updateDatabase(newUser);
+        await insertUserAndCharacter(newUser);
       }
-
-      localStorage.setItem("user", JSON.stringify(newUser));
-      router.push("/");
     }
 
     async function storeImage(newUser: User, image: File) {
@@ -107,7 +112,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       newUser.characters[0].image = url;
     }
 
-    async function updateDatabase(newUser: User) {
+    async function insertUserAndCharacter(newUser: User) {
       await fetch(`/api/users`, {
         method: "PUT",
         headers: {
@@ -115,6 +120,8 @@ export default function Welcome({ classes }: WelcomeProps) {
         },
         body: JSON.stringify({ user: newUser, password: password }),
       });
+
+      await insertNewCharacter(character, newUser);
     }
   }, [done]);
 

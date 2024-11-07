@@ -15,10 +15,12 @@ export default function CharactersWheel({
   const [currentPage, setCurrentPage] = useState<number>(0);
 
   useEffect(() => {
-    const charactersWithoutActiveChar = charactersProp.filter(
-      (character) => character.characterId !== activeCharacter.characterId,
-    );
-    setCharacters(charactersWithoutActiveChar);
+    if (charactersProp) {
+      const charactersWithoutActiveChar = charactersProp.filter(
+        (character) => character.characterId !== activeCharacter.characterId,
+      );
+      setCharacters(charactersWithoutActiveChar);
+    }
   }, [activeCharacter]);
 
   return (

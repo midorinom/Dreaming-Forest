@@ -26,6 +26,7 @@ export const Users = pgTable("users", {
     .references(() => Regions.region)
     .notNull(),
   pw_hash: varchar("pw_hash").notNull(),
+  last_logged_in: date("last_logged_in").notNull(),
 });
 
 export const Characters = pgTable("characters", {
