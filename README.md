@@ -171,6 +171,9 @@ Page (Server Component)
 "/welcome"
 Page (Server Component)
   Welcome
+    Login
+      UsernameField
+      PasswordField
     RegionAndCharacter
       SelectRegion
       AddCharacter
