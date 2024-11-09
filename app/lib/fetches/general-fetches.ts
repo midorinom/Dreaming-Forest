@@ -4,9 +4,17 @@ import { sql } from "@vercel/postgres";
 import { Classes } from "@/drizzle/schema";
 import { unstable_noStore as noStore } from "next/cache";
 import { UUID } from "crypto";
-import { Character, User } from "../definitions/general-definitions";
+import { Character, User } from "@/app/lib/definitions/general-definitions";
+import {
+  FetchCharactersResponse,
+  FetchClassesResponse,
+  FetchTrackingResponse,
+  FetchUserResponse,
+} from "@/app/lib/definitions/fetches/general-fetches-definitions";
 
-export async function fetchClasses(region: string) {
+export async function fetchClasses(
+  region: string,
+): Promise<FetchClassesResponse> {
   const db = drizzle(sql);
   noStore();
 
@@ -42,7 +50,7 @@ export async function insertNewCharacter(character: Character, user: User) {
   });
 }
 
-export async function fetchUser(userId: UUID) {
+export async function fetchUser(userId: UUID): Promise<FetchUserResponse> {
   const response = await fetch(`/api/users`, {
     method: "POST",
     headers: {
@@ -55,7 +63,9 @@ export async function fetchUser(userId: UUID) {
   return res;
 }
 
-export async function fetchCharacters(userId: UUID) {
+export async function fetchCharacters(
+  userId: UUID,
+): Promise<FetchCharactersResponse> {
   const response = await fetch(`/api/characters`, {
     method: "POST",
     headers: {
@@ -68,7 +78,9 @@ export async function fetchCharacters(userId: UUID) {
   return res;
 }
 
-export async function fetchTracking(characterId: UUID) {
+export async function fetchTracking(
+  characterId: UUID,
+): Promise<FetchTrackingResponse> {
   const response = await fetch(`/api/tracking`, {
     method: "POST",
     headers: {
