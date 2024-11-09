@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
 import { User } from "@/app/lib/definitions/general-definitions";
-import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
+import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";\
+import bcryptjs from "bcryptjs";
 import UsernameField from "../create-account/UsernameField";
 import PasswordField from "../create-account/PasswordField";
 
@@ -20,6 +21,14 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
       return;
     }
 
+    const passwordMatch = await checkPassword(password, fetchedUser.pw_hash);
+    
+    if (!passwordMatch)
+    {
+      console.log("Wrong password");
+      return;
+    }
+
     const newUser: User = {
       userId: fetchedUser.userId,
       username: fetchedUser.username,
@@ -30,6 +39,11 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
     localStorage.setItem("user", JSON.stringify(newUser));
     router.push("/");
   }
+
+  async function checkPassword(inputPassword: string, storedHash: string): Promise<boolean> {
+    const passwordMatch = await bcryptjs.compare(inputPassword, storedHash);
+    return passwordMatch;
+}
 
   return (
     <div className="flex w-1/4 flex-col items-center">
