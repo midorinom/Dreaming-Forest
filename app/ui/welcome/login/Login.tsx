@@ -1,12 +1,30 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
+import { User } from "@/app/lib/definitions/general-definitions";
+import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
 import UsernameField from "../create-account/UsernameField";
 import PasswordField from "../create-account/PasswordField";
 
 export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const router = useRouter();
+
+  async function handleLogin() {
+    const fetchedUser = await fetchUserId(username);
+
+    const newUser: User = {
+      userId: fetchedUser.userId,
+      username: fetchedUser.username,
+      region: fetchedUser.region,
+      characters: fetchedUser.characters,
+    };
+
+    localStorage.setItem("user", JSON.stringify(newUser));
+    router.push("/");
+  }
 
   return (
     <div className="flex w-1/4 flex-col items-center">
