@@ -1,4 +1,6 @@
-export async function fetchUserId(username: string) {
+import { UUID } from "crypto";
+
+export async function fetchUserId(username: string): Promise<UUID> {
   const response = await fetch(`/api/userids`, {
     method: "POST",
     headers: {
