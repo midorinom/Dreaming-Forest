@@ -19,7 +19,12 @@ export async function POST(request: Request): Promise<NextResponse> {
       .select()
       .from(Users)
       .where(eq(Users.username, username));
-    return NextResponse.json(fetchedUser[0].user_id);
+
+    if (fetchedUser[0]) {
+      return NextResponse.json(fetchedUser[0].user_id);
+    } else {
+      return NextResponse.json("");
+    }
   } catch (error) {
     console.error("Error getting user", error);
     throw error;
