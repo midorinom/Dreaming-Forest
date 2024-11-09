@@ -12,7 +12,7 @@ const db = drizzle(sql, { schema });
 
 export async function POST(request: Request): Promise<NextResponse> {
   const res = await request.json();
-  const username: string = res.username;
+  const username: string = res.username.toLowerCase();
 
   try {
     const fetchedUser = await db

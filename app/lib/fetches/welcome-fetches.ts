@@ -6,7 +6,7 @@ export async function fetchUserId(username: string): Promise<UUID | undefined> {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username: username.toLowerCase() }),
+    body: JSON.stringify({ username: username }),
   });
 
   const res = await response.json();
