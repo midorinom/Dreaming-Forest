@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
-import { User } from "@/app/lib/definitions/general-definitions";
 import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
+import { fetchUser } from "@/app/lib/fetches/general-fetches";
 import bcryptjs from "bcryptjs";
 import UsernameField from "../create-account/UsernameField";
 import PasswordField from "../create-account/PasswordField";
@@ -14,13 +14,14 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const router = useRouter();
 
   async function handleLogin() {
-    const fetchedUser = await fetchUserId(username);
+    const fetchedUserId = await fetchUserId(username);
 
-    if (!fetchedUser) {
+    if (!fetchedUserId) {
       console.log("No user with that username");
       return;
     }
 
+    const fetchedUser = await fetchUser(fetchedUserId);
     const passwordMatch = await checkPassword(password, fetchedUser.pw_hash);
 
     if (!passwordMatch) {
@@ -28,11 +29,9 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
       return;
     }
 
-    const newUser: User = {
-      userId: fetchedUser.userId,
+    const newUser = {
+      userId: fetchedUser.user_id,
       username: fetchedUser.username,
-      region: fetchedUser.region,
-      characters: fetchedUser.characters,
     };
 
     localStorage.setItem("user", JSON.stringify(newUser));
