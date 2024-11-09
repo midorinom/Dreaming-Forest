@@ -47,10 +47,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
         <button
           className="btn glass btn-accent btn-lg rounded-full text-xl font-medium text-primary-content"
           disabled={username && password ? false : true}
-          onClick={() => {
-            setLoginPage(false);
-            setDialogueIndex("select_region");
-          }}
+          onClick={() => handleLogin()}
         >
           <img
             src="/general/ui_icons/butterfly_logo.png"
