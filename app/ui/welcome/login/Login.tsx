@@ -15,6 +15,11 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   async function handleLogin() {
     const fetchedUser = await fetchUserId(username);
 
+    if (!fetchedUser) {
+      console.log("No user with that username");
+      return;
+    }
+
     const newUser: User = {
       userId: fetchedUser.userId,
       username: fetchedUser.username,
