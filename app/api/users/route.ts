@@ -20,7 +20,7 @@ export async function PUT(request: Request): Promise<NextResponse> {
 
   const newUser = {
     user_id: user.userId,
-    username: user.username,
+    username: user.username.toLowerCase(),
     pw_hash: hashedPassword,
     region: user.region,
     last_logged_in: new Date().toDateString(),
