@@ -3,9 +3,9 @@ import { eq, or, asc, min, and } from "drizzle-orm";
 import { sql } from "@vercel/postgres";
 import { BossesInfo } from "@/drizzle/schema";
 import { unstable_noStore as noStore } from "next/cache";
-import { fetchBossesInfoResponse } from "@/app/lib/definitions/fetches/dashboard-fetches-definitions";
+import { FetchBossesInfoResponse } from "@/app/lib/definitions/fetches/dashboard-fetches-definitions";
 
-export async function fetchBossesInfo(): Promise<fetchBossesInfoResponse> {
+export async function fetchBossesInfo(): Promise<FetchBossesInfoResponse> {
   const db = drizzle(sql);
   noStore();
 
