@@ -25,11 +25,17 @@ export default function DailiesWeeklies({
     useState<boolean>(false);
 
   useEffect(() => {
+    if (!activeCharacter) {
+      return;
+    }
+
     setEditDailiesClicked(false);
     setEditWeekliesClicked(false);
 
     const localUser = localStorage.getItem("user");
-    if (localUser) {
+
+    if (localUser && JSON.parse(localUser).characters) {
+      console.log(JSON.parse(localUser));
       const parsedCharacter: Character =
         JSON.parse(localUser).characters[activeCharacter.position];
       setDailies(parsedCharacter.dailies);
