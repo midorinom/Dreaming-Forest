@@ -121,8 +121,8 @@ Page (Server Component)
   MainAppWrapper
     Characters
       ViewCharacters
-        CharacterCard
-          CharacterCardEdit
+        ViewCharacterCard
+          ViewCharacterCardEdit
             ImageField
             IgnField
             LevelField
@@ -131,6 +131,7 @@ Page (Server Component)
           CharacterDetails
           CharacterTracking
       RearrangeCharacters
+        RearrangeCharacterCard
       AddCharacter
         ImageField
         IgnField
@@ -138,6 +139,7 @@ Page (Server Component)
         ClassField
           ClassSelect
       DeleteCharacters
+        DeleteCharacterCard
 
 "/dailies-weeklies"
 Page (Server Component)
