@@ -53,7 +53,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
       <div className="collapse collapse-open flex min-h-48 flex-col items-center gap-3 bg-base-100 pt-8">
         <div className="flex flex-col gap-8">
           <UsernameField setUsername={setUsername} />
-          <PasswordField setPassword={setPassword} confirmPasswordError="" />
+          <PasswordField setPassword={setPassword} />
         </div>
       </div>
       <div className="mt-5 flex w-full justify-between">
