@@ -15,6 +15,7 @@ export default function CreateAccount({
 }: CreateAccountProps) {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
+  const [usernameError, setUsernameError] = useState<string>("");
 
   useEffect(() => {
     if (password && confirmPassword && password !== confirmPassword) {
@@ -35,7 +36,11 @@ export default function CreateAccount({
           Create Account
         </div>
         <div className="flex flex-col gap-8">
-          <UsernameField setUsername={setUsername} />
+          <UsernameField
+            setUsername={setUsername}
+            usernameError={usernameError}
+            setUsernameError={setUsernameError}
+          />
           <PasswordField
             setPassword={setPassword}
             confirmPasswordError={confirmPasswordError}
