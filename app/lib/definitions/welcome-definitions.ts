@@ -72,11 +72,15 @@ export type CreateAccountProps = {
 
 export type UsernameFieldProps = {
   setUsername: (username: string) => void;
+  usernameError?: string;
+  setUsernameError?: (usernameError: string) => void;
 };
 
 export type PasswordFieldProps = {
   setPassword: (password: string) => void;
-  confirmPasswordError: string;
+  confirmPasswordError?: string;
+  passwordError?: string;
+  setPasswordError?: (passwordError: string) => void;
 };
 
 export type ConfirmPasswordFieldProps = {
