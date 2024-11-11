@@ -24,6 +24,10 @@ export default function CreateAccount({
     }
   }, [password, confirmPassword]);
 
+  function handleSubmit() {
+    setDone(true);
+  }
+
   return (
     <div className="flex w-1/4 flex-col items-center">
       <div className="collapse collapse-open flex min-h-64 flex-col items-center gap-3 bg-base-100">
@@ -56,7 +60,7 @@ export default function CreateAccount({
               ? false
               : true
           }
-          onClick={() => setDone(true)}
+          onClick={() => handleSubmit()}
         >
           <img
             src="/general/ui_icons/butterfly_logo.png"
