@@ -31,7 +31,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
     const passwordMatch = await checkPassword(password, fetchedUser.pw_hash);
 
     if (!passwordMatch) {
-      setUsernameError(errorMessages.wrongPassword);
+      setPasswordError(errorMessages.wrongPassword);
       setIsQueryingDatabase(false);
       return;
     }
