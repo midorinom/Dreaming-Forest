@@ -14,13 +14,16 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const [password, setPassword] = useState<string>("");
   const [usernameError, setUsernameError] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>("");
+  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
   const router = useRouter();
 
   async function handleLogin() {
+    setIsQueryingDatabase(true);
     const fetchedUserId = await fetchUserId(username);
 
     if (!fetchedUserId) {
       setUsernameError(errorMessages.noUser);
+      setIsQueryingDatabase(false);
       return;
     }
 
@@ -29,6 +32,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
 
     if (!passwordMatch) {
       setUsernameError(errorMessages.wrongPassword);
+      setIsQueryingDatabase(false);
       return;
     }
 
@@ -38,6 +42,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
     };
 
     localStorage.setItem("user", JSON.stringify(newUser));
+    setIsQueryingDatabase(false);
     router.push("/");
   }
 
@@ -50,44 +55,50 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   }
 
   return (
-    <div className="flex w-1/4 flex-col items-center">
-      <div className="collapse collapse-open flex min-h-48 flex-col items-center gap-3 bg-base-100 pt-8">
-        <div className="flex flex-col gap-8">
-          <UsernameField
-            setUsername={setUsername}
-            usernameError={usernameError}
-            setUsernameError={setUsernameError}
-          />
-          <PasswordField
-            setPassword={setPassword}
-            passwordError={passwordError}
-            setPasswordError={setPasswordError}
-          />
+    <>
+      {isQueryingDatabase ? (
+        <span className="loading loading-spinner mt-32 h-1/5 w-auto text-accent"></span>
+      ) : (
+        <div className="flex w-1/4 flex-col items-center">
+          <div className="collapse collapse-open flex min-h-48 flex-col items-center gap-3 bg-base-100 pt-8">
+            <div className="flex flex-col gap-8">
+              <UsernameField
+                setUsername={setUsername}
+                usernameError={usernameError}
+                setUsernameError={setUsernameError}
+              />
+              <PasswordField
+                setPassword={setPassword}
+                passwordError={passwordError}
+                setPasswordError={setPasswordError}
+              />
+            </div>
+          </div>
+          <div className="mt-5 flex w-full justify-between">
+            <button
+              className="btn btn-warning btn-lg rounded-full text-xl font-medium text-primary-content"
+              onClick={() => {
+                setLoginPage(false);
+                setDialogueIndex("select_region");
+              }}
+            >
+              I am new!
+            </button>
+            <button
+              className="btn glass btn-accent btn-lg rounded-full text-xl font-medium text-primary-content"
+              disabled={username && password ? false : true}
+              onClick={() => handleLogin()}
+            >
+              <img
+                src="/general/ui_icons/butterfly_logo.png"
+                alt="Butterfly Logo"
+                className="h-7 w-7"
+              />
+              Login
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="mt-5 flex w-full justify-between">
-        <button
-          className="btn btn-warning btn-lg rounded-full text-xl font-medium text-primary-content"
-          onClick={() => {
-            setLoginPage(false);
-            setDialogueIndex("select_region");
-          }}
-        >
-          I am new!
-        </button>
-        <button
-          className="btn glass btn-accent btn-lg rounded-full text-xl font-medium text-primary-content"
-          disabled={username && password ? false : true}
-          onClick={() => handleLogin()}
-        >
-          <img
-            src="/general/ui_icons/butterfly_logo.png"
-            alt="Butterfly Logo"
-            className="h-7 w-7"
-          />
-          Login
-        </button>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
