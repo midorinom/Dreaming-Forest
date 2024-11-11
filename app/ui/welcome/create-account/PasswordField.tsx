@@ -6,9 +6,9 @@ import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 export default function PasswordField({
   setPassword,
   confirmPasswordError,
-  passwordError,
-  setPasswordError
 }: PasswordFieldProps) {
+  const [passwordError, setPasswordError] = useState<string>("");
+
   function handlePasswordChange(e: ChangeEvent<HTMLInputElement>) {
     const passwordInput = e.target.value;
     const passwordRegex =
@@ -52,7 +52,7 @@ export default function PasswordField({
       </label>
       {(passwordError || confirmPasswordError) && (
         <span className="absolute left-0 top-full mt-0.5 text-sm text-error">
-          {passwordError : confirmPasswordError}
+          {passwordError ? passwordError : confirmPasswordError}
         </span>
       )}
     </div>
