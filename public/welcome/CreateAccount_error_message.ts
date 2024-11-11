@@ -4,7 +4,7 @@ const errorMessages = {
   confirmPassword: "Passwords don't match.",
   noUser: "No such user exists.",
   wrongPassword: "Wrong password.",
-  duplicateUser: "This username already exists.",
+  duplicateUser: "This user already exists.",
 };
 
 export { errorMessages };
