@@ -11,6 +11,8 @@ import PasswordField from "../create-account/PasswordField";
 export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [usernameError, setUsernameError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
   const router = useRouter();
 
   async function handleLogin() {
