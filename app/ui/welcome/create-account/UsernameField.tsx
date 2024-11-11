@@ -3,9 +3,11 @@ import { useState, ChangeEvent } from "react";
 import type { UsernameFieldProps } from "@/app/lib/definitions/welcome-definitions";
 import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 
-export default function UsernameField({ setUsername }: UsernameFieldProps) {
-  const [usernameError, setUsernameError] = useState<string>("");
-
+export default function UsernameField({
+  setUsername,
+  usernameError,
+  setUsernameError,
+}: UsernameFieldProps) {
   function handleUsernameChange(e: ChangeEvent<HTMLInputElement>) {
     const usernameInput = e.target.value;
     const alphanumericRegex = /^[a-zA-Z0-9]*$/;
