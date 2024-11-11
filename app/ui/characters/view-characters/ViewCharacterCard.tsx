@@ -21,12 +21,13 @@ export default function ViewCharacterCard({
       character.ign === characterProp.ign &&
       character.level === characterProp.level &&
       character.image === characterProp.image &&
-      character.maplestoryClass === characterProp.maplestoryClass
+      character.maplestoryClass === characterProp.maplestoryClass &&
+      JSON.stringify(character.tracking) ===
+        JSON.stringify(characterProp.tracking)
     ) {
       return;
     }
-
-    const newCharacters = [JSON.parse(JSON.stringify(characters))];
+    const newCharacters = JSON.parse(JSON.stringify(characters));
     newCharacters[character.position] = character;
     setCharacters(newCharacters);
   }, [character]);
