@@ -5,7 +5,6 @@ import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 
 export default function PasswordField({
   setPassword,
-  confirmPasswordError,
 }: LoginPasswordFieldProps) {
   const [passwordError, setPasswordError] = useState<string>("");
 
@@ -27,7 +26,7 @@ export default function PasswordField({
     <div className="relative">
       <label
         className={`${
-          passwordError || confirmPasswordError ? "bg-error" : "bg-secondary"
+          passwordError ? "bg-error" : "bg-secondary"
         } input input-bordered flex items-center gap-2`}
       >
         <svg
@@ -50,9 +49,9 @@ export default function PasswordField({
           maxLength={15}
         />
       </label>
-      {(passwordError || confirmPasswordError) && (
+      {passwordError && (
         <span className="absolute left-0 top-full mt-0.5 text-sm text-error">
-          {passwordError ? passwordError : confirmPasswordError}
+          {passwordError}
         </span>
       )}
     </div>
