@@ -5,8 +5,8 @@ import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
 import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
 import { fetchUser } from "@/app/lib/fetches/general-fetches";
 import bcryptjs from "bcryptjs";
-import UsernameField from "../create-account/UsernameField";
-import PasswordField from "../create-account/PasswordField";
+import UsernameField from "./UsernameField";
+import PasswordField from "./PasswordField";
 
 export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const [username, setUsername] = useState<string>("");
