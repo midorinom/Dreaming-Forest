@@ -35,7 +35,6 @@ export default function DailiesWeeklies({
     const localUser = localStorage.getItem("user");
 
     if (localUser && JSON.parse(localUser).characters) {
-      console.log(JSON.parse(localUser));
       const parsedCharacter: Character =
         JSON.parse(localUser).characters[activeCharacter.position];
       setDailies(parsedCharacter.dailies);
