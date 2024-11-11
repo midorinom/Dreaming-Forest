@@ -23,6 +23,8 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
 
     if (!fetchedUserId) {
       setUsernameError(errorMessages.noUser);
+      setUsername("");
+      setPassword("");
       setIsQueryingDatabase(false);
       return;
     }
@@ -32,6 +34,8 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
 
     if (!passwordMatch) {
       setPasswordError(errorMessages.wrongPassword);
+      setUsername("");
+      setPassword("");
       setIsQueryingDatabase(false);
       return;
     }
