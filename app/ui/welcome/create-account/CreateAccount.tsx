@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import type { CreateAccountProps } from "@/app/lib/definitions/welcome-definitions";
+import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
 import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
@@ -26,7 +27,20 @@ export default function CreateAccount({
     }
   }, [password, confirmPassword]);
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    setIsQueryingDatabase(true);
+    const fetchedUserId = await fetchUserId(username);
+
+    if (fetchedUserId) {
+      setUsernameError(errorMessages.duplicateUser);
+      setUsername("");
+      setPassword("");
+      setConfirmPassword("");
+      setIsQueryingDatabase(false);
+      return;
+    }
+
+    setIsQueryingDatabase(false);
     setDone(true);
   }
 
