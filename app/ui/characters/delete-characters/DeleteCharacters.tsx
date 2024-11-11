@@ -9,7 +9,7 @@ export default function DeleteCharacters({
   currentPagePagination,
 }: DeleteCharactersProps) {
   const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (characters.length > 0) {
