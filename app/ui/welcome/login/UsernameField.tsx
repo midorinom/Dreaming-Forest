@@ -1,9 +1,11 @@
 "use client";
 import { useState, ChangeEvent } from "react";
-import type { UsernameFieldProps } from "@/app/lib/definitions/welcome-definitions";
+import type { LoginUsernameFieldProps } from "@/app/lib/definitions/welcome-definitions";
 import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 
-export default function UsernameField({ setUsername }: UsernameFieldProps) {
+export default function UsernameField({
+  setUsername,
+}: LoginUsernameFieldProps) {
   const [usernameError, setUsernameError] = useState<string>("");
 
   function handleUsernameChange(e: ChangeEvent<HTMLInputElement>) {
