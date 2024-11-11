@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
 import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
 import { fetchUser } from "@/app/lib/fetches/general-fetches";
+import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 import bcryptjs from "bcryptjs";
 import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
@@ -19,7 +20,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
     const fetchedUserId = await fetchUserId(username);
 
     if (!fetchedUserId) {
-      console.log("No user with that username");
+      setUsernameError(errorMessages.noUser);
       return;
     }
 
@@ -27,7 +28,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
     const passwordMatch = await checkPassword(password, fetchedUser.pw_hash);
 
     if (!passwordMatch) {
-      console.log("Wrong password");
+      setUsernameError(errorMessages.wrongPassword);
       return;
     }
 
