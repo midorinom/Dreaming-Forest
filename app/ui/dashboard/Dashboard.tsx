@@ -36,34 +36,44 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
       const fetchedUser = await fetchUser(parsedUser.userId);
       const fetchedCharacters = await fetchCharacters(parsedUser.userId);
 
+      const characters: Character[] = [];
+      for (const character of fetchedCharacters) {
+        const newCharacter: Character = {
+          characterId: character.character_id,
+          image: character.image,
+          ign: character.ign,
+          level: character.level,
+          maplestoryClass: character.class_name,
+          dailies: [],
+          weeklies: [],
+          bosses: [],
+          position: character.position,
+          tracking: {
+            dailies: true,
+            weeklies: true,
+            bosses: true,
+            progression: true,
+          },
+        };
+        characters.push(newCharacter);
+      }
+
       setUser({
-        userId: fetchedUser.userId,
+        userId: fetchedUser.user_id,
         username: fetchedUser.username,
         region: fetchedUser.region,
-        characters: fetchedUser.characters,
+        characters: characters,
       });
 
-      const fetchedTracking = await fetchTracking(
-        fetchedCharacters[0].character_id,
-      );
+      const fetchedTracking = await fetchTracking(characters[0].characterId);
+      characters[0].tracking = {
+        dailies: fetchedTracking.dailies,
+        weeklies: fetchedTracking.weeklies,
+        bosses: fetchedTracking.bosses,
+        progression: fetchedTracking.progression,
+      };
 
-      setActiveCharacter({
-        characterId: fetchedCharacters[0].characterId,
-        image: fetchedCharacters[0].image,
-        ign: fetchedCharacters[0].ign,
-        level: fetchedCharacters[0].level,
-        maplestoryClass: fetchedCharacters[0].maplestoryClass,
-        dailies: [],
-        weeklies: [],
-        bosses: [],
-        position: fetchedCharacters[0].position,
-        tracking: {
-          dailies: fetchedTracking.dailies,
-          weeklies: fetchedTracking.weeklies,
-          bosses: fetchedTracking.bosses,
-          progression: fetchedTracking.progression,
-        },
-      });
+      setActiveCharacter(characters[0]);
     }
   }, []);
 

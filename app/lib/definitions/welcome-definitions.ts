@@ -88,3 +88,15 @@ export type LoginProps = {
   setLoginPage: (loginPage: boolean) => void;
   setDialogueIndex: (dialogueIndex: DialogueIndex) => void;
 };
+
+export type LoginUsernameFieldProps = {
+  setUsername: (username: string) => void;
+  usernameError: string;
+  setUsernameError: (usernameError: string) => void;
+};
+
+export type LoginPasswordFieldProps = {
+  setPassword: (password: string) => void;
+  passwordError: string;
+  setPasswordError: (usernameError: string) => void;
+};

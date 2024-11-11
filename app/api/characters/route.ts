@@ -4,7 +4,7 @@ import { loadEnvConfig } from "@next/env";
 import { sql } from "@vercel/postgres";
 import * as schema from "@/drizzle/schema";
 import { Characters } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { eq, asc } from "drizzle-orm";
 import { Character, User } from "../../lib/definitions/general-definitions";
 
 const projectDir = process.cwd();
@@ -43,7 +43,8 @@ export async function POST(request: Request): Promise<NextResponse> {
     const fetchedCharacters = await db
       .select()
       .from(Characters)
-      .where(eq(Characters.user_id, userId));
+      .where(eq(Characters.user_id, userId))
+      .orderBy(asc(Characters.position));
     return NextResponse.json(fetchedCharacters);
   } catch (error) {
     console.error("Error getting characters", error);

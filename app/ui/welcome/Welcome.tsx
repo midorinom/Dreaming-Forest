@@ -150,7 +150,7 @@ export default function Welcome({ classes }: WelcomeProps) {
             </div>
           </div>
           {isUploadingToDatabase ? (
-            <span className="loading loading-spinner mt-36 h-1/5 w-auto text-accent"></span>
+            <span className="loading loading-spinner mt-32 h-1/5 w-auto text-accent"></span>
           ) : loginPage ? (
             <Login
               setLoginPage={setLoginPage}

@@ -28,7 +28,7 @@ export default function Bosses({
     setHeadingHovered(false);
 
     const localUser = localStorage.getItem("user");
-    if (localUser) {
+    if (localUser && JSON.parse(localUser).characters) {
       // Sort Bosses
       const parsedCharacter: Character =
         JSON.parse(localUser).characters[activeCharacter.position];
