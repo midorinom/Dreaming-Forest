@@ -91,6 +91,8 @@ export type LoginProps = {
 
 export type LoginUsernameFieldProps = {
   setUsername: (username: string) => void;
+  usernameError: string;
+  setUsernameError: (usernameError: string) => void;
 };
 
 export type LoginPasswordFieldProps = {
