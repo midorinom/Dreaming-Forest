@@ -57,7 +57,11 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
             usernameError={usernameError}
             setUsernameError={setUsernameError}
           />
-          <PasswordField setPassword={setPassword} passwordError={passwordError} setPasswordError={setPasswordError}/>
+          <PasswordField
+            setPassword={setPassword}
+            passwordError={passwordError}
+            setPasswordError={setPasswordError}
+          />
         </div>
       </div>
       <div className="mt-5 flex w-full justify-between">
