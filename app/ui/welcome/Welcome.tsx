@@ -12,7 +12,9 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
+import { insertNewUser } from "@/app/lib/fetches/welcome-fetches";
 import { insertNewCharacter } from "@/app/lib/fetches/general-fetches";
+import { storeImage } from "@/app/lib/functions/utility-functions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
   smallSpiritDialogue,
@@ -22,7 +24,6 @@ import Login from "./login/Login";
 import RegionAndCharacter from "./region-and-character/RegionAndCharacter";
 import CreateAccount from "./create-account/CreateAccount";
 import ElodinSkeleton from "../general/ElodinSkeleton";
-import { storeImage } from "@/app/lib/functions/utility-functions";
 
 export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -94,14 +95,7 @@ export default function Welcome({ classes }: WelcomeProps) {
     }
 
     async function insertUserAndCharacter(newUser: User) {
-      await fetch(`/api/users`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user: newUser, password: password }),
-      });
-
+      await insertNewUser(newUser, password);
       await insertNewCharacter(character, newUser);
     }
   }, [done]);
