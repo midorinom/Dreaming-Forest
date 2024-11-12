@@ -1,7 +1,11 @@
 import dayjs, { Dayjs } from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";
-import { DateTimes } from "../definitions/general-definitions";
+import { UUID } from "crypto";
+import {
+  Character,
+  DateTimes,
+} from "@/app/lib/definitions/general-definitions";
 
 export function getDateTimes(
   region: string,
@@ -69,4 +73,25 @@ export function getDateTimes(
   };
 
   return dateTimes;
+}
+
+export async function storeImage(
+  userId: UUID,
+  character: Character,
+  image: File,
+) {
+  const imagePath = `characters/${userId}/${character.ign}`;
+
+  const response = await fetch(`/api/character-images?imagepath=${imagePath}`, {
+    method: "PUT",
+    body: image,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error);
+  }
+
+  const { url } = await response.json();
+  character.image = url;
 }
