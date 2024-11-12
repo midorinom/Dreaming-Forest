@@ -22,6 +22,7 @@ import Login from "./login/Login";
 import RegionAndCharacter from "./region-and-character/RegionAndCharacter";
 import CreateAccount from "./create-account/CreateAccount";
 import ElodinSkeleton from "../general/ElodinSkeleton";
+import { storeImage } from "@/app/lib/functions/utility-functions";
 
 export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -83,33 +84,13 @@ export default function Welcome({ classes }: WelcomeProps) {
 
     async function updateDatabase(newUser: User) {
       if (uploadedFile) {
-        await storeImage(newUser, uploadedFile);
+        await storeImage(newUser.userId, newUser.characters[0], uploadedFile);
       }
 
       if (username) {
         newUser.username = username;
         await insertUserAndCharacter(newUser);
       }
-    }
-
-    async function storeImage(newUser: User, image: File) {
-      const imagePath = `characters/${newUser.userId}/${character.ign}`;
-
-      const response = await fetch(
-        `/api/character-images?imagepath=${imagePath}`,
-        {
-          method: "PUT",
-          body: image,
-        },
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error);
-      }
-
-      const { url } = await response.json();
-      newUser.characters[0].image = url;
     }
 
     async function insertUserAndCharacter(newUser: User) {

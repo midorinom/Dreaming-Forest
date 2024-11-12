@@ -3,17 +3,19 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { ViewCharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
 import { User } from "@/app/lib/definitions/general-definitions";
+import { storeImage } from "@/app/lib/functions/utility-functions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
 import ClassField from "./ClassField";
+import { UUID } from "crypto";
 
 export default function CharacterCardEdit({
   character,
   setCharacter,
   setEditClicked,
 }: ViewCharacterCardEditProps) {
-  const [userId, setUserId] = useState<string>("");
+  const [userId, setUserId] = useState<UUID>();
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
   const [level, setLevel] = useState<number>(0);
@@ -70,35 +72,13 @@ export default function CharacterCardEdit({
       }
     }
 
-    // Define fetch function for storing image
-    async function storeImage(image: File) {
-      const imagePath = `characters/${userId}/${character.ign}`;
-
-      const response = await fetch(
-        `/api/character-images?imagepath=${imagePath}`,
-        {
-          method: "PUT",
-          body: image,
-        },
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error);
-      }
-
-      const { url } = await response.json();
-
-      newCharacter.image = url;
-    }
-
-    if (uploadedFile) {
+    if (uploadedFile && userId) {
       // Set new user in local storage, upload image to database if there is one
       setIsUploadingToDatabase(true);
 
       try {
         if (character.image) await deleteImage();
-        await storeImage(uploadedFile);
+        await storeImage(userId, newCharacter, uploadedFile);
         setUploadedFile(null);
       } catch (error) {
         console.error("Error adding character", error);
@@ -130,7 +110,7 @@ export default function CharacterCardEdit({
           className={`relative flex h-[84%] w-[83%] items-center justify-center ${character.position % 4 === 0 || character.position % 4 === 1 ? "self-end" : "self-start"} rounded-3xl ${isPrimaryBackground ? "bg-primary" : "bg-secondary"}`}
         >
           {isUploadingToDatabase ? (
-            <span className="loading loading-spinner h-1/5 w-auto text-accent"></span>
+            <span className="loading loading-spinner h-1/2 w-auto text-accent"></span>
           ) : (
             <div className="flex h-full w-full flex-col gap-4">
               <div className="collapse grid h-full grid-cols-2 grid-rows-3 items-center overflow-visible">

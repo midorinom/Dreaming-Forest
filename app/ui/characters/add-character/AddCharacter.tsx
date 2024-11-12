@@ -7,6 +7,7 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
+import { storeImage } from "@/app/lib/functions/utility-functions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
@@ -93,34 +94,12 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     const newCharacter = JSON.parse(JSON.stringify(character));
     newCharacter.characterId = uuidv4() as UUID;
 
-    // Define fetch function for storing image
-    async function storeImage(user: User, image: File) {
-      const imagePath = `characters/${user.userId}/${character.ign}`;
-
-      const response = await fetch(
-        `/api/character-images?imagepath=${imagePath}`,
-        {
-          method: "PUT",
-          body: image,
-        },
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error);
-      }
-
-      const { url } = await response.json();
-
-      newCharacter.image = url;
-    }
-
     // Set new user in local storage, upload image to database if there is one
     setIsUploadingToDatabase(true);
 
     try {
       if (uploadedFile) {
-        await storeImage(newUser, uploadedFile);
+        await storeImage(newUser.userId, newCharacter, uploadedFile);
         setUploadedFile(null);
       }
     } catch (error) {

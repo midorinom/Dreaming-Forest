@@ -8,7 +8,7 @@ import type {
   WeeklyMapping,
 } from "@/app/lib/definitions/dashboard-definitions";
 import type { Weekly } from "@/app/lib/definitions/general-definitions";
-import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
+import { getDateTimes } from "@/app/lib/functions/utility-functions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import isoWeek from "dayjs/plugin/isoWeek";

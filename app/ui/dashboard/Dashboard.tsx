@@ -18,6 +18,7 @@ import DailiesWeeklies from "./DailiesWeeklies";
 export default function Dashboard({ bossesInfo }: DashboardProps) {
   const [user, setUser] = useState<User | null>(null);
   const [activeCharacter, setActiveCharacter] = useState<Character>();
+  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
@@ -33,6 +34,7 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
     }
 
     async function getAndSet(parsedUser: User) {
+      setIsQueryingDatabase(true);
       const fetchedUser = await fetchUser(parsedUser.userId);
       const fetchedCharacters = await fetchCharacters(parsedUser.userId);
 
@@ -74,32 +76,39 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
       };
 
       setActiveCharacter(characters[0]);
+      setIsQueryingDatabase(false);
     }
   }, []);
 
   return (
-    <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
-      {user && activeCharacter && (
-        <>
-          <ActiveCharacter activeCharacter={activeCharacter} />
-          <CharactersWheel
-            activeCharacter={activeCharacter}
-            setActiveCharacter={setActiveCharacter}
-            charactersProp={user.characters}
-          />
-          <DailiesWeeklies
-            region={user.region}
-            activeCharacter={activeCharacter}
-          />
-          {activeCharacter.tracking.bosses && (
-            <Bosses
-              region={user.region}
-              activeCharacter={activeCharacter}
-              bossesInfo={bossesInfo}
-            />
+    <>
+      {isQueryingDatabase ? (
+        <span className="loading loading-spinner m-auto h-1/3 w-auto text-accent"></span>
+      ) : (
+        <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
+          {user && activeCharacter && (
+            <>
+              <ActiveCharacter activeCharacter={activeCharacter} />
+              <CharactersWheel
+                activeCharacter={activeCharacter}
+                setActiveCharacter={setActiveCharacter}
+                charactersProp={user.characters}
+              />
+              <DailiesWeeklies
+                region={user.region}
+                activeCharacter={activeCharacter}
+              />
+              {activeCharacter.tracking.bosses && (
+                <Bosses
+                  region={user.region}
+                  activeCharacter={activeCharacter}
+                  bossesInfo={bossesInfo}
+                />
+              )}
+            </>
           )}
-        </>
+        </main>
       )}
-    </main>
+    </>
   );
 }
