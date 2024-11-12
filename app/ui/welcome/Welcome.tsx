@@ -78,9 +78,6 @@ export default function Welcome({ classes }: WelcomeProps) {
       };
 
       updateDatabase(newUser);
-
-      localStorage.setItem("user", JSON.stringify(newUser));
-      router.push("/");
     }
 
     async function updateDatabase(newUser: User) {
@@ -93,6 +90,9 @@ export default function Welcome({ classes }: WelcomeProps) {
         await insertNewUser(newUser, password);
         await insertNewCharacter(character, newUser);
       }
+
+      localStorage.setItem("user", JSON.stringify(newUser));
+      router.push("/");
     }
   }, [done]);
 
