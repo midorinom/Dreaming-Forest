@@ -5,7 +5,7 @@ import type { DailiesProps } from "@/app/lib/definitions/dashboard-definitions";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import DailiesCard from "./DailiesCard";
-import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
+import { getDateTimes } from "@/app/lib/functions/utility-functions";
 
 export default function Dailies({
   region,

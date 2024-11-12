@@ -7,7 +7,7 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
-import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
+import { getDateTimes } from "@/app/lib/functions/utility-functions";
 import BossesEdit from "./BossesEdit";
 import BossesCard from "./BossesCard";
 

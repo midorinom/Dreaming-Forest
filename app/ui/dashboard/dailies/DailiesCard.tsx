@@ -2,7 +2,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import type { DailiesCardProps } from "@/app/lib/definitions/dashboard-definitions";
 import type { Daily } from "@/app/lib/definitions/general-definitions";
-import { getDateTimes } from "@/app/lib/utility-functions/utility-functions";
+import { getDateTimes } from "@/app/lib/functions/utility-functions";
 import dayjs from "dayjs";
 
 export default function DailiesCard({
