@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { ViewCharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
 import { User } from "@/app/lib/definitions/general-definitions";
-import { storeImage } from "@/app/lib/functions/utility-functions";
+import { deleteImage, storeImage } from "@/app/lib/functions/utility-functions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
@@ -56,28 +56,12 @@ export default function CharacterCardEdit({
   async function updateCharacter() {
     const newCharacter = JSON.parse(JSON.stringify(character));
 
-    // Define fetch function for deleting image
-    async function deleteImage() {
-      const response = await fetch(`/api/character-images`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ characters: [character] }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error);
-      }
-    }
-
     if (uploadedFile && userId) {
       // Set new user in local storage, upload image to database if there is one
       setIsUploadingToDatabase(true);
 
       try {
-        if (character.image) await deleteImage();
+        if (character.image) await deleteImage(character);
         await storeImage(userId, newCharacter, uploadedFile);
         setUploadedFile(null);
       } catch (error) {

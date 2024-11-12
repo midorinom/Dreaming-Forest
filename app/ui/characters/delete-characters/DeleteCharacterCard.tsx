@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { DeleteCharacterCardProps } from "@/app/lib/definitions/characters-definitions";
+import { deleteImage } from "@/app/lib/functions/utility-functions";
 
 export default function DeleteCharacterCard({
   characterProp,
@@ -9,30 +10,13 @@ export default function DeleteCharacterCard({
   setIsLoading,
 }: DeleteCharacterCardProps) {
   async function handleDelete() {
-    // Define fetch function for deleting image
-    async function deleteImage() {
-      const response = await fetch(`/api/character-images`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ characters: [characterProp] }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error);
-      }
-    }
-
-    // Delete Logic
     const confirmDelete = window.confirm(
       `Are you sure you want to delete ${characterProp.ign}?`,
     );
     if (confirmDelete) {
       setIsLoading(true);
 
-      if (characterProp.image) await deleteImage();
+      if (characterProp.image) await deleteImage(characterProp);
       const newCharacters = [];
 
       for (let i = 0; i < characters.length; i++) {
