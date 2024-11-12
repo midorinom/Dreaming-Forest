@@ -34,6 +34,7 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
     }
 
     async function getAndSet(parsedUser: User) {
+      setIsQueryingDatabase(true);
       const fetchedUser = await fetchUser(parsedUser.userId);
       const fetchedCharacters = await fetchCharacters(parsedUser.userId);
 
@@ -75,6 +76,7 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
       };
 
       setActiveCharacter(characters[0]);
+      setIsQueryingDatabase(false);
     }
   }, []);
 
