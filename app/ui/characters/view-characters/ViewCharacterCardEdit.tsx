@@ -21,7 +21,7 @@ export default function CharacterCardEdit({
   const [level, setLevel] = useState<number>(0);
   const [maplestoryClass, setMaplestoryClass] = useState<string>("");
   const [isUploadingToDatabase, setIsUploadingToDatabase] =
-    useState<boolean>(true);
+    useState<boolean>(false);
   const [isPrimaryBackground, setIsPrimaryBackground] =
     useState<boolean>(false);
   const [isTopCard, setIsTopCard] = useState<boolean>(false);
