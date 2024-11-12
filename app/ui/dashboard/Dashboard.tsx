@@ -5,11 +5,7 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
-import {
-  fetchCharacters,
-  fetchTracking,
-  fetchUser,
-} from "@/app/lib/fetches/general-fetches";
+import { dashboardInitialSet } from "@/app/lib/functions/fetch-and-set-functions/dashboard-set-functions";
 import ActiveCharacter from "./ActiveCharacter";
 import Bosses from "./bosses/Bosses";
 import CharactersWheel from "./characters-wheel/CharactersWheel";
@@ -26,57 +22,16 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
       const parsedUser: User = JSON.parse(localUser);
 
       if (parsedUser.username) {
-        getAndSet(parsedUser);
+        dashboardInitialSet(
+          parsedUser,
+          setUser,
+          setActiveCharacter,
+          setIsQueryingDatabase,
+        );
       } else {
         setUser(JSON.parse(localUser));
         setActiveCharacter(JSON.parse(localUser).characters[0]);
       }
-    }
-
-    async function getAndSet(parsedUser: User) {
-      setIsQueryingDatabase(true);
-      const fetchedUser = await fetchUser(parsedUser.userId);
-      const fetchedCharacters = await fetchCharacters(parsedUser.userId);
-
-      const characters: Character[] = [];
-      for (const character of fetchedCharacters) {
-        const newCharacter: Character = {
-          characterId: character.character_id,
-          image: character.image,
-          ign: character.ign,
-          level: character.level,
-          maplestoryClass: character.class_name,
-          dailies: [],
-          weeklies: [],
-          bosses: [],
-          position: character.position,
-          tracking: {
-            dailies: true,
-            weeklies: true,
-            bosses: true,
-            progression: true,
-          },
-        };
-        characters.push(newCharacter);
-      }
-
-      setUser({
-        userId: fetchedUser.user_id,
-        username: fetchedUser.username,
-        region: fetchedUser.region,
-        characters: characters,
-      });
-
-      const fetchedTracking = await fetchTracking(characters[0].characterId);
-      characters[0].tracking = {
-        dailies: fetchedTracking.dailies,
-        weeklies: fetchedTracking.weeklies,
-        bosses: fetchedTracking.bosses,
-        progression: fetchedTracking.progression,
-      };
-
-      setActiveCharacter(characters[0]);
-      setIsQueryingDatabase(false);
     }
   }, []);
 
