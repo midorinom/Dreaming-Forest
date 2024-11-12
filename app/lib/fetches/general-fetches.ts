@@ -92,3 +92,48 @@ export async function fetchTracking(
   const res = await response.json();
   return res;
 }
+
+export async function fetchDailies(
+  characterId: UUID,
+): Promise<FetchTrackingResponse> {
+  const response = await fetch(`/api/dailies`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ characterId: characterId }),
+  });
+
+  const res = await response.json();
+  return res;
+}
+
+export async function fetchWeeklies(
+  characterId: UUID,
+): Promise<FetchTrackingResponse> {
+  const response = await fetch(`/api/weeklies`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ characterId: characterId }),
+  });
+
+  const res = await response.json();
+  return res;
+}
+
+export async function fetchBosses(
+  characterId: UUID,
+): Promise<FetchTrackingResponse> {
+  const response = await fetch(`/api/bosses`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ characterId: characterId }),
+  });
+
+  const res = await response.json();
+  return res;
+}
