@@ -90,13 +90,9 @@ export default function Welcome({ classes }: WelcomeProps) {
 
       if (username) {
         newUser.username = username;
-        await insertUserAndCharacter(newUser);
+        await insertNewUser(newUser, password);
+        await insertNewCharacter(character, newUser);
       }
-    }
-
-    async function insertUserAndCharacter(newUser: User) {
-      await insertNewUser(newUser, password);
-      await insertNewCharacter(character, newUser);
     }
   }, [done]);
 
