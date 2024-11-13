@@ -52,11 +52,12 @@ API endpoints. Each folder inside "api" that contains a route.ts file is an endp
 
 `lib`
 
-Server actions, definitions and fetch functions.
+Server actions, definitions, fetch functions and utility functions.
 
 - Server actions are used inside client components to make requests to the server.
 - Definitions contain Typescript type definitions.
 - Fetch functions are used in server components to fetch data from the server that are then propped down to client components.
+- Utility functions
 
 `ui`
 
