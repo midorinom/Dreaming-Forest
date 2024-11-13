@@ -7,6 +7,7 @@ import type {
   User,
   Weekly,
 } from "@/app/lib/definitions/general-definitions";
+import { upsertDaily } from "@/app/lib/fetches/general-fetches";
 import Dailies from "./dailies/Dailies";
 import Weeklies from "./weeklies/Weeklies";
 import DailiesEdit from "./dailies/DailiesEdit";
@@ -62,7 +63,9 @@ export default function DailiesWeeklies({
       const parsedUser: User = JSON.parse(localUser);
 
       if (parsedUser.username) {
-        console.log("update database");
+        for (const daily of dailies) {
+          upsertDaily(daily, activeCharacter.characterId);
+        }
       } else {
         const newUser: User = JSON.parse(localUser);
         newUser.characters[activeCharacter.position].dailies = dailies;
