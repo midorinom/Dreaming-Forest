@@ -6,10 +6,13 @@ import { unstable_noStore as noStore } from "next/cache";
 import { UUID } from "crypto";
 import { Character, User } from "@/app/lib/definitions/general-definitions";
 import {
-  FetchCharactersResponse,
   FetchClassesResponse,
-  FetchTrackingResponse,
   FetchUserResponse,
+  FetchCharactersResponse,
+  FetchDailiesResponse,
+  FetchWeekliesResponse,
+  FetchBossesResponse,
+  FetchTrackingResponse,
 } from "@/app/lib/definitions/fetches/general-fetches-definitions";
 
 export async function fetchClasses(
@@ -78,24 +81,9 @@ export async function fetchCharacters(
   return res;
 }
 
-export async function fetchTracking(
-  characterId: UUID,
-): Promise<FetchTrackingResponse> {
-  const response = await fetch(`/api/tracking`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ characterId: characterId }),
-  });
-
-  const res = await response.json();
-  return res;
-}
-
 export async function fetchDailies(
   characterId: UUID,
-): Promise<FetchTrackingResponse> {
+): Promise<FetchDailiesResponse> {
   const response = await fetch(`/api/dailies`, {
     method: "POST",
     headers: {
@@ -110,7 +98,7 @@ export async function fetchDailies(
 
 export async function fetchWeeklies(
   characterId: UUID,
-): Promise<FetchTrackingResponse> {
+): Promise<FetchWeekliesResponse> {
   const response = await fetch(`/api/weeklies`, {
     method: "POST",
     headers: {
@@ -125,8 +113,23 @@ export async function fetchWeeklies(
 
 export async function fetchBosses(
   characterId: UUID,
-): Promise<FetchTrackingResponse> {
+): Promise<FetchBossesResponse> {
   const response = await fetch(`/api/bosses`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ characterId: characterId }),
+  });
+
+  const res = await response.json();
+  return res;
+}
+
+export async function fetchTracking(
+  characterId: UUID,
+): Promise<FetchTrackingResponse> {
+  const response = await fetch(`/api/tracking`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
