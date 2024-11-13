@@ -20,6 +20,33 @@ export type FetchCharactersResponse = {
   position: number;
 }[];
 
+export type FetchDailiesResponse = {
+  daily_id: UUID;
+  character_id: UUID;
+  description: string;
+  done: Date | null;
+  position: number;
+}[];
+
+export type FetchWeekliesResponse = {
+  weekly_id: UUID;
+  character_id: UUID;
+  description: string;
+  done: Date | null;
+  reset_date: Date;
+  position: number;
+}[];
+
+export type FetchBossesResponse = {
+  boss_id: UUID;
+  character_id: UUID;
+  dashboard_position: number;
+  bosses_position: number;
+  dashboard_image: string;
+  done: Date | null;
+  party_size: number;
+}[];
+
 export type FetchTrackingResponse = {
   tracking_id: UUID;
   character_id: UUID;
