@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
-  Character,
   Daily,
   User,
   Weekly,
@@ -24,7 +23,6 @@ export default function DailiesWeeklies({
   const [editDailiesClicked, setEditDailiesClicked] = useState<boolean>(false);
   const [editWeekliesClicked, setEditWeekliesClicked] =
     useState<boolean>(false);
-  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
 
   useEffect(() => {
     if (!activeCharacter) {
@@ -65,11 +63,7 @@ export default function DailiesWeeklies({
 
       if (parsedUser.username) {
         for (const daily of dailies) {
-          upsertDaily(
-            daily,
-            activeCharacter.characterId,
-            setIsQueryingDatabase,
-          );
+          upsertDaily(daily, activeCharacter.characterId);
         }
       } else {
         const newUser: User = JSON.parse(localUser);

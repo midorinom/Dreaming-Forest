@@ -36,12 +36,12 @@ export async function PATCH(request: Request): Promise<NextResponse> {
     daily_id: daily.dailyId,
     character_id: characterId,
     description: daily.description,
-    done: daily.done ? daily.done.toDateString() : null,
+    done: daily.done ? new Date(daily.done).toDateString() : null,
     position: daily.position,
   };
 
   try {
-    const fetchedDailies = await db
+    await db
       .insert(Dailies)
       .values(newDaily)
       .onConflictDoUpdate({
@@ -52,9 +52,9 @@ export async function PATCH(request: Request): Promise<NextResponse> {
           position: newDaily.position,
         },
       });
-    return NextResponse.json(fetchedDailies);
+    return NextResponse.json({ message: "ok" });
   } catch (error) {
-    console.error("Error getting dailies", error);
+    console.error("Error upserting dailies", error);
     throw error;
   }
 }
