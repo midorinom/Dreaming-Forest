@@ -32,27 +32,21 @@ export default function DailiesWeeklies({
     setEditDailiesClicked(false);
     setEditWeekliesClicked(false);
 
-    const localUser = localStorage.getItem("user");
+    setDailies(activeCharacter.dailies);
+    setWeeklies(activeCharacter.weeklies);
 
-    if (localUser && JSON.parse(localUser).characters) {
-      const parsedCharacter: Character =
-        JSON.parse(localUser).characters[activeCharacter.position];
-      setDailies(parsedCharacter.dailies);
-      setWeeklies(parsedCharacter.weeklies);
-
-      if (
-        !parsedCharacter.tracking.dailies &&
-        parsedCharacter.tracking.weeklies
-      ) {
-        setSelectedTab("Weeklies");
-      } else if (
-        !parsedCharacter.tracking.weeklies &&
-        parsedCharacter.tracking.dailies
-      ) {
-        setSelectedTab("Dailies");
-      } else {
-        setSelectedTab("Dailies");
-      }
+    if (
+      !activeCharacter.tracking.dailies &&
+      activeCharacter.tracking.weeklies
+    ) {
+      setSelectedTab("Weeklies");
+    } else if (
+      !activeCharacter.tracking.weeklies &&
+      activeCharacter.tracking.dailies
+    ) {
+      setSelectedTab("Dailies");
+    } else {
+      setSelectedTab("Dailies");
     }
   }, [activeCharacter]);
 
@@ -65,10 +59,16 @@ export default function DailiesWeeklies({
     const localUser = localStorage.getItem("user");
 
     if (localUser) {
-      const newUser: User = JSON.parse(localUser);
-      newUser.characters[activeCharacter.position].dailies = dailies;
-      newUser.characters[activeCharacter.position].weeklies = weeklies;
-      localStorage.setItem("user", JSON.stringify(newUser));
+      const parsedUser: User = JSON.parse(localUser);
+
+      if (parsedUser.username) {
+        console.log("update database");
+      } else {
+        const newUser: User = JSON.parse(localUser);
+        newUser.characters[activeCharacter.position].dailies = dailies;
+        newUser.characters[activeCharacter.position].weeklies = weeklies;
+        localStorage.setItem("user", JSON.stringify(newUser));
+      }
     }
   }, [dailies, weeklies]);
 
