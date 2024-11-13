@@ -145,7 +145,12 @@ export async function fetchTracking(
   return res;
 }
 
-export async function upsertDaily(daily: Daily, characterId: UUID) {
+export async function upsertDaily(
+  daily: Daily,
+  characterId: UUID,
+  setIsQueryingDatabase: (isQueryingDatabase: boolean) => void,
+) {
+  setIsQueryingDatabase(true);
   const response = await fetch(`/api/dailies`, {
     method: "PATCH",
     headers: {
@@ -155,5 +160,6 @@ export async function upsertDaily(daily: Daily, characterId: UUID) {
   });
 
   const res = await response.json();
+  setIsQueryingDatabase(false);
   return res;
 }

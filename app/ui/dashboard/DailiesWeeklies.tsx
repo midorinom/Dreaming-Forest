@@ -24,6 +24,7 @@ export default function DailiesWeeklies({
   const [editDailiesClicked, setEditDailiesClicked] = useState<boolean>(false);
   const [editWeekliesClicked, setEditWeekliesClicked] =
     useState<boolean>(false);
+  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
 
   useEffect(() => {
     if (!activeCharacter) {
@@ -64,7 +65,11 @@ export default function DailiesWeeklies({
 
       if (parsedUser.username) {
         for (const daily of dailies) {
-          upsertDaily(daily, activeCharacter.characterId);
+          upsertDaily(
+            daily,
+            activeCharacter.characterId,
+            setIsQueryingDatabase,
+          );
         }
       } else {
         const newUser: User = JSON.parse(localUser);
