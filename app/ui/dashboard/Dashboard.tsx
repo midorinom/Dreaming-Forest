@@ -21,17 +21,21 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
     if (localUser) {
       const parsedUser: User = JSON.parse(localUser);
 
-      if (parsedUser.username) {
-        dashboardInitialSet(
-          parsedUser,
-          setUser,
-          setActiveCharacter,
-          setIsQueryingDatabase,
-        );
-      } else {
-        setUser(JSON.parse(localUser));
-        setActiveCharacter(JSON.parse(localUser).characters[0]);
-      }
+      // ---------- Disabled Login Features ----------
+      // if (parsedUser.username) {
+      //   dashboardInitialSet(
+      //     parsedUser,
+      //     setUser,
+      //     setActiveCharacter,
+      //     setIsQueryingDatabase,
+      //   );
+      // } else {
+      //   setUser(parsedUser);
+      //   setActiveCharacter(parsedUser.characters[0]);
+      // }
+
+      setUser(parsedUser);
+      setActiveCharacter(parsedUser.characters[0]);
     }
   }, []);
 

@@ -61,16 +61,20 @@ export default function DailiesWeeklies({
     if (localUser) {
       const parsedUser: User = JSON.parse(localUser);
 
-      if (parsedUser.username) {
-        for (const daily of dailies) {
-          upsertDaily(daily, activeCharacter.characterId);
-        }
-      } else {
-        const newUser: User = JSON.parse(localUser);
-        newUser.characters[activeCharacter.position].dailies = dailies;
-        newUser.characters[activeCharacter.position].weeklies = weeklies;
-        localStorage.setItem("user", JSON.stringify(newUser));
-      }
+      // ---------- Disabled Login Features ----------
+      // if (parsedUser.username) {
+      //   for (const daily of dailies) {
+      //     upsertDaily(daily, activeCharacter.characterId);
+      //   }
+      // } else {
+      //   parsedUser.characters[activeCharacter.position].dailies = dailies;
+      //   parsedUser.characters[activeCharacter.position].weeklies = weeklies;
+      //   localStorage.setItem("user", JSON.stringify(parsedUser));
+      // }
+
+      parsedUser.characters[activeCharacter.position].dailies = dailies;
+      parsedUser.characters[activeCharacter.position].weeklies = weeklies;
+      localStorage.setItem("user", JSON.stringify(parsedUser));
     }
   }, [dailies, weeklies]);
 
