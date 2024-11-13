@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react";
 import type { DailiesWeekliesProps } from "@/app/lib/definitions/dashboard-definitions";
 import type {
-  Character,
   Daily,
   User,
   Weekly,
 } from "@/app/lib/definitions/general-definitions";
+import { upsertDaily } from "@/app/lib/fetches/general-fetches";
 import Dailies from "./dailies/Dailies";
 import Weeklies from "./weeklies/Weeklies";
 import DailiesEdit from "./dailies/DailiesEdit";
@@ -32,27 +32,21 @@ export default function DailiesWeeklies({
     setEditDailiesClicked(false);
     setEditWeekliesClicked(false);
 
-    const localUser = localStorage.getItem("user");
+    setDailies(activeCharacter.dailies);
+    setWeeklies(activeCharacter.weeklies);
 
-    if (localUser && JSON.parse(localUser).characters) {
-      const parsedCharacter: Character =
-        JSON.parse(localUser).characters[activeCharacter.position];
-      setDailies(parsedCharacter.dailies);
-      setWeeklies(parsedCharacter.weeklies);
-
-      if (
-        !parsedCharacter.tracking.dailies &&
-        parsedCharacter.tracking.weeklies
-      ) {
-        setSelectedTab("Weeklies");
-      } else if (
-        !parsedCharacter.tracking.weeklies &&
-        parsedCharacter.tracking.dailies
-      ) {
-        setSelectedTab("Dailies");
-      } else {
-        setSelectedTab("Dailies");
-      }
+    if (
+      !activeCharacter.tracking.dailies &&
+      activeCharacter.tracking.weeklies
+    ) {
+      setSelectedTab("Weeklies");
+    } else if (
+      !activeCharacter.tracking.weeklies &&
+      activeCharacter.tracking.dailies
+    ) {
+      setSelectedTab("Dailies");
+    } else {
+      setSelectedTab("Dailies");
     }
   }, [activeCharacter]);
 
@@ -65,10 +59,22 @@ export default function DailiesWeeklies({
     const localUser = localStorage.getItem("user");
 
     if (localUser) {
-      const newUser: User = JSON.parse(localUser);
-      newUser.characters[activeCharacter.position].dailies = dailies;
-      newUser.characters[activeCharacter.position].weeklies = weeklies;
-      localStorage.setItem("user", JSON.stringify(newUser));
+      const parsedUser: User = JSON.parse(localUser);
+
+      // ---------- Disabled Login Features ----------
+      // if (parsedUser.username) {
+      //   for (const daily of dailies) {
+      //     upsertDaily(daily, activeCharacter.characterId);
+      //   }
+      // } else {
+      //   parsedUser.characters[activeCharacter.position].dailies = dailies;
+      //   parsedUser.characters[activeCharacter.position].weeklies = weeklies;
+      //   localStorage.setItem("user", JSON.stringify(parsedUser));
+      // }
+
+      parsedUser.characters[activeCharacter.position].dailies = dailies;
+      parsedUser.characters[activeCharacter.position].weeklies = weeklies;
+      localStorage.setItem("user", JSON.stringify(parsedUser));
     }
   }, [dailies, weeklies]);
 

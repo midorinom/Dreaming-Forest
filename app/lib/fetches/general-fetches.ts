@@ -4,7 +4,11 @@ import { sql } from "@vercel/postgres";
 import { Classes } from "@/drizzle/schema";
 import { unstable_noStore as noStore } from "next/cache";
 import { UUID } from "crypto";
-import { Character, User } from "@/app/lib/definitions/general-definitions";
+import {
+  User,
+  Character,
+  Daily,
+} from "@/app/lib/definitions/general-definitions";
 import {
   FetchClassesResponse,
   FetchUserResponse,
@@ -139,4 +143,14 @@ export async function fetchTracking(
 
   const res = await response.json();
   return res;
+}
+
+export async function upsertDaily(daily: Daily, characterId: UUID) {
+  await fetch(`/api/dailies`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ daily: daily, characterId: characterId }),
+  });
 }
