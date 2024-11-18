@@ -34,7 +34,7 @@ export default function BossesCard({
         setBosses(newBosses);
       }
     }
-  }, []);
+  }, [boss]);
 
   function manageToggle() {
     let newBosses: Boss[] = [...bosses];
