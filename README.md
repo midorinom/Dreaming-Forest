@@ -22,7 +22,7 @@ You can view my designs on Figma <a href="https://www.figma.com/design/IohBAXXF9
 
 ## Video Demonstration
 
-I recorded a brief walkthrough of how the website looks like so far which I have uploaded <a href = "https://www.youtube.com/watch?v=EQlnHat33Jo">here</a>.
+I recorded a brief walkthrough of how the website looks like so far which I have uploaded <a href = "https://www.youtube.com/watch?v=RXxAa0kLHTQ">here</a>.
 
 <a name="Technologies"></a>
 
