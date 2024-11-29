@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Introduction](#Introduction)
+- [Video Demonstration](#Demo)
 - [Technologies Used](#Technologies)
 - [Data Model](#Data)
 - [Folder Structure](#Structure)
@@ -16,6 +17,12 @@
 The aim of this project is to remaster my previous <a href="https://github.com/midorinom/maplestory_tracker">Maplestory Tracker</a> website. I want to make big improvements all around in performance, scalability, serch engine optimisation (SEO), user experience, aesthetics and design, as well as a more organised and maintainable codebase. It is also an opportunity for me to learn and implement new technologies, mainly Next.js with its host of features to optimise React projects such as server-side rendering and many more.
 
 You can view my designs on Figma <a href="https://www.figma.com/design/IohBAXXF9Q7OTlyMF99BhX/Dreaming-Forest?t=LR5oNgodlYfqsClm-1">here</a>. The website is deployed to Vercel and can be accessed <a href="https://dreaming-forest.vercel.app/">here</a>. As Next.js is developed by Vercel, they have naturally made it easy to integrate Next.js projects with Vercel hosting solutions. I hosted my entire project on Vercel with my Next.js app that includes both the frontend and backend server, using Vercel Postgres as my database and Vercel Blob as file storage.
+
+<a name="Demo"></a>
+
+## Video Demonstration
+
+I recorded a brief walkthrough of how the website looks like so far which I have uploaded <a href = "https://www.youtube.com/watch?v=EQlnHat33Jo">here</a>.
 
 <a name="Technologies"></a>
 
