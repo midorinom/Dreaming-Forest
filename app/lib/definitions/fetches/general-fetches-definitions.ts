@@ -8,6 +8,7 @@ export type FetchUserResponse = {
   region: string;
   pw_hash: string;
   last_logged_in: Date;
+  version_number: number;
 };
 
 export type FetchCharactersResponse = {
