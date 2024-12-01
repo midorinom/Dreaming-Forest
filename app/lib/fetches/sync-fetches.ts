@@ -7,7 +7,12 @@ import {
   Boss,
 } from "@/app/lib/definitions/general-definitions";
 
-export async function sync(user: User) {
+export async function sync(
+  user: User,
+  setIsQueryingDatabase: (isQueryingDatabase: boolean) => void,
+) {
+  setIsQueryingDatabase(true);
+
   for (const character of user.characters) {
     upsertCharacter(character, user);
 
@@ -31,6 +36,8 @@ export async function sync(user: User) {
     },
     body: JSON.stringify({ user: user }),
   });
+
+  setIsQueryingDatabase(false);
 }
 
 export async function upsertCharacter(character: Character, user: User) {
