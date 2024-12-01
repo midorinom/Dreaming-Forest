@@ -43,9 +43,10 @@ export default function CreateAccount({
       return;
     }
 
-    await insertNewUser(user, password);
     const newUser = JSON.parse(JSON.stringify(user));
     newUser.username = username;
+
+    await insertNewUser(newUser, password);
     localStorage.setItem("user", JSON.stringify(newUser));
     setIsQueryingUsername(false);
     setCreateAccountClicked(false);
