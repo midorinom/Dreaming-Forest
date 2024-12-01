@@ -3,6 +3,7 @@ import {
   User,
   Character,
   Daily,
+  Weekly,
 } from "@/app/lib/definitions/general-definitions";
 
 export async function sync(user: User) {
@@ -44,5 +45,15 @@ export async function upsertDaily(daily: Daily, characterId: UUID) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ daily: daily, characterId: characterId }),
+  });
+}
+
+export async function upsertWeeekly(weekly: Weekly, characterId: UUID) {
+  await fetch(`/api/weekliees`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ weekly: weekly, characterId: characterId }),
   });
 }
