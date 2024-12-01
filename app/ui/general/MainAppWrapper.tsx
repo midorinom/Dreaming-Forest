@@ -24,9 +24,9 @@ export default function MainAppWrapper({ page }: MainAppWrapperProps) {
       const parsedUser: User = JSON.parse(localUser);
       if (parsedUser.username) {
         checkVersionNumber(parsedUser);
+      } else {
+        setIsLoading(false);
       }
-
-      setIsLoading(false);
     } else {
       router.replace("welcome");
     }
@@ -38,6 +38,9 @@ export default function MainAppWrapper({ page }: MainAppWrapperProps) {
       // Current local version is outdated. Fetch all data and then set to localStorage
       const userDetails: User = await fetchAllUserDetails(user.userId);
       localStorage.setItem("user", JSON.stringify(userDetails));
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
     }
   }
 
