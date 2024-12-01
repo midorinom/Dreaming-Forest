@@ -5,7 +5,6 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
-import { dashboardInitialSet } from "@/app/lib/functions/fetch-and-set-functions/dashboard-set-functions";
 import ActiveCharacter from "./ActiveCharacter";
 import Bosses from "./bosses/Bosses";
 import CharactersWheel from "./characters-wheel/CharactersWheel";
@@ -20,19 +19,6 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
     const localUser = localStorage.getItem("user");
     if (localUser) {
       const parsedUser: User = JSON.parse(localUser);
-
-      // ---------- Disabled Login Features ----------
-      // if (parsedUser.username) {
-      //   dashboardInitialSet(
-      //     parsedUser,
-      //     setUser,
-      //     setActiveCharacter,
-      //     setIsQueryingDatabase,
-      //   );
-      // } else {
-      //   setUser(parsedUser);
-      //   setActiveCharacter(parsedUser.characters[0]);
-      // }
 
       setUser(parsedUser);
       setActiveCharacter(parsedUser.characters[0]);
