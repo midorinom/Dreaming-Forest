@@ -36,7 +36,7 @@ export default function MainAppWrapper({ page }: MainAppWrapperProps) {
     const fetchedUser = await fetchUser(user.userId);
     if (user.versionNumber < fetchedUser.version_number) {
       // Current local version is outdated. Fetch all data and then set to localStorage
-      const userDetails = await fetchAllUserDetails(user.userId);
+      const userDetails: User = await fetchAllUserDetails(user.userId);
       localStorage.setItem("user", JSON.stringify(userDetails));
     }
   }
