@@ -26,7 +26,7 @@ export default function Settings() {
   return (
     <>
       {isQueryingDatabase ? (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-start gap-32">
           <div className="flex w-1/2 items-center">
             <Image
               src={smallSpiritImage}
@@ -44,7 +44,7 @@ export default function Settings() {
               </div>
             )}
           </div>
-          <span className="loading loading-spinner m-auto h-1/3 w-auto text-accent"></span>
+          <span className="loading loading-spinner relative right-8 mx-auto h-1/3 w-auto text-accent"></span>
         </div>
       ) : createAccountClicked && user ? (
         <CreateAccount
