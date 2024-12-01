@@ -22,7 +22,7 @@ export default function Settings() {
 
   return (
     <>
-      {!isQueryingDatabase ? (
+      {isQueryingDatabase ? (
         <div className="flex flex-col items-center justify-center">
           <div className="flex w-1/2 items-center">
             <Image
