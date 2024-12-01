@@ -4,6 +4,7 @@ import {
   Character,
   Daily,
   Weekly,
+  Boss,
 } from "@/app/lib/definitions/general-definitions";
 
 export async function sync(user: User) {
@@ -57,7 +58,7 @@ export async function upsertDaily(daily: Daily, characterId: UUID) {
 }
 
 export async function upsertWeekly(weekly: Weekly, characterId: UUID) {
-  await fetch(`/api/weekliees`, {
+  await fetch(`/api/weeklies`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
