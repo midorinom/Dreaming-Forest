@@ -42,7 +42,7 @@ export async function PATCH(request: Request): Promise<NextResponse> {
       });
     return NextResponse.json({ message: "ok" });
   } catch (error) {
-    console.error("Error inserting character", error);
+    console.error("Error upserting character", error);
     throw error;
   }
 }
