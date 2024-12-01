@@ -9,6 +9,14 @@ import {
 export async function sync(user: User) {
   for (const character of user.characters) {
     upsertCharacter(character, user);
+
+    for (const daily of character.dailies) {
+      upsertDaily(daily, character.characterId);
+    }
+
+    for (const weekly of character.weeklies) {
+      upsertWeekly(weekly, character.characterId);
+    }
   }
 
   await fetch(`/api/users`, {
@@ -48,7 +56,7 @@ export async function upsertDaily(daily: Daily, characterId: UUID) {
   });
 }
 
-export async function upsertWeeekly(weekly: Weekly, characterId: UUID) {
+export async function upsertWeekly(weekly: Weekly, characterId: UUID) {
   await fetch(`/api/weekliees`, {
     method: "PATCH",
     headers: {
