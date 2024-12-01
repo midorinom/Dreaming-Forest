@@ -50,6 +50,20 @@
       "when": 1730819197737,
       "tag": "0006_reflective_ultimo",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1733042346512,
+      "tag": "0007_wooden_leech",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1733042429743,
+      "tag": "0008_organic_skullbuster",
+      "breakpoints": true
     }
   ]
 }
