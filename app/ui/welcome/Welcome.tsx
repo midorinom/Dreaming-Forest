@@ -13,7 +13,7 @@ import type {
   User,
 } from "@/app/lib/definitions/general-definitions";
 import { insertNewUser } from "@/app/lib/fetches/welcome-fetches";
-import { insertNewCharacter } from "@/app/lib/fetches/general-fetches";
+import { insertNewCharacter } from "@/app/lib/fetches/sync-fetches";
 import { storeImage } from "@/app/lib/functions/utility-functions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
