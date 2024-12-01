@@ -9,7 +9,7 @@ const smallSpiritDialogue: Dialogue = {
   create_account:
     "This step is optional but recommended. By creating an account, your data will be securely stored and accessible across multiple devices, ensuring you never lose it even if your browser data is lost.",
   uploading: "Loading, please wait...",
-  login: "Retrieving all your data and logging in, please wait...",
+  login: "Retrieving all your data and logging in, please wait a moment...",
 };
 
 const smallSpiritImage: Dialogue = {
