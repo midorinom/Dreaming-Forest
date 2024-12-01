@@ -1,9 +1,17 @@
 "use client";
-import { ResetButtonProps } from "@/app/lib/definitions/general-definitions";
+import { SyncButtonProps } from "@/app/lib/definitions/settings-definitions";
+import { sync } from "@/app/lib/fetches/sync-fetches";
 
-export default function SyncButton({ user }: ResetButtonProps) {
+export default function SyncButton({
+  user,
+  setIsQueryingDatabase,
+}: SyncButtonProps) {
   function handleClick() {
-    // Sync Data
+    syncData();
+
+    async function syncData() {
+      await sync(user, setIsQueryingDatabase);
+    }
   }
 
   return (
