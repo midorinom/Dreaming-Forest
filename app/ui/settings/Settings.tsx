@@ -4,7 +4,8 @@ import Image from "next/image";
 import { User } from "@/app/lib/definitions/general-definitions";
 import SyncButton from "./SyncButton";
 import ResetButton from "./ResetButton";
-import CreateAccount from "./CreateAccountButton";
+import CreateAccountButton from "./CreateAccountButton";
+import CreateAccount from "./CreateAccount";
 
 export default function Settings() {
   const [user, setUser] = useState<User | null>(null);
@@ -12,6 +13,8 @@ export default function Settings() {
   const [smallSpiritImage, setSmallSpiritImage] = useState<string>(
     "/welcome/small_spirit_smiling.png",
   );
+  const [createAccountClicked, setCreateAccountClicked] =
+    useState<boolean>(false);
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
@@ -43,8 +46,13 @@ export default function Settings() {
           </div>
           <span className="loading loading-spinner m-auto h-1/3 w-auto text-accent"></span>
         </div>
+      ) : createAccountClicked && user ? (
+        <CreateAccount
+          user={user}
+          setCreateAccountClicked={setCreateAccountClicked}
+        />
       ) : (
-        <div className="relative mt-8 flex flex-col items-center gap-8">
+        <div className="relative flex flex-col items-center justify-center gap-8">
           {user &&
             (user.username ? (
               <SyncButton
@@ -53,7 +61,9 @@ export default function Settings() {
                 setSmallSpiritImage={setSmallSpiritImage}
               />
             ) : (
-              <CreateAccount user={user} />
+              <CreateAccountButton
+                setCreateAccountClicked={setCreateAccountClicked}
+              />
             ))}
           {user && <ResetButton user={user} />}
         </div>
