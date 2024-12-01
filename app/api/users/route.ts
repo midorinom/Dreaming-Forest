@@ -24,6 +24,7 @@ export async function PUT(request: Request): Promise<NextResponse> {
     pw_hash: hashedPassword,
     region: user.region,
     last_logged_in: new Date().toDateString(),
+    version_number: 1,
   };
 
   try {
