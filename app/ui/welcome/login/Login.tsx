@@ -66,6 +66,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
         },
       ],
       region: "GMS",
+      versionNumber: 1,
     };
 
     localStorage.setItem("user", JSON.stringify(newUser));
