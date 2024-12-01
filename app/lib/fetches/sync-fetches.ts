@@ -36,7 +36,9 @@ export async function sync(
     "Please wait, we are currently uploading your user data to the database.",
   );
 
-  await updateUser(user);
+  const newUser = JSON.parse(JSON.stringify(user));
+  newUser.versionNumber++;
+  await updateUser(newUser);
 
   setSmallSpiritImage("/welcome/small_spirit_happy.png");
   setIsQueryingDatabase(
