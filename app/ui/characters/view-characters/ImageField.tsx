@@ -41,7 +41,7 @@ export default function ImageField({
         style={{
           position: "relative",
         }}
-        className="row-span-2 h-4/5 max-h-40 w-[55%] place-self-center"
+        className="row-span-2 flex h-4/5 w-full items-center justify-center"
       >
         <Image
           src={fileURL ? fileURL : image ? image : "/general/naked_char.png"}
@@ -49,7 +49,7 @@ export default function ImageField({
           width={0}
           alt="Character Image"
           sizes="100vw"
-          className="absolute h-full w-full"
+          className="absolute h-full w-auto"
         />
       </div>
       <div className="relative col-start-1 row-start-3 w-4/5 justify-self-center">
