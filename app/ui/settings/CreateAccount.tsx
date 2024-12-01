@@ -65,7 +65,7 @@ export default function CreateAccount({
         ) : (
           <div className="flex w-[30%] flex-col items-center justify-center">
             <div className="collapse collapse-open flex min-h-64 flex-col items-center gap-3 bg-base-100">
-              <div className="collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral">
+              <div className="collapse-title text-xl font-medium underline-offset-8 underline-dreamy-neutral">
                 Create Account
               </div>
               <div className="flex flex-col gap-8">
@@ -86,7 +86,7 @@ export default function CreateAccount({
             </div>
             <div className="mt-5 flex w-full justify-between">
               <button
-                className="btn glass btn-warning btn-lg rounded-full text-xl font-medium text-primary-content"
+                className="btn glass btn-neutral btn-lg rounded-full text-xl font-medium text-primary-content"
                 onClick={() => setCreateAccountClicked(false)}
               >
                 Back

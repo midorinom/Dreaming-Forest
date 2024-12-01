@@ -14,7 +14,7 @@ export default function ConfirmPasswordField({
   return (
     <label
       className={`${
-        confirmPasswordError ? "bg-error" : "bg-secondary"
+        confirmPasswordError ? "bg-error" : "bg-neutral"
       } input input-bordered mb-6 flex items-center gap-2`}
     >
       <svg

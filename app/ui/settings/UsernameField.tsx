@@ -26,7 +26,7 @@ export default function UsernameField({
     <div className="relative">
       <label
         className={`${
-          usernameError ? "bg-error" : "bg-primary"
+          usernameError ? "bg-error" : "bg-neutral"
         } input input-bordered flex items-center gap-2`}
       >
         <svg
