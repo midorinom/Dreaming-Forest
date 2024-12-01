@@ -1,13 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { User } from "@/app/lib/definitions/general-definitions";
 import SyncButton from "./SyncButton";
 import ResetButton from "./ResetButton";
 import CreateAccount from "./CreateAccountButton";
+import {
+  smallSpiritDialogue,
+  smallSpiritImage,
+} from "@/public/welcome/small_spirit";
+import { DialogueIndex } from "@/app/lib/definitions/welcome-definitions";
 
 export default function Settings() {
   const [user, setUser] = useState<User | null>(null);
-  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
+  const [isQueryingDatabase, setIsQueryingDatabase] = useState<string>("");
+  const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
@@ -18,8 +25,25 @@ export default function Settings() {
 
   return (
     <>
-      {isQueryingDatabase ? (
-        <span className="loading loading-spinner m-auto h-1/3 w-auto text-accent"></span>
+      {!isQueryingDatabase ? (
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex w-1/2 items-center">
+            <Image
+              src={smallSpiritImage[dialogueIndex]}
+              height={0}
+              width={0}
+              alt="Small Spirit"
+              sizes="100vw"
+              className="h-44 w-auto"
+            />
+            <div className="chat chat-start min-w-80">
+              <div className="chat-bubble chat-bubble-accent">
+                {smallSpiritDialogue[dialogueIndex]}
+              </div>
+            </div>
+          </div>
+          <span className="loading loading-spinner m-auto h-1/3 w-auto text-accent"></span>
+        </div>
       ) : (
         <div className="relative mt-8 flex flex-col items-center gap-8">
           {user &&
