@@ -44,6 +44,7 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
       return;
     }
 
+    setDialogueIndex("login");
     const userDetails: User = await fetchAllUserDetails(fetchedUserId);
     localStorage.setItem("user", JSON.stringify(userDetails));
 

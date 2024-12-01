@@ -22,7 +22,8 @@ export type DialogueIndex =
   | "select_region"
   | "add_character"
   | "create_account"
-  | "uploading";
+  | "uploading"
+  | "login";
 
 export type RegionAndCharacterProps = {
   region: string;
