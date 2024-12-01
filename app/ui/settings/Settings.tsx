@@ -59,6 +59,7 @@ export default function Settings() {
             (user.username ? (
               <SyncButton
                 user={user}
+                setUser={setUser}
                 setIsQueryingDatabase={setIsQueryingDatabase}
                 setSmallSpiritImage={setSmallSpiritImage}
               />

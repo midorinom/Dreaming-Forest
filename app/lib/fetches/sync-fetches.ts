@@ -9,6 +9,7 @@ import {
 
 export async function sync(
   user: User,
+  setUser: (user: User) => void,
   setIsQueryingDatabase: (isQueryingDatabase: string) => void,
   setSmallSpiritImage: (smallSpiritImage: string) => void,
 ) {

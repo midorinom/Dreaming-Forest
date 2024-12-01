@@ -4,6 +4,7 @@ import { sync } from "@/app/lib/fetches/sync-fetches";
 
 export default function SyncButton({
   user,
+  setUser,
   setIsQueryingDatabase,
   setSmallSpiritImage,
 }: SyncButtonProps) {
@@ -11,7 +12,7 @@ export default function SyncButton({
     syncData();
 
     async function syncData() {
-      await sync(user, setIsQueryingDatabase, setSmallSpiritImage);
+      await sync(user, setUser, setIsQueryingDatabase, setSmallSpiritImage);
     }
   }
 

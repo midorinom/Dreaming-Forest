@@ -6,6 +6,7 @@ export type ResetButtonProps = {
 
 export type SyncButtonProps = {
   user: User;
+  setUser: (user: User) => void;
   setIsQueryingDatabase: (isQueryingDatabase: string) => void;
   setSmallSpiritImage: (smallSpiritImage: string) => void;
 };
