@@ -21,6 +21,7 @@ import {
   User,
   Weekly,
 } from "@/app/lib/definitions/general-definitions";
+import { updateUser } from "./sync-fetches";
 
 export async function fetchClasses(
   region: string,
@@ -121,6 +122,8 @@ export async function fetchAllUserDetails(userId: UUID): Promise<User> {
     versionNumber: fetchedUser.version_number,
     characters: characters,
   };
+
+  await updateUser(user); // Update last logged in date
 
   return user;
 }
