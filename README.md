@@ -174,6 +174,12 @@ Page (Server Component)
     TopNav
     SideNav
       Settings
+        CreateAccount
+          UsernameField
+          PasswordField
+          ConfirmPasswordField
+        SyncButton
+        CreateAccountButton
         ResetButton
 
 "/welcome"
