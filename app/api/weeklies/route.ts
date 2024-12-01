@@ -37,7 +37,7 @@ export async function PATCH(request: Request): Promise<NextResponse> {
     character_id: characterId,
     description: weekly.description,
     done: weekly.done ? new Date(weekly.done).toDateString() : null,
-    reset_date: weekly.resetDate.toDateString(),
+    reset_date: new Date(weekly.resetDate).toDateString(),
     position: weekly.position,
   };
 
@@ -50,7 +50,7 @@ export async function PATCH(request: Request): Promise<NextResponse> {
         set: {
           description: weekly.description,
           done: weekly.done ? new Date(weekly.done).toDateString() : null,
-          reset_date: weekly.resetDate.toDateString(),
+          reset_date: new Date(weekly.resetDate).toDateString(),
           position: weekly.position,
         },
       });
