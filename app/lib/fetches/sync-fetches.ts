@@ -38,6 +38,7 @@ export async function sync(
 
   await updateUser(user);
 
+  setSmallSpiritImage("/welcome/small_spirit_happy.png");
   setIsQueryingDatabase(
     "Sync is all done! We'll redirect you back to the settings page in a few seconds.",
   );
