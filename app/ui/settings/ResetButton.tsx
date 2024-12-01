@@ -39,7 +39,7 @@ export default function ResetButton({ user }: ResetButtonProps) {
 
   return (
     <button
-      className="btn btn-accent absolute right-4 top-4 rounded-full text-xl font-medium text-primary-content"
+      className="btn btn-accent h-16 w-1/5 rounded-full text-xl font-medium text-primary-content"
       onClick={handleClick}
     >
       Clear Data
