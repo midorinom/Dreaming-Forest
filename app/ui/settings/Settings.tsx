@@ -50,6 +50,8 @@ export default function Settings() {
         <CreateAccount
           user={user}
           setCreateAccountClicked={setCreateAccountClicked}
+          setIsQueryingDatabase={setIsQueryingDatabase}
+          setSmallSpiritImage={setSmallSpiritImage}
         />
       ) : (
         <div className="relative flex flex-col items-center justify-center gap-8">

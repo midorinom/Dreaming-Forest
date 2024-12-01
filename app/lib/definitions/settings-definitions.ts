@@ -17,4 +17,6 @@ export type CreateAccountButtonProps = {
 export type CreateAccountProps = {
   user: User;
   setCreateAccountClicked: (createAccountClicked: boolean) => void;
+  setIsQueryingDatabase: (isQueryingDatabase: string) => void;
+  setSmallSpiritImage: (smallSpiritImage: string) => void;
 };
