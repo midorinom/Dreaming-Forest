@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
+import { insertNewUser } from "@/app/lib/fetches/welcome-fetches";
+import { sync } from "@/app/lib/fetches/sync-fetches";
 import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
@@ -10,14 +12,15 @@ import { CreateAccountProps } from "@/app/lib/definitions/settings-definitions";
 export default function CreateAccount({
   user,
   setCreateAccountClicked,
+  setIsQueryingDatabase,
+  setSmallSpiritImage,
 }: CreateAccountProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
   const [usernameError, setUsernameError] = useState<string>("");
-  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
-  const [done, setDone] = useState<boolean>(false);
+  const [isQueryingUsername, setIsQueryingUsername] = useState<boolean>(false);
 
   useEffect(() => {
     if (password && confirmPassword && password !== confirmPassword) {
@@ -28,7 +31,7 @@ export default function CreateAccount({
   }, [password, confirmPassword]);
 
   async function handleSubmit() {
-    setIsQueryingDatabase(true);
+    setIsQueryingUsername(true);
     const fetchedUserId = await fetchUserId(username);
 
     if (fetchedUserId) {
@@ -36,18 +39,28 @@ export default function CreateAccount({
       setUsername("");
       setPassword("");
       setConfirmPassword("");
-      setIsQueryingDatabase(false);
+      setIsQueryingUsername(false);
       return;
     }
 
-    setIsQueryingDatabase(false);
-    setDone(true);
+    await insertNewUser(user, password);
+    const newUser = JSON.parse(JSON.stringify(user));
+    newUser.username = username;
+    localStorage.setItem("user", JSON.stringify(newUser));
+    setIsQueryingUsername(false);
+    setCreateAccountClicked(false);
+
+    syncData();
+
+    async function syncData() {
+      await sync(user, setIsQueryingDatabase, setSmallSpiritImage);
+    }
   }
 
   return (
     <>
       <div className="flex w-full items-center justify-center">
-        {isQueryingDatabase ? (
+        {isQueryingUsername ? (
           <span className="loading loading-spinner h-1/3 w-auto text-accent"></span>
         ) : (
           <div className="flex w-[30%] flex-col items-center justify-center">
