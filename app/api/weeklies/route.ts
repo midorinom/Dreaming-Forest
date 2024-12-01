@@ -56,7 +56,7 @@ export async function PATCH(request: Request): Promise<NextResponse> {
       });
     return NextResponse.json({ message: "ok" });
   } catch (error) {
-    console.error("Error upserting dailies", error);
+    console.error("Error upserting weeklies", error);
     throw error;
   }
 }
