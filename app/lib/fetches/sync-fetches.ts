@@ -9,9 +9,9 @@ import {
 
 export async function sync(
   user: User,
-  setIsQueryingDatabase: (isQueryingDatabase: boolean) => void,
+  setIsQueryingDatabase: (isQueryingDatabase: string) => void,
 ) {
-  setIsQueryingDatabase(true);
+  setIsQueryingDatabase("uploading");
 
   for (const character of user.characters) {
     await upsertCharacter(character, user);
@@ -31,7 +31,7 @@ export async function sync(
 
   await updateUser(user);
 
-  setIsQueryingDatabase(false);
+  setIsQueryingDatabase("");
 }
 
 export async function upsertCharacter(character: Character, user: User) {
