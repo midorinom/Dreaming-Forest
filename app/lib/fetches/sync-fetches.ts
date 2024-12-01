@@ -9,6 +9,7 @@ import {
 
 export async function sync(
   user: User,
+  setUser: (user: User) => void,
   setIsQueryingDatabase: (isQueryingDatabase: string) => void,
   setSmallSpiritImage: (smallSpiritImage: string) => void,
 ) {
@@ -36,7 +37,11 @@ export async function sync(
     "Please wait, we are currently uploading your user data to the database.",
   );
 
-  await updateUser(user);
+  const newUser = JSON.parse(JSON.stringify(user));
+  newUser.versionNumber++;
+  await updateUser(newUser);
+  setUser(newUser);
+  localStorage.setItem("user", JSON.stringify(newUser));
 
   setSmallSpiritImage("/welcome/small_spirit_happy.png");
   setIsQueryingDatabase(

@@ -4,13 +4,14 @@ import { useRouter } from "next/navigation";
 import { LoginProps } from "@/app/lib/definitions/welcome-definitions";
 import { User } from "@/app/lib/definitions/general-definitions";
 import { fetchUserId } from "@/app/lib/fetches/welcome-fetches";
-import { fetchUser } from "@/app/lib/fetches/general-fetches";
+import {
+  fetchAllUserDetails,
+  fetchUser,
+} from "@/app/lib/fetches/general-fetches";
 import { errorMessages } from "@/public/welcome/CreateAccount_error_message";
 import bcryptjs from "bcryptjs";
 import UsernameField from "./UsernameField";
 import PasswordField from "./PasswordField";
-import { v4 as uuidv4 } from "uuid";
-import type { UUID } from "crypto";
 
 export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
   const [username, setUsername] = useState<string>("");
@@ -43,33 +44,9 @@ export default function Login({ setLoginPage, setDialogueIndex }: LoginProps) {
       return;
     }
 
-    const newUser: User = {
-      userId: fetchedUser.user_id,
-      username: fetchedUser.username,
-      characters: [
-        {
-          characterId: uuidv4() as UUID,
-          image: "",
-          ign: "Unnamed",
-          level: 0,
-          maplestoryClass: "",
-          dailies: [],
-          weeklies: [],
-          bosses: [],
-          position: 0,
-          tracking: {
-            dailies: true,
-            weeklies: true,
-            bosses: true,
-            progression: true,
-          },
-        },
-      ],
-      region: "GMS",
-      versionNumber: 1,
-    };
-
-    localStorage.setItem("user", JSON.stringify(newUser));
+    setDialogueIndex("login");
+    const userDetails: User = await fetchAllUserDetails(fetchedUserId);
+    localStorage.setItem("user", JSON.stringify(userDetails));
 
     setIsQueryingDatabase(false);
     router.push("/");

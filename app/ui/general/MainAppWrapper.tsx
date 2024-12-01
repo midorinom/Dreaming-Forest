@@ -1,7 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import type { MainAppWrapperProps } from "@/app/lib/definitions/general-definitions";
+import type {
+  MainAppWrapperProps,
+  User,
+} from "@/app/lib/definitions/general-definitions";
+import {
+  fetchAllUserDetails,
+  fetchUser,
+} from "@/app/lib/fetches/general-fetches";
 import TopNav from "@/app/ui/general/TopNav";
 import SideNav from "@/app/ui/general/SideNav";
 import DreamySkeleton from "@/app/ui/general/DreamySkeleton";
@@ -14,11 +21,28 @@ export default function MainAppWrapper({ page }: MainAppWrapperProps) {
   useEffect(() => {
     const localUser = localStorage.getItem("user");
     if (localUser) {
-      setIsLoading(false);
+      const parsedUser: User = JSON.parse(localUser);
+      if (parsedUser.username) {
+        checkVersionNumber(parsedUser);
+      } else {
+        setIsLoading(false);
+      }
     } else {
       router.replace("welcome");
     }
   }, []);
+
+  async function checkVersionNumber(user: User) {
+    const fetchedUser = await fetchUser(user.userId);
+    if (user.versionNumber < fetchedUser.version_number) {
+      // Current local version is outdated. Fetch all data and then set to localStorage
+      const userDetails: User = await fetchAllUserDetails(user.userId);
+      localStorage.setItem("user", JSON.stringify(userDetails));
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  }
 
   return isLoading ? (
     <DreamySkeleton />

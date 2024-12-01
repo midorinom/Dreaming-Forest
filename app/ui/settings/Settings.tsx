@@ -49,6 +49,7 @@ export default function Settings() {
       ) : createAccountClicked && user ? (
         <CreateAccount
           user={user}
+          setUser={setUser}
           setCreateAccountClicked={setCreateAccountClicked}
           setIsQueryingDatabase={setIsQueryingDatabase}
           setSmallSpiritImage={setSmallSpiritImage}
@@ -59,6 +60,7 @@ export default function Settings() {
             (user.username ? (
               <SyncButton
                 user={user}
+                setUser={setUser}
                 setIsQueryingDatabase={setIsQueryingDatabase}
                 setSmallSpiritImage={setSmallSpiritImage}
               />
