@@ -6,6 +6,13 @@ export default function ResetButton({ user }: ResetButtonProps) {
   const router = useRouter();
 
   function handleClick() {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to wipe all your data on this browser?",
+    );
+    if (confirmDelete) {
+      deleteCharacters();
+    }
+
     async function deleteCharacters() {
       const images = [];
 
@@ -28,13 +35,6 @@ export default function ResetButton({ user }: ResetButtonProps) {
       localStorage.removeItem("user");
       router.replace("/");
     }
-
-    const confirmDelete = window.confirm(
-      "Are you sure you want to wipe all your data on this browser?",
-    );
-    if (confirmDelete) {
-      deleteCharacters();
-    }
   }
 
   return (
@@ -42,7 +42,7 @@ export default function ResetButton({ user }: ResetButtonProps) {
       className="btn btn-accent h-16 w-1/5 rounded-full text-xl font-medium text-primary-content"
       onClick={handleClick}
     >
-      Clear Data
+      {user.username ? "Log Out" : "Clear Data"}
     </button>
   );
 }
