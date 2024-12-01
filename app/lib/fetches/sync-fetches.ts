@@ -18,6 +18,10 @@ export async function sync(user: User) {
     for (const weekly of character.weeklies) {
       upsertWeekly(weekly, character.characterId);
     }
+
+    for (const boss of character.bosses) {
+      upsertBoss(boss, character.characterId);
+    }
   }
 
   await fetch(`/api/users`, {
@@ -67,7 +71,7 @@ export async function upsertWeekly(weekly: Weekly, characterId: UUID) {
   });
 }
 
-export async function upsertBosses(boss: Boss, characterId: UUID) {
+export async function upsertBoss(boss: Boss, characterId: UUID) {
   await fetch(`/api/bosses`, {
     method: "PATCH",
     headers: {
