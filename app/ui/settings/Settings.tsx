@@ -24,7 +24,10 @@ export default function Settings() {
         <div className="relative mt-8 flex flex-col items-center gap-8">
           {user &&
             (user.username ? (
-              <SyncButton user={user} />
+              <SyncButton
+                user={user}
+                setIsQueryingDatabase={setIsQueryingDatabase}
+              />
             ) : (
               <CreateAccount user={user} />
             ))}

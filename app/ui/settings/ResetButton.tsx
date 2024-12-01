@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { ResetButtonProps } from "@/app/lib/definitions/general-definitions";
+import { ResetButtonProps } from "@/app/lib/definitions/settings-definitions";
 import { deleteImages } from "@/app/lib/functions/utility-functions";
 
 export default function ResetButton({ user }: ResetButtonProps) {

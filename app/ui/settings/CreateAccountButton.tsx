@@ -1,7 +1,7 @@
 "use client";
-import { ResetButtonProps } from "@/app/lib/definitions/general-definitions";
+import { CreateAccountButtonProps } from "@/app/lib/definitions/settings-definitions";
 
-export default function CreateAccount({ user }: ResetButtonProps) {
+export default function CreateAccount({ user }: CreateAccountButtonProps) {
   function handleClick() {
     // Sync Data
   }

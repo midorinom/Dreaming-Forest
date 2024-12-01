@@ -85,10 +85,6 @@ export type MainAppWrapperProps = {
   page: ReactElement;
 };
 
-export type ResetButtonProps = {
-  user: User;
-};
-
 export type DateTimes = {
   now: Dayjs;
   startOfDay: Dayjs;
