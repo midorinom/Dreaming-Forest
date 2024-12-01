@@ -6,11 +6,20 @@ export default function ResetButton({ user }: ResetButtonProps) {
   const router = useRouter();
 
   function handleClick() {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to wipe all your data on this browser?",
-    );
-    if (confirmDelete) {
-      deleteCharacters();
+    const isLoggedIn: boolean = user.username ? true : false;
+    let confirmMessage: string = isLoggedIn
+      ? "Are you sure you want to log out?"
+      : "Are you sure you want to wipe all your data on this browser?";
+
+    const confirm = window.confirm(confirmMessage);
+
+    if (confirm) {
+      if (!isLoggedIn) {
+        deleteCharacters();
+      }
+
+      localStorage.removeItem("user");
+      router.replace("/");
     }
 
     async function deleteCharacters() {
@@ -31,9 +40,6 @@ export default function ResetButton({ user }: ResetButtonProps) {
           body: JSON.stringify({ characters: user.characters }),
         });
       }
-
-      localStorage.removeItem("user");
-      router.replace("/");
     }
   }
 
