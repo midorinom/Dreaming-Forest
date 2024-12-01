@@ -1,7 +1,7 @@
 "use client";
 import { ResetButtonProps } from "@/app/lib/definitions/general-definitions";
 
-export default function ResetButton({ user }: ResetButtonProps) {
+export default function SyncButton({ user }: ResetButtonProps) {
   function handleClick() {
     // Sync Data
   }
