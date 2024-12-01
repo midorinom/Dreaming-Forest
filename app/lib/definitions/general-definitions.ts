@@ -78,6 +78,7 @@ export type User = {
   username: string;
   region: string;
   characters: Character[];
+  versionNumber: number;
 };
 
 export type MainAppWrapperProps = {
