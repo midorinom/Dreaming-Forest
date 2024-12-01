@@ -66,3 +66,13 @@ export async function upsertWeekly(weekly: Weekly, characterId: UUID) {
     body: JSON.stringify({ weekly: weekly, characterId: characterId }),
   });
 }
+
+export async function upsertBosses(boss: Boss, characterId: UUID) {
+  await fetch(`/api/bosses`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ boss: boss, characterId: characterId }),
+  });
+}
