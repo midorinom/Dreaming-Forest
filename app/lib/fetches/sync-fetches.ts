@@ -5,6 +5,16 @@ import {
   Daily,
 } from "@/app/lib/definitions/general-definitions";
 
+export async function sync(user: User) {
+  await fetch(`/api/users`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ user: user }),
+  });
+}
+
 export async function insertNewCharacter(character: Character, user: User) {
   await fetch(`/api/characters`, {
     method: "PUT",
