@@ -5,11 +5,6 @@ import { Classes } from "@/drizzle/schema";
 import { unstable_noStore as noStore } from "next/cache";
 import { UUID } from "crypto";
 import {
-  User,
-  Character,
-  Daily,
-} from "@/app/lib/definitions/general-definitions";
-import {
   FetchClassesResponse,
   FetchUserResponse,
   FetchCharactersResponse,
@@ -37,24 +32,6 @@ export async function fetchClasses(
     console.error("Database Error:", err);
     throw new Error("Failed to fetch all classes.");
   }
-}
-
-export async function insertNewCharacter(character: Character, user: User) {
-  await fetch(`/api/characters`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ character: character, user: user }),
-  });
-
-  await fetch(`/api/tracking`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ character: character }),
-  });
 }
 
 export async function fetchUser(userId: UUID): Promise<FetchUserResponse> {
@@ -143,14 +120,4 @@ export async function fetchTracking(
 
   const res = await response.json();
   return res;
-}
-
-export async function upsertDaily(daily: Daily, characterId: UUID) {
-  await fetch(`/api/dailies`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ daily: daily, characterId: characterId }),
-  });
 }
