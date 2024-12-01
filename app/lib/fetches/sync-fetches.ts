@@ -6,6 +6,10 @@ import {
 } from "@/app/lib/definitions/general-definitions";
 
 export async function sync(user: User) {
+  for (const character of user.characters) {
+    upsertCharacter(character, user);
+  }
+
   await fetch(`/api/users`, {
     method: "PATCH",
     headers: {
@@ -15,9 +19,9 @@ export async function sync(user: User) {
   });
 }
 
-export async function insertNewCharacter(character: Character, user: User) {
+export async function upsertCharacter(character: Character, user: User) {
   await fetch(`/api/characters`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
@@ -25,7 +29,7 @@ export async function insertNewCharacter(character: Character, user: User) {
   });
 
   await fetch(`/api/tracking`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
