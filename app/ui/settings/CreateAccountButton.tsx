@@ -1,9 +1,11 @@
 "use client";
 import { CreateAccountButtonProps } from "@/app/lib/definitions/settings-definitions";
 
-export default function CreateAccount({ user }: CreateAccountButtonProps) {
+export default function CreateAccountButton({
+  setCreateAccountClicked,
+}: CreateAccountButtonProps) {
   function handleClick() {
-    // Sync Data
+    setCreateAccountClicked(true);
   }
 
   return (
