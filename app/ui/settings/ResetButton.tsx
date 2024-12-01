@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { ResetButtonProps } from "@/app/lib/definitions/general-definitions";
+import { deleteImages } from "@/app/lib/functions/utility-functions";
 
 export default function ResetButton({ user }: ResetButtonProps) {
   const router = useRouter();
@@ -32,13 +33,7 @@ export default function ResetButton({ user }: ResetButtonProps) {
       }
 
       if (images.length > 0) {
-        await fetch(`/api/character-images`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ characters: user.characters }),
-        });
+        deleteImages(user.characters);
       }
     }
   }
