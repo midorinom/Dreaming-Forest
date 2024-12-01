@@ -40,6 +40,8 @@ export async function sync(
   const newUser = JSON.parse(JSON.stringify(user));
   newUser.versionNumber++;
   await updateUser(newUser);
+  setUser(newUser);
+  localStorage.setItem("user", JSON.stringify(newUser));
 
   setSmallSpiritImage("/welcome/small_spirit_happy.png");
   setIsQueryingDatabase(
