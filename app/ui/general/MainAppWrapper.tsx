@@ -5,7 +5,10 @@ import type {
   MainAppWrapperProps,
   User,
 } from "@/app/lib/definitions/general-definitions";
-import { fetchUser } from "@/app/lib/fetches/general-fetches";
+import {
+  fetchAllUserDetails,
+  fetchUser,
+} from "@/app/lib/fetches/general-fetches";
 import TopNav from "@/app/ui/general/TopNav";
 import SideNav from "@/app/ui/general/SideNav";
 import DreamySkeleton from "@/app/ui/general/DreamySkeleton";
@@ -33,7 +36,8 @@ export default function MainAppWrapper({ page }: MainAppWrapperProps) {
     const fetchedUser = await fetchUser(user.userId);
     if (user.versionNumber < fetchedUser.version_number) {
       // Current local version is outdated. Fetch all data and then set to localStorage
-      return;
+      const userDetails = await fetchAllUserDetails(user.userId);
+      localStorage.setItem("user", JSON.stringify(userDetails));
     }
   }
 
