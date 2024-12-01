@@ -11,5 +11,10 @@ export type SyncButtonProps = {
 };
 
 export type CreateAccountButtonProps = {
+  setCreateAccountClicked: (createAccountClicked: boolean) => void;
+};
+
+export type CreateAccountProps = {
   user: User;
+  setCreateAccountClicked: (createAccountClicked: boolean) => void;
 };
