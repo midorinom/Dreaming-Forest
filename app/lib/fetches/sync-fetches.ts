@@ -14,28 +14,22 @@ export async function sync(
   setIsQueryingDatabase(true);
 
   for (const character of user.characters) {
-    upsertCharacter(character, user);
+    await upsertCharacter(character, user);
 
     for (const daily of character.dailies) {
-      upsertDaily(daily, character.characterId);
+      await upsertDaily(daily, character.characterId);
     }
 
     for (const weekly of character.weeklies) {
-      upsertWeekly(weekly, character.characterId);
+      await upsertWeekly(weekly, character.characterId);
     }
 
     for (const boss of character.bosses) {
-      upsertBoss(boss, character.characterId);
+      await upsertBoss(boss, character.characterId);
     }
   }
 
-  await fetch(`/api/users`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ user: user }),
-  });
+  await updateUser(user);
 
   setIsQueryingDatabase(false);
 }
@@ -85,5 +79,15 @@ export async function upsertBoss(boss: Boss, characterId: UUID) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ boss: boss, characterId: characterId }),
+  });
+}
+
+export async function updateUser(user: User) {
+  await fetch(`/api/users`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ user: user }),
   });
 }
