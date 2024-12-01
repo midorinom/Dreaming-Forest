@@ -11,7 +11,7 @@ const projectDir = process.cwd();
 loadEnvConfig(projectDir);
 const db = drizzle(sql, { schema });
 
-export async function PUT(request: Request): Promise<NextResponse> {
+export async function PATCH(request: Request): Promise<NextResponse> {
   const res = await request.json();
   const character: Character = res.character;
   const user: User = res.user;
@@ -27,7 +27,19 @@ export async function PUT(request: Request): Promise<NextResponse> {
   };
 
   try {
-    await db.insert(Characters).values(newCharacter).onConflictDoNothing();
+    await db
+      .insert(Characters)
+      .values(newCharacter)
+      .onConflictDoUpdate({
+        target: Characters.character_id,
+        set: {
+          ign: character.ign,
+          level: character.level,
+          class_name: character.maplestoryClass,
+          image: character.image,
+          position: character.position,
+        },
+      });
     return NextResponse.json({ message: "ok" });
   } catch (error) {
     console.error("Error inserting character", error);
