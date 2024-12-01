@@ -49,6 +49,7 @@ export default function Settings() {
       ) : createAccountClicked && user ? (
         <CreateAccount
           user={user}
+          setUser={setUser}
           setCreateAccountClicked={setCreateAccountClicked}
           setIsQueryingDatabase={setIsQueryingDatabase}
           setSmallSpiritImage={setSmallSpiritImage}

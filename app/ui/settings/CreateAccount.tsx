@@ -11,6 +11,7 @@ import { CreateAccountProps } from "@/app/lib/definitions/settings-definitions";
 
 export default function CreateAccount({
   user,
+  setUser,
   setCreateAccountClicked,
   setIsQueryingDatabase,
   setSmallSpiritImage,
@@ -54,7 +55,7 @@ export default function CreateAccount({
     syncData();
 
     async function syncData() {
-      await sync(user, setIsQueryingDatabase, setSmallSpiritImage);
+      await sync(user, setUser, setIsQueryingDatabase, setSmallSpiritImage);
     }
   }
 
