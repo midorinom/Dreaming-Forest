@@ -5,12 +5,13 @@ import { sync } from "@/app/lib/fetches/sync-fetches";
 export default function SyncButton({
   user,
   setIsQueryingDatabase,
+  setSmallSpiritImage,
 }: SyncButtonProps) {
   function handleClick() {
     syncData();
 
     async function syncData() {
-      await sync(user, setIsQueryingDatabase);
+      await sync(user, setIsQueryingDatabase, setSmallSpiritImage);
     }
   }
 

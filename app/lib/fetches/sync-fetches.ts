@@ -10,6 +10,7 @@ import {
 export async function sync(
   user: User,
   setIsQueryingDatabase: (isQueryingDatabase: string) => void,
+  setSmallSpiritImage: (smallSpiritImage: string) => void,
 ) {
   for (const character of user.characters) {
     setIsQueryingDatabase(

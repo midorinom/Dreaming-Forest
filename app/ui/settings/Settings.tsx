@@ -50,6 +50,7 @@ export default function Settings() {
               <SyncButton
                 user={user}
                 setIsQueryingDatabase={setIsQueryingDatabase}
+                setSmallSpiritImage={setSmallSpiritImage}
               />
             ) : (
               <CreateAccount user={user} />
