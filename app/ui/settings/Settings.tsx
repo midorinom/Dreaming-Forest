@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { User } from "@/app/lib/definitions/general-definitions";
-import SyncButton from "@/app/ui/settings/SyncButton";
-import ResetButton from "@/app/ui/settings/ResetButton";
+import SyncButton from "./SyncButton";
+import ResetButton from "./ResetButton";
+import CreateAccount from "./CreateAccountButton";
 
 export default function Settings() {
   const [user, setUser] = useState<User | null>(null);
@@ -16,7 +17,12 @@ export default function Settings() {
 
   return (
     <div className="relative mt-8 flex flex-col items-center gap-8">
-      {user && <SyncButton user={user} />}
+      {user &&
+        (user.username ? (
+          <SyncButton user={user} />
+        ) : (
+          <CreateAccount user={user} />
+        ))}
       {user && <ResetButton user={user} />}
     </div>
   );
