@@ -13,7 +13,6 @@ import DailiesWeeklies from "./DailiesWeeklies";
 export default function Dashboard({ bossesInfo }: DashboardProps) {
   const [user, setUser] = useState<User | null>(null);
   const [activeCharacter, setActiveCharacter] = useState<Character>();
-  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
@@ -27,33 +26,29 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
 
   return (
     <>
-      {isQueryingDatabase ? (
-        <span className="loading loading-spinner m-auto h-1/3 w-auto text-accent"></span>
-      ) : (
-        <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
-          {user && activeCharacter && (
-            <>
-              <ActiveCharacter activeCharacter={activeCharacter} />
-              <CharactersWheel
-                activeCharacter={activeCharacter}
-                setActiveCharacter={setActiveCharacter}
-                charactersProp={user.characters}
-              />
-              <DailiesWeeklies
+      <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
+        {user && activeCharacter && (
+          <>
+            <ActiveCharacter activeCharacter={activeCharacter} />
+            <CharactersWheel
+              activeCharacter={activeCharacter}
+              setActiveCharacter={setActiveCharacter}
+              charactersProp={user.characters}
+            />
+            <DailiesWeeklies
+              region={user.region}
+              activeCharacter={activeCharacter}
+            />
+            {activeCharacter.tracking.bosses && (
+              <Bosses
                 region={user.region}
                 activeCharacter={activeCharacter}
+                bossesInfo={bossesInfo}
               />
-              {activeCharacter.tracking.bosses && (
-                <Bosses
-                  region={user.region}
-                  activeCharacter={activeCharacter}
-                  bossesInfo={bossesInfo}
-                />
-              )}
-            </>
-          )}
-        </main>
-      )}
+            )}
+          </>
+        )}
+      </main>
     </>
   );
 }
