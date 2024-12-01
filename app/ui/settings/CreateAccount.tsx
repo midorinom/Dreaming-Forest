@@ -46,10 +46,10 @@ export default function CreateAccount({
 
   return (
     <>
-      {isQueryingDatabase ? (
-        <span className="loading loading-spinner mt-32 h-1/5 w-auto text-accent"></span>
-      ) : (
-        <div className="flex w-full items-center justify-center">
+      <div className="flex w-full items-center justify-center">
+        {isQueryingDatabase ? (
+          <span className="loading loading-spinner h-1/3 w-auto text-accent"></span>
+        ) : (
           <div className="flex w-[30%] flex-col items-center justify-center">
             <div className="collapse collapse-open flex min-h-64 flex-col items-center gap-3 bg-base-100">
               <div className="collapse-title text-xl font-medium underline-offset-8 underline-elodin-neutral">
@@ -99,8 +99,8 @@ export default function CreateAccount({
               </button>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }
