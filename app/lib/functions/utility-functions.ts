@@ -96,13 +96,13 @@ export async function storeImage(
   character.image = url;
 }
 
-export async function deleteImage(character: Character) {
+export async function deleteImages(characters: Character[]) {
   const response = await fetch(`/api/character-images`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ characters: [character] }),
+    body: JSON.stringify({ characters: characters }),
   });
 
   if (!response.ok) {

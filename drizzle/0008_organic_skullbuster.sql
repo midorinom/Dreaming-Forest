@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "version_number" SET NOT NULL;

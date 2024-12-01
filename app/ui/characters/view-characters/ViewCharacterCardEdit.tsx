@@ -3,7 +3,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { ViewCharacterCardEditProps } from "@/app/lib/definitions/characters-definitions";
 import { User } from "@/app/lib/definitions/general-definitions";
-import { deleteImage, storeImage } from "@/app/lib/functions/utility-functions";
+import {
+  deleteImages,
+  storeImage,
+} from "@/app/lib/functions/utility-functions";
 import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
@@ -61,7 +64,7 @@ export default function CharacterCardEdit({
       setIsUploadingToDatabase(true);
 
       try {
-        if (character.image) await deleteImage(character);
+        if (character.image) await deleteImages([character]);
         await storeImage(userId, newCharacter, uploadedFile);
         setUploadedFile(null);
       } catch (error) {

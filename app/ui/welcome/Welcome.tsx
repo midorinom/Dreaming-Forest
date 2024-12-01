@@ -13,7 +13,7 @@ import type {
   User,
 } from "@/app/lib/definitions/general-definitions";
 import { insertNewUser } from "@/app/lib/fetches/welcome-fetches";
-import { insertNewCharacter } from "@/app/lib/fetches/general-fetches";
+import { upsertCharacter } from "@/app/lib/fetches/sync-fetches";
 import { storeImage } from "@/app/lib/functions/utility-functions";
 import WelcomeProvider from "@/app/ui/contexts/WelcomeContext";
 import {
@@ -75,6 +75,7 @@ export default function Welcome({ classes }: WelcomeProps) {
         username: username,
         region: region,
         characters: [character],
+        versionNumber: 1,
       };
 
       updateDatabase(newUser);
@@ -88,7 +89,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       if (username) {
         newUser.username = username;
         await insertNewUser(newUser, password);
-        await insertNewCharacter(character, newUser);
+        await upsertCharacter(character, newUser);
       }
 
       localStorage.setItem("user", JSON.stringify(newUser));

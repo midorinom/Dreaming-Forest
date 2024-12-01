@@ -5,7 +5,6 @@ import type {
   Character,
   User,
 } from "@/app/lib/definitions/general-definitions";
-import { dashboardInitialSet } from "@/app/lib/functions/fetch-and-set-functions/dashboard-set-functions";
 import ActiveCharacter from "./ActiveCharacter";
 import Bosses from "./bosses/Bosses";
 import CharactersWheel from "./characters-wheel/CharactersWheel";
@@ -14,25 +13,11 @@ import DailiesWeeklies from "./DailiesWeeklies";
 export default function Dashboard({ bossesInfo }: DashboardProps) {
   const [user, setUser] = useState<User | null>(null);
   const [activeCharacter, setActiveCharacter] = useState<Character>();
-  const [isQueryingDatabase, setIsQueryingDatabase] = useState<boolean>(false);
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
     if (localUser) {
       const parsedUser: User = JSON.parse(localUser);
-
-      // ---------- Disabled Login Features ----------
-      // if (parsedUser.username) {
-      //   dashboardInitialSet(
-      //     parsedUser,
-      //     setUser,
-      //     setActiveCharacter,
-      //     setIsQueryingDatabase,
-      //   );
-      // } else {
-      //   setUser(parsedUser);
-      //   setActiveCharacter(parsedUser.characters[0]);
-      // }
 
       setUser(parsedUser);
       setActiveCharacter(parsedUser.characters[0]);
@@ -41,33 +26,29 @@ export default function Dashboard({ bossesInfo }: DashboardProps) {
 
   return (
     <>
-      {isQueryingDatabase ? (
-        <span className="loading loading-spinner m-auto h-1/3 w-auto text-accent"></span>
-      ) : (
-        <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
-          {user && activeCharacter && (
-            <>
-              <ActiveCharacter activeCharacter={activeCharacter} />
-              <CharactersWheel
-                activeCharacter={activeCharacter}
-                setActiveCharacter={setActiveCharacter}
-                charactersProp={user.characters}
-              />
-              <DailiesWeeklies
+      <main className="grid grid-cols-[40vw_1fr] grid-rows-[27vh_1fr]">
+        {user && activeCharacter && (
+          <>
+            <ActiveCharacter activeCharacter={activeCharacter} />
+            <CharactersWheel
+              activeCharacter={activeCharacter}
+              setActiveCharacter={setActiveCharacter}
+              charactersProp={user.characters}
+            />
+            <DailiesWeeklies
+              region={user.region}
+              activeCharacter={activeCharacter}
+            />
+            {activeCharacter.tracking.bosses && (
+              <Bosses
                 region={user.region}
                 activeCharacter={activeCharacter}
+                bossesInfo={bossesInfo}
               />
-              {activeCharacter.tracking.bosses && (
-                <Bosses
-                  region={user.region}
-                  activeCharacter={activeCharacter}
-                  bossesInfo={bossesInfo}
-                />
-              )}
-            </>
-          )}
-        </main>
-      )}
+            )}
+          </>
+        )}
+      </main>
     </>
   );
 }

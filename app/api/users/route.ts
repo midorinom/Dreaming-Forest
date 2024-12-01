@@ -24,6 +24,7 @@ export async function PUT(request: Request): Promise<NextResponse> {
     pw_hash: hashedPassword,
     region: user.region,
     last_logged_in: new Date().toDateString(),
+    version_number: user.versionNumber,
   };
 
   try {
@@ -54,6 +55,26 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json(fetchedUser[0]);
   } catch (error) {
     console.error("Error getting user", error);
+    throw error;
+  }
+}
+
+export async function PATCH(request: Request): Promise<NextResponse> {
+  const res = await request.json();
+  const user: User = res.user;
+
+  try {
+    await db
+      .update(Users)
+      .set({
+        region: user.region,
+        last_logged_in: new Date().toDateString(),
+        version_number: user.versionNumber,
+      })
+      .where(eq(Users.user_id, user.userId));
+    return NextResponse.json({ message: "ok" });
+  } catch (error) {
+    console.error("Error updating user", error);
     throw error;
   }
 }

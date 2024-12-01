@@ -45,6 +45,7 @@ export async function dashboardInitialSet(
     username: fetchedUser.username,
     region: fetchedUser.region,
     characters: characters,
+    versionNumber: fetchedUser.version_number,
   });
 
   dashboardActiveCharacterSet(

@@ -27,6 +27,7 @@ export const Users = pgTable("users", {
     .notNull(),
   pw_hash: varchar("pw_hash").notNull(),
   last_logged_in: date("last_logged_in").notNull(),
+  version_number: integer("version_number").notNull(),
 });
 
 export const Characters = pgTable("characters", {
@@ -85,8 +86,8 @@ export const Bosses = pgTable("bosses", {
 });
 
 export const Tracking = pgTable("tracking", {
-  tracking_id: uuid("tracking_id").primaryKey().notNull(),
   character_id: uuid("character_id")
+    .primaryKey()
     .references(() => Characters.character_id)
     .notNull(),
   dailies: boolean("dailies").notNull(),

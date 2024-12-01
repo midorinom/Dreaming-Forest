@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { DeleteCharacterCardProps } from "@/app/lib/definitions/characters-definitions";
-import { deleteImage } from "@/app/lib/functions/utility-functions";
+import { deleteImages } from "@/app/lib/functions/utility-functions";
 
 export default function DeleteCharacterCard({
   characterProp,
@@ -16,7 +16,7 @@ export default function DeleteCharacterCard({
     if (confirmDelete) {
       setIsLoading(true);
 
-      if (characterProp.image) await deleteImage(characterProp);
+      if (characterProp.image) await deleteImages([characterProp]);
       const newCharacters = [];
 
       for (let i = 0; i < characters.length; i++) {

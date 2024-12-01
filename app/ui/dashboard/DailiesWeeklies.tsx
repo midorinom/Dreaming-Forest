@@ -6,7 +6,6 @@ import type {
   User,
   Weekly,
 } from "@/app/lib/definitions/general-definitions";
-import { upsertDaily } from "@/app/lib/fetches/general-fetches";
 import Dailies from "./dailies/Dailies";
 import Weeklies from "./weeklies/Weeklies";
 import DailiesEdit from "./dailies/DailiesEdit";
@@ -60,17 +59,6 @@ export default function DailiesWeeklies({
 
     if (localUser) {
       const parsedUser: User = JSON.parse(localUser);
-
-      // ---------- Disabled Login Features ----------
-      // if (parsedUser.username) {
-      //   for (const daily of dailies) {
-      //     upsertDaily(daily, activeCharacter.characterId);
-      //   }
-      // } else {
-      //   parsedUser.characters[activeCharacter.position].dailies = dailies;
-      //   parsedUser.characters[activeCharacter.position].weeklies = weeklies;
-      //   localStorage.setItem("user", JSON.stringify(parsedUser));
-      // }
 
       parsedUser.characters[activeCharacter.position].dailies = dailies;
       parsedUser.characters[activeCharacter.position].weeklies = weeklies;
