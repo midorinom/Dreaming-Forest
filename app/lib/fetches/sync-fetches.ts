@@ -11,9 +11,11 @@ export async function sync(
   user: User,
   setIsQueryingDatabase: (isQueryingDatabase: string) => void,
 ) {
-  setIsQueryingDatabase("uploading");
-
   for (const character of user.characters) {
+    setIsQueryingDatabase(
+      `Please wait, we are currently uploading ${character.ign}'s data to the database.`,
+    );
+
     await upsertCharacter(character, user);
 
     for (const daily of character.dailies) {
@@ -29,9 +31,17 @@ export async function sync(
     }
   }
 
+  setIsQueryingDatabase(
+    "Please wait, we are currently uploading your user data to the database.",
+  );
+
   await updateUser(user);
 
-  setIsQueryingDatabase("");
+  setIsQueryingDatabase(
+    "Sync is all done! We'll redirect you back to the settings page in a few seconds.",
+  );
+
+  setTimeout(() => setIsQueryingDatabase(""), 5000);
 }
 
 export async function upsertCharacter(character: Character, user: User) {
