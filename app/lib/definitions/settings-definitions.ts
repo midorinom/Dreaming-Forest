@@ -6,7 +6,7 @@ export type ResetButtonProps = {
 
 export type SyncButtonProps = {
   user: User;
-  isQueryingDatabase: (isQueryingDatabase: boolean) => void;
+  setIsQueryingDatabase: (isQueryingDatabase: boolean) => void;
 };
 
 export type CreateAccountButtonProps = {
