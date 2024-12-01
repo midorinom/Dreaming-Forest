@@ -5,8 +5,6 @@ import { sql } from "@vercel/postgres";
 import * as schema from "@/drizzle/schema";
 import { Tracking } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
-import { v4 as uuidv4 } from "uuid";
-import type { UUID } from "crypto";
 import { Character } from "../../lib/definitions/general-definitions";
 
 const projectDir = process.cwd();
@@ -18,7 +16,6 @@ export async function PATCH(request: Request): Promise<NextResponse> {
   const character: Character = res.character;
 
   const newTracking = {
-    tracking_id: uuidv4() as UUID,
     character_id: character.characterId,
     dailies: character.tracking.dailies,
     weeklies: character.tracking.weeklies,

@@ -64,6 +64,20 @@
       "when": 1733042429743,
       "tag": "0008_organic_skullbuster",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1733053418135,
+      "tag": "0009_petite_shockwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1733053466343,
+      "tag": "0010_great_roland_deschain",
+      "breakpoints": true
     }
   ]
 }

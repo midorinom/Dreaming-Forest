@@ -86,8 +86,8 @@ export const Bosses = pgTable("bosses", {
 });
 
 export const Tracking = pgTable("tracking", {
-  tracking_id: uuid("tracking_id").primaryKey().notNull(),
   character_id: uuid("character_id")
+    .primaryKey()
     .references(() => Characters.character_id)
     .notNull(),
   dailies: boolean("dailies").notNull(),
