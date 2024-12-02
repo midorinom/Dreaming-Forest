@@ -6,6 +6,7 @@ import SyncButton from "./SyncButton";
 import ResetButton from "./ResetButton";
 import CreateAccountButton from "./CreateAccountButton";
 import CreateAccount from "./CreateAccount";
+import ChangeRegionButton from "./ChangeRegionButton";
 
 export default function Settings() {
   const [user, setUser] = useState<User | null>(null);
@@ -22,6 +23,12 @@ export default function Settings() {
       setUser(JSON.parse(localUser));
     }
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
+  }, [user]);
 
   return (
     <>
@@ -56,20 +63,24 @@ export default function Settings() {
         />
       ) : (
         <div className="relative flex flex-col items-center justify-center gap-8">
-          {user &&
-            (user.username ? (
-              <SyncButton
-                user={user}
-                setUser={setUser}
-                setIsQueryingDatabase={setIsQueryingDatabase}
-                setSmallSpiritImage={setSmallSpiritImage}
-              />
-            ) : (
-              <CreateAccountButton
-                setCreateAccountClicked={setCreateAccountClicked}
-              />
-            ))}
-          {user && <ResetButton user={user} />}
+          {user && (
+            <>
+              {user.username ? (
+                <SyncButton
+                  user={user}
+                  setUser={setUser}
+                  setIsQueryingDatabase={setIsQueryingDatabase}
+                  setSmallSpiritImage={setSmallSpiritImage}
+                />
+              ) : (
+                <CreateAccountButton
+                  setCreateAccountClicked={setCreateAccountClicked}
+                />
+              )}
+              {<ChangeRegionButton user={user} setUser={setUser} />}
+              {<ResetButton user={user} />}
+            </>
+          )}
         </div>
       )}
     </>
