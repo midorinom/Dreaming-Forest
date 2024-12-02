@@ -4,7 +4,7 @@ import { loadEnvConfig } from "@next/env";
 import { sql } from "@vercel/postgres";
 import * as schema from "@/drizzle/schema";
 import { Dailies } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { eq, asc } from "drizzle-orm";
 import { Daily } from "@/app/lib/definitions/general-definitions";
 
 const projectDir = process.cwd();
@@ -19,7 +19,8 @@ export async function POST(request: Request): Promise<NextResponse> {
     const fetchedDailies = await db
       .select()
       .from(Dailies)
-      .where(eq(Dailies.character_id, characterId));
+      .where(eq(Dailies.character_id, characterId))
+      .orderBy(asc(Dailies.position));
     return NextResponse.json(fetchedDailies);
   } catch (error) {
     console.error("Error getting dailies", error);
