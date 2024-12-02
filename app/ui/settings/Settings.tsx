@@ -6,6 +6,7 @@ import SyncButton from "./SyncButton";
 import ResetButton from "./ResetButton";
 import CreateAccountButton from "./CreateAccountButton";
 import CreateAccount from "./CreateAccount";
+import ChangeRegionButton from "./ChangeRegionButton";
 
 export default function Settings() {
   const [user, setUser] = useState<User | null>(null);
@@ -70,6 +71,7 @@ export default function Settings() {
                   setCreateAccountClicked={setCreateAccountClicked}
                 />
               )}
+              {<ChangeRegionButton user={user} />}
               {<ResetButton user={user} />}
             </>
           )}
