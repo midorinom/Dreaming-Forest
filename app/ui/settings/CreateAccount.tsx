@@ -48,14 +48,13 @@ export default function CreateAccount({
     newUser.username = username;
 
     await insertNewUser(newUser, password);
-    localStorage.setItem("user", JSON.stringify(newUser));
     setIsQueryingUsername(false);
     setCreateAccountClicked(false);
 
     syncData();
 
     async function syncData() {
-      await sync(user, setUser, setIsQueryingDatabase, setSmallSpiritImage);
+      await sync(newUser, setUser, setIsQueryingDatabase, setSmallSpiritImage);
     }
   }
 

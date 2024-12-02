@@ -41,7 +41,6 @@ export async function sync(
   newUser.versionNumber++;
   await updateUser(newUser);
   setUser(newUser);
-  localStorage.setItem("user", JSON.stringify(newUser));
 
   setSmallSpiritImage("/welcome/small_spirit_happy.png");
   setIsQueryingDatabase(

@@ -24,6 +24,12 @@ export default function Settings() {
     }
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
+  }, [user]);
+
   return (
     <>
       {isQueryingDatabase ? (
