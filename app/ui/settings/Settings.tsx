@@ -56,20 +56,23 @@ export default function Settings() {
         />
       ) : (
         <div className="relative flex flex-col items-center justify-center gap-8">
-          {user &&
-            (user.username ? (
-              <SyncButton
-                user={user}
-                setUser={setUser}
-                setIsQueryingDatabase={setIsQueryingDatabase}
-                setSmallSpiritImage={setSmallSpiritImage}
-              />
-            ) : (
-              <CreateAccountButton
-                setCreateAccountClicked={setCreateAccountClicked}
-              />
-            ))}
-          {user && <ResetButton user={user} />}
+          {user && (
+            <>
+              {user.username ? (
+                <SyncButton
+                  user={user}
+                  setUser={setUser}
+                  setIsQueryingDatabase={setIsQueryingDatabase}
+                  setSmallSpiritImage={setSmallSpiritImage}
+                />
+              ) : (
+                <CreateAccountButton
+                  setCreateAccountClicked={setCreateAccountClicked}
+                />
+              )}
+              {<ResetButton user={user} />}
+            </>
+          )}
         </div>
       )}
     </>
