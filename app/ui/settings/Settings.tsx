@@ -71,7 +71,7 @@ export default function Settings() {
                   setCreateAccountClicked={setCreateAccountClicked}
                 />
               )}
-              {<ChangeRegionButton user={user} />}
+              {<ChangeRegionButton user={user} setUser={setUser} />}
               {<ResetButton user={user} />}
             </>
           )}

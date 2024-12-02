@@ -6,6 +6,7 @@ export type ResetButtonProps = {
 
 export type ChangeRegionButtonProps = {
   user: User;
+  setUser: (user: User) => void;
 };
 
 export type SyncButtonProps = {
