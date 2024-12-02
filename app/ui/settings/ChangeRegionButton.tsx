@@ -27,7 +27,7 @@ export default function ChangeRegionButton({
   return (
     <>
       {showRegions ? (
-        <div className="flex h-16 w-1/5 items-center justify-center gap-8 rounded-full bg-accent">
+        <div className="flex h-20 w-1/5 items-center justify-center gap-8 rounded-full bg-accent">
           <button
             className={
               region === "MSEA"
