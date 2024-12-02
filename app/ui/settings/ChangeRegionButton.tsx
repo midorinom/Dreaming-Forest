@@ -16,8 +16,6 @@ export default function ChangeRegionButton({
 
       const newUser: User = JSON.parse(JSON.stringify(user));
       newUser.region = selectedRegion;
-
-      localStorage.setItem("user", JSON.stringify(newUser));
       setUser(newUser);
     }
 
