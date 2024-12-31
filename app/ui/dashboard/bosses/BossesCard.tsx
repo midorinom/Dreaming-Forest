@@ -11,7 +11,7 @@ export default function BossesCard({
   setBosses,
   resetDate,
 }: BossesCardProps) {
-  const [selected, setSelected] = useState<boolean>(boss.done ? true : false);
+  const [selected, setSelected] = useState<boolean>(false);
 
   useEffect(() => {
     if (boss.done) {
@@ -33,6 +33,8 @@ export default function BossesCard({
         setSelected(false);
         setBosses(newBosses);
       }
+    } else {
+      setSelected(false);
     }
   }, [boss]);
 
