@@ -33,6 +33,8 @@ export default function BossesCard({
         setSelected(false);
         setBosses(newBosses);
       }
+    } else {
+      setSelected(false);
     }
   }, [boss]);
 
