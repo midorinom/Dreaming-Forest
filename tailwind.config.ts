@@ -18,17 +18,6 @@ const config: Config = {
   daisyui: {
     themes: [
       {
-        elodin: {
-          primary: "#BBDB9B",
-          secondary: "#B4E9D6",
-          accent: "#D1C1D7",
-          neutral: "#9DB4AB",
-          "base-100": "#ABC4A1",
-          warning: "#FFDD89",
-          error: "#FF6F70",
-        },
-      },
-      {
         dreamy: {
           primary: "#FFD9F0",
           secondary: "#FFC8C8",
@@ -37,6 +26,17 @@ const config: Config = {
           "base-100": "#FFA6C4",
           info: "#92808F",
           success: "#BBDB9B",
+          warning: "#FFDD89",
+          error: "#FF6F70",
+        },
+      },
+      {
+        elodin: {
+          primary: "#BBDB9B",
+          secondary: "#B4E9D6",
+          accent: "#D1C1D7",
+          neutral: "#9DB4AB",
+          "base-100": "#ABC4A1",
           warning: "#FFDD89",
           error: "#FF6F70",
         },

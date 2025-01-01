@@ -23,7 +23,7 @@ import {
 import Login from "./login/Login";
 import RegionAndCharacter from "./region-and-character/RegionAndCharacter";
 import CreateAccount from "./create-account/CreateAccount";
-import ElodinSkeleton from "../general/ElodinSkeleton";
+import ElodinSkeleton from "@/app/ui/general/ElodinSkeleton";
 
 export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
