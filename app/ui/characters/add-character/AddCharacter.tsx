@@ -42,6 +42,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     useState<boolean>(false);
   const [displayErrorMessage, setDisplayErrorMessage] =
     useState<boolean>(false);
+  const [submitClicked, setSubmitClicked] = useState<boolean>(false);
 
   useEffect(() => {
     if (ign || level || maplestoryClass) {
@@ -74,6 +75,12 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
       }
     }
   }, [character.ign, character.level, character.maplestoryClass]);
+
+  useEffect(() => {
+    return () => {
+      setSubmitClicked(false);
+    };
+  }, [submitClicked]);
 
   async function handleSubmit() {
     // Get local user
@@ -111,6 +118,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     newUser.characters.push(newCharacter);
     setCharacters(JSON.parse(JSON.stringify(newUser.characters)));
 
+    setSubmitClicked(true);
     setIsUploadingToDatabase(false);
     setDisplaySuccessMessage(true);
     setTimeout(() => setDisplaySuccessMessage(false), 5000);
@@ -168,20 +176,17 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
             <div className="collapse grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
               <ImageField
                 setUploadedFile={setUploadedFile}
-                displaySuccessMessage={displaySuccessMessage}
+                submitClicked={submitClicked}
               />
-              <IgnField
-                setIgn={setIgn}
-                displaySuccessMessage={displaySuccessMessage}
-              />
+              <IgnField setIgn={setIgn} submitClicked={submitClicked} />
               <LevelField
                 level={level}
                 setLevel={setLevel}
-                displaySuccessMessage={displaySuccessMessage}
+                submitClicked={submitClicked}
               />
               <ClassField
                 setMaplestoryClass={setMaplestoryClass}
-                displaySuccessMessage={displaySuccessMessage}
+                submitClicked={submitClicked}
               />
             </div>
             <button
