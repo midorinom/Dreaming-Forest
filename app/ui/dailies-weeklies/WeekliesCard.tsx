@@ -52,6 +52,7 @@ export default function WeekliesCard({
             type="checkbox"
             className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${checked ? "hover:border-accent" : "hover:border-info"}`}
             checked={checked}
+            readOnly={true}
           />
         ) : (
           <div className="w-fit-content label-text text-lg">{`${totalWeekliesDone} / ${weeklies.length}`}</div>
