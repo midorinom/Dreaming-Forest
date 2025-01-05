@@ -32,7 +32,7 @@ export default function RearrangeCharacters({
   }, [characters, currentPagePagination]);
 
   return (
-    <div className={"grid grid-cols-5 items-center justify-items-center"}>
+    <div className={"grid grid-cols-5 items-center justify-items-center p-4"}>
       {characterCards.length > 0 &&
         characterCards.map((charactersCard) => charactersCard)}
     </div>
