@@ -5,13 +5,13 @@ import type { LevelFieldProps } from "@/app/lib/definitions/characters-definitio
 export default function LevelField({
   level,
   setLevel,
-  displaySuccessMessage,
+  submitClicked,
 }: LevelFieldProps) {
   const textInputRef = useRef<HTMLInputElement | null>(null);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    if (displaySuccessMessage) {
+    if (submitClicked) {
       if (textInputRef.current) {
         textInputRef.current.value = "";
       }
@@ -20,7 +20,7 @@ export default function LevelField({
       }
       setLevel(0);
     }
-  }, [displaySuccessMessage]);
+  }, [submitClicked]);
 
   function handleTextChange(e: ChangeEvent<HTMLInputElement>) {
     const levelInput = parseInt(e.target.value);

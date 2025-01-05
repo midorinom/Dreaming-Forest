@@ -59,7 +59,7 @@ export type AddCharactersProps = {
 
 export type ImageFieldProps = {
   setUploadedFile: (image: File | null) => void;
-  displaySuccessMessage?: boolean;
+  submitClicked?: boolean;
   isPrimaryBackground?: boolean;
   image?: string;
 };
@@ -67,21 +67,21 @@ export type ImageFieldProps = {
 export type IgnFieldProps = {
   ign?: string;
   setIgn: (ign: string) => void;
-  displaySuccessMessage?: boolean;
+  submitClicked?: boolean;
   isPrimaryBackground?: boolean;
 };
 
 export type LevelFieldProps = {
   level: number;
   setLevel: (level: number) => void;
-  displaySuccessMessage?: boolean;
+  submitClicked?: boolean;
   isPrimaryBackground?: boolean;
 };
 
 export type ClassFieldProps = {
   maplestoryClass?: string;
   setMaplestoryClass: (maplestoryClass: string) => void;
-  displaySuccessMessage?: boolean;
+  submitClicked?: boolean;
   isTopCard?: boolean;
   isPrimaryBackground?: boolean;
 };

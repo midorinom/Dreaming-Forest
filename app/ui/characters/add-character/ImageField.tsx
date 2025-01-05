@@ -5,16 +5,16 @@ import type { ImageFieldProps } from "@/app/lib/definitions/characters-definitio
 
 export default function ImageField({
   setUploadedFile,
-  displaySuccessMessage,
+  submitClicked,
 }: ImageFieldProps) {
   const [fileURL, setFileURL] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    if (displaySuccessMessage) {
+    if (submitClicked) {
       setFileURL("");
     }
-  }, [displaySuccessMessage]);
+  }, [submitClicked]);
 
   function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
     const MAX_FILE_SIZE = 1024 * 10; // 10KB

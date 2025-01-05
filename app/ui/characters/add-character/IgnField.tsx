@@ -2,21 +2,18 @@
 import { useState, useRef, useEffect, ChangeEvent } from "react";
 import type { IgnFieldProps } from "@/app/lib/definitions/characters-definitions";
 
-export default function IgnField({
-  setIgn,
-  displaySuccessMessage,
-}: IgnFieldProps) {
+export default function IgnField({ setIgn, submitClicked }: IgnFieldProps) {
   const [isInvalid, setIsInvalid] = useState<boolean>(false);
   const ignRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (displaySuccessMessage) {
+    if (submitClicked) {
       if (ignRef.current) {
         ignRef.current.value = "";
       }
       setIgn("");
     }
-  }, [displaySuccessMessage]);
+  }, [submitClicked]);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const ignInput = e.target.value;

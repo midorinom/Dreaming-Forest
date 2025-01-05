@@ -6,7 +6,7 @@ import type { ClassFieldProps } from "@/app/lib/definitions/characters-definitio
 
 const ClassSelect = ({
   setMaplestoryClass,
-  displaySuccessMessage,
+  submitClicked,
 }: ClassFieldProps) => {
   const charactersCtx = useCharacters();
   const [classInput, setClassInput] = useState<string>("");
@@ -64,10 +64,10 @@ const ClassSelect = ({
   }, [classes, classInput]);
 
   useEffect(() => {
-    if (displaySuccessMessage) {
+    if (submitClicked) {
       setClassInput("");
     }
-  }, [displaySuccessMessage]);
+  }, [submitClicked]);
 
   return (
     <AutoComplete
