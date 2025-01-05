@@ -26,6 +26,10 @@ export default function Dailies({ characters }: DailiesProps) {
       );
 
       for (let i = firstIndex; i < lastIndex; i++) {
+        if (filteredCharacters[i].dailies.length === 0) {
+          continue;
+        }
+
         dailiesCardsArray.push(
           <DailiesCard
             key={filteredCharacters[i].characterId}
