@@ -25,3 +25,8 @@ export type WeekliesCardProps = {
   weeklies: Weekly[];
   filter: string;
 };
+
+export type FilterProps = {
+  uniqueDescriptions: string[];
+  setFilter: (filter: string) => void;
+};
