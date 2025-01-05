@@ -27,7 +27,7 @@ export default function DailiesCard({
           className="absolute h-full w-auto"
         />
       </div>
-      <div className="w-1/3">
+      <div className="mt-2 w-1/3">
         {filter ? (
           <input
             type="checkbox"
