@@ -8,7 +8,7 @@ export default function DailiesCard({
   dailies,
   filter,
 }: DailiesCardProps) {
-  const [done, setDone] = useState<boolean>(true);
+  const [done, setDone] = useState<boolean>(dailies[0].done ? true : false);
 
   return (
     <div className="flex h-full w-4/5 items-center justify-center">
