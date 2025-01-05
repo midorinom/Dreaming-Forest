@@ -100,7 +100,7 @@ export default function Dailies({ charactersProp }: DailiesProps) {
             </span>
           </div>
         </div>
-        {uniqueDailies && (
+        {uniqueDailies.length > 0 && (
           <DailiesFilter
             uniqueDescriptions={uniqueDailies}
             setFilter={setFilter}

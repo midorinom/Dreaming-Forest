@@ -100,7 +100,7 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
             </span>
           </div>
         </div>
-        {uniqueWeeklies && (
+        {uniqueWeeklies.length > 0 && (
           <WeekliesFilter
             uniqueDescriptions={uniqueWeeklies}
             setFilter={setFilter}
