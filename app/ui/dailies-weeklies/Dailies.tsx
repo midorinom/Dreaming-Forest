@@ -68,6 +68,8 @@ export default function Dailies({ charactersProp }: DailiesProps) {
       }
 
       setDailiesCards(dailiesCardsArray);
+    } else {
+      setDailiesCards([]);
     }
   }, [characters, currentPagePagination]);
 
