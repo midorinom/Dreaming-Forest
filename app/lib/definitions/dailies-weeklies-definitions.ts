@@ -10,6 +10,10 @@ export type DailiesProps = {
   characters: Character[];
 };
 
+export type DailiesCardProps = {
+  character: Character;
+};
+
 export type WeekliesProps = {
   characters: Character[];
 };

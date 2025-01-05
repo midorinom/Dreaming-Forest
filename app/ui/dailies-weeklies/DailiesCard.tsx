@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
-export default function DailiesCard() {
+export default function DailiesCard({ character }: DailiesCardProps) {
   const [done, setDone] = useState<boolean>(true);
 
   return (
@@ -14,7 +15,7 @@ export default function DailiesCard() {
         className="flex h-full w-full items-center justify-center"
       >
         <Image
-          src={"/general/naked_char.png"}
+          src={character.image ? character.image : "/general/naked_char.png"}
           height={0}
           width={0}
           alt="Character Image"
