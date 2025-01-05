@@ -62,6 +62,7 @@ export default function Dailies({ charactersProp }: DailiesProps) {
             key={characters[i].characterId}
             character={characters[i]}
             dailies={characters[i].dailies}
+            filter={filter}
           />,
         );
       }

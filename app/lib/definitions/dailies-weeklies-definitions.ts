@@ -13,6 +13,7 @@ export type DailiesProps = {
 export type DailiesCardProps = {
   character: Character;
   dailies: Daily[];
+  filter: string;
 };
 
 export type WeekliesProps = {

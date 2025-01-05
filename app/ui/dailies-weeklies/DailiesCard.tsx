@@ -3,7 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
-export default function DailiesCard({ character, dailies }: DailiesCardProps) {
+export default function DailiesCard({
+  character,
+  dailies,
+  filter,
+}: DailiesCardProps) {
   const [done, setDone] = useState<boolean>(true);
 
   return (
