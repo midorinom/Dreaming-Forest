@@ -1,4 +1,4 @@
-import { Character, Daily } from "./general-definitions";
+import { Character, Daily, Weekly } from "./general-definitions";
 
 export type PaginationProps = {
   currentPagePagination: number;
@@ -18,4 +18,10 @@ export type DailiesCardProps = {
 
 export type WeekliesProps = {
   charactersProp: Character[];
+};
+
+export type WeekliesCardProps = {
+  character: Character;
+  weeklies: Weekly[];
+  filter: string;
 };
