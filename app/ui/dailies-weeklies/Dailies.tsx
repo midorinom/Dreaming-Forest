@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, ReactElement } from "react";
 import { DailiesProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
-import { Character } from "@/app/lib/definitions/general-definitions";
+import { Character, Daily } from "@/app/lib/definitions/general-definitions";
 import Pagination from "./Pagination";
 import DailiesCard from "./DailiesCard";
 
@@ -13,7 +13,33 @@ export default function Dailies({ charactersProp }: DailiesProps) {
   const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
 
   useEffect(() => {
-    // Change Characters
+    if (!filter) {
+      setCharacters(charactersProp);
+    } else {
+      const newCharacters: Character[] = JSON.parse(
+        JSON.stringify(
+          charactersProp.filter((character) => {
+            return character.dailies.find(
+              (daily) => daily.description === filter,
+            );
+          }),
+        ),
+      );
+
+      newCharacters.forEach((character) => {
+        const filteredDaily: Daily | undefined = character.dailies.find(
+          (daily) => daily.description === filter,
+        );
+
+        if (filteredDaily) {
+          const newDailies: Daily[] = [];
+          newDailies.push(filteredDaily);
+          character.dailies = newDailies;
+        }
+      });
+
+      setCharacters(newCharacters);
+    }
   }, [filter]);
 
   useEffect(() => {
