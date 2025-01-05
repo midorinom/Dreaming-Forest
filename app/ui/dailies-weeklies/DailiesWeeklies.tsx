@@ -12,15 +12,18 @@ export default function DailiesWeeklies() {
 
     if (localUser) {
       const parsedLocalUser: User = JSON.parse(localUser);
-
       setCharacters(parsedLocalUser.characters);
     }
   }, []);
 
   return (
     <main className="flex justify-around p-12">
-      <Dailies characters={characters} />
-      <Weeklies characters={characters} />
+      {characters.length > 0 && (
+        <>
+          <Dailies characters={characters} />
+          <Weeklies characters={characters} />
+        </>
+      )}
     </main>
   );
 }
