@@ -48,7 +48,7 @@ export default function Dailies({ characters }: DailiesProps) {
         </div>
       </div>
       <div className="absolute right-4 top-2 text-2xl text-info">filter</div>
-      <div className="flex gap-4 px-4">
+      <div className="flex gap-8 px-4">
         <div className="grid h-full w-full grid-flow-col grid-cols-2 grid-rows-5 items-center justify-items-center gap-4">
           {dailiesCards.length > 0 &&
             dailiesCards.map((dailiesCard) => dailiesCard)}
