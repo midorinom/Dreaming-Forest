@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect, ReactElement } from "react";
-import { PaginationProps } from "@/app/lib/definitions/characters-definitions";
+import { PaginationProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
 export default function Pagination({
-  currentPage,
   currentPagePagination,
   setCurrentPagePagination,
   totalPagesPagination,
@@ -53,7 +52,7 @@ export default function Pagination({
 
   return (
     <div className="my-auto flex flex-col">
-      {currentPage !== "add" && totalPagesPagination > 1 && (
+      {totalPagesPagination > 1 && (
         <>{paginationButtons.map((paginationButton) => paginationButton)}</>
       )}
     </div>
