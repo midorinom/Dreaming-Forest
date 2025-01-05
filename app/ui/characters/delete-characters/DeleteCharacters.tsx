@@ -40,6 +40,7 @@ export default function DeleteCharacters({
       {isLoading ? (
         <span className="loading loading-spinner mx-auto h-1/3 w-auto text-accent"></span>
       ) : (
+        characters.length > 0 &&
         characterCards.length > 0 &&
         characterCards.map((charactersCard) => charactersCard)
       )}

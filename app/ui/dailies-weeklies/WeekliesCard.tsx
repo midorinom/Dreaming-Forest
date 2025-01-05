@@ -1,18 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
+import { WeekliesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
-export default function DailiesCard({
+export default function WeekliesCard({
   character,
-  dailies,
+  weeklies,
   filter,
-}: DailiesCardProps) {
+}: WeekliesCardProps) {
   const [checked, setChecked] = useState<boolean>(false);
-  const [totalDailiesDone, setTotalDailiesDone] = useState<number>(0);
+  const [totalWeekliesDone, setTotalWeekliesDone] = useState<number>(0);
 
   useEffect(() => {
-    if (dailies[0].done) {
+    if (weeklies[0].done) {
       setChecked(true);
     } else {
       setChecked(false);
@@ -20,14 +20,14 @@ export default function DailiesCard({
 
     let total: number = 0;
 
-    for (const daily of dailies) {
-      if (daily.done) {
+    for (const weekly of weeklies) {
+      if (weekly.done) {
         total += 1;
       }
     }
 
-    setTotalDailiesDone(total);
-  }, [dailies]);
+    setTotalWeekliesDone(total);
+  }, [weeklies]);
 
   return (
     <div className="flex h-full w-4/5 items-center justify-center">
@@ -47,7 +47,7 @@ export default function DailiesCard({
         />
       </div>
       <div className="mt-2 w-1/3">
-        {filter || totalDailiesDone === dailies.length ? (
+        {filter || totalWeekliesDone === weeklies.length ? (
           <input
             type="checkbox"
             className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${checked ? "hover:border-accent" : "hover:border-info"}`}
@@ -55,7 +55,7 @@ export default function DailiesCard({
             readOnly={true}
           />
         ) : (
-          <div className="w-fit-content label-text text-lg">{`${totalDailiesDone} / ${dailies.length}`}</div>
+          <div className="w-fit-content label-text text-lg">{`${totalWeekliesDone} / ${weeklies.length}`}</div>
         )}
       </div>
     </div>

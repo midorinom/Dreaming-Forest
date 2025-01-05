@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect, ReactElement } from "react";
-import { PaginationProps } from "@/app/lib/definitions/characters-definitions";
+import { PaginationProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
 export default function Pagination({
-  currentPage,
   currentPagePagination,
   setCurrentPagePagination,
   totalPagesPagination,
@@ -32,11 +31,11 @@ export default function Pagination({
             />
             <label
               htmlFor={`option-${i}`}
-              className={`btn btn-info btn-md h-[10vh] outline outline-secondary ${
+              className={`btn btn-info btn-md h-[10vh] outline outline-accent ${
                 i !== 0 && "rounded-t-none"
               } ${
                 i + 1 !== totalPagesPagination && "rounded-b-none"
-              } peer-checked:border-secondary peer-checked:bg-secondary`}
+              } peer-checked:border-accent peer-checked:bg-accent`}
             ></label>
           </div>,
         );
@@ -48,14 +47,12 @@ export default function Pagination({
 
   function changePage(e: React.MouseEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
-    console.log(Number(target.value));
-
     setCurrentPagePagination(Number(target.value));
   }
 
   return (
     <div className="my-auto flex flex-col">
-      {currentPage !== "add" && totalPagesPagination > 1 && (
+      {totalPagesPagination > 1 && (
         <>{paginationButtons.map((paginationButton) => paginationButton)}</>
       )}
     </div>
