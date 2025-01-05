@@ -8,7 +8,7 @@ const WeekliesFilter = ({ uniqueDescriptions, setFilter }: FilterProps) => {
   const [weeklies, setWeeklies] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
 
-  const input_id = `dailies_filter_autocomplete`;
+  const input_id = `weeklies_filter_autocomplete`;
   const dropdown_className = {
     "dropdown w-3/5": true,
     "dropdown mr-5": true,
