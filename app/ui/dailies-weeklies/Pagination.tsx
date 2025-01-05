@@ -31,11 +31,11 @@ export default function Pagination({
             />
             <label
               htmlFor={`option-${i}`}
-              className={`btn btn-info btn-md h-[10vh] outline outline-secondary ${
+              className={`btn btn-info btn-md h-[10vh] outline outline-accent ${
                 i !== 0 && "rounded-t-none"
               } ${
                 i + 1 !== totalPagesPagination && "rounded-b-none"
-              } peer-checked:border-secondary peer-checked:bg-secondary`}
+              } peer-checked:border-accent peer-checked:bg-accent`}
             ></label>
           </div>,
         );
