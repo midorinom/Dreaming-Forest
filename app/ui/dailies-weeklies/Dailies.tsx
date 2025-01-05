@@ -4,6 +4,7 @@ import { DailiesProps } from "@/app/lib/definitions/dailies-weeklies-definitions
 import { Character, Daily } from "@/app/lib/definitions/general-definitions";
 import Pagination from "./Pagination";
 import DailiesCard from "./DailiesCard";
+import DailiesFilter from "./DailiesFilter";
 
 export default function Dailies({ charactersProp }: DailiesProps) {
   const [characters, setCharacters] = useState<Character[]>(charactersProp);
@@ -11,6 +12,19 @@ export default function Dailies({ charactersProp }: DailiesProps) {
   const [dailiesCards, setDailiesCards] = useState<ReactElement[]>([]);
   const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
   const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
+  const [uniqueDailies, setUniqueDailies] = useState<string[]>([]);
+
+  useEffect(() => {
+    const newUniqueDailies = new Set<string>();
+
+    for (const character of charactersProp) {
+      for (const daily of character.dailies) {
+        newUniqueDailies.add(daily.description);
+      }
+    }
+
+    setUniqueDailies(Array.from(newUniqueDailies));
+  }, []);
 
   useEffect(() => {
     if (!filter) {
@@ -78,14 +92,21 @@ export default function Dailies({ charactersProp }: DailiesProps) {
 
   return (
     <div className="collapse collapse-open w-[32vw] gap-2 bg-primary pb-3">
-      <div className="collapse-title mb-1 pb-0 pt-3">
-        <div className="flex gap-2">
-          <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
-            Dailies
-          </span>
+      <div className="flex items-center justify-between">
+        <div className="collapse-title mb-1 pb-0 pt-3">
+          <div className="flex gap-2">
+            <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
+              Dailies
+            </span>
+          </div>
         </div>
+        {uniqueDailies && (
+          <DailiesFilter
+            uniqueDescriptions={uniqueDailies}
+            setFilter={setFilter}
+          />
+        )}
       </div>
-      <div className="absolute right-4 top-2 text-2xl text-info">filter</div>
       <div className="flex gap-8 px-4">
         <div className="grid h-full w-full grid-flow-col grid-cols-2 grid-rows-5 items-center justify-items-center gap-4">
           {dailiesCards.length > 0 &&

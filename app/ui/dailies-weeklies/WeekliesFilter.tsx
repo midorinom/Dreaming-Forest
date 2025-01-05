@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import AutoComplete from "@/app/ui/general/AutoComplete";
 import type { FilterProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
-const Filter = ({ uniqueDescriptions, setFilter }: FilterProps) => {
+const WeekliesFilter = ({ uniqueDescriptions, setFilter }: FilterProps) => {
   const [filterInput, setFilterInput] = useState<string | "">("");
-  const [dailiesWeeklies, setDailiesWeeklies] = useState<string[]>([]);
+  const [weeklies, setWeeklies] = useState<string[]>([]);
   const [items, setItems] = useState<string[]>([]);
 
-  const input_id = "class_autocomplete";
+  const input_id = `dailies_filter_autocomplete`;
   const dropdown_className = {
     "dropdown w-3/5": true,
     "dropdown mr-5": true,
@@ -20,23 +20,23 @@ const Filter = ({ uniqueDescriptions, setFilter }: FilterProps) => {
   const li_className = "border-b border-b-base-content/10 w-full";
 
   useEffect(() => {
-    setDailiesWeeklies(uniqueDescriptions);
+    setWeeklies(uniqueDescriptions);
   }, []);
 
   useEffect(() => {
     if (!filterInput) {
-      setItems(dailiesWeeklies);
+      setItems(weeklies);
       setFilter("");
       return;
     }
 
-    const newItems = dailiesWeeklies.filter((p) =>
+    const newItems = weeklies.filter((p) =>
       p.toLowerCase().startsWith(filterInput.toLowerCase()),
     );
     setItems(newItems);
 
     setFilter(filterInput);
-  }, [dailiesWeeklies, filterInput]);
+  }, [weeklies, filterInput]);
 
   return (
     <AutoComplete
@@ -55,4 +55,4 @@ const Filter = ({ uniqueDescriptions, setFilter }: FilterProps) => {
   );
 };
 
-export default Filter;
+export default WeekliesFilter;

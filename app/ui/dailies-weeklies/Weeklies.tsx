@@ -4,6 +4,7 @@ import { WeekliesProps } from "@/app/lib/definitions/dailies-weeklies-definition
 import { Character, Weekly } from "@/app/lib/definitions/general-definitions";
 import Pagination from "./Pagination";
 import WeekliesCard from "./WeekliesCard";
+import WeekliesFilter from "./WeekliesFilter";
 
 export default function Weeklies({ charactersProp }: WeekliesProps) {
   const [characters, setCharacters] = useState<Character[]>(charactersProp);
@@ -11,6 +12,19 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
   const [weekliesCards, setWeekliesCards] = useState<ReactElement[]>([]);
   const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
   const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
+  const [uniqueWeeklies, setUniqueWeeklies] = useState<string[]>([]);
+
+  useEffect(() => {
+    const newUniqueWeeklies = new Set<string>();
+
+    for (const character of charactersProp) {
+      for (const weekly of character.weeklies) {
+        newUniqueWeeklies.add(weekly.description);
+      }
+    }
+
+    setUniqueWeeklies(Array.from(newUniqueWeeklies));
+  }, []);
 
   useEffect(() => {
     if (!filter) {
@@ -78,14 +92,21 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
 
   return (
     <div className="collapse collapse-open w-[32vw] gap-2 bg-secondary pb-3">
-      <div className="collapse-title mb-1 pb-0 pt-3">
-        <div className="flex gap-2">
-          <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
-            Weeklies
-          </span>
+      <div className="flex items-center justify-between">
+        <div className="collapse-title mb-1 pb-0 pt-3">
+          <div className="flex gap-2">
+            <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
+              Weeklies
+            </span>
+          </div>
         </div>
+        {uniqueWeeklies && (
+          <WeekliesFilter
+            uniqueDescriptions={uniqueWeeklies}
+            setFilter={setFilter}
+          />
+        )}
       </div>
-      <div className="absolute right-4 top-2 text-2xl text-info">filter</div>
       <div className="flex gap-8 px-4">
         <div className="grid h-full w-full grid-flow-col grid-cols-2 grid-rows-5 items-center justify-items-center gap-4">
           {weekliesCards.length > 0 &&
