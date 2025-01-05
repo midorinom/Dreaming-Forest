@@ -5,43 +5,44 @@ import { Character } from "@/app/lib/definitions/general-definitions";
 import Pagination from "./Pagination";
 import DailiesCard from "./DailiesCard";
 
-export default function Dailies({ characters }: DailiesProps) {
-  const [filteredCharacters, setFilteredCharacters] =
-    useState<Character[]>(characters);
+export default function Dailies({ charactersProp }: DailiesProps) {
+  const [characters, setCharacters] = useState<Character[]>(charactersProp);
+  const [filter, setFilter] = useState<string>("");
   const [dailiesCards, setDailiesCards] = useState<ReactElement[]>([]);
   const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
   const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
 
   useEffect(() => {
-    setTotalPagesPagination(Math.ceil(filteredCharacters.length / 10));
-  }, [filteredCharacters]);
+    // Change Characters
+  }, [filter]);
 
   useEffect(() => {
-    if (filteredCharacters.length > 0) {
+    setTotalPagesPagination(Math.ceil(characters.length / 10));
+  }, [characters]);
+
+  useEffect(() => {
+    if (characters.length > 0) {
       const dailiesCardsArray: ReactElement[] = [];
       const firstIndex = (currentPagePagination - 1) * 10;
-      const lastIndex = Math.min(
-        10 * currentPagePagination,
-        filteredCharacters.length,
-      );
+      const lastIndex = Math.min(10 * currentPagePagination, characters.length);
 
       for (let i = firstIndex; i < lastIndex; i++) {
-        if (filteredCharacters[i].dailies.length === 0) {
+        if (characters[i].dailies.length === 0) {
           continue;
         }
 
         dailiesCardsArray.push(
           <DailiesCard
-            key={filteredCharacters[i].characterId}
-            character={filteredCharacters[i]}
-            dailies={filteredCharacters[i].dailies}
+            key={characters[i].characterId}
+            character={characters[i]}
+            dailies={characters[i].dailies}
           />,
         );
       }
 
       setDailiesCards(dailiesCardsArray);
     }
-  }, [filteredCharacters, currentPagePagination]);
+  }, [characters, currentPagePagination]);
 
   return (
     <div className="collapse collapse-open w-[32vw] gap-2 bg-primary pb-3">

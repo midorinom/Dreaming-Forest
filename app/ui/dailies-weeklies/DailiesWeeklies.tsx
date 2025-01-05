@@ -20,8 +20,8 @@ export default function DailiesWeeklies() {
     <main className="flex justify-around p-12">
       {characters.length > 0 && (
         <>
-          <Dailies characters={characters} />
-          <Weeklies characters={characters} />
+          <Dailies charactersProp={characters} />
+          <Weeklies charactersProp={characters} />
         </>
       )}
     </main>

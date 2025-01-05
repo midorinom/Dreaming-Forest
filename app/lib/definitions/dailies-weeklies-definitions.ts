@@ -7,7 +7,7 @@ export type PaginationProps = {
 };
 
 export type DailiesProps = {
-  characters: Character[];
+  charactersProp: Character[];
 };
 
 export type DailiesCardProps = {
@@ -16,5 +16,5 @@ export type DailiesCardProps = {
 };
 
 export type WeekliesProps = {
-  characters: Character[];
+  charactersProp: Character[];
 };
