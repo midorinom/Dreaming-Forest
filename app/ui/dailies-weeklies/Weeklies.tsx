@@ -53,7 +53,10 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
       const lastIndex = Math.min(10 * currentPagePagination, characters.length);
 
       for (let i = firstIndex; i < lastIndex; i++) {
-        if (characters[i].weeklies.length === 0) {
+        if (
+          characters[i].weeklies.length === 0 ||
+          !characters[i].tracking.weeklies
+        ) {
           continue;
         }
 
