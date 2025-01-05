@@ -9,7 +9,7 @@ export default function ResetButton({ user }: ResetButtonProps) {
   function handleClick() {
     const isLoggedIn: boolean = user.username ? true : false;
     let confirmMessage: string = isLoggedIn
-      ? "Are you sure you want to log out?"
+      ? `You are currently logged in as ${user.username}. Are you sure you want to log out?`
       : "Are you sure you want to wipe all your data on this browser?";
 
     const confirm = window.confirm(confirmMessage);
