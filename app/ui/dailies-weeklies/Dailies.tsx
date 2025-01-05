@@ -30,6 +30,7 @@ export default function Dailies({ characters }: DailiesProps) {
           <DailiesCard
             key={filteredCharacters[i].characterId}
             character={filteredCharacters[i]}
+            dailies={filteredCharacters[i].dailies}
           />,
         );
       }

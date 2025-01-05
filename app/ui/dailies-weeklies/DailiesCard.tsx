@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
-export default function DailiesCard({ character }: DailiesCardProps) {
+export default function DailiesCard({ character, dailies }: DailiesCardProps) {
   const [done, setDone] = useState<boolean>(true);
 
   return (
@@ -24,7 +24,7 @@ export default function DailiesCard({ character }: DailiesCardProps) {
         />
       </div>
       <div className="w-1/3">
-        <div className="label-text w-1/3 text-lg">1/5</div>
+        <div className="w-fit-content label-text text-lg">{`1 / ${dailies.length}`}</div>
         {/* <input
           type="checkbox"
           className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${done ? "hover:border-accent" : "hover:border-info"}`}
