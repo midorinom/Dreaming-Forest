@@ -18,30 +18,43 @@ export default function Pagination({
 
       for (let i = 0; i < totalPagesPagination; i++) {
         paginationButtonsArray.push(
-          <input
-            key={i}
-            value={i + 1}
-            className={`btn btn-info ${i === 0 ? "" : "join-item"} btn-lg h-[10vh] outline outline-accent`}
-            type="radio"
-            name="options"
-            aria-label=""
-            checked={currentPagePagination === i + 1 ? true : false}
-            onClick={changePage}
-            readOnly={true}
-          />,
+          <div key={i}>
+            <input
+              value={i + 1}
+              id={`option-${i}`}
+              type="radio"
+              name="options"
+              aria-label=""
+              className="peer hidden"
+              checked={currentPagePagination === i + 1 ? true : false}
+              onClick={changePage}
+              readOnly={true}
+            />
+            <label
+              htmlFor={`option-${i}`}
+              className={`btn btn-info btn-lg h-[10vh] outline outline-[3.5px] outline-accent ${
+                i !== 0 && "rounded-t-none"
+              } ${
+                i + 1 !== totalPagesPagination && "rounded-b-none"
+              } peer-checked:border-accent peer-checked:bg-accent`}
+            ></label>
+          </div>,
         );
       }
+
       setPaginationButtons(paginationButtonsArray);
     }
   }, [totalPagesPagination, currentPagePagination]);
 
   function changePage(e: React.MouseEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
+    console.log(Number(target.value));
+
     setCurrentPagePagination(Number(target.value));
   }
 
   return (
-    <div className="join join-vertical my-auto flex -translate-y-[3.5vh] flex-col">
+    <div className="my-auto flex -translate-y-[3.5vh] flex-col">
       {currentPage !== "add" && totalPagesPagination > 1 && (
         <>{paginationButtons.map((paginationButton) => paginationButton)}</>
       )}
