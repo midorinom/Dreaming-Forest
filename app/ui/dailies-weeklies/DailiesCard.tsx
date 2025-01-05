@@ -28,12 +28,15 @@ export default function DailiesCard({
         />
       </div>
       <div className="w-1/3">
-        <div className="w-fit-content label-text text-lg">{`1 / ${dailies.length}`}</div>
-        {/* <input
-          type="checkbox"
-          className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${done ? "hover:border-accent" : "hover:border-info"}`}
-          checked={done}
-        /> */}
+        {filter ? (
+          <input
+            type="checkbox"
+            className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${done ? "hover:border-accent" : "hover:border-info"}`}
+            checked={done}
+          />
+        ) : (
+          <div className="w-fit-content label-text text-lg">{`1 / ${dailies.length}`}</div>
+        )}
       </div>
     </div>
   );
