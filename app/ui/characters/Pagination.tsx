@@ -54,7 +54,7 @@ export default function Pagination({
   }
 
   return (
-    <div className="my-auto flex -translate-y-[3.5vh] flex-col">
+    <div className="my-auto flex flex-col">
       {currentPage !== "add" && totalPagesPagination > 1 && (
         <>{paginationButtons.map((paginationButton) => paginationButton)}</>
       )}
