@@ -8,7 +8,9 @@ export default function DailiesCard({
   dailies,
   filter,
 }: DailiesCardProps) {
-  const [done, setDone] = useState<boolean>(dailies[0].done ? true : false);
+  const [checked, setChecked] = useState<boolean>(
+    dailies[0].done ? true : false,
+  );
 
   return (
     <div className="flex h-full w-4/5 items-center justify-center">
@@ -31,8 +33,8 @@ export default function DailiesCard({
         {filter ? (
           <input
             type="checkbox"
-            className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${done ? "hover:border-accent" : "hover:border-info"}`}
-            checked={done}
+            className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${checked ? "hover:border-accent" : "hover:border-info"}`}
+            checked={checked}
           />
         ) : (
           <div className="w-fit-content label-text text-lg">{`1 / ${dailies.length}`}</div>
