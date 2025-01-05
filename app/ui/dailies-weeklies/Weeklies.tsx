@@ -1,6 +1,7 @@
 "use client";
+import { WeekliesProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
-export default function Weeklies() {
+export default function Weeklies({ characters }: WeekliesProps) {
   return (
     <div className="collapse collapse-open w-[32vw] gap-2 bg-secondary pb-3">
       <div className="collapse-title mb-1 pb-0 pt-3">

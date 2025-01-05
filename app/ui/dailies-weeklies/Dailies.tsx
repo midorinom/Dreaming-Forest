@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
+import { DailiesProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 import Pagination from "./Pagination";
 import DailiesCard from "./DailiesCard";
 
-export default function Dailies() {
+export default function Dailies({ characters }: DailiesProps) {
   const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
   const [totalPagesPagination, setTotalPagesPagination] = useState<number>(1);
 
