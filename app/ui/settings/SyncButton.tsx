@@ -9,7 +9,13 @@ export default function SyncButton({
   setSmallSpiritImage,
 }: SyncButtonProps) {
   function handleClick() {
-    syncData();
+    const confirm = window.confirm(
+      "This process may take a while, do you want to start syncing your data now?",
+    );
+
+    if (confirm) {
+      syncData();
+    }
 
     async function syncData() {
       await sync(user, setUser, setIsQueryingDatabase, setSmallSpiritImage);
