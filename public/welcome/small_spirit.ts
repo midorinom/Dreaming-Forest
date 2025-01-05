@@ -17,7 +17,7 @@ const smallSpiritImage: Dialogue = {
   select_region: "/welcome/small_spirit_smiling.png",
   add_character: "/welcome/small_spirit_smiling.png",
   create_account: "/welcome/small_spirit_happy.png",
-  uploading: "/welcome/small_spirit_neutral.png",
+  uploading: "/welcome/small_spirit_smiling.png",
   login: "/welcome/small_spirit_happy.png",
 };
 
