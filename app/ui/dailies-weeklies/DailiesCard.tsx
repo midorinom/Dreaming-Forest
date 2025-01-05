@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
@@ -8,9 +8,26 @@ export default function DailiesCard({
   dailies,
   filter,
 }: DailiesCardProps) {
-  const [checked, setChecked] = useState<boolean>(
-    dailies[0].done ? true : false,
-  );
+  const [checked, setChecked] = useState<boolean>(false);
+  const [totalDailiesDone, setTotalDailiesDone] = useState<number>(0);
+
+  useEffect(() => {
+    if (dailies[0].done) {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+
+    let total: number = 0;
+
+    for (const daily of dailies) {
+      if (daily.done) {
+        total += 1;
+      }
+    }
+
+    setTotalDailiesDone(total);
+  }, [dailies]);
 
   return (
     <div className="flex h-full w-4/5 items-center justify-center">
@@ -37,7 +54,7 @@ export default function DailiesCard({
             checked={checked}
           />
         ) : (
-          <div className="w-fit-content label-text text-lg">{`1 / ${dailies.length}`}</div>
+          <div className="w-fit-content label-text text-lg">{`${totalDailiesDone} / ${dailies.length}`}</div>
         )}
       </div>
     </div>
