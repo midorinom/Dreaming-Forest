@@ -67,13 +67,6 @@ export default function Dailies({ charactersProp }: DailiesProps) {
       const lastIndex = Math.min(10 * currentPagePagination, characters.length);
 
       for (let i = firstIndex; i < lastIndex; i++) {
-        if (
-          characters[i].dailies.length === 0 ||
-          !characters[i].tracking.dailies
-        ) {
-          continue;
-        }
-
         dailiesCardsArray.push(
           <DailiesCard
             key={characters[i].characterId}
