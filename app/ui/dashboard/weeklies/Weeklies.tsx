@@ -75,7 +75,7 @@ export default function Weeklies({
     <div
       className={`collapse w-[36vw] ${
         weeklies.length > 0 && selectedTab === "Weeklies" && "pb-3"
-      } ${(weeklies.length === 0 || selectedTab === "Weeklies") && "collapse-open"} gap-2 bg-secondary`}
+      } ${(weeklies.length === 0 || selectedTab === "Weeklies") && "collapse-open"} max-h-[50vh] gap-2 overflow-scroll bg-secondary scrollbar-hide`}
     >
       <div
         className={`${(weeklies.length === 0 || selectedTab !== "Weeklies") && "mb-1"} collapse-title pb-0 pt-3`}
