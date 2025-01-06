@@ -32,7 +32,7 @@ export default function CharacterDetails({ character }: CharacterDetailsProps) {
           </div>
           <div className="flex w-3/5 flex-col justify-center">
             <div
-              className={`text-[2.75rem] font-medium text-neutral underline-offset-[8px] ${character.position % 4 === 0 || character.position % 4 === 3 ? "underline-dreamy-base-100" : "underline-dreamy-accent"}`}
+              className={`text-[2.75rem] font-medium text-neutral underline-offset-[11px] ${character.position % 4 === 0 || character.position % 4 === 3 ? "underline-dreamy-base-100" : "underline-dreamy-accent"}`}
             >
               {character.ign}
             </div>
