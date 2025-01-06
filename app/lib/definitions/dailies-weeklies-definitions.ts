@@ -1,6 +1,7 @@
 import { Character, Daily, Weekly } from "./general-definitions";
 
 export type PaginationProps = {
+  id: "dailies" | "weeklies";
   currentPagePagination: number;
   setCurrentPagePagination: (currentPagePagination: number) => void;
   totalPagesPagination: number;

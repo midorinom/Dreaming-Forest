@@ -113,6 +113,7 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
             weekliesCards.map((weekliesCards) => weekliesCards)}
         </div>
         <Pagination
+          id="weeklies"
           currentPagePagination={currentPagePagination}
           setCurrentPagePagination={setCurrentPagePagination}
           totalPagesPagination={totalPagesPagination}

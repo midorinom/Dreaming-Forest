@@ -113,6 +113,7 @@ export default function Dailies({ charactersProp }: DailiesProps) {
             dailiesCards.map((dailiesCard) => dailiesCard)}
         </div>
         <Pagination
+          id="dailies"
           currentPagePagination={currentPagePagination}
           setCurrentPagePagination={setCurrentPagePagination}
           totalPagesPagination={totalPagesPagination}
