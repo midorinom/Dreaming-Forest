@@ -91,14 +91,12 @@ export default function Dailies({ charactersProp }: DailiesProps) {
   }, [characters, currentPagePagination]);
 
   return (
-    <div className="collapse collapse-open w-[32vw] gap-2 bg-primary pb-3">
+    <div className="collapse collapse-open w-[32vw] bg-primary pb-3">
       <div className="flex items-center justify-between">
         <div className="collapse-title mb-1 pb-0 pt-3">
-          <div className="flex gap-2">
-            <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
-              Dailies
-            </span>
-          </div>
+          <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
+            Dailies
+          </span>
         </div>
         {uniqueDailies.length > 0 && (
           <DailiesFilter
