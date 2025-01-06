@@ -41,7 +41,7 @@ export default function Dailies({
     <div
       className={`collapse w-[36vw] ${
         dailies.length > 0 && selectedTab === "Dailies" && "pb-3"
-      } ${(dailies.length === 0 || selectedTab === "Dailies") && "collapse-open"} gap-2 bg-primary`}
+      } ${(dailies.length === 0 || selectedTab === "Dailies") && "collapse-open"} max-h-[50vh] gap-2 overflow-scroll bg-primary scrollbar-hide`}
     >
       <div
         className={`${(dailies.length === 0 || selectedTab !== "Dailies") && "mb-1"} collapse-title pb-0 pt-3`}

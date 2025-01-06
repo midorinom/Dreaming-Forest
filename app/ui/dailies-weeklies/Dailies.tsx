@@ -67,13 +67,6 @@ export default function Dailies({ charactersProp }: DailiesProps) {
       const lastIndex = Math.min(10 * currentPagePagination, characters.length);
 
       for (let i = firstIndex; i < lastIndex; i++) {
-        if (
-          characters[i].dailies.length === 0 ||
-          !characters[i].tracking.dailies
-        ) {
-          continue;
-        }
-
         dailiesCardsArray.push(
           <DailiesCard
             key={characters[i].characterId}
@@ -91,14 +84,12 @@ export default function Dailies({ charactersProp }: DailiesProps) {
   }, [characters, currentPagePagination]);
 
   return (
-    <div className="collapse collapse-open w-[32vw] gap-2 bg-primary pb-3">
+    <div className="collapse collapse-open w-[32vw] bg-primary pb-3">
       <div className="flex items-center justify-between">
         <div className="collapse-title mb-1 pb-0 pt-3">
-          <div className="flex gap-2">
-            <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
-              Dailies
-            </span>
-          </div>
+          <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
+            Dailies
+          </span>
         </div>
         {uniqueDailies.length > 0 && (
           <DailiesFilter
@@ -113,6 +104,7 @@ export default function Dailies({ charactersProp }: DailiesProps) {
             dailiesCards.map((dailiesCard) => dailiesCard)}
         </div>
         <Pagination
+          id="dailies"
           currentPagePagination={currentPagePagination}
           setCurrentPagePagination={setCurrentPagePagination}
           totalPagesPagination={totalPagesPagination}

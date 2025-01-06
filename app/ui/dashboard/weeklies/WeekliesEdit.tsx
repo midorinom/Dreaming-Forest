@@ -94,7 +94,7 @@ export default function WeekliesEdit({
   }
 
   return (
-    <div className="collapse collapse-open flex w-[36vw] flex-col gap-2 bg-secondary pb-3">
+    <div className="collapse collapse-open flex max-h-[50vh] w-[36vw] flex-col gap-2 overflow-scroll bg-secondary pb-3 scrollbar-hide">
       <div className="collapse-title pb-0 pl-2 pr-5 pt-3">
         <div className="flex content-center justify-between">
           <Image

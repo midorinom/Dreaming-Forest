@@ -3,6 +3,7 @@ import { useState, useEffect, ReactElement } from "react";
 import { PaginationProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
 export default function Pagination({
+  id,
   currentPagePagination,
   setCurrentPagePagination,
   totalPagesPagination,
@@ -20,7 +21,7 @@ export default function Pagination({
           <div key={i}>
             <input
               value={i + 1}
-              id={`option-${i}`}
+              id={`${id}-option-${i}`}
               type="radio"
               name="options"
               aria-label=""
@@ -30,7 +31,7 @@ export default function Pagination({
               readOnly={true}
             />
             <label
-              htmlFor={`option-${i}`}
+              htmlFor={`${id}-option-${i}`}
               className={`btn btn-info btn-md h-[10vh] outline outline-accent ${
                 i !== 0 && "rounded-t-none"
               } ${
