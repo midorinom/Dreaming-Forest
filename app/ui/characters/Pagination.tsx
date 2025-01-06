@@ -48,7 +48,6 @@ export default function Pagination({
 
   function changePage(e: React.MouseEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
-    console.log(Number(target.value));
 
     setCurrentPagePagination(Number(target.value));
   }
