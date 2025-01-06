@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 
@@ -10,6 +11,8 @@ export default function DailiesCard({
 }: DailiesCardProps) {
   const [checked, setChecked] = useState<boolean>(false);
   const [totalDailiesDone, setTotalDailiesDone] = useState<number>(0);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     if (dailies[0].done) {
@@ -29,6 +32,13 @@ export default function DailiesCard({
     setTotalDailiesDone(total);
   }, [dailies]);
 
+  function handleRedirect() {
+    const params = new URLSearchParams(searchParams);
+    params.set("id", character.characterId.toString());
+
+    router.replace(`/?${params.toString()}`);
+  }
+
   return (
     <div className="flex h-full w-4/5 items-center justify-center">
       <div
@@ -43,7 +53,8 @@ export default function DailiesCard({
           width={0}
           alt="Character Image"
           sizes="100vw"
-          className="absolute h-full w-auto"
+          className="absolute h-full w-auto hover:cursor-pointer"
+          onClick={handleRedirect}
         />
       </div>
       <div className="mt-2 w-1/3">
