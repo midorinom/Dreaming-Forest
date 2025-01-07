@@ -30,7 +30,7 @@ export default function Weeklies({
     }
 
     setUniqueWeeklies(Array.from(newUniqueWeeklies));
-  }, []);
+  }, [weekliesCharacters]);
 
   useEffect(() => {
     if (!filter) {
@@ -60,7 +60,7 @@ export default function Weeklies({
 
       setCharacters(newCharacters);
     }
-  }, [filter]);
+  }, [weekliesCharacters, filter]);
 
   useEffect(() => {
     setTotalPagesPagination(Math.ceil(characters.length / 10));
