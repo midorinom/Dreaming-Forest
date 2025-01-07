@@ -8,13 +8,15 @@ export type PaginationProps = {
 };
 
 export type DailiesProps = {
-  charactersProp: Character[];
+  dailiesCharacters: Character[];
+  setDailiesCharacters: (dailiesCharacters: Character[]) => void;
 };
 
 export type DailiesCardProps = {
   character: Character;
   dailies: Daily[];
   filter: string;
+  setDailiesCharacters: (dailiesCharacters: Character[]) => void;
 };
 
 export type WeekliesProps = {
