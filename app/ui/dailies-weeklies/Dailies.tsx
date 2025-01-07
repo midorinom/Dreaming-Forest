@@ -9,6 +9,7 @@ import DailiesFilter from "./DailiesFilter";
 export default function Dailies({
   dailiesCharacters,
   setDailiesCharacters,
+  region,
 }: DailiesProps) {
   const [characters, setCharacters] = useState<Character[]>(dailiesCharacters);
   const [filter, setFilter] = useState<string>("");
@@ -29,7 +30,7 @@ export default function Dailies({
     }
 
     setUniqueDailies(Array.from(newUniqueDailies));
-  }, []);
+  }, [dailiesCharacters]);
 
   useEffect(() => {
     if (!filter) {
@@ -59,7 +60,7 @@ export default function Dailies({
 
       setCharacters(newCharacters);
     }
-  }, [filter]);
+  }, [dailiesCharacters, filter]);
 
   useEffect(() => {
     setTotalPagesPagination(Math.ceil(characters.length / 10));
@@ -80,6 +81,7 @@ export default function Dailies({
             filter={filter}
             dailiesCharacters={dailiesCharacters}
             setDailiesCharacters={setDailiesCharacters}
+            region={region}
           />,
         );
       }

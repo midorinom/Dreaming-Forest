@@ -5,6 +5,7 @@ import Dailies from "./Dailies";
 import Weeklies from "./Weeklies";
 
 export default function DailiesWeeklies() {
+  const [region, setRegion] = useState<string>("");
   const [dailiesCharacters, setDailiesCharacters] = useState<Character[]>([]);
   const [weekliesCharacters, setWeekliesCharacters] = useState<Character[]>([]);
 
@@ -13,6 +14,8 @@ export default function DailiesWeeklies() {
 
     if (localUser) {
       const parsedLocalUser: User = JSON.parse(localUser);
+      setRegion(parsedLocalUser.region);
+
       const newDailiesCharacters: Character[] = [];
       const newWeekliesCharacters: Character[] = [];
 
@@ -37,12 +40,14 @@ export default function DailiesWeeklies() {
         <Dailies
           dailiesCharacters={dailiesCharacters}
           setDailiesCharacters={setDailiesCharacters}
+          region={region}
         />
       )}
       {weekliesCharacters.length > 0 && (
         <Weeklies
           weekliesCharacters={weekliesCharacters}
           setWeekliesCharacters={setWeekliesCharacters}
+          region={region}
         />
       )}
     </main>

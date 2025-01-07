@@ -10,6 +10,7 @@ export type PaginationProps = {
 export type DailiesProps = {
   dailiesCharacters: Character[];
   setDailiesCharacters: (dailiesCharacters: Character[]) => void;
+  region: string;
 };
 
 export type DailiesCardProps = {
@@ -18,11 +19,13 @@ export type DailiesCardProps = {
   filter: string;
   dailiesCharacters: Character[];
   setDailiesCharacters: (dailiesCharacters: Character[]) => void;
+  region: string;
 };
 
 export type WeekliesProps = {
   weekliesCharacters: Character[];
   setWeekliesCharacters: (weekliesCharacters: Character[]) => void;
+  region: string;
 };
 
 export type WeekliesCardProps = {
@@ -31,6 +34,7 @@ export type WeekliesCardProps = {
   filter: string;
   weekliesCharacters: Character[];
   setWeekliesCharacters: (weekliesCharacters: Character[]) => void;
+  region: string;
 };
 
 export type FilterProps = {

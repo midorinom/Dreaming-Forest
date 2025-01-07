@@ -4,6 +4,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
 import { Character, User } from "@/app/lib/definitions/general-definitions";
+import { getDateTimes } from "@/app/lib/functions/utility-functions";
+import dayjs from "dayjs";
 
 export default function DailiesCard({
   character,
@@ -11,6 +13,7 @@ export default function DailiesCard({
   filter,
   dailiesCharacters,
   setDailiesCharacters,
+  region,
 }: DailiesCardProps) {
   const [checked, setChecked] = useState<boolean>(false);
   const [totalDailiesDone, setTotalDailiesDone] = useState<number>(0);
@@ -18,21 +21,31 @@ export default function DailiesCard({
   const router = useRouter();
 
   useEffect(() => {
+    let total: number = 0;
+
+    for (const daily of dailies) {
+      if (daily.done) {
+        const dateTimes = getDateTimes(region);
+        if (!dateTimes) {
+          return;
+        }
+        const endOfDay = dateTimes.endOfDay;
+
+        // Check whether at least 1 day has passed
+        if (endOfDay.diff(dayjs(daily.done), "second") < 86400) {
+          total += 1;
+        } else {
+          toggleDone(daily.position, false);
+        }
+      }
+    }
+    setTotalDailiesDone(total);
+
     if (dailies[0].done) {
       setChecked(true);
     } else {
       setChecked(false);
     }
-
-    let total: number = 0;
-
-    for (const daily of dailies) {
-      if (daily.done) {
-        total += 1;
-      }
-    }
-
-    setTotalDailiesDone(total);
   }, [dailies]);
 
   function handleRedirect() {
@@ -47,44 +60,42 @@ export default function DailiesCard({
       return;
     }
 
+    if (checked) {
+      setChecked(false);
+      toggleDone(dailies[0].position, false);
+    } else {
+      setChecked(true);
+      toggleDone(dailies[0].position, true);
+    }
+  }
+
+  function toggleDone(dailyPosition: number, setToDone: boolean) {
     const newDailiesCharacters: Character[] = JSON.parse(
       JSON.stringify(dailiesCharacters),
     );
     const localUser = localStorage.getItem("user");
+    const doneDate = new Date();
 
-    if (checked) {
-      setChecked(false);
-
-      for (const newDailiesCharacter of newDailiesCharacters) {
-        if (newDailiesCharacter.characterId === character.characterId) {
-          newDailiesCharacter.dailies[dailies[0].position].done = null;
-        }
-      }
-
-      if (localUser) {
-        const newUser: User = JSON.parse(localUser);
-        newUser.characters[character.position].dailies[
-          dailies[0].position
-        ].done = null;
-        localStorage.setItem("user", JSON.stringify(newUser));
-      }
-    } else {
-      setChecked(true);
-      const doneDate = new Date();
-
-      for (const newDailiesCharacter of newDailiesCharacters) {
-        if (newDailiesCharacter.characterId === character.characterId) {
+    for (const newDailiesCharacter of newDailiesCharacters) {
+      if (newDailiesCharacter.characterId === character.characterId) {
+        if (setToDone) {
           newDailiesCharacter.dailies[dailies[0].position].done = doneDate;
+        } else {
+          newDailiesCharacter.dailies[dailyPosition].done = null;
         }
       }
+    }
 
-      if (localUser) {
-        const newUser: User = JSON.parse(localUser);
-        newUser.characters[character.position].dailies[
-          dailies[0].position
-        ].done = doneDate;
-        localStorage.setItem("user", JSON.stringify(newUser));
+    if (localUser) {
+      const newUser: User = JSON.parse(localUser);
+      if (setToDone) {
+        newUser.characters[character.position].dailies[dailyPosition].done =
+          doneDate;
+      } else {
+        newUser.characters[character.position].dailies[dailyPosition].done =
+          null;
       }
+      localStorage.setItem("user", JSON.stringify(newUser));
     }
 
     setDailiesCharacters(newDailiesCharacters);

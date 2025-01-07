@@ -9,6 +9,7 @@ import WeekliesFilter from "./WeekliesFilter";
 export default function Weeklies({
   weekliesCharacters,
   setWeekliesCharacters,
+  region,
 }: WeekliesProps) {
   const [characters, setCharacters] = useState<Character[]>(weekliesCharacters);
   const [filter, setFilter] = useState<string>("");
@@ -29,7 +30,7 @@ export default function Weeklies({
     }
 
     setUniqueWeeklies(Array.from(newUniqueWeeklies));
-  }, []);
+  }, [weekliesCharacters]);
 
   useEffect(() => {
     if (!filter) {
@@ -59,7 +60,7 @@ export default function Weeklies({
 
       setCharacters(newCharacters);
     }
-  }, [filter]);
+  }, [weekliesCharacters, filter]);
 
   useEffect(() => {
     setTotalPagesPagination(Math.ceil(characters.length / 10));
@@ -80,6 +81,7 @@ export default function Weeklies({
             weekliesCharacters={weekliesCharacters}
             setWeekliesCharacters={setWeekliesCharacters}
             filter={filter}
+            region={region}
           />,
         );
       }
