@@ -43,6 +43,10 @@ export default function WeekliesCard({
   }
 
   function handleCheckboxChange() {
+    if (!filter) {
+      return;
+    }
+
     const newWeekliesCharacters: Character[] = JSON.parse(
       JSON.stringify(weekliesCharacters),
     );
@@ -108,7 +112,7 @@ export default function WeekliesCard({
         {filter || totalWeekliesDone === weeklies.length ? (
           <input
             type="checkbox"
-            className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info hover:cursor-pointer ${checked ? "hover:border-accent" : "hover:border-info"}`}
+            className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${filter && "hover:cursor-pointer"} ${checked ? "hover:border-accent" : "hover:border-info"}`}
             checked={checked}
             onChange={handleCheckboxChange}
           />
