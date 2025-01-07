@@ -21,15 +21,16 @@ export default function DailiesCard({
   const router = useRouter();
 
   useEffect(() => {
-    let dateTimes = getDateTimes(region);
-    if (!dateTimes) {
-      return;
-    }
-    let endOfDay = dateTimes.endOfDay;
     let total: number = 0;
 
     for (const daily of dailies) {
       if (daily.done) {
+        const dateTimes = getDateTimes(region);
+        if (!dateTimes) {
+          return;
+        }
+        const endOfDay = dateTimes.endOfDay;
+
         // Check whether at least 1 day has passed
         if (endOfDay.diff(dayjs(daily.done), "second") < 86400) {
           total += 1;
