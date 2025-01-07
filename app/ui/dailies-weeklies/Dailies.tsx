@@ -6,8 +6,11 @@ import Pagination from "./Pagination";
 import DailiesCard from "./DailiesCard";
 import DailiesFilter from "./DailiesFilter";
 
-export default function Dailies({ charactersProp }: DailiesProps) {
-  const [characters, setCharacters] = useState<Character[]>(charactersProp);
+export default function Dailies({
+  dailiesCharacters,
+  setDailiesCharacters,
+}: DailiesProps) {
+  const [characters, setCharacters] = useState<Character[]>(dailiesCharacters);
   const [filter, setFilter] = useState<string>("");
   const [dailiesCards, setDailiesCards] = useState<ReactElement[]>([]);
   const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
@@ -17,9 +20,11 @@ export default function Dailies({ charactersProp }: DailiesProps) {
   useEffect(() => {
     const newUniqueDailies = new Set<string>();
 
-    for (const character of charactersProp) {
+    for (const character of dailiesCharacters) {
       for (const daily of character.dailies) {
-        newUniqueDailies.add(daily.description);
+        if (daily.description) {
+          newUniqueDailies.add(daily.description);
+        }
       }
     }
 
@@ -28,11 +33,11 @@ export default function Dailies({ charactersProp }: DailiesProps) {
 
   useEffect(() => {
     if (!filter) {
-      setCharacters(charactersProp);
+      setCharacters(dailiesCharacters);
     } else {
       const newCharacters: Character[] = JSON.parse(
         JSON.stringify(
-          charactersProp.filter((character) => {
+          dailiesCharacters.filter((character) => {
             return character.dailies.find(
               (daily) => daily.description === filter,
             );
@@ -73,6 +78,8 @@ export default function Dailies({ charactersProp }: DailiesProps) {
             character={characters[i]}
             dailies={characters[i].dailies}
             filter={filter}
+            dailiesCharacters={dailiesCharacters}
+            setDailiesCharacters={setDailiesCharacters}
           />,
         );
       }

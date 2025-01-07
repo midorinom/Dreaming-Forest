@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { DailiesCardProps } from "@/app/lib/definitions/dailies-weeklies-definitions";
+import { Character, User } from "@/app/lib/definitions/general-definitions";
 
 export default function DailiesCard({
   character,
   dailies,
   filter,
+  dailiesCharacters,
+  setDailiesCharacters,
 }: DailiesCardProps) {
   const [checked, setChecked] = useState<boolean>(false);
   const [totalDailiesDone, setTotalDailiesDone] = useState<number>(0);
@@ -39,6 +42,54 @@ export default function DailiesCard({
     router.replace(`/?${params.toString()}`);
   }
 
+  function handleCheckboxChange() {
+    if (!filter) {
+      return;
+    }
+
+    const newDailiesCharacters: Character[] = JSON.parse(
+      JSON.stringify(dailiesCharacters),
+    );
+    const localUser = localStorage.getItem("user");
+
+    if (checked) {
+      setChecked(false);
+
+      for (const newDailiesCharacter of newDailiesCharacters) {
+        if (newDailiesCharacter.characterId === character.characterId) {
+          newDailiesCharacter.dailies[dailies[0].position].done = null;
+        }
+      }
+
+      if (localUser) {
+        const newUser: User = JSON.parse(localUser);
+        newUser.characters[character.position].dailies[
+          dailies[0].position
+        ].done = null;
+        localStorage.setItem("user", JSON.stringify(newUser));
+      }
+    } else {
+      setChecked(true);
+      const doneDate = new Date();
+
+      for (const newDailiesCharacter of newDailiesCharacters) {
+        if (newDailiesCharacter.characterId === character.characterId) {
+          newDailiesCharacter.dailies[dailies[0].position].done = doneDate;
+        }
+      }
+
+      if (localUser) {
+        const newUser: User = JSON.parse(localUser);
+        newUser.characters[character.position].dailies[
+          dailies[0].position
+        ].done = doneDate;
+        localStorage.setItem("user", JSON.stringify(newUser));
+      }
+    }
+
+    setDailiesCharacters(newDailiesCharacters);
+  }
+
   return (
     <div className="flex h-full w-4/5 items-center justify-center">
       <div
@@ -61,9 +112,9 @@ export default function DailiesCard({
         {filter || totalDailiesDone === dailies.length ? (
           <input
             type="checkbox"
-            className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${checked ? "hover:border-accent" : "hover:border-info"}`}
+            className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${filter && "hover:cursor-pointer"} ${checked ? "hover:border-accent" : "hover:border-info"}`}
             checked={checked}
-            readOnly={true}
+            onChange={handleCheckboxChange}
           />
         ) : (
           <div className="w-fit-content label-text text-lg">{`${totalDailiesDone} / ${dailies.length}`}</div>
