@@ -90,7 +90,7 @@ export default function Bosses({
         />
       ) : (
         <div
-          className={`${bosses.length > 0 && "pb3"} collapse collapse-open w-4/5 gap-2 bg-base-100`}
+          className={`${bosses.length > 0 && "pb3"} collapse collapse-open w-4/5 gap-2 bg-base-100/85`}
         >
           <div
             className={`${

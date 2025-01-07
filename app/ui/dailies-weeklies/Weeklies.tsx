@@ -91,7 +91,7 @@ export default function Weeklies({
   }, [characters, currentPagePagination]);
 
   return (
-    <div className="collapse collapse-open w-[32vw] bg-secondary pb-3">
+    <div className="collapse collapse-open w-[32vw] bg-secondary/85 pb-3">
       <div className="flex items-center justify-between">
         <div className="collapse-title mb-1 pb-0 pt-3">
           <span className="text-4xl font-medium text-info underline-offset-8 underline-dreamy-neutral">
