@@ -11,6 +11,7 @@ export default function DailiesCard({
   filter,
   dailiesCharacters,
   setDailiesCharacters,
+  region,
 }: DailiesCardProps) {
   const [checked, setChecked] = useState<boolean>(false);
   const [totalDailiesDone, setTotalDailiesDone] = useState<number>(0);

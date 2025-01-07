@@ -9,6 +9,7 @@ import DailiesFilter from "./DailiesFilter";
 export default function Dailies({
   dailiesCharacters,
   setDailiesCharacters,
+  region,
 }: DailiesProps) {
   const [characters, setCharacters] = useState<Character[]>(dailiesCharacters);
   const [filter, setFilter] = useState<string>("");
@@ -80,6 +81,7 @@ export default function Dailies({
             filter={filter}
             dailiesCharacters={dailiesCharacters}
             setDailiesCharacters={setDailiesCharacters}
+            region={region}
           />,
         );
       }

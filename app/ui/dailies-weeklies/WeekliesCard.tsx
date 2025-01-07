@@ -11,6 +11,7 @@ export default function WeekliesCard({
   filter,
   weekliesCharacters,
   setWeekliesCharacters,
+  region,
 }: WeekliesCardProps) {
   const [checked, setChecked] = useState<boolean>(false);
   const [totalWeekliesDone, setTotalWeekliesDone] = useState<number>(0);
