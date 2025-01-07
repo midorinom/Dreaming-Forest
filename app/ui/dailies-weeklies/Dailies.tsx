@@ -76,6 +76,7 @@ export default function Dailies({
             character={characters[i]}
             dailies={characters[i].dailies}
             filter={filter}
+            dailiesCharacters={dailiesCharacters}
             setDailiesCharacters={setDailiesCharacters}
           />,
         );

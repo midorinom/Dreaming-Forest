@@ -16,6 +16,7 @@ export type DailiesCardProps = {
   character: Character;
   dailies: Daily[];
   filter: string;
+  dailiesCharacters: Character[];
   setDailiesCharacters: (dailiesCharacters: Character[]) => void;
 };
 
