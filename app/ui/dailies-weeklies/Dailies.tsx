@@ -30,7 +30,7 @@ export default function Dailies({
     }
 
     setUniqueDailies(Array.from(newUniqueDailies));
-  }, []);
+  }, [dailiesCharacters]);
 
   useEffect(() => {
     if (!filter) {
@@ -60,7 +60,7 @@ export default function Dailies({
 
       setCharacters(newCharacters);
     }
-  }, [filter]);
+  }, [dailiesCharacters, filter]);
 
   useEffect(() => {
     setTotalPagesPagination(Math.ceil(characters.length / 10));
