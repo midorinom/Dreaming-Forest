@@ -22,7 +22,9 @@ export default function Weeklies({
 
     for (const character of weekliesCharacters) {
       for (const weekly of character.weeklies) {
-        newUniqueWeeklies.add(weekly.description);
+        if (weekly.description) {
+          newUniqueWeeklies.add(weekly.description);
+        }
       }
     }
 

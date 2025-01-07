@@ -22,7 +22,9 @@ export default function Dailies({
 
     for (const character of dailiesCharacters) {
       for (const daily of character.dailies) {
-        newUniqueDailies.add(daily.description);
+        if (daily.description) {
+          newUniqueDailies.add(daily.description);
+        }
       }
     }
 
