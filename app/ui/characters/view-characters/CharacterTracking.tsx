@@ -30,6 +30,7 @@ export default function CharacterTracking({
         <div className="form-control">
           <label className="label flex cursor-pointer gap-3">
             <input
+              id={`${character.characterId}_dailies`}
               type="checkbox"
               className={`checkbox-accent checkbox checkbox-lg border-info ${trackingProp.dailies ? "hover:border-accent" : "hover:border-neutral"}`}
               checked={trackingProp.dailies}
@@ -43,6 +44,7 @@ export default function CharacterTracking({
         <div className="form-control">
           <label className="label flex cursor-pointer gap-3">
             <input
+              id={`${character.characterId}_weeklies`}
               type="checkbox"
               className={`checkbox-accent checkbox checkbox-lg border-info ${trackingProp.weeklies ? "hover:border-accent" : "hover:border-neutral"}`}
               checked={trackingProp.weeklies}
@@ -58,6 +60,7 @@ export default function CharacterTracking({
         <div className="form-control">
           <label className="label flex cursor-pointer gap-3">
             <input
+              id={`${character.characterId}_bosses`}
               type="checkbox"
               className={`checkbox-accent checkbox checkbox-lg border-info ${trackingProp.bosses ? "hover:border-accent" : "hover:border-neutral"}`}
               checked={trackingProp.bosses}
@@ -71,6 +74,7 @@ export default function CharacterTracking({
         <div className="form-control">
           <label className="label flex cursor-pointer gap-3">
             <input
+              id={`${character.characterId}_progression`}
               type="checkbox"
               className={`checkbox-accent checkbox checkbox-lg border-info ${trackingProp.progression ? "hover:border-accent" : "hover:border-neutral"}`}
               checked={trackingProp.progression}
