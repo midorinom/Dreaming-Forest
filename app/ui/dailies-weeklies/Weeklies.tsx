@@ -6,8 +6,11 @@ import Pagination from "./Pagination";
 import WeekliesCard from "./WeekliesCard";
 import WeekliesFilter from "./WeekliesFilter";
 
-export default function Weeklies({ charactersProp }: WeekliesProps) {
-  const [characters, setCharacters] = useState<Character[]>(charactersProp);
+export default function Weeklies({
+  weekliesCharacters,
+  setWeekliesCharacters,
+}: WeekliesProps) {
+  const [characters, setCharacters] = useState<Character[]>(weekliesCharacters);
   const [filter, setFilter] = useState<string>("");
   const [weekliesCards, setWeekliesCards] = useState<ReactElement[]>([]);
   const [currentPagePagination, setCurrentPagePagination] = useState<number>(1);
@@ -17,7 +20,7 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
   useEffect(() => {
     const newUniqueWeeklies = new Set<string>();
 
-    for (const character of charactersProp) {
+    for (const character of weekliesCharacters) {
       for (const weekly of character.weeklies) {
         newUniqueWeeklies.add(weekly.description);
       }
@@ -28,11 +31,11 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
 
   useEffect(() => {
     if (!filter) {
-      setCharacters(charactersProp);
+      setCharacters(weekliesCharacters);
     } else {
       const newCharacters: Character[] = JSON.parse(
         JSON.stringify(
-          charactersProp.filter((character) => {
+          weekliesCharacters.filter((character) => {
             return character.weeklies.find(
               (weekly) => weekly.description === filter,
             );
@@ -72,6 +75,8 @@ export default function Weeklies({ charactersProp }: WeekliesProps) {
             key={characters[i].characterId}
             character={characters[i]}
             weeklies={characters[i].weeklies}
+            weekliesCharacters={weekliesCharacters}
+            setWeekliesCharacters={setWeekliesCharacters}
             filter={filter}
           />,
         );

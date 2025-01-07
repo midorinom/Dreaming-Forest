@@ -40,7 +40,10 @@ export default function DailiesWeeklies() {
         />
       )}
       {weekliesCharacters.length > 0 && (
-        <Weeklies charactersProp={weekliesCharacters} />
+        <Weeklies
+          weekliesCharacters={weekliesCharacters}
+          setWeekliesCharacters={setWeekliesCharacters}
+        />
       )}
     </main>
   );

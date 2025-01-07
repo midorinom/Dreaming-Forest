@@ -21,13 +21,16 @@ export type DailiesCardProps = {
 };
 
 export type WeekliesProps = {
-  charactersProp: Character[];
+  weekliesCharacters: Character[];
+  setWeekliesCharacters: (weekliesCharacters: Character[]) => void;
 };
 
 export type WeekliesCardProps = {
   character: Character;
   weeklies: Weekly[];
   filter: string;
+  weekliesCharacters: Character[];
+  setWeekliesCharacters: (weekliesCharacters: Character[]) => void;
 };
 
 export type FilterProps = {
