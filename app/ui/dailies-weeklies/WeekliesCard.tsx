@@ -110,7 +110,6 @@ export default function WeekliesCard({
             type="checkbox"
             className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info hover:cursor-pointer ${checked ? "hover:border-accent" : "hover:border-info"}`}
             checked={checked}
-            readOnly={true}
             onChange={handleCheckboxChange}
           />
         ) : (
