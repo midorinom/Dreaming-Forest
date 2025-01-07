@@ -81,7 +81,7 @@ const Autocomplete = (props: AutoCompleteProps) => {
             width={0}
             alt="Clear Icon"
             sizes="100vw"
-            className="absolute right-0 h-1/2 w-auto hover:cursor-pointer"
+            className="absolute right-0.5 h-1/2 w-auto hover:cursor-pointer"
             onClick={handleClear}
           />
         )}
