@@ -111,6 +111,7 @@ export default function WeekliesCard({
       <div className="mt-2 w-1/3">
         {filter || totalWeekliesDone === weeklies.length ? (
           <input
+            id={`${weeklies[0].weeklyId}`}
             type="checkbox"
             className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${filter && "hover:cursor-pointer"} ${checked ? "hover:border-accent" : "hover:border-info"}`}
             checked={checked}

@@ -111,6 +111,7 @@ export default function DailiesCard({
       <div className="mt-2 w-1/3">
         {filter || totalDailiesDone === dailies.length ? (
           <input
+            id={`${dailies[0].dailyId}`}
             type="checkbox"
             className={`checkbox-accent checkbox checkbox-lg w-1/3 cursor-default border-info ${filter && "hover:cursor-pointer"} ${checked ? "hover:border-accent" : "hover:border-info"}`}
             checked={checked}

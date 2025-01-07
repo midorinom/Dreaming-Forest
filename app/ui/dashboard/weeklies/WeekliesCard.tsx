@@ -58,6 +58,7 @@ export default function WeekliesCard({
       <div className="form-control">
         <label className="label flex cursor-pointer gap-3">
           <input
+            id={`${weeklyProp.weeklyId}`}
             type="checkbox"
             className={`checkbox-accent checkbox checkbox-lg border-info ${done ? "hover:border-accent" : "hover:border-neutral"}`}
             checked={done}
