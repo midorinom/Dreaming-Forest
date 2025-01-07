@@ -51,7 +51,7 @@ const WeekliesFilter = ({ uniqueDescriptions, setFilter }: FilterProps) => {
       dropdown_content_className={dropdown_content_className}
       ul_className={ul_className}
       li_className={li_className}
-      clearableOnlyWhenOpen={false}
+      clearable={true}
     />
   );
 };

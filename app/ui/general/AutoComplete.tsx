@@ -16,7 +16,7 @@ const Autocomplete = (props: AutoCompleteProps) => {
     ul_className,
     li_className,
     label,
-    clearableOnlyWhenOpen,
+    clearable,
   } = props;
   const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
@@ -73,8 +73,7 @@ const Autocomplete = (props: AutoCompleteProps) => {
         <label htmlFor={input_id} className={label_className}>
           {label}
         </label>
-        {((clearableOnlyWhenOpen && open) ||
-          (!clearableOnlyWhenOpen && value)) && (
+        {clearable && value && (
           <Image
             src={"/general/ui_icons/clear_icon.png"}
             height={0}

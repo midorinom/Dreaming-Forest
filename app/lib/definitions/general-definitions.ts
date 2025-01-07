@@ -14,7 +14,7 @@ export type AutoCompleteProps = {
   ul_className: string;
   li_className: string;
   label?: string;
-  clearableOnlyWhenOpen: boolean;
+  clearable: boolean;
 };
 
 export type Classes = {
