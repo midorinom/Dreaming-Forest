@@ -67,22 +67,22 @@ export default function SideNav() {
             />
           </Link>
           {buttonHovered === "characters" && (
-            <div className="w-fit-content absolute left-[4vw] top-[1.5vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
+            <div className="w-fit-content absolute left-[4vw] top-[1.5vh] z-20 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Characters
             </div>
           )}
           {buttonHovered === "dailiesWeeklies" && (
-            <div className="w-fit-content absolute left-[4vw] top-[9.3vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
+            <div className="w-fit-content absolute left-[4vw] top-[9.3vh] z-20 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Dailies/Weeklies
             </div>
           )}
           {buttonHovered === "bosses" && (
-            <div className="w-fit-content absolute left-[4vw] top-[17.1vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
+            <div className="w-fit-content absolute left-[4vw] top-[17.1vh] z-20 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Bosses
             </div>
           )}
           {buttonHovered === "progression" && (
-            <div className="w-fit-content absolute left-[4vw] top-[24.7vh] z-10 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
+            <div className="w-fit-content absolute left-[4vw] top-[24.7vh] z-20 flex h-[5vh] items-center bg-accent p-2 text-2xl font-medium text-info">
               Progression
             </div>
           )}
