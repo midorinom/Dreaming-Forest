@@ -10,7 +10,7 @@ export default function BossesEdit({
   setEditBossesClicked,
 }: BossesEditProps) {
   return (
-    <div className={"pb3 collapse collapse-open w-4/5 gap-2 bg-base-100"}>
+    <div className={"pb3 collapse collapse-open w-4/5 gap-2 bg-base-100/85"}>
       <div className="collapse-title pb-0 pl-2 pr-5 pt-3">
         <div className="flex content-center">
           <Image
