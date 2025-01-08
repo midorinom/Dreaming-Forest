@@ -9,6 +9,14 @@ export default function Characters({
   currentPageCharacters,
   charactersPage,
   setCharactersPage,
+  currentPageBossesList,
+  setCharacters,
+  region,
+  data,
+  setData,
+  bossesInfo,
+  totalMeso,
+  setTotalMeso,
 }: CharactersProps) {
   const [hovered, setHovered] = useState<boolean>(false);
   const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
@@ -17,14 +25,27 @@ export default function Characters({
     if (currentPageCharacters.length > 0) {
       const characterCardsArray: ReactElement[] = [];
 
-      for (const character of currentPageCharacters) {
+      for (let i = 0; i < currentPageCharacters.length; i++) {
         characterCardsArray.push(
-          <CharacterCard key={character.characterId} character={character} />,
+          <CharacterCard
+            key={currentPageCharacters[i].characterId}
+            character={currentPageCharacters[i]}
+            currentPageBossesList={currentPageBossesList}
+            setCharacters={setCharacters}
+            region={region}
+            data={data}
+            setData={setData}
+            bossesInfo={bossesInfo}
+            totalMeso={totalMeso}
+            setTotalMeso={setTotalMeso}
+            charactersPage={charactersPage}
+            characterColumn={i}
+          />,
         );
       }
       setCharacterCards(characterCardsArray);
     }
-  }, [currentPageCharacters]);
+  }, [currentPageBossesList, currentPageCharacters]);
 
   return (
     <div

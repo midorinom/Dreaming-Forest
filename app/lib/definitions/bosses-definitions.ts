@@ -29,10 +29,28 @@ export type CharactersProps = {
   currentPageCharacters: Character[];
   charactersPage: number;
   setCharactersPage: (charactersPage: number) => void;
+  currentPageBossesList: number[];
+  setCharacters: (characters: Character[]) => void;
+  region: string;
+  data: Data[];
+  setData: (data: Data[]) => void;
+  bossesInfo: BossInfo[];
+  totalMeso: number;
+  setTotalMeso: (meso: number) => void;
 };
 
 export type CharacterCardProps = {
   character: Character;
+  currentPageBossesList: number[];
+  setCharacters: (characters: Character[]) => void;
+  region: string;
+  data: Data[];
+  setData: (data: Data[]) => void;
+  bossesInfo: BossInfo[];
+  totalMeso: number;
+  setTotalMeso: (meso: number) => void;
+  charactersPage: number;
+  characterColumn: number;
 };
 
 export type BossesListProps = {
@@ -79,6 +97,7 @@ export type CheckboxCardProps = {
   data: Data[];
   setData: (data: Data[]) => void;
   charactersPage: number;
+  row: number;
   column: number;
   bossesInfo: BossInfo[];
   totalMeso: number;
