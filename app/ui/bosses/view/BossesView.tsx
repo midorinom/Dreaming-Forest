@@ -151,6 +151,7 @@ export default function BossesView({
             currentPageBossesList={currentPageBossesList}
             currentPageCharacters={currentPageCharacters}
             setCharacters={setCharacters}
+            region={region}
           />
           <BossesPagination
             bossesPage={bossesPage}

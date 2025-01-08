@@ -8,6 +8,7 @@ export default function Checkboxes({
   currentPageBossesList,
   currentPageCharacters,
   setCharacters,
+  region,
 }: CheckboxesProps) {
   const [checkboxCards, setCheckboxCards] = useState<ReactElement[]>([]);
 
@@ -34,6 +35,7 @@ export default function Checkboxes({
             <CheckboxCard
               key={Math.random()}
               boss={boss}
+              region={region}
               characterPosition={characterPosition}
               setCharacters={setCharacters}
             />,

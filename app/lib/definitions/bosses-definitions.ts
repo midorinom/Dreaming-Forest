@@ -62,10 +62,12 @@ export type CheckboxesProps = {
   currentPageBossesList: number[];
   currentPageCharacters: Character[];
   setCharacters: (characters: Character[]) => void;
+  region: string;
 };
 
 export type CheckboxCardProps = {
   boss: Boss | undefined;
   characterPosition: number;
+  region: string;
   setCharacters: (characters: Character[]) => void;
 };
