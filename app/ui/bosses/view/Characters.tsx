@@ -1,25 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import Image from "next/image";
 import { CharactersProps } from "@/app/lib/definitions/bosses-definitions";
-import { Character } from "@/app/lib/definitions/general-definitions";
 import CharacterCard from "./CharacterCard";
 
 export default function Characters({
   characters,
-  setCurrentPageCharacters,
+  currentPageCharacters,
   charactersPage,
   setCharactersPage,
 }: CharactersProps) {
   const [hovered, setHovered] = useState<boolean>(false);
+  const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
+
+  useEffect(() => {
+    if (currentPageCharacters.length > 0) {
+      const characterCardsArray: ReactElement[] = [];
+
+      for (const character of currentPageCharacters) {
+        characterCardsArray.push(<CharacterCard character={character} />);
+      }
+      setCharacterCards(characterCardsArray);
+    }
+  }, [currentPageCharacters]);
 
   return (
     <div
-      className="relative col-start-2 row-span-1 flex items-center justify-around"
+      className="relative col-start-2 row-span-1 flex items-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {hovered && (
+      {hovered && charactersPage > 1 && (
         <Image
           src={"/general/ui_icons/left_arrow_icon.png"}
           height={0}
@@ -30,12 +41,9 @@ export default function Characters({
           onClick={() => setCharactersPage(charactersPage - 1)}
         />
       )}
-      <CharacterCard character={characters[0]} />
-      <CharacterCard character={characters[0]} />
-      <CharacterCard character={characters[0]} />
-      <CharacterCard character={characters[0]} />
-      <CharacterCard character={characters[0]} />
-      {hovered && (
+      {characterCards.length > 0 &&
+        characterCards.map((charactersCard) => charactersCard)}
+      {hovered && charactersPage < Math.ceil(characters.length / 5) && (
         <Image
           src={"/general/ui_icons/right_arrow_icon.png"}
           height={0}

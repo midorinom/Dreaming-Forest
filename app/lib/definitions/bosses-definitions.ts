@@ -21,7 +21,7 @@ export type BossesViewProps = {
 
 export type CharactersProps = {
   characters: Character[];
-  setCurrentPageCharacters: (currentPageCharacters: Character[]) => void;
+  currentPageCharacters: Character[];
   charactersPage: number;
   setCharactersPage: (charactersPage: number) => void;
 };
