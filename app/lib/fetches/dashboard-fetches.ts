@@ -40,6 +40,6 @@ export async function fetchDashboardBossesInfo(): Promise<FetchDashboardBossesIn
     return fetchedBossesInfo;
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch all bosses info.");
+    throw new Error("Failed to fetch dashboard bosses info.");
   }
 }
