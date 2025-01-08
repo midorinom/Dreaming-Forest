@@ -173,7 +173,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
           <span className="loading loading-spinner h-1/4 w-auto text-accent"></span>
         ) : (
           <div className="flex h-[55%] min-h-64 w-1/2 flex-col gap-4">
-            <div className="collapse grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary">
+            <div className="collapse grid h-4/5 grid-cols-2 grid-rows-3 items-center overflow-visible bg-primary/85">
               <ImageField
                 setUploadedFile={setUploadedFile}
                 submitClicked={submitClicked}
