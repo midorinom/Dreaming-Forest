@@ -49,7 +49,8 @@ export const BossesInfo = pgTable("bosses_info", {
   bosses_image: varchar("bosses_image").notNull(),
   dashboard_position: integer("dashboard_position").notNull(),
   dashboard_image: varchar("dashboard_image").notNull(),
-  meso: bigint("meso", { mode: "number" }).notNull(),
+  gms_meso: bigint("gms_meso", { mode: "number" }).notNull(),
+  msea_meso: bigint("msea_meso", { mode: "number" }).notNull(),
 });
 
 export const Dailies = pgTable("dailies", {
