@@ -1,6 +1,9 @@
 "use client";
-import { useState } from "react";
-import { CheckboxCardProps } from "@/app/lib/definitions/bosses-definitions";
+import { useState, useEffect } from "react";
+import {
+  CheckboxCardProps,
+  Data,
+} from "@/app/lib/definitions/bosses-definitions";
 import { User } from "@/app/lib/definitions/general-definitions";
 import { getDateTimes } from "@/app/lib/functions/utility-functions";
 
@@ -9,6 +12,12 @@ export default function CheckboxCard({
   region,
   characterPosition,
   setCharacters,
+  data,
+  setData,
+  charactersPage,
+  column,
+  bossesInfo,
+  setTotalMeso,
 }: CheckboxCardProps) {
   const [checked, setChecked] = useState<boolean>(
     boss ? (boss.done ? true : false) : false,
@@ -19,18 +28,34 @@ export default function CheckboxCard({
 
     if (localUser) {
       const newUser: User = JSON.parse(localUser);
+
       for (const newBoss of newUser.characters[characterPosition].bosses) {
         if (newBoss.bossesPosition === boss?.bossesPosition) {
+          const newData: Data[] = JSON.parse(JSON.stringify(data));
+          let meso: number = 0;
+
+          if (region === "GMS") {
+            meso = bossesInfo[boss?.bossesPosition].gms_meso;
+          } else if (region === "MSEA") {
+            meso = bossesInfo[boss?.bossesPosition].msea_meso;
+          }
+
           if (checked) {
             newBoss.done = null;
+            newData[charactersPage].subtotals[column] -= meso;
+            setTotalMeso((prevState: number) => prevState - meso);
           } else {
             const dateTimes = getDateTimes(region);
             if (!dateTimes) {
               return;
             }
-            let nextThursday = dateTimes.nextThursday;
-            newBoss.done = nextThursday.toDate();
+
+            newBoss.done = dateTimes.nextThursday.toDate();
+            newData[charactersPage].subtotals[column] += meso;
+            setTotalMeso((prevState: number) => prevState + meso);
           }
+
+          setData(newData);
         }
       }
 

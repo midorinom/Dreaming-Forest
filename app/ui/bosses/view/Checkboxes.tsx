@@ -9,6 +9,11 @@ export default function Checkboxes({
   currentPageCharacters,
   setCharacters,
   region,
+  data,
+  setData,
+  charactersPage,
+  bossesInfo,
+  setTotalMeso,
 }: CheckboxesProps) {
   const [checkboxCards, setCheckboxCards] = useState<ReactElement[]>([]);
 
@@ -38,6 +43,12 @@ export default function Checkboxes({
               region={region}
               characterPosition={characterPosition}
               setCharacters={setCharacters}
+              data={data}
+              setData={setData}
+              charactersPage={charactersPage}
+              column={j}
+              bossesInfo={bossesInfo}
+              setTotalMeso={setTotalMeso}
             />,
           );
         }
@@ -45,7 +56,7 @@ export default function Checkboxes({
 
       setCheckboxCards(checkboxCardsArray);
     }
-  }, [currentPageBossesList, currentPageCharacters]);
+  }, [data, currentPageBossesList, currentPageCharacters]);
 
   return (
     <div className="collapse relative col-span-1 col-start-3 row-span-1 row-start-2 mx-auto h-full w-[96.5%] grid-cols-5 grid-rows-7 items-center justify-items-center bg-primary/85">

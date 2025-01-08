@@ -100,7 +100,7 @@ export default function BossesView({
       // bossPage
       setBossesPage(0);
     }
-  }, [charactersPage]);
+  }, [characters, charactersPage]);
 
   useEffect(() => {
     if (bossesList.length > 0) {
@@ -152,6 +152,11 @@ export default function BossesView({
             currentPageCharacters={currentPageCharacters}
             setCharacters={setCharacters}
             region={region}
+            data={data}
+            setData={setData}
+            charactersPage={charactersPage}
+            bossesInfo={bossesInfo}
+            setTotalMeso={setTotalMeso}
           />
           <BossesPagination
             bossesPage={bossesPage}

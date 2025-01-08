@@ -63,6 +63,11 @@ export type CheckboxesProps = {
   currentPageCharacters: Character[];
   setCharacters: (characters: Character[]) => void;
   region: string;
+  data: Data[];
+  setData: (data: Data[]) => void;
+  charactersPage: number;
+  bossesInfo: BossInfo[];
+  totalMeso: number;
 };
 
 export type CheckboxCardProps = {
@@ -70,4 +75,10 @@ export type CheckboxCardProps = {
   characterPosition: number;
   region: string;
   setCharacters: (characters: Character[]) => void;
+  data: Data[];
+  setData: (data: Data[]) => void;
+  charactersPage: number;
+  column: number;
+  bossesInfo: BossInfo[];
+  setTotalMeso: (meso: number) => void;
 };
