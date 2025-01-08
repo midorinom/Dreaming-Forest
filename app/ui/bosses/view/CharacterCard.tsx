@@ -8,7 +8,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
       style={{
         position: "relative",
       }}
-      className="flex h-4/5 w-[28%] items-center justify-center"
+      className="flex h-[90%] w-[28%] items-center justify-center"
     >
       <Image
         src={character.image ? character.image : "/general/naked_char.png"}
