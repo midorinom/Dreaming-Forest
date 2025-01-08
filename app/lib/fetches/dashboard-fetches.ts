@@ -1,5 +1,5 @@
 import { drizzle } from "drizzle-orm/vercel-postgres";
-import { eq, min, and } from "drizzle-orm";
+import { eq, min, and, asc } from "drizzle-orm";
 import { sql } from "@vercel/postgres";
 import { BossesInfo } from "@/drizzle/schema";
 import { unstable_noStore as noStore } from "next/cache";
@@ -22,13 +22,14 @@ export async function fetchDashboardBossesInfo(): Promise<FetchDashboardBossesIn
     const result = await db
       .select()
       .from(BossesInfo)
-      .leftJoin(
+      .innerJoin(
         minMesoSubquery,
         and(
           eq(BossesInfo.dashboard_position, minMesoSubquery.dashboard_position),
           eq(BossesInfo.gms_meso, minMesoSubquery.min_meso),
         ),
-      );
+      )
+      .orderBy(asc(BossesInfo.dashboard_position));
 
     // Flatten the result
     const fetchedBossesInfo = result.map((row) => {
