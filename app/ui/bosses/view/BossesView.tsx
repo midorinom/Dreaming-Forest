@@ -154,6 +154,13 @@ export default function BossesView({
               currentPageBossesList={currentPageBossesList}
               bossesInfo={bossesInfo}
               region={region}
+              data={data}
+              currentPageCharacters={currentPageCharacters}
+              charactersPage={charactersPage}
+              totalMeso={totalMeso}
+              setCharacters={setCharacters}
+              setData={setData}
+              setTotalMeso={setTotalMeso}
             />
             <Checkboxes
               currentPageBossesList={currentPageBossesList}

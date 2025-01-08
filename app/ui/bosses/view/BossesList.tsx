@@ -7,6 +7,13 @@ export default function BossesList({
   currentPageBossesList,
   bossesInfo,
   region,
+  data,
+  currentPageCharacters,
+  charactersPage,
+  totalMeso,
+  setCharacters,
+  setData,
+  setTotalMeso,
 }: BossesListProps) {
   const [bossesListCards, setBossesListCards] = useState<ReactElement[]>([]);
 
@@ -24,13 +31,23 @@ export default function BossesList({
                 : bossesInfo[boss_position].msea_meso
             }
             image={bossesInfo[boss_position].bosses_image}
+            region={region}
+            data={data}
+            currentPageCharacters={currentPageCharacters}
+            charactersPage={charactersPage}
+            totalMeso={totalMeso}
+            setCharacters={setCharacters}
+            setData={setData}
+            setTotalMeso={setTotalMeso}
+            bossPosition={boss_position}
+            bossesInfo={bossesInfo}
           />,
         );
       }
 
       setBossesListCards(bossesListCardsArray);
     }
-  }, [currentPageBossesList]);
+  }, [currentPageBossesList, currentPageCharacters]);
 
   return (
     <div className="col-span-1 col-start-2 row-span-1 row-start-2 grid grid-cols-[0.7fr_0.3fr] grid-rows-7 items-center justify-items-center gap-y-2 px-4 py-1">

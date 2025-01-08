@@ -57,11 +57,28 @@ export type BossesListProps = {
   currentPageBossesList: number[];
   bossesInfo: BossInfo[];
   region: string;
+  data: Data[];
+  currentPageCharacters: Character[];
+  charactersPage: number;
+  totalMeso: number;
+  setCharacters: (characters: Character[]) => void;
+  setData: (data: Data[]) => void;
+  setTotalMeso: (meso: number) => void;
 };
 
 export type BossesListCardProps = {
   meso: number;
   image: string;
+  data: Data[];
+  currentPageCharacters: Character[];
+  charactersPage: number;
+  totalMeso: number;
+  bossPosition: number;
+  setCharacters: (characters: Character[]) => void;
+  region: string;
+  setData: (data: Data[]) => void;
+  bossesInfo: BossInfo[];
+  setTotalMeso: (meso: number) => void;
 };
 
 export type BossesPaginationProps = {
