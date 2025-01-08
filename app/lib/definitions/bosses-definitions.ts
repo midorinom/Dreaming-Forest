@@ -1,4 +1,4 @@
-import { BossInfo } from "@/app/lib/definitions/general-definitions";
+import { Boss, BossInfo } from "@/app/lib/definitions/general-definitions";
 import { Character } from "./general-definitions";
 
 export type BossesProps = {
@@ -64,4 +64,8 @@ export type CheckboxesProps = {
   setCharacters: (characters: Character[]) => void;
 };
 
-export type CheckboxCardProps = {};
+export type CheckboxCardProps = {
+  boss: Boss | undefined;
+  characterPosition: number;
+  setCharacters: (characters: Character[]) => void;
+};
