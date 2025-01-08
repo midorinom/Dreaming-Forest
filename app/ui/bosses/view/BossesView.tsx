@@ -8,6 +8,7 @@ import { Character } from "@/app/lib/definitions/general-definitions";
 import Characters from "./Characters";
 import BossesList from "./BossesList";
 import MesoTotals from "./MesoTotals";
+import BossesPagination from "./BossesPagination";
 
 export default function BossesView({
   bossesInfo,
@@ -23,6 +24,7 @@ export default function BossesView({
   const [data, setData] = useState<Data[]>([]); // indexed according to charactersPage
   const [bossesList, setBossesList] = useState<number[]>([]);
   const [bossesPage, setBossesPage] = useState<number>(0);
+  const [totalBossesPages, setTotalBossesPages] = useState<number>(1);
   const [totalMeso, setTotalMeso] = useState<number>(0);
 
   useEffect(() => {
@@ -86,6 +88,12 @@ export default function BossesView({
     }
   }, [charactersPage]);
 
+  useEffect(() => {
+    if (bossesList.length > 0) {
+      setTotalBossesPages(Math.ceil(bossesList.length / 7));
+    }
+  }, [bossesList]);
+
   function updateBossesList(data: Data[]) {
     const bossesListSet: Set<number> = data[charactersPage].bossesList;
     const bossesListArray: number[] = Array.from(bossesListSet);
@@ -112,7 +120,11 @@ export default function BossesView({
             />
           )}
           <div className="col-start-2 row-span-1 row-start-2 border-4 border-white"></div>
-          <div className="col-span-1 row-start-3 border-4 border-accent"></div>
+          <BossesPagination
+            bossesPage={bossesPage}
+            setBossesPage={setBossesPage}
+            totalBossesPages={totalBossesPages}
+          />
           {data.length > 0 && (
             <MesoTotals
               data={data}

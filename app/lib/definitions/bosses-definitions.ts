@@ -35,12 +35,6 @@ export type CharacterCardProps = {
   character: Character;
 };
 
-export type MesoTotalsProps = {
-  data: Data[];
-  charactersPage: number;
-  totalMeso: number;
-};
-
 export type BossesListProps = {
   bossesList: number[];
   bossesInfo: BossInfo[];
@@ -50,4 +44,16 @@ export type BossesListProps = {
 export type BossesListCardProps = {
   meso: number;
   image: string;
+};
+
+export type BossesPaginationProps = {
+  bossesPage: number;
+  setBossesPage: (bossesPage: number) => void;
+  totalBossesPages: number;
+};
+
+export type MesoTotalsProps = {
+  data: Data[];
+  charactersPage: number;
+  totalMeso: number;
 };
