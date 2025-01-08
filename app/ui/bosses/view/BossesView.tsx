@@ -96,6 +96,9 @@ export default function BossesView({
       }
 
       setCurrentPageCharacters(newCurrentPageCharacters);
+
+      // bossPage
+      setBossesPage(0);
     }
   }, [charactersPage]);
 
