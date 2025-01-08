@@ -47,6 +47,7 @@ export default function Checkboxes({
               data={data}
               setData={setData}
               charactersPage={charactersPage}
+              row={i}
               column={j}
               bossesInfo={bossesInfo}
               totalMeso={totalMeso}
