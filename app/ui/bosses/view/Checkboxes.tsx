@@ -13,6 +13,7 @@ export default function Checkboxes({
   setData,
   charactersPage,
   bossesInfo,
+  totalMeso,
   setTotalMeso,
 }: CheckboxesProps) {
   const [checkboxCards, setCheckboxCards] = useState<ReactElement[]>([]);
@@ -48,6 +49,7 @@ export default function Checkboxes({
               charactersPage={charactersPage}
               column={j}
               bossesInfo={bossesInfo}
+              totalMeso={totalMeso}
               setTotalMeso={setTotalMeso}
             />,
           );

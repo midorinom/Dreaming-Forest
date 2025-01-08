@@ -156,6 +156,7 @@ export default function BossesView({
             setData={setData}
             charactersPage={charactersPage}
             bossesInfo={bossesInfo}
+            totalMeso={totalMeso}
             setTotalMeso={setTotalMeso}
           />
           <BossesPagination

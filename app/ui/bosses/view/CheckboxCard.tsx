@@ -17,6 +17,7 @@ export default function CheckboxCard({
   charactersPage,
   column,
   bossesInfo,
+  totalMeso,
   setTotalMeso,
 }: CheckboxCardProps) {
   const [checked, setChecked] = useState<boolean>(
@@ -43,7 +44,7 @@ export default function CheckboxCard({
           if (checked) {
             newBoss.done = null;
             newData[charactersPage].subtotals[column] -= meso;
-            setTotalMeso((prevState: number) => prevState - meso);
+            setTotalMeso(totalMeso - meso);
           } else {
             const dateTimes = getDateTimes(region);
             if (!dateTimes) {
@@ -52,7 +53,7 @@ export default function CheckboxCard({
 
             newBoss.done = dateTimes.nextThursday.toDate();
             newData[charactersPage].subtotals[column] += meso;
-            setTotalMeso((prevState: number) => prevState + meso);
+            setTotalMeso(totalMeso + meso);
           }
 
           setData(newData);

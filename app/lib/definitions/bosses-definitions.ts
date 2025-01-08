@@ -68,6 +68,7 @@ export type CheckboxesProps = {
   charactersPage: number;
   bossesInfo: BossInfo[];
   totalMeso: number;
+  setTotalMeso: (meso: number) => void;
 };
 
 export type CheckboxCardProps = {
@@ -80,5 +81,6 @@ export type CheckboxCardProps = {
   charactersPage: number;
   column: number;
   bossesInfo: BossInfo[];
+  totalMeso: number;
   setTotalMeso: (meso: number) => void;
 };
