@@ -30,6 +30,7 @@ export default function BossesView({
   const [bossesPage, setBossesPage] = useState<number>(0);
   const [totalBossesPages, setTotalBossesPages] = useState<number>(1);
   const [totalMeso, setTotalMeso] = useState<number>(0);
+  const [rowHovered, setRowHovered] = useState<number>(-1);
 
   useEffect(() => {
     if (!isFirstRender.current) {
@@ -154,6 +155,14 @@ export default function BossesView({
               currentPageBossesList={currentPageBossesList}
               bossesInfo={bossesInfo}
               region={region}
+              data={data}
+              currentPageCharacters={currentPageCharacters}
+              charactersPage={charactersPage}
+              totalMeso={totalMeso}
+              setCharacters={setCharacters}
+              setData={setData}
+              setTotalMeso={setTotalMeso}
+              rowHovered={rowHovered}
             />
             <Checkboxes
               currentPageBossesList={currentPageBossesList}
@@ -166,6 +175,7 @@ export default function BossesView({
               bossesInfo={bossesInfo}
               totalMeso={totalMeso}
               setTotalMeso={setTotalMeso}
+              setRowHovered={setRowHovered}
             />
             <BossesPagination
               bossesPage={bossesPage}
@@ -174,8 +184,15 @@ export default function BossesView({
             />
             <MesoTotals
               data={data}
+              currentPageCharacters={currentPageCharacters}
               charactersPage={charactersPage}
               totalMeso={totalMeso}
+              bossesList={bossesList}
+              setCharacters={setCharacters}
+              region={region}
+              setData={setData}
+              bossesInfo={bossesInfo}
+              setTotalMeso={setTotalMeso}
             />
           </div>
         )}

@@ -21,6 +21,7 @@ export default function CheckboxCard({
   bossesInfo,
   totalMeso,
   setTotalMeso,
+  setRowHovered,
 }: CheckboxCardProps) {
   const [checked, setChecked] = useState<boolean>(
     boss ? (boss.done ? true : false) : false,
@@ -82,6 +83,10 @@ export default function CheckboxCard({
           className={`checkbox-accent checkbox checkbox-lg cursor-default border-info hover:cursor-pointer ${checked ? "hover:border-accent" : "hover:border-info"}`}
           checked={checked}
           onChange={handleCheckboxChange}
+          onMouseEnter={() => {
+            setRowHovered(row);
+          }}
+          onMouseLeave={() => setRowHovered(-1)}
         />
       )}
     </div>
