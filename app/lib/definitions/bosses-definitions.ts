@@ -15,5 +15,6 @@ export type NavBarProps = {
 export type BossesViewProps = {
   bossesInfo: BossInfo[];
   characters: Character[];
+  setCharacters: (characters: Character[]) => void;
   region: string;
 };

@@ -31,6 +31,7 @@ export default function Bosses({ bossesInfo }: BossesProps) {
             <BossesView
               bossesInfo={bossesInfo}
               characters={characters}
+              setCharacters={setCharacters}
               region={region}
             />
           ) : (

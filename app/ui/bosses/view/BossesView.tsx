@@ -1,9 +1,11 @@
 "use client";
+import { useState } from "react";
 import { BossesViewProps } from "@/app/lib/definitions/bosses-definitions";
 
 export default function BossesView({
   bossesInfo,
   characters,
+  setCharacters,
   region,
 }: BossesViewProps) {
   return (
