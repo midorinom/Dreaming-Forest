@@ -22,6 +22,7 @@ export default function BossesView({
   const [charactersPage, setCharactersPage] = useState<number>(0);
   const [data, setData] = useState<Data[]>([]); // indexed according to charactersPage
   const [bossesList, setBossesList] = useState<number[]>([]);
+  const [bossesPage, setBossesPage] = useState<number>(0);
   const [totalMeso, setTotalMeso] = useState<number>(0);
 
   useEffect(() => {
@@ -104,7 +105,11 @@ export default function BossesView({
             setCharactersPage={setCharactersPage}
           />
           {bossesList.length > 0 && (
-            <BossesList bossesList={bossesList} bossesInfo={bossesInfo} />
+            <BossesList
+              bossesList={bossesList}
+              bossesInfo={bossesInfo}
+              bossesPage={bossesPage}
+            />
           )}
           <div className="col-start-2 row-span-1 row-start-2 border-4 border-white"></div>
           <div className="col-span-1 row-start-3 border-4 border-accent"></div>

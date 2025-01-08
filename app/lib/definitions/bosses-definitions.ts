@@ -44,6 +44,7 @@ export type MesoTotalsProps = {
 export type BossesListProps = {
   bossesList: number[];
   bossesInfo: BossInfo[];
+  bossesPage: number;
 };
 
 export type BossesListCardProps = {
