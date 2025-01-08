@@ -64,6 +64,7 @@ export type BossesListProps = {
   setCharacters: (characters: Character[]) => void;
   setData: (data: Data[]) => void;
   setTotalMeso: (meso: number) => void;
+  rowHovered: number;
 };
 
 export type BossesListCardProps = {
@@ -79,6 +80,8 @@ export type BossesListCardProps = {
   setData: (data: Data[]) => void;
   bossesInfo: BossInfo[];
   setTotalMeso: (meso: number) => void;
+  row: number;
+  rowHovered: number;
 };
 
 export type BossesPaginationProps = {
@@ -111,6 +114,7 @@ export type CheckboxesProps = {
   bossesInfo: BossInfo[];
   totalMeso: number;
   setTotalMeso: (meso: number) => void;
+  setRowHovered: (rowHovered: number) => void;
 };
 
 export type CheckboxCardProps = {
@@ -126,4 +130,5 @@ export type CheckboxCardProps = {
   bossesInfo: BossInfo[];
   totalMeso: number;
   setTotalMeso: (meso: number) => void;
+  setRowHovered: (rowHovered: number) => void;
 };

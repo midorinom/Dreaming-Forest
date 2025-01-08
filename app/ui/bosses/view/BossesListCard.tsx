@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   BossesListCardProps,
@@ -21,7 +22,19 @@ export default function BossesListCard({
   setData,
   bossesInfo,
   setTotalMeso,
+  row,
+  rowHovered,
 }: BossesListCardProps) {
+  const [grayscale, setGrayscale] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (rowHovered !== -1 && rowHovered !== row) {
+      setGrayscale(true);
+    } else {
+      setGrayscale(false);
+    }
+  }, [rowHovered]);
+
   function toggleRow() {
     const localUser = localStorage.getItem("user");
     let allDone: boolean = true;
@@ -101,7 +114,7 @@ export default function BossesListCard({
   return (
     <>
       <div
-        className="col-start-1 w-[90%] rounded-md bg-neutral p-1 text-center text-xl hover:cursor-pointer"
+        className={`${!grayscale ? "bg-neutral" : "bg-info"} col-start-1 w-[90%] rounded-md p-1 text-center text-xl hover:cursor-pointer`}
         onClick={toggleRow}
       >
         {meso.toLocaleString()}
@@ -118,7 +131,7 @@ export default function BossesListCard({
           width={0}
           alt="Boss Image"
           sizes="100vw"
-          className="absolute h-auto w-[70%] hover:cursor-pointer"
+          className={`${grayscale && "grayscale"} absolute h-auto w-[70%] hover:cursor-pointer`}
           onClick={toggleRow}
         />
       </div>

@@ -15,6 +15,7 @@ export default function Checkboxes({
   bossesInfo,
   totalMeso,
   setTotalMeso,
+  setRowHovered,
 }: CheckboxesProps) {
   const [checkboxCards, setCheckboxCards] = useState<ReactElement[]>([]);
 
@@ -52,6 +53,7 @@ export default function Checkboxes({
               bossesInfo={bossesInfo}
               totalMeso={totalMeso}
               setTotalMeso={setTotalMeso}
+              setRowHovered={setRowHovered}
             />,
           );
         }
