@@ -19,6 +19,11 @@ export type BossesViewProps = {
   region: string;
 };
 
+export type Data = {
+  bossesList: Set<number>;
+  subtotals: number[];
+};
+
 export type CharactersProps = {
   characters: Character[];
   currentPageCharacters: Character[];
@@ -28,4 +33,10 @@ export type CharactersProps = {
 
 export type CharacterCardProps = {
   character: Character;
+};
+
+export type MesoTotalsProps = {
+  data: Data[];
+  charactersPage: number;
+  totalMeso: number;
 };
