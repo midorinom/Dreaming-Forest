@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import _ from "lodash";
 import {
   CheckboxCardProps,
   Data,
@@ -15,6 +16,7 @@ export default function CheckboxCard({
   data,
   setData,
   charactersPage,
+  row,
   column,
   bossesInfo,
   totalMeso,
@@ -24,6 +26,12 @@ export default function CheckboxCard({
     boss ? (boss.done ? true : false) : false,
   );
 
+  useEffect(() => {
+    if (boss) {
+      setChecked(boss ? (boss.done ? true : false) : false);
+    }
+  }, [boss]);
+
   function handleCheckboxChange() {
     const localUser = localStorage.getItem("user");
 
@@ -32,7 +40,7 @@ export default function CheckboxCard({
 
       for (const newBoss of newUser.characters[characterPosition].bosses) {
         if (newBoss.bossesPosition === boss?.bossesPosition) {
-          const newData: Data[] = JSON.parse(JSON.stringify(data));
+          const newData: Data[] = _.cloneDeep(data);
           let meso: number = 0;
 
           if (region === "GMS") {
@@ -55,7 +63,6 @@ export default function CheckboxCard({
             newData[charactersPage].subtotals[column] += meso;
             setTotalMeso(totalMeso + meso);
           }
-
           setData(newData);
         }
       }
@@ -70,7 +77,7 @@ export default function CheckboxCard({
     <div className={`col-span-1 row-span-1 flex items-center justify-center`}>
       {boss && characterPosition !== -1 && (
         <input
-          id={Math.random().toString()}
+          id={`row_${row}_col_${column}`}
           type="checkbox"
           className={`checkbox-accent checkbox checkbox-lg cursor-default border-info hover:cursor-pointer ${checked ? "hover:border-accent" : "hover:border-info"}`}
           checked={checked}

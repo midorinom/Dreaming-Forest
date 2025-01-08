@@ -9,6 +9,14 @@ export default function Characters({
   currentPageCharacters,
   charactersPage,
   setCharactersPage,
+  currentPageBossesList,
+  setCharacters,
+  region,
+  data,
+  setData,
+  bossesInfo,
+  totalMeso,
+  setTotalMeso,
 }: CharactersProps) {
   const [hovered, setHovered] = useState<boolean>(false);
   const [characterCards, setCharacterCards] = useState<ReactElement[]>([]);
@@ -17,14 +25,27 @@ export default function Characters({
     if (currentPageCharacters.length > 0) {
       const characterCardsArray: ReactElement[] = [];
 
-      for (const character of currentPageCharacters) {
+      for (let i = 0; i < currentPageCharacters.length; i++) {
         characterCardsArray.push(
-          <CharacterCard key={character.characterId} character={character} />,
+          <CharacterCard
+            key={currentPageCharacters[i].characterId}
+            character={currentPageCharacters[i]}
+            currentPageBossesList={currentPageBossesList}
+            setCharacters={setCharacters}
+            region={region}
+            data={data}
+            setData={setData}
+            bossesInfo={bossesInfo}
+            totalMeso={totalMeso}
+            setTotalMeso={setTotalMeso}
+            charactersPage={charactersPage}
+            characterColumn={i}
+          />,
         );
       }
       setCharacterCards(characterCardsArray);
     }
-  }, [currentPageCharacters]);
+  }, [currentPageBossesList, currentPageCharacters]);
 
   return (
     <div
@@ -39,7 +60,7 @@ export default function Characters({
           width={0}
           alt="Left Arrow Button"
           sizes="100vw"
-          className="absolute left-0 z-10 h-[45%] w-auto hover:cursor-pointer"
+          className="absolute left-[-1vw] z-10 h-[45%] w-auto hover:cursor-pointer"
           onClick={() => setCharactersPage(charactersPage - 1)}
         />
       )}
@@ -52,7 +73,7 @@ export default function Characters({
           width={0}
           alt="Left Arrow Button"
           sizes="100vw"
-          className="absolute right-0 z-10 h-[45%] w-auto hover:cursor-pointer"
+          className="absolute right-[-1vw] z-10 h-[45%] w-auto hover:cursor-pointer"
           onClick={() => setCharactersPage(charactersPage + 1)}
         />
       )}

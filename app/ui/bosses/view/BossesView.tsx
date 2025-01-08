@@ -81,11 +81,6 @@ export default function BossesView({
 
   useEffect(() => {
     if (characters.length > 0) {
-      // bossesList
-      if (data.length > 0) {
-        updateBossesList(data);
-      }
-
       // currentPageCharacters
       const newCurrentPageCharacters: Character[] = [];
       const firstIndex = charactersPage * 5;
@@ -96,11 +91,20 @@ export default function BossesView({
       }
 
       setCurrentPageCharacters(newCurrentPageCharacters);
-
-      // bossPage
-      setBossesPage(0);
     }
   }, [characters, charactersPage]);
+
+  useEffect(() => {
+    setBossesPage(0);
+  }, [charactersPage]);
+
+  useEffect(() => {
+    if (currentPageCharacters.length > 0) {
+      if (data.length > 0) {
+        updateBossesList(data);
+      }
+    }
+  }, [currentPageCharacters]);
 
   useEffect(() => {
     if (bossesList.length > 0) {
@@ -109,70 +113,72 @@ export default function BossesView({
   }, [bossesList]);
 
   useEffect(() => {
-    if (bossesList.length > 0) {
-      const newCurrentPageBossesList: number[] = [];
-      const firstIndex = bossesPage * 7;
-      const lastIndex = Math.min(7 * (bossesPage + 1), bossesList.length);
+    const newCurrentPageBossesList: number[] = [];
+    const firstIndex = bossesPage * 7;
+    const lastIndex = Math.min(7 * (bossesPage + 1), bossesList.length);
 
-      for (let i = firstIndex; i < lastIndex; i++) {
-        newCurrentPageBossesList.push(bossesList[i]);
-      }
-
-      setCurrentPageBossesList(newCurrentPageBossesList);
+    for (let i = firstIndex; i < lastIndex; i++) {
+      newCurrentPageBossesList.push(bossesList[i]);
     }
+    setCurrentPageBossesList(newCurrentPageBossesList);
   }, [bossesList, bossesPage]);
 
   function updateBossesList(data: Data[]) {
     const bossesListSet: Set<number> = data[charactersPage].bossesList;
     const bossesListArray: number[] = Array.from(bossesListSet);
-
     bossesListArray.sort((a, b) => a - b); // ascending order
     setBossesList(bossesListArray);
   }
 
   return (
     <>
-      {currentPageCharacters.length > 0 && (
-        <div className="grid h-full w-full grid-cols-[2vw_20vw_1fr_2vw] grid-rows-[15vh_1fr_14vh]">
-          <Characters
-            characters={characters}
-            currentPageCharacters={currentPageCharacters}
-            charactersPage={charactersPage}
-            setCharactersPage={setCharactersPage}
-          />
-          {currentPageBossesList.length > 0 && (
+      {currentPageCharacters.length > 0 &&
+        currentPageBossesList.length > 0 &&
+        data.length > 0 && (
+          <div className="grid h-full w-full grid-cols-[2vw_20vw_1fr_2vw] grid-rows-[15vh_1fr_14vh]">
+            <Characters
+              characters={characters}
+              currentPageCharacters={currentPageCharacters}
+              charactersPage={charactersPage}
+              setCharactersPage={setCharactersPage}
+              currentPageBossesList={currentPageBossesList}
+              setCharacters={setCharacters}
+              region={region}
+              data={data}
+              setData={setData}
+              bossesInfo={bossesInfo}
+              totalMeso={totalMeso}
+              setTotalMeso={setTotalMeso}
+            />
             <BossesList
               currentPageBossesList={currentPageBossesList}
               bossesInfo={bossesInfo}
               region={region}
             />
-          )}
-          <Checkboxes
-            currentPageBossesList={currentPageBossesList}
-            currentPageCharacters={currentPageCharacters}
-            setCharacters={setCharacters}
-            region={region}
-            data={data}
-            setData={setData}
-            charactersPage={charactersPage}
-            bossesInfo={bossesInfo}
-            totalMeso={totalMeso}
-            setTotalMeso={setTotalMeso}
-          />
-          <BossesPagination
-            bossesPage={bossesPage}
-            setBossesPage={setBossesPage}
-            totalBossesPages={totalBossesPages}
-          />
-          {data.length > 0 && (
+            <Checkboxes
+              currentPageBossesList={currentPageBossesList}
+              currentPageCharacters={currentPageCharacters}
+              setCharacters={setCharacters}
+              region={region}
+              data={data}
+              setData={setData}
+              charactersPage={charactersPage}
+              bossesInfo={bossesInfo}
+              totalMeso={totalMeso}
+              setTotalMeso={setTotalMeso}
+            />
+            <BossesPagination
+              bossesPage={bossesPage}
+              setBossesPage={setBossesPage}
+              totalBossesPages={totalBossesPages}
+            />
             <MesoTotals
               data={data}
               charactersPage={charactersPage}
               totalMeso={totalMeso}
             />
-          )}
-        </div>
-      )}
+          </div>
+        )}
     </>
   );
 }

@@ -39,7 +39,7 @@ export default function Checkboxes({
 
           checkboxCardsArray.push(
             <CheckboxCard
-              key={Math.random()}
+              key={`row_${i}_col_${j}`}
               boss={boss}
               region={region}
               characterPosition={characterPosition}
@@ -47,6 +47,7 @@ export default function Checkboxes({
               data={data}
               setData={setData}
               charactersPage={charactersPage}
+              row={i}
               column={j}
               bossesInfo={bossesInfo}
               totalMeso={totalMeso}
