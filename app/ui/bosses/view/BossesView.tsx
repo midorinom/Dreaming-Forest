@@ -6,6 +6,7 @@ import {
 } from "@/app/lib/definitions/bosses-definitions";
 import { Character } from "@/app/lib/definitions/general-definitions";
 import Characters from "./Characters";
+import BossesList from "./BossesList";
 import MesoTotals from "./MesoTotals";
 
 export default function BossesView({
@@ -20,7 +21,7 @@ export default function BossesView({
   >([]);
   const [charactersPage, setCharactersPage] = useState<number>(0);
   const [data, setData] = useState<Data[]>([]); // indexed according to charactersPage
-  const [bossesList, setBossesList] = useState<number[]>();
+  const [bossesList, setBossesList] = useState<number[]>([]);
   const [totalMeso, setTotalMeso] = useState<number>(0);
 
   useEffect(() => {
@@ -61,17 +62,14 @@ export default function BossesView({
     }
 
     setData(newData);
+    updateBossesList(newData);
   }, []);
 
   useEffect(() => {
     if (characters.length > 0) {
       // bossesList
       if (data.length > 0) {
-        const bossesListSet: Set<number> = data[charactersPage].bossesList;
-        const bossesListArray: number[] = Array.from(bossesListSet);
-
-        bossesListArray.sort((a, b) => b - a); // descending order
-        setBossesList(bossesListArray);
+        updateBossesList(data);
       }
 
       // currentPageCharacters
@@ -87,17 +85,27 @@ export default function BossesView({
     }
   }, [charactersPage]);
 
+  function updateBossesList(data: Data[]) {
+    const bossesListSet: Set<number> = data[charactersPage].bossesList;
+    const bossesListArray: number[] = Array.from(bossesListSet);
+
+    bossesListArray.sort((a, b) => a - b); // ascending order
+    setBossesList(bossesListArray);
+  }
+
   return (
     <>
       {currentPageCharacters.length > 0 && (
-        <div className="grid h-full w-full grid-cols-[20vw_1fr] grid-rows-[15vh_1fr_12vh]">
+        <div className="grid h-full w-full grid-cols-[20vw_1fr] grid-rows-[15vh_1fr_14vh]">
           <Characters
             characters={characters}
             currentPageCharacters={currentPageCharacters}
             charactersPage={charactersPage}
             setCharactersPage={setCharactersPage}
           />
-          <div className="col-span-1 row-span-1 row-start-2 border-4 border-black"></div>
+          {bossesList.length > 0 && (
+            <BossesList bossesList={bossesList} bossesInfo={bossesInfo} />
+          )}
           <div className="col-start-2 row-span-1 row-start-2 border-4 border-white"></div>
           <div className="col-span-1 row-start-3 border-4 border-accent"></div>
           {data.length > 0 && (

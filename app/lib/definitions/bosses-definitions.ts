@@ -40,3 +40,13 @@ export type MesoTotalsProps = {
   charactersPage: number;
   totalMeso: number;
 };
+
+export type BossesListProps = {
+  bossesList: number[];
+  bossesInfo: BossInfo[];
+};
+
+export type BossesListCardProps = {
+  meso: number;
+  image: string;
+};
