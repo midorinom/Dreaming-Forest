@@ -14,7 +14,7 @@ export default function NavBar({ currentPage, setCurrentPage }: NavBarProps) {
         }`}
       ></div>
       <Image
-        src={`/general/ui_icons/${currentPage === "view" ? "edit" : "view"}_icon.png`}
+        src={`/general/ui_icons/${currentPage === "view" ? "edit" : "checklist"}_icon.png`}
         height={0}
         width={0}
         alt={"View Icon"}
