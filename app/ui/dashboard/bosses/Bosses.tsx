@@ -122,7 +122,7 @@ export default function Bosses({
             </div>
           )}
           {bosses.length > 0 && resetDate && (
-            <div className="collapse-content grid max-h-[50vh] auto-rows-fr grid-cols-6 gap-7 px-11 pb-5 pt-2">
+            <div className="collapse-content grid max-h-[50vh] auto-rows-fr grid-cols-6 gap-7 px-8 pb-2 pt-3">
               {bosses.map((boss) => (
                 <BossesCard
                   key={boss.bossesPosition}

@@ -15,13 +15,7 @@ export default function BossesCard({
 
   useEffect(() => {
     if (boss.done) {
-      // Use month if the boss is Black Mage, otherwise use week
-      if (
-        dayjs(resetDate).diff(
-          dayjs(boss.done),
-          boss.dashboardPosition === 3 ? "month" : "week",
-        ) < 1
-      ) {
+      if (dayjs(resetDate).diff(dayjs(boss.done), "week") < 1) {
         setSelected(true);
       } else {
         const newBosses: Boss[] = [...bosses];

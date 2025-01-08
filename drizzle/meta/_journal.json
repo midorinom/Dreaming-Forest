@@ -78,6 +78,20 @@
       "when": 1733053466343,
       "tag": "0010_great_roland_deschain",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1736335776211,
+      "tag": "0011_zippy_tigra",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1736335827682,
+      "tag": "0012_freezing_marten_broadcloak",
+      "breakpoints": true
     }
   ]
 }

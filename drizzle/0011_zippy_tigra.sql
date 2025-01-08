@@ -1,0 +1,1 @@
+ALTER TABLE "bosses_info" DROP COLUMN IF EXISTS "meso";

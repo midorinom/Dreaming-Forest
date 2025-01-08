@@ -1,4 +1,4 @@
-import { BossInfo } from "@/app/lib/definitions/general-definitions";
+import { Boss, BossInfo } from "@/app/lib/definitions/general-definitions";
 import { Character } from "./general-definitions";
 
 export type BossesProps = {
@@ -19,6 +19,11 @@ export type BossesViewProps = {
   region: string;
 };
 
+export type Data = {
+  bossesList: Set<number>;
+  subtotals: number[];
+};
+
 export type CharactersProps = {
   characters: Character[];
   currentPageCharacters: Character[];
@@ -28,4 +33,54 @@ export type CharactersProps = {
 
 export type CharacterCardProps = {
   character: Character;
+};
+
+export type BossesListProps = {
+  currentPageBossesList: number[];
+  bossesInfo: BossInfo[];
+  region: string;
+};
+
+export type BossesListCardProps = {
+  meso: number;
+  image: string;
+};
+
+export type BossesPaginationProps = {
+  bossesPage: number;
+  setBossesPage: (bossesPage: number) => void;
+  totalBossesPages: number;
+};
+
+export type MesoTotalsProps = {
+  data: Data[];
+  charactersPage: number;
+  totalMeso: number;
+};
+
+export type CheckboxesProps = {
+  currentPageBossesList: number[];
+  currentPageCharacters: Character[];
+  setCharacters: (characters: Character[]) => void;
+  region: string;
+  data: Data[];
+  setData: (data: Data[]) => void;
+  charactersPage: number;
+  bossesInfo: BossInfo[];
+  totalMeso: number;
+  setTotalMeso: (meso: number) => void;
+};
+
+export type CheckboxCardProps = {
+  boss: Boss | undefined;
+  characterPosition: number;
+  region: string;
+  setCharacters: (characters: Character[]) => void;
+  data: Data[];
+  setData: (data: Data[]) => void;
+  charactersPage: number;
+  column: number;
+  bossesInfo: BossInfo[];
+  totalMeso: number;
+  setTotalMeso: (meso: number) => void;
 };

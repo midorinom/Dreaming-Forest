@@ -1,0 +1,486 @@
+{
+  "id": "d17c8694-d69a-4f22-a0ce-99ba18974472",
+  "prevId": "00d8ac2e-5fcf-4216-8c12-42b711a33b5c",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.bosses": {
+      "name": "bosses",
+      "schema": "",
+      "columns": {
+        "boss_id": {
+          "name": "boss_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "character_id": {
+          "name": "character_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dashboard_position": {
+          "name": "dashboard_position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bosses_position": {
+          "name": "bosses_position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dashboard_image": {
+          "name": "dashboard_image",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "done": {
+          "name": "done",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "party_size": {
+          "name": "party_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "bosses_character_id_characters_character_id_fk": {
+          "name": "bosses_character_id_characters_character_id_fk",
+          "tableFrom": "bosses",
+          "tableTo": "characters",
+          "columnsFrom": [
+            "character_id"
+          ],
+          "columnsTo": [
+            "character_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.bosses_info": {
+      "name": "bosses_info",
+      "schema": "",
+      "columns": {
+        "bosses_position": {
+          "name": "bosses_position",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "bosses_image": {
+          "name": "bosses_image",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dashboard_position": {
+          "name": "dashboard_position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dashboard_image": {
+          "name": "dashboard_image",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "gms_meso": {
+          "name": "gms_meso",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "msea_meso": {
+          "name": "msea_meso",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.characters": {
+      "name": "characters",
+      "schema": "",
+      "columns": {
+        "character_id": {
+          "name": "character_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ign": {
+          "name": "ign",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "level": {
+          "name": "level",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "class_name": {
+          "name": "class_name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image": {
+          "name": "image",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "characters_user_id_users_user_id_fk": {
+          "name": "characters_user_id_users_user_id_fk",
+          "tableFrom": "characters",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "characters_class_name_classes_class_name_fk": {
+          "name": "characters_class_name_classes_class_name_fk",
+          "tableFrom": "characters",
+          "tableTo": "classes",
+          "columnsFrom": [
+            "class_name"
+          ],
+          "columnsTo": [
+            "class_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.classes": {
+      "name": "classes",
+      "schema": "",
+      "columns": {
+        "class_name": {
+          "name": "class_name",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "region": {
+          "name": "region",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "classes_region_regions_region_fk": {
+          "name": "classes_region_regions_region_fk",
+          "tableFrom": "classes",
+          "tableTo": "regions",
+          "columnsFrom": [
+            "region"
+          ],
+          "columnsTo": [
+            "region"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.dailies": {
+      "name": "dailies",
+      "schema": "",
+      "columns": {
+        "daily_id": {
+          "name": "daily_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "character_id": {
+          "name": "character_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "done": {
+          "name": "done",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "dailies_character_id_characters_character_id_fk": {
+          "name": "dailies_character_id_characters_character_id_fk",
+          "tableFrom": "dailies",
+          "tableTo": "characters",
+          "columnsFrom": [
+            "character_id"
+          ],
+          "columnsTo": [
+            "character_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.regions": {
+      "name": "regions",
+      "schema": "",
+      "columns": {
+        "region": {
+          "name": "region",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.tracking": {
+      "name": "tracking",
+      "schema": "",
+      "columns": {
+        "character_id": {
+          "name": "character_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "dailies": {
+          "name": "dailies",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weeklies": {
+          "name": "weeklies",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bosses": {
+          "name": "bosses",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "progression": {
+          "name": "progression",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "tracking_character_id_characters_character_id_fk": {
+          "name": "tracking_character_id_characters_character_id_fk",
+          "tableFrom": "tracking",
+          "tableTo": "characters",
+          "columnsFrom": [
+            "character_id"
+          ],
+          "columnsTo": [
+            "character_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "region": {
+          "name": "region",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pw_hash": {
+          "name": "pw_hash",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_logged_in": {
+          "name": "last_logged_in",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "version_number": {
+          "name": "version_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "users_region_regions_region_fk": {
+          "name": "users_region_regions_region_fk",
+          "tableFrom": "users",
+          "tableTo": "regions",
+          "columnsFrom": [
+            "region"
+          ],
+          "columnsTo": [
+            "region"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.weeklies": {
+      "name": "weeklies",
+      "schema": "",
+      "columns": {
+        "weekly_id": {
+          "name": "weekly_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "character_id": {
+          "name": "character_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "done": {
+          "name": "done",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reset_date": {
+          "name": "reset_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "weeklies_character_id_characters_character_id_fk": {
+          "name": "weeklies_character_id_characters_character_id_fk",
+          "tableFrom": "weeklies",
+          "tableTo": "characters",
+          "columnsFrom": [
+            "character_id"
+          ],
+          "columnsTo": [
+            "character_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

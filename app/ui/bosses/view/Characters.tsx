@@ -18,7 +18,9 @@ export default function Characters({
       const characterCardsArray: ReactElement[] = [];
 
       for (const character of currentPageCharacters) {
-        characterCardsArray.push(<CharacterCard character={character} />);
+        characterCardsArray.push(
+          <CharacterCard key={character.characterId} character={character} />,
+        );
       }
       setCharacterCards(characterCardsArray);
     }
@@ -26,11 +28,11 @@ export default function Characters({
 
   return (
     <div
-      className="relative col-start-2 row-span-1 flex items-center"
+      className="relative col-span-1 col-start-3 row-span-1 flex h-full w-[96.5%] items-center justify-self-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {hovered && charactersPage > 1 && (
+      {hovered && charactersPage > 0 && (
         <Image
           src={"/general/ui_icons/left_arrow_icon.png"}
           height={0}
@@ -43,7 +45,7 @@ export default function Characters({
       )}
       {characterCards.length > 0 &&
         characterCards.map((charactersCard) => charactersCard)}
-      {hovered && charactersPage < Math.ceil(characters.length / 5) && (
+      {hovered && charactersPage + 1 < Math.ceil(characters.length / 5) && (
         <Image
           src={"/general/ui_icons/right_arrow_icon.png"}
           height={0}
