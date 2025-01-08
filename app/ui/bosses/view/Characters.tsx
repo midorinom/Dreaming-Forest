@@ -39,7 +39,7 @@ export default function Characters({
           width={0}
           alt="Left Arrow Button"
           sizes="100vw"
-          className="absolute left-0 z-10 h-[45%] w-auto hover:cursor-pointer"
+          className="absolute left-[-1vw] z-10 h-[45%] w-auto hover:cursor-pointer"
           onClick={() => setCharactersPage(charactersPage - 1)}
         />
       )}
@@ -52,7 +52,7 @@ export default function Characters({
           width={0}
           alt="Left Arrow Button"
           sizes="100vw"
-          className="absolute right-0 z-10 h-[45%] w-auto hover:cursor-pointer"
+          className="absolute right-[-1vw] z-10 h-[45%] w-auto hover:cursor-pointer"
           onClick={() => setCharactersPage(charactersPage + 1)}
         />
       )}
