@@ -20,7 +20,7 @@ export default function BossesListCard({ meso, image }: BossesListCardProps) {
           width={0}
           alt="Boss Image"
           sizes="100vw"
-          className="absolute h-full w-auto"
+          className="absolute h-auto w-[70%]"
         />
       </div>
     </>
