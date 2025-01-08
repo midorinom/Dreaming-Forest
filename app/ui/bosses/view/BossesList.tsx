@@ -26,7 +26,7 @@ export default function BossesList({
                 ? bossesInfo[bossesList[i]].gms_meso
                 : bossesInfo[bossesList[i]].msea_meso
             }
-            image={bossesInfo[bossesList[i]].dashboard_image}
+            image={bossesInfo[bossesList[i]].bosses_image}
           />,
         );
       }
