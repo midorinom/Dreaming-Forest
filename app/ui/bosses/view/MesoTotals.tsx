@@ -8,22 +8,22 @@ export default function MesoTotals({
 }: MesoTotalsProps) {
   return (
     <div className="col-start-2 row-start-3 grid grid-cols-5 grid-rows-2 items-center justify-items-center p-0.5">
-      <div className="col-span-1 row-span-1 row-start-1 w-2/3 rounded-md bg-secondary text-center text-lg">
+      <div className="col-span-1 row-span-1 row-start-1 w-3/4 rounded-md bg-secondary text-center text-xl">
         {data[charactersPage].subtotals[0].toLocaleString()}
       </div>
-      <div className="col-span-1 row-span-1 row-start-1 w-2/3 rounded-md bg-secondary text-center text-lg">
+      <div className="col-span-1 row-span-1 row-start-1 w-3/4 rounded-md bg-secondary text-center text-xl">
         {data[charactersPage].subtotals[1].toLocaleString()}
       </div>
-      <div className="col-span-1 row-span-1 row-start-1 w-2/3 rounded-md bg-secondary text-center text-lg">
+      <div className="col-span-1 row-span-1 row-start-1 w-3/4 rounded-md bg-secondary text-center text-xl">
         {data[charactersPage].subtotals[2].toLocaleString()}
       </div>
-      <div className="col-span-1 row-span-1 row-start-1 w-2/3 rounded-md bg-secondary text-center text-lg">
+      <div className="col-span-1 row-span-1 row-start-1 w-3/4 rounded-md bg-secondary text-center text-xl">
         {data[charactersPage].subtotals[3].toLocaleString()}
       </div>
-      <div className="col-span-1 row-span-1 row-start-1 w-2/3 rounded-md bg-secondary text-center text-lg">
+      <div className="col-span-1 row-span-1 row-start-1 w-3/4 rounded-md bg-secondary text-center text-xl">
         {data[charactersPage].subtotals[4].toLocaleString()}
       </div>
-      <div className="col-span-1 row-start-2 w-2/3 rounded-md bg-base-100 text-center text-lg">
+      <div className="col-span-1 row-start-2 w-3/4 rounded-md bg-base-100 text-center text-xl">
         {totalMeso.toLocaleString()}
       </div>
     </div>
