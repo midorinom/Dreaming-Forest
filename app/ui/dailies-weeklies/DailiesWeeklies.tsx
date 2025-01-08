@@ -35,21 +35,25 @@ export default function DailiesWeeklies() {
   }, []);
 
   return (
-    <main className="flex justify-around p-12">
-      {dailiesCharacters.length > 0 && (
-        <Dailies
-          dailiesCharacters={dailiesCharacters}
-          setDailiesCharacters={setDailiesCharacters}
-          region={region}
-        />
+    <>
+      {region && (
+        <main className="flex justify-around p-12">
+          {dailiesCharacters.length > 0 && (
+            <Dailies
+              dailiesCharacters={dailiesCharacters}
+              setDailiesCharacters={setDailiesCharacters}
+              region={region}
+            />
+          )}
+          {weekliesCharacters.length > 0 && (
+            <Weeklies
+              weekliesCharacters={weekliesCharacters}
+              setWeekliesCharacters={setWeekliesCharacters}
+              region={region}
+            />
+          )}
+        </main>
       )}
-      {weekliesCharacters.length > 0 && (
-        <Weeklies
-          weekliesCharacters={weekliesCharacters}
-          setWeekliesCharacters={setWeekliesCharacters}
-          region={region}
-        />
-      )}
-    </main>
+    </>
   );
 }
