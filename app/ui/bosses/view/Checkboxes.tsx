@@ -39,7 +39,7 @@ export default function Checkboxes({
 
           checkboxCardsArray.push(
             <CheckboxCard
-              key={Math.random()}
+              key={`row_${i}_col_${j}`}
               boss={boss}
               region={region}
               characterPosition={characterPosition}
