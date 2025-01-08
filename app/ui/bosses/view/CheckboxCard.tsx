@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import _ from "lodash";
 import {
   CheckboxCardProps,
   Data,
@@ -32,7 +33,7 @@ export default function CheckboxCard({
 
       for (const newBoss of newUser.characters[characterPosition].bosses) {
         if (newBoss.bossesPosition === boss?.bossesPosition) {
-          const newData: Data[] = JSON.parse(JSON.stringify(data));
+          const newData: Data[] = _.cloneDeep(data);
           let meso: number = 0;
 
           if (region === "GMS") {
@@ -55,7 +56,6 @@ export default function CheckboxCard({
             newData[charactersPage].subtotals[column] += meso;
             setTotalMeso(totalMeso + meso);
           }
-
           setData(newData);
         }
       }
