@@ -24,6 +24,9 @@ export default function BossesView({
   const [charactersPage, setCharactersPage] = useState<number>(0);
   const [data, setData] = useState<Data[]>([]); // indexed according to charactersPage
   const [bossesList, setBossesList] = useState<number[]>([]);
+  const [currentPageBossesList, setCurrentPageBossesList] = useState<number[]>(
+    [],
+  );
   const [bossesPage, setBossesPage] = useState<number>(0);
   const [totalBossesPages, setTotalBossesPages] = useState<number>(1);
   const [totalMeso, setTotalMeso] = useState<number>(0);
@@ -102,6 +105,20 @@ export default function BossesView({
     }
   }, [bossesList]);
 
+  useEffect(() => {
+    if (bossesList.length > 0) {
+      const newCurrentPageBossesList: number[] = [];
+      const firstIndex = bossesPage * 7;
+      const lastIndex = Math.min(7 * (bossesPage + 1), bossesList.length);
+
+      for (let i = firstIndex; i < lastIndex; i++) {
+        newCurrentPageBossesList.push(bossesList[i]);
+      }
+
+      setCurrentPageBossesList(newCurrentPageBossesList);
+    }
+  }, [bossesList, bossesPage]);
+
   function updateBossesList(data: Data[]) {
     const bossesListSet: Set<number> = data[charactersPage].bossesList;
     const bossesListArray: number[] = Array.from(bossesListSet);
@@ -120,11 +137,10 @@ export default function BossesView({
             charactersPage={charactersPage}
             setCharactersPage={setCharactersPage}
           />
-          {bossesList.length > 0 && (
+          {currentPageBossesList.length > 0 && (
             <BossesList
-              bossesList={bossesList}
+              currentPageBossesList={currentPageBossesList}
               bossesInfo={bossesInfo}
-              bossesPage={bossesPage}
               region={region}
             />
           )}

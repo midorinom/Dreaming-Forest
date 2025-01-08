@@ -4,36 +4,33 @@ import { BossesListProps } from "@/app/lib/definitions/bosses-definitions";
 import BossesListCard from "./BossesListCard";
 
 export default function BossesList({
-  bossesList,
+  currentPageBossesList,
   bossesInfo,
-  bossesPage,
   region,
 }: BossesListProps) {
   const [bossesListCards, setBossesListCards] = useState<ReactElement[]>([]);
 
   useEffect(() => {
-    if (bossesList.length > 0) {
+    if (currentPageBossesList.length > 0) {
       const bossesListCardsArray: ReactElement[] = [];
-      const firstIndex = bossesPage * 7;
-      const lastIndex = Math.min(7 * (bossesPage + 1), bossesList.length);
 
-      for (let i = firstIndex; i < lastIndex; i++) {
+      for (const boss_position of currentPageBossesList) {
         bossesListCardsArray.push(
           <BossesListCard
             key={Math.random()}
             meso={
               region === "GMS"
-                ? bossesInfo[bossesList[i]].gms_meso
-                : bossesInfo[bossesList[i]].msea_meso
+                ? bossesInfo[boss_position].gms_meso
+                : bossesInfo[boss_position].msea_meso
             }
-            image={bossesInfo[bossesList[i]].bosses_image}
+            image={bossesInfo[boss_position].bosses_image}
           />,
         );
       }
 
       setBossesListCards(bossesListCardsArray);
     }
-  }, [bossesList, bossesPage]);
+  }, [currentPageBossesList]);
 
   return (
     <div className="col-span-1 col-start-2 row-span-1 row-start-2 grid grid-cols-[0.7fr_0.3fr] grid-rows-7 items-center justify-items-center gap-y-2 px-4 py-1">

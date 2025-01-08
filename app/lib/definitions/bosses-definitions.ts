@@ -36,9 +36,8 @@ export type CharacterCardProps = {
 };
 
 export type BossesListProps = {
-  bossesList: number[];
+  currentPageBossesList: number[];
   bossesInfo: BossInfo[];
-  bossesPage: number;
   region: string;
 };
 
@@ -58,3 +57,5 @@ export type MesoTotalsProps = {
   charactersPage: number;
   totalMeso: number;
 };
+
+export type CheckboxesProps = {};
