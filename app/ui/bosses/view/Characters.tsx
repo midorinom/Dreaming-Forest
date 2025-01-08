@@ -28,7 +28,7 @@ export default function Characters({
 
   return (
     <div
-      className="relative col-span-1 col-start-3 row-span-1 flex items-center"
+      className="relative col-span-1 col-start-3 row-span-1 flex h-full w-[96.5%] items-center justify-self-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
