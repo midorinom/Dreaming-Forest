@@ -1,4 +1,4 @@
-export type FetchBossesInfoResponse = {
+export type FetchDashboardBossesInfoResponse = {
   bosses_position: number;
   bosses_image: string;
   dashboard_position: number;
