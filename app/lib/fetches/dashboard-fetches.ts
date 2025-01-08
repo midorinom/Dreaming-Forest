@@ -13,7 +13,7 @@ export async function fetchDashboardBossesInfo(): Promise<FetchDashboardBossesIn
     const minMesoSubquery = db
       .select({
         dashboard_position: BossesInfo.dashboard_position,
-        min_meso: min(BossesInfo.meso).as("min_meso"),
+        min_meso: min(BossesInfo.gms_meso).as("min_meso"),
       })
       .from(BossesInfo)
       .groupBy(BossesInfo.dashboard_position)
@@ -26,7 +26,7 @@ export async function fetchDashboardBossesInfo(): Promise<FetchDashboardBossesIn
         minMesoSubquery,
         and(
           eq(BossesInfo.dashboard_position, minMesoSubquery.dashboard_position),
-          eq(BossesInfo.meso, minMesoSubquery.min_meso),
+          eq(BossesInfo.gms_meso, minMesoSubquery.min_meso),
         ),
       );
 

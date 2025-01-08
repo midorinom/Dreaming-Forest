@@ -39,6 +39,7 @@ export type BossesListProps = {
   bossesList: number[];
   bossesInfo: BossInfo[];
   bossesPage: number;
+  region: string;
 };
 
 export type BossesListCardProps = {

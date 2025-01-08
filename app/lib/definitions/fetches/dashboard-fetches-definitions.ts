@@ -3,5 +3,6 @@ export type FetchDashboardBossesInfoResponse = {
   bosses_image: string;
   dashboard_position: number;
   dashboard_image: string;
-  meso: number;
+  gms_meso: number;
+  msea_meso: number;
 }[];

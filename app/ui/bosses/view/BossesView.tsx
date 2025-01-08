@@ -50,7 +50,14 @@ export default function BossesView({
         for (const boss of characters[i * 5 + j].bosses) {
           newBossesList.add(boss.bossesPosition);
           if (boss.done) {
-            const meso = bossesInfo[boss.bossesPosition].meso;
+            let meso: number = 0;
+
+            if (region === "GMS") {
+              meso = bossesInfo[boss.bossesPosition].gms_meso;
+            } else if (region === "MSEA") {
+              meso = bossesInfo[boss.bossesPosition].msea_meso;
+            }
+
             newSubtotals[j] += meso;
             setTotalMeso((prevState) => prevState + meso);
           }
@@ -117,6 +124,7 @@ export default function BossesView({
               bossesList={bossesList}
               bossesInfo={bossesInfo}
               bossesPage={bossesPage}
+              region={region}
             />
           )}
           <div className="col-start-2 row-span-1 row-start-2 border-4 border-white"></div>

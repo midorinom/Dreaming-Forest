@@ -7,6 +7,7 @@ export default function BossesList({
   bossesList,
   bossesInfo,
   bossesPage,
+  region,
 }: BossesListProps) {
   const [bossesListCards, setBossesListCards] = useState<ReactElement[]>([]);
 
@@ -20,7 +21,11 @@ export default function BossesList({
         bossesListCardsArray.push(
           <BossesListCard
             key={Math.random()}
-            meso={bossesInfo[bossesList[i]].meso}
+            meso={
+              region === "GMS"
+                ? bossesInfo[bossesList[i]].gms_meso
+                : bossesInfo[bossesList[i]].msea_meso
+            }
             image={bossesInfo[bossesList[i]].dashboard_image}
           />,
         );
