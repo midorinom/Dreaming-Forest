@@ -18,7 +18,9 @@ export default function Characters({
       const characterCardsArray: ReactElement[] = [];
 
       for (const character of currentPageCharacters) {
-        characterCardsArray.push(<CharacterCard character={character} />);
+        characterCardsArray.push(
+          <CharacterCard key={character.characterId} character={character} />,
+        );
       }
       setCharacterCards(characterCardsArray);
     }
