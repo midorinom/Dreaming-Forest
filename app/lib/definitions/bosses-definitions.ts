@@ -58,4 +58,10 @@ export type MesoTotalsProps = {
   totalMeso: number;
 };
 
-export type CheckboxesProps = {};
+export type CheckboxesProps = {
+  currentPageBossesList: number[];
+  currentPageCharacters: Character[];
+  setCharacters: (characters: Character[]) => void;
+};
+
+export type CheckboxCardProps = {};

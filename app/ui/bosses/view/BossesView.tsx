@@ -147,7 +147,11 @@ export default function BossesView({
               region={region}
             />
           )}
-          <Checkboxes />
+          <Checkboxes
+            currentPageBossesList={currentPageBossesList}
+            currentPageCharacters={currentPageCharacters}
+            setCharacters={setCharacters}
+          />
           <BossesPagination
             bossesPage={bossesPage}
             setBossesPage={setBossesPage}
