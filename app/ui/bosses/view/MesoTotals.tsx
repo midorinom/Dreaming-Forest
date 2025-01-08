@@ -129,7 +129,7 @@ export default function MesoTotals({
       >
         {data[charactersPage].subtotals[4].toLocaleString()}
       </div>
-      <div className="col-span-1 row-start-2 w-3/4 rounded-md bg-base-100 p-1 text-center text-xl hover:cursor-pointer">
+      <div className="col-span-1 row-start-2 w-3/4 rounded-md bg-base-100 p-1 text-center text-xl">
         {totalMeso.toLocaleString()}
       </div>
     </div>
