@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import _ from "lodash";
 import {
   CheckboxCardProps,
@@ -16,6 +16,7 @@ export default function CheckboxCard({
   data,
   setData,
   charactersPage,
+  row,
   column,
   bossesInfo,
   totalMeso,
@@ -24,6 +25,12 @@ export default function CheckboxCard({
   const [checked, setChecked] = useState<boolean>(
     boss ? (boss.done ? true : false) : false,
   );
+
+  useEffect(() => {
+    if (boss) {
+      setChecked(boss ? (boss.done ? true : false) : false);
+    }
+  }, [boss]);
 
   function handleCheckboxChange() {
     const localUser = localStorage.getItem("user");
@@ -70,7 +77,7 @@ export default function CheckboxCard({
     <div className={`col-span-1 row-span-1 flex items-center justify-center`}>
       {boss && characterPosition !== -1 && (
         <input
-          id={Math.random().toString()}
+          id={`row_${row}_col_${column}`}
           type="checkbox"
           className={`checkbox-accent checkbox checkbox-lg cursor-default border-info hover:cursor-pointer ${checked ? "hover:border-accent" : "hover:border-info"}`}
           checked={checked}
