@@ -9,6 +9,7 @@ import Characters from "./Characters";
 import BossesList from "./BossesList";
 import MesoTotals from "./MesoTotals";
 import BossesPagination from "./BossesPagination";
+import Checkboxes from "./Checkboxes";
 
 export default function BossesView({
   bossesInfo,
@@ -112,7 +113,7 @@ export default function BossesView({
   return (
     <>
       {currentPageCharacters.length > 0 && (
-        <div className="grid h-full w-full grid-cols-[20vw_1fr] grid-rows-[15vh_1fr_14vh]">
+        <div className="grid h-full w-full grid-cols-[2vw_20vw_1fr_2vw] grid-rows-[15vh_1fr_14vh]">
           <Characters
             characters={characters}
             currentPageCharacters={currentPageCharacters}
@@ -127,7 +128,7 @@ export default function BossesView({
               region={region}
             />
           )}
-          <div className="col-start-2 row-span-1 row-start-2 border-4 border-white"></div>
+          <Checkboxes />
           <BossesPagination
             bossesPage={bossesPage}
             setBossesPage={setBossesPage}
