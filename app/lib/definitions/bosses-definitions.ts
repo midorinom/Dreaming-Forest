@@ -18,3 +18,14 @@ export type BossesViewProps = {
   setCharacters: (characters: Character[]) => void;
   region: string;
 };
+
+export type CharactersProps = {
+  characters: Character[];
+  setCurrentPageCharacters: (currentPageCharacters: Character[]) => void;
+  charactersPage: number;
+  setCharactersPage: (charactersPage: number) => void;
+};
+
+export type CharacterCardProps = {
+  character: Character;
+};
