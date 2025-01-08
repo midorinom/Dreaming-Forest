@@ -77,7 +77,7 @@ export default function Characters({ classes }: CharactersProps) {
 
   return (
     <>
-      {user && region && characters && (
+      {user && region && characters.length > 0 && (
         <CharactersProvider value={{ classes, region }}>
           <main className="grid grid-cols-[1fr_12vw]">
             <>
