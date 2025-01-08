@@ -91,8 +91,11 @@ export default function BossesView({
       }
 
       setCurrentPageCharacters(newCurrentPageCharacters);
-      setBossesPage(0);
     }
+  }, [characters, charactersPage]);
+
+  useEffect(() => {
+    setBossesPage(0);
   }, [charactersPage]);
 
   useEffect(() => {
@@ -129,55 +132,53 @@ export default function BossesView({
 
   return (
     <>
-      {currentPageCharacters.length > 0 && (
-        <div className="grid h-full w-full grid-cols-[2vw_20vw_1fr_2vw] grid-rows-[15vh_1fr_14vh]">
-          <Characters
-            characters={characters}
-            currentPageCharacters={currentPageCharacters}
-            charactersPage={charactersPage}
-            setCharactersPage={setCharactersPage}
-            currentPageBossesList={currentPageBossesList}
-            setCharacters={setCharacters}
-            region={region}
-            data={data}
-            setData={setData}
-            bossesInfo={bossesInfo}
-            totalMeso={totalMeso}
-            setTotalMeso={setTotalMeso}
-          />
-          {currentPageBossesList.length > 0 && (
+      {currentPageCharacters.length > 0 &&
+        currentPageBossesList.length > 0 &&
+        data.length > 0 && (
+          <div className="grid h-full w-full grid-cols-[2vw_20vw_1fr_2vw] grid-rows-[15vh_1fr_14vh]">
+            <Characters
+              characters={characters}
+              currentPageCharacters={currentPageCharacters}
+              charactersPage={charactersPage}
+              setCharactersPage={setCharactersPage}
+              currentPageBossesList={currentPageBossesList}
+              setCharacters={setCharacters}
+              region={region}
+              data={data}
+              setData={setData}
+              bossesInfo={bossesInfo}
+              totalMeso={totalMeso}
+              setTotalMeso={setTotalMeso}
+            />
             <BossesList
               currentPageBossesList={currentPageBossesList}
               bossesInfo={bossesInfo}
               region={region}
             />
-          )}
-          <Checkboxes
-            currentPageBossesList={currentPageBossesList}
-            currentPageCharacters={currentPageCharacters}
-            setCharacters={setCharacters}
-            region={region}
-            data={data}
-            setData={setData}
-            charactersPage={charactersPage}
-            bossesInfo={bossesInfo}
-            totalMeso={totalMeso}
-            setTotalMeso={setTotalMeso}
-          />
-          <BossesPagination
-            bossesPage={bossesPage}
-            setBossesPage={setBossesPage}
-            totalBossesPages={totalBossesPages}
-          />
-          {data.length > 0 && (
+            <Checkboxes
+              currentPageBossesList={currentPageBossesList}
+              currentPageCharacters={currentPageCharacters}
+              setCharacters={setCharacters}
+              region={region}
+              data={data}
+              setData={setData}
+              charactersPage={charactersPage}
+              bossesInfo={bossesInfo}
+              totalMeso={totalMeso}
+              setTotalMeso={setTotalMeso}
+            />
+            <BossesPagination
+              bossesPage={bossesPage}
+              setBossesPage={setBossesPage}
+              totalBossesPages={totalBossesPages}
+            />
             <MesoTotals
               data={data}
               charactersPage={charactersPage}
               totalMeso={totalMeso}
             />
-          )}
-        </div>
-      )}
+          </div>
+        )}
     </>
   );
 }
