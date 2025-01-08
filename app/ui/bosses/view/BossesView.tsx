@@ -13,13 +13,13 @@ export default function BossesView({
   const [currentPageCharacters, setCurrentPageCharacters] = useState<
     Character[]
   >([]);
-  const [charactersPage, setCharactersPage] = useState<number>(1);
+  const [charactersPage, setCharactersPage] = useState<number>(0);
 
   useEffect(() => {
     if (characters.length > 0) {
       const newCurrentPageCharacters: Character[] = [];
-      const firstIndex = (charactersPage - 1) * 5;
-      const lastIndex = Math.min(5 * charactersPage, characters.length);
+      const firstIndex = charactersPage * 5;
+      const lastIndex = Math.min(5 * (charactersPage + 1), characters.length);
 
       for (let i = firstIndex; i < lastIndex; i++) {
         newCurrentPageCharacters.push(characters[i]);
