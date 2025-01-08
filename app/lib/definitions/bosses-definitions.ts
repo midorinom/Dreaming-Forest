@@ -72,8 +72,15 @@ export type BossesPaginationProps = {
 
 export type MesoTotalsProps = {
   data: Data[];
+  currentPageCharacters: Character[];
   charactersPage: number;
   totalMeso: number;
+  bossesList: number[];
+  setCharacters: (characters: Character[]) => void;
+  region: string;
+  setData: (data: Data[]) => void;
+  bossesInfo: BossInfo[];
+  setTotalMeso: (meso: number) => void;
 };
 
 export type CheckboxesProps = {

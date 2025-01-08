@@ -174,8 +174,15 @@ export default function BossesView({
             />
             <MesoTotals
               data={data}
+              currentPageCharacters={currentPageCharacters}
               charactersPage={charactersPage}
               totalMeso={totalMeso}
+              bossesList={bossesList}
+              setCharacters={setCharacters}
+              region={region}
+              setData={setData}
+              bossesInfo={bossesInfo}
+              setTotalMeso={setTotalMeso}
             />
           </div>
         )}
