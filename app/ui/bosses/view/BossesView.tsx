@@ -81,11 +81,6 @@ export default function BossesView({
 
   useEffect(() => {
     if (characters.length > 0) {
-      // bossesList
-      if (data.length > 0) {
-        updateBossesList(data);
-      }
-
       // currentPageCharacters
       const newCurrentPageCharacters: Character[] = [];
       const firstIndex = charactersPage * 5;
@@ -96,11 +91,17 @@ export default function BossesView({
       }
 
       setCurrentPageCharacters(newCurrentPageCharacters);
-
-      // bossPage
       setBossesPage(0);
     }
-  }, [characters, charactersPage]);
+  }, [charactersPage]);
+
+  useEffect(() => {
+    if (currentPageCharacters.length > 0) {
+      if (data.length > 0) {
+        updateBossesList(data);
+      }
+    }
+  }, [currentPageCharacters]);
 
   useEffect(() => {
     if (bossesList.length > 0) {
@@ -109,23 +110,19 @@ export default function BossesView({
   }, [bossesList]);
 
   useEffect(() => {
-    if (bossesList.length > 0) {
-      const newCurrentPageBossesList: number[] = [];
-      const firstIndex = bossesPage * 7;
-      const lastIndex = Math.min(7 * (bossesPage + 1), bossesList.length);
+    const newCurrentPageBossesList: number[] = [];
+    const firstIndex = bossesPage * 7;
+    const lastIndex = Math.min(7 * (bossesPage + 1), bossesList.length);
 
-      for (let i = firstIndex; i < lastIndex; i++) {
-        newCurrentPageBossesList.push(bossesList[i]);
-      }
-
-      setCurrentPageBossesList(newCurrentPageBossesList);
+    for (let i = firstIndex; i < lastIndex; i++) {
+      newCurrentPageBossesList.push(bossesList[i]);
     }
+    setCurrentPageBossesList(newCurrentPageBossesList);
   }, [bossesList, bossesPage]);
 
   function updateBossesList(data: Data[]) {
     const bossesListSet: Set<number> = data[charactersPage].bossesList;
     const bossesListArray: number[] = Array.from(bossesListSet);
-
     bossesListArray.sort((a, b) => a - b); // ascending order
     setBossesList(bossesListArray);
   }
@@ -139,6 +136,14 @@ export default function BossesView({
             currentPageCharacters={currentPageCharacters}
             charactersPage={charactersPage}
             setCharactersPage={setCharactersPage}
+            currentPageBossesList={currentPageBossesList}
+            setCharacters={setCharacters}
+            region={region}
+            data={data}
+            setData={setData}
+            bossesInfo={bossesInfo}
+            totalMeso={totalMeso}
+            setTotalMeso={setTotalMeso}
           />
           {currentPageBossesList.length > 0 && (
             <BossesList
