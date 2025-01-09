@@ -112,14 +112,16 @@ export default function EditorCard({
               <option>5</option>
               <option>6</option>
             </select>
-            <input
-              type="range"
-              min={0}
-              max={modes.length - 1}
-              value={mode}
-              className="range-base-100 range w-3/4 [--range-shdw:pink]"
-              onChange={handleModeChange}
-            />
+            {modes.length > 1 && (
+              <input
+                type="range"
+                min={0}
+                max={modes.length - 1}
+                value={mode}
+                className="range-base-100 range w-3/4 [--range-shdw:pink]"
+                onChange={handleModeChange}
+              />
+            )}
           </div>
         </>
       )}
