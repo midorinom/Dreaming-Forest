@@ -63,7 +63,7 @@ export default function Editor({
 
   return (
     <div className="collapse relative row-span-1 row-start-2 grid h-[95%] w-full grid-cols-[1fr_0.08fr] self-center bg-primary/85">
-      <div className="grid h-full w-full grid-cols-3 grid-rows-4 gap-4 p-4">
+      <div className="grid h-full w-full grid-cols-3 grid-rows-4 gap-4 p-8">
         {editorCards.length > 0 && editorCards.map((editorCard) => editorCard)}
       </div>
       <Pagination
