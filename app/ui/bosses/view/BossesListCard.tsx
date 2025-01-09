@@ -5,7 +5,7 @@ import {
   BossesListCardProps,
   Data,
 } from "@/app/lib/definitions/bosses-definitions";
-import { User } from "@/app/lib/definitions/general-definitions";
+import { Character, User } from "@/app/lib/definitions/general-definitions";
 import { getDateTimes } from "@/app/lib/functions/utility-functions";
 import _ from "lodash";
 
@@ -114,8 +114,15 @@ export default function BossesListCard({
 
       setData(newData);
       localStorage.setItem("user", JSON.stringify(newUser));
-      setCharacters(newUser.characters);
       setTotalMeso(newTotalMeso);
+
+      const newCharacters: Character[] = [];
+      for (const character of newUser.characters) {
+        if (character.bosses.length > 0 && character.tracking.bosses) {
+          newCharacters.push(character);
+        }
+      }
+      setCharacters(newCharacters);
     }
   }
 
