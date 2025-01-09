@@ -23,7 +23,10 @@ export default function BossesList({
       const bossesListCardsArray: ReactElement[] = [];
 
       for (let i = 0; i < currentPageBossesList.length; i++) {
-        if (!currentPageBossesList[i]) {
+        if (
+          currentPageBossesList[i] === null ||
+          currentPageBossesList[i] === undefined
+        ) {
           break;
         }
 
