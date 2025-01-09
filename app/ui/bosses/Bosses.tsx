@@ -35,7 +35,12 @@ export default function Bosses({ bossesInfo }: BossesProps) {
               region={region}
             />
           ) : (
-            <BossesEdit />
+            <BossesEdit
+              bossesInfo={bossesInfo}
+              characters={characters}
+              setCharacters={setCharacters}
+              region={region}
+            />
           )}
         </main>
       )}

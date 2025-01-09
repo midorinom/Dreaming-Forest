@@ -132,3 +132,14 @@ export type CheckboxCardProps = {
   setTotalMeso: (meso: number) => void;
   setRowHovered: (rowHovered: number) => void;
 };
+
+export type BossesEditProps = {
+  bossesInfo: BossInfo[];
+  characters: Character[];
+  setCharacters: (characters: Character[]) => void;
+  region: string;
+};
+
+export type ActiveCharacterProps = {
+  activeCharacter: Character;
+};
