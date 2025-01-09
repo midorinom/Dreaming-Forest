@@ -7,7 +7,7 @@ export default function ActiveCharacter({
 }: ActiveCharacterProps) {
   return (
     <>
-      <div className="h-full w-[12%] rounded-[0.5rem] border-b-4 border-neutral">
+      <div className="h-full w-[14%] rounded-[0.5rem] border-b-4 border-neutral">
         <div
           style={{
             position: "relative",

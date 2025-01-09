@@ -17,7 +17,7 @@ export default function BossesEdit({
 
   return (
     <>
-      <div className="grid h-full w-3/4 grid-rows-[20vh_1fr] justify-self-center p-4">
+      <div className="grid h-full w-2/3 grid-rows-[20vh_1fr] justify-self-center p-4">
         <div className="row-span-1 row-start-1 flex justify-between p-2">
           <ActiveCharacter activeCharacter={activeCharacter} />
           <CharactersWheel
