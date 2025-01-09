@@ -23,16 +23,21 @@ export default function Editor({
 
   useEffect(() => {
     // Form bosses list in ascending order of dashboard position
-    const newBosses: Boss[] = JSON.parse(
-      JSON.stringify(characters[activeCharacter.position].bosses),
+    const character = characters.find(
+      (character) => character.characterId === activeCharacter.characterId,
     );
+    if (!character) {
+      return;
+    }
+
+    const newBosses: Boss[] = JSON.parse(JSON.stringify(character.bosses));
     newBosses.sort((a, b) => {
       return a.dashboardPosition - b.dashboardPosition;
     });
     setBosses(newBosses);
 
     // Total Bosses
-    const totalBosses = characters[activeCharacter.position].bosses.length;
+    const totalBosses = character.bosses.length;
     setTotalBossesPages(Math.ceil(totalBosses / 16));
   }, [characters, activeCharacter]);
 
