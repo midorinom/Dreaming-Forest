@@ -19,7 +19,9 @@ export default function Editor({
 
   useEffect(() => {
     setBossesPage(0);
+  }, [activeCharacter]);
 
+  useEffect(() => {
     // Form bosses list in ascending order of dashboard position
     const newBosses: Boss[] = JSON.parse(
       JSON.stringify(characters[activeCharacter.position].bosses),
@@ -32,7 +34,7 @@ export default function Editor({
     // Total Bosses
     const totalBosses = characters[activeCharacter.position].bosses.length;
     setTotalBossesPages(Math.ceil(totalBosses / 16));
-  }, [activeCharacter]);
+  }, [characters, activeCharacter]);
 
   useEffect(() => {
     const newCurrentPageBosses: Boss[] = [];
