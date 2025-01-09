@@ -153,13 +153,38 @@ Page (Server Component)
     TopNav
     SideNav
     DailiesWeeklies
+      Dailies
+        DailiesCard
+        DailiesFilter
+        Pagination
+      Weeklies
+        WeekliesCard
+        WeekliesFilter
+        Pagination
 
 "/bosses"
 Page (Server Component)
   MainAppWrapper
     TopNav
     SideNav
-      Bosses
+    Bosses
+      NavBar
+      BossesView
+        Characters
+          CharacterCard
+        BossesList
+          BossesListCard
+        BossesPagination
+        Checkboxes
+          CheckboxCard
+        MesoTotals
+      BossesEdit
+        ActiveCharacter
+        CharactersWheel
+          CharactersWheelCard
+        Editor
+          EditorCard
+          Pagination
 
 "/progression"
 Page (Server Component)
