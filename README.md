@@ -230,3 +230,7 @@ Some pictures of what the website looks like!
 <img src="/documentation/readme/Characters_Rearrange_Characters.png" alt="Characters Page - Rearrange Characters" title="Characters Page - Rearrange Characters">
 <img src="/documentation/readme/Characters_Add_Character.png" alt="Characters Page - Add Character" title="Characters Page - Add Character">
 <img src="/documentation/readme/Characters_Delete_Characters.png" alt="Characters Page - Delete Characters" title="Characters Page - Delete Characters">
+<img src="/documentation/readme/Dailies_Weeklies.png" alt="Dailies/Weeklies Page" title="Dailies/Weeklies Page">
+<img src="/documentation/readme/Bosses_View.png" alt="Bosses Page - View" title="Bosses Page - View">
+<img src="/documentation/readme/Bosses_Edit.png" alt="Bosses Page - Edit" title="Bosses Page - Edit">
+<img src="/documentation/readme/Settings.png" alt="Settings Page" title="Settings Page">
