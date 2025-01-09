@@ -51,7 +51,7 @@ export default function Pagination({
   }
 
   return (
-    <div className="col-start-2 flex justify-self-center">
+    <div className="col-start-2 flex justify-self-start">
       <div className="my-auto flex flex-col">
         {totalBossesPages > 1 && (
           <>{paginationButtons.map((paginationButton) => paginationButton)}</>

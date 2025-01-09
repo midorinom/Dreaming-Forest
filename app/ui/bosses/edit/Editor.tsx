@@ -73,8 +73,8 @@ export default function Editor({
   }, [currentPageBosses]);
 
   return (
-    <div className="collapse relative row-span-1 row-start-2 grid h-[95%] w-full grid-cols-[1fr_0.08fr] self-center bg-primary/85">
-      <div className="grid h-full w-full grid-cols-3 grid-rows-4 gap-4 p-8">
+    <div className="collapse relative row-span-1 row-start-2 grid h-[90%] w-full grid-cols-[1fr_0.08fr] self-center bg-primary/85">
+      <div className="grid h-full w-full grid-cols-3 grid-rows-4 gap-4 px-0 py-5">
         {editorCards.length > 0 && editorCards.map((editorCard) => editorCard)}
       </div>
       <Pagination

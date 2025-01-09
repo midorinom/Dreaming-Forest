@@ -88,7 +88,7 @@ export default function EditorCard({
             style={{
               position: "relative",
             }}
-            className="row-span-2 flex h-full w-[28%] items-center justify-center"
+            className="row-span-2 flex h-full w-[29%] items-center justify-center"
           >
             <Image
               src={bossesInfo[modes[mode]].bosses_image}
