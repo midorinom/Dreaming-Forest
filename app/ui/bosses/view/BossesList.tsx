@@ -57,7 +57,7 @@ export default function BossesList({
   }, [currentPageBossesList, currentPageCharacters, rowHovered]);
 
   return (
-    <div className="col-span-1 col-start-2 row-span-1 row-start-2 grid grid-cols-[0.7fr_0.3fr] grid-rows-7 items-center justify-items-center gap-y-2 px-4 py-1">
+    <div className="col-span-1 col-start-2 row-span-1 row-start-2 mb-1 grid grid-cols-[0.7fr_0.3fr] grid-rows-7 items-center justify-items-center gap-y-2 px-4 py-1">
       {bossesListCards.length > 0 &&
         bossesListCards.map((bossesListCard) => bossesListCard)}
     </div>

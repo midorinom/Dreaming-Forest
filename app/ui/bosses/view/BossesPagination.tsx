@@ -52,7 +52,7 @@ export default function BossesPagination({
 
   return (
     <div className="col-span-1 col-start-2 row-start-3 flex items-start justify-center">
-      <div className="mx-auto mt-4 flex">
+      <div className="mx-auto mt-3 flex">
         {totalBossesPages > 1 && (
           <>{paginationButtons.map((paginationButton) => paginationButton)}</>
         )}
