@@ -119,6 +119,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
     setCharacters(JSON.parse(JSON.stringify(newUser.characters)));
 
     setSubmitClicked(true);
+    setReadyToProceed(false);
     setIsUploadingToDatabase(false);
     setDisplaySuccessMessage(true);
     setTimeout(() => setDisplaySuccessMessage(false), 5000);
