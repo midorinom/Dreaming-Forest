@@ -46,41 +46,43 @@ export default function EditorCard({
 
   return (
     <div className="flex w-full items-center justify-center">
-      <div
-        style={{
-          position: "relative",
-        }}
-        className="row-span-2 flex h-full w-[28%] items-center justify-center"
-      >
-        <Image
-          src={bossesInfo[boss.bossesPosition].bosses_image}
-          height={0}
-          width={0}
-          alt="Character Image"
-          sizes="100vw"
-          className="absolute h-auto max-h-full w-full hover:cursor-pointer"
-        />
-      </div>
-      <div className="flex h-full w-[35%] flex-col items-center justify-center gap-2">
-        <select className="select select-sm h-[45%] w-3/4 max-w-xs bg-neutral bg-none p-0 text-center text-lg">
-          <option>Solo</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-        </select>
-        {modes.length > 1 && (
-          <input
-            type="range"
-            min={0}
-            max={modes.length - 1}
-            value={mode}
-            className="range-base-100 range w-3/4 [--range-shdw:pink]"
-            onChange={handleModeChange}
-          />
-        )}
-      </div>
+      {modes.length > 0 && (
+        <>
+          <div
+            style={{
+              position: "relative",
+            }}
+            className="row-span-2 flex h-full w-[28%] items-center justify-center"
+          >
+            <Image
+              src={bossesInfo[modes[mode]].bosses_image}
+              height={0}
+              width={0}
+              alt="Character Image"
+              sizes="100vw"
+              className="absolute h-auto max-h-full w-full hover:cursor-pointer"
+            />
+          </div>
+          <div className="flex h-full w-[35%] flex-col items-center justify-center gap-2">
+            <select className="select select-sm h-[45%] w-3/4 max-w-xs bg-neutral bg-none p-0 text-center text-lg">
+              <option>Solo</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+            </select>
+            <input
+              type="range"
+              min={0}
+              max={modes.length - 1}
+              value={mode}
+              className="range-base-100 range w-3/4 [--range-shdw:pink]"
+              onChange={handleModeChange}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
