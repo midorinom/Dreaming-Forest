@@ -11,6 +11,7 @@ export default function Editor({
   setCharacters,
   bossesInfo,
 }: EditorProps) {
+  const [bosses, setBosses] = useState<Boss[]>([]);
   const [currentPageBosses, setCurrentPageBosses] = useState<Boss[]>([]);
   const [editorCards, setEditorCards] = useState<ReactElement[]>([]);
   const [bossesPage, setBossesPage] = useState<number>(0);
@@ -18,6 +19,15 @@ export default function Editor({
 
   useEffect(() => {
     setBossesPage(0);
+
+    // Form bosses list in ascending order of dashboard position
+    const newBosses: Boss[] = JSON.parse(
+      JSON.stringify(characters[activeCharacter.position].bosses),
+    );
+    newBosses.sort((a, b) => {
+      return a.dashboardPosition - b.dashboardPosition;
+    });
+    setBosses(newBosses);
 
     // Total Bosses
     const totalBosses = characters[activeCharacter.position].bosses.length;
@@ -28,17 +38,16 @@ export default function Editor({
     const newCurrentPageBosses: Boss[] = [];
 
     for (let i = 0; i < 12; i++) {
-      if (!characters[activeCharacter.position].bosses[bossesPage * 12 + i]) {
+      if (!bosses[bossesPage * 12 + i]) {
         break;
       }
 
-      const newBoss =
-        characters[activeCharacter.position].bosses[bossesPage * 12 + i];
+      const newBoss = bosses[bossesPage * 12 + i];
       newCurrentPageBosses.push(newBoss);
     }
 
     setCurrentPageBosses(newCurrentPageBosses);
-  }, [activeCharacter, bossesPage]);
+  }, [activeCharacter, bossesPage, bosses]);
 
   useEffect(() => {
     if (currentPageBosses.length === 0) {
