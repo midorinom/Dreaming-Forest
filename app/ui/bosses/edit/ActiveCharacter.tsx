@@ -22,7 +22,7 @@ export default function ActiveCharacter({
             }
             height={0}
             width={0}
-            alt="Character Image"
+            alt="Active Character Image"
             sizes="100vw"
             className="absolute h-full w-auto"
           />
