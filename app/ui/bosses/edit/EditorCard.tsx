@@ -2,6 +2,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import Image from "next/image";
 import { EditorCardProps } from "@/app/lib/definitions/bosses-definitions";
+import { User } from "@/app/lib/definitions/general-definitions";
 
 export default function EditorCard({
   boss,
@@ -47,11 +48,36 @@ export default function EditorCard({
 
   function handlePartySizeChange(e: ChangeEvent<HTMLSelectElement>) {
     setPartySize(e.target.value);
+    updateBosses(e.target.value, mode);
   }
 
   function handleModeChange(e: ChangeEvent<HTMLInputElement>) {
     const modeInput = parseInt(e.target.value);
     setMode(modeInput);
+    updateBosses(partySize, modeInput);
+  }
+
+  function updateBosses(partySizeInput: string, modeInput: number) {
+    const localUser = localStorage.getItem("user");
+
+    if (localUser) {
+      const newUser: User = JSON.parse(localUser);
+      for (const newBoss of newUser.characters[activeCharacter.position]
+        .bosses) {
+        if (newBoss.dashboardPosition === boss.dashboardPosition) {
+          let newPartySize = 1;
+          if (partySizeInput !== "Solo") {
+            newPartySize = parseInt(partySizeInput);
+          }
+
+          newBoss.partySize = newPartySize;
+          newBoss.bossesPosition = modes[modeInput];
+        }
+      }
+
+      localStorage.setItem("user", JSON.stringify(newUser));
+      setCharacters(newUser.characters);
+    }
   }
 
   return (
@@ -70,7 +96,7 @@ export default function EditorCard({
               width={0}
               alt="Character Image"
               sizes="100vw"
-              className="absolute h-auto max-h-full w-full hover:cursor-pointer"
+              className="absolute h-auto max-h-full w-full"
             />
           </div>
           <div className="flex h-full w-[35%] flex-col items-center justify-center gap-2">
