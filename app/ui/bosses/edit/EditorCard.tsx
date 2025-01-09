@@ -10,6 +10,7 @@ export default function EditorCard({
   setCharacters,
 }: EditorCardProps) {
   const [modes, setModes] = useState<number[]>([]); // array of bossesPosition values
+  const [partySize, setPartySize] = useState<string>("Solo");
   const [mode, setMode] = useState<number>(0);
 
   useEffect(() => {
@@ -17,10 +18,15 @@ export default function EditorCard({
       return;
     }
 
+    // Party Size
+    if (boss.partySize === 1) {
+      setPartySize("Solo");
+    } else {
+      setPartySize(boss.partySize.toString());
+    }
+
+    // Modes
     const newModes = [];
-
-    console.log(bossesInfo);
-
     for (const bossInfo of bossesInfo) {
       if (bossInfo.dashboard_position === boss.dashboardPosition) {
         newModes.push(bossInfo.bosses_position);
@@ -38,6 +44,10 @@ export default function EditorCard({
       }
     }
   }, [boss]);
+
+  function handlePartySizeChange(e: ChangeEvent<HTMLSelectElement>) {
+    setPartySize(e.target.value);
+  }
 
   function handleModeChange(e: ChangeEvent<HTMLInputElement>) {
     const modeInput = parseInt(e.target.value);
@@ -64,7 +74,11 @@ export default function EditorCard({
             />
           </div>
           <div className="flex h-full w-[35%] flex-col items-center justify-center gap-2">
-            <select className="select select-sm h-[45%] w-3/4 max-w-xs bg-neutral bg-none p-0 text-center text-lg">
+            <select
+              className="select select-sm h-[45%] w-3/4 max-w-xs bg-neutral bg-none p-0 text-center text-lg"
+              onChange={handlePartySizeChange}
+              value={partySize}
+            >
               <option>Solo</option>
               <option>2</option>
               <option>3</option>
