@@ -64,7 +64,7 @@ export default function Checkboxes({
   }, [data, currentPageBossesList, currentPageCharacters]);
 
   return (
-    <div className="collapse relative col-span-1 col-start-3 row-span-1 row-start-2 mx-auto h-full w-[96.5%] grid-cols-5 grid-rows-7 items-center justify-items-center bg-primary/85">
+    <div className="collapse relative col-span-1 col-start-3 row-span-1 row-start-2 mx-auto mb-1 h-[99%] w-[96.5%] grid-cols-5 grid-rows-7 items-center justify-items-center self-center bg-primary/85">
       {checkboxCards.length > 0 &&
         checkboxCards.map((checkboxCard) => checkboxCard)}
     </div>

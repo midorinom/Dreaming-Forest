@@ -66,9 +66,13 @@ export default function BossesListCard({
             newBoss.done = dateTimes.nextThursday.toDate();
             let meso: number = 0;
             if (region === "GMS") {
-              meso = bossesInfo[bossPosition].gms_meso;
+              meso = Math.ceil(
+                bossesInfo[bossPosition].gms_meso / newBoss.partySize,
+              );
             } else if (region === "MSEA") {
-              meso = bossesInfo[bossPosition].msea_meso;
+              meso = Math.ceil(
+                bossesInfo[bossPosition].msea_meso / newBoss.partySize,
+              );
             }
 
             newData[charactersPage].subtotals[i] += meso;
@@ -93,9 +97,13 @@ export default function BossesListCard({
 
             let meso: number = 0;
             if (region === "GMS") {
-              meso = bossesInfo[bossPosition].gms_meso;
+              meso = Math.ceil(
+                bossesInfo[bossPosition].gms_meso / newBoss.partySize,
+              );
             } else if (region === "MSEA") {
-              meso = bossesInfo[bossPosition].msea_meso;
+              meso = Math.ceil(
+                bossesInfo[bossPosition].msea_meso / newBoss.partySize,
+              );
             }
 
             newData[charactersPage].subtotals[i] -= meso;

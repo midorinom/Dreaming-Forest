@@ -2,7 +2,7 @@
 import { useState, useEffect, ReactElement } from "react";
 import { BossesPaginationProps } from "@/app/lib/definitions/bosses-definitions";
 
-export default function BossesPagination({
+export default function Pagination({
   bossesPage,
   setBossesPage,
   totalBossesPages,
@@ -31,10 +31,10 @@ export default function BossesPagination({
             />
             <label
               htmlFor={`$bosses-pagination-option-${i}`}
-              className={`btn btn-info btn-sm w-[2.5vw] outline outline-accent ${
-                i === 0 ? "rounded-l-3xl" : "rounded-l-none"
+              className={`btn btn-info btn-lg w-full outline outline-accent ${
+                i === 0 ? "rounded-t-3xl" : "rounded-t-none"
               } ${
-                i + 1 === totalBossesPages ? "rounded-r-3xl" : "rounded-r-none"
+                i + 1 === totalBossesPages ? "rounded-b-3xl" : "rounded-b-none"
               } peer-checked:border-accent peer-checked:bg-accent`}
             ></label>
           </div>,
@@ -51,8 +51,8 @@ export default function BossesPagination({
   }
 
   return (
-    <div className="col-span-1 col-start-2 row-start-3 flex items-start justify-center">
-      <div className="mx-auto mt-3 flex">
+    <div className="col-start-2 flex justify-self-start">
+      <div className="my-auto flex flex-col">
         {totalBossesPages > 1 && (
           <>{paginationButtons.map((paginationButton) => paginationButton)}</>
         )}

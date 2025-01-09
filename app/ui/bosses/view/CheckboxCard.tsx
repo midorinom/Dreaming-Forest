@@ -45,9 +45,13 @@ export default function CheckboxCard({
           let meso: number = 0;
 
           if (region === "GMS") {
-            meso = bossesInfo[boss?.bossesPosition].gms_meso;
+            meso = Math.ceil(
+              bossesInfo[boss?.bossesPosition].gms_meso / newBoss.partySize,
+            );
           } else if (region === "MSEA") {
-            meso = bossesInfo[boss?.bossesPosition].msea_meso;
+            meso = Math.ceil(
+              bossesInfo[boss?.bossesPosition].msea_meso / newBoss.partySize,
+            );
           }
 
           if (checked) {
