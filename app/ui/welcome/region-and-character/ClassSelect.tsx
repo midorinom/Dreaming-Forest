@@ -54,7 +54,12 @@ const ClassSelect = ({ setMaplestoryClass }: ClassFieldProps) => {
     setItems(newItems);
 
     if (classes.find((p) => p.toLowerCase() === classInput.toLowerCase())) {
-      setMaplestoryClass(classInput);
+      // Capitalise first letter of each word in the class, if the user did not
+      const words = classInput.split(" ");
+      for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substring(1);
+      }
+      setMaplestoryClass(words.join(" "));
     } else {
       setMaplestoryClass("");
     }
