@@ -5,7 +5,7 @@ import {
   CheckboxCardProps,
   Data,
 } from "@/app/lib/definitions/bosses-definitions";
-import { User } from "@/app/lib/definitions/general-definitions";
+import { Character, User } from "@/app/lib/definitions/general-definitions";
 import { getDateTimes } from "@/app/lib/functions/utility-functions";
 
 export default function CheckboxCard({
@@ -73,7 +73,14 @@ export default function CheckboxCard({
       }
 
       localStorage.setItem("user", JSON.stringify(newUser));
-      setCharacters(newUser.characters);
+
+      const newCharacters: Character[] = [];
+      for (const character of newUser.characters) {
+        if (character.bosses.length > 0 && character.tracking.bosses) {
+          newCharacters.push(character);
+        }
+      }
+      setCharacters(newCharacters);
       setChecked((prevState) => !prevState);
     }
   }

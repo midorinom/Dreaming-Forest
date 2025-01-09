@@ -17,7 +17,14 @@ export default function Bosses({ bossesInfo }: BossesProps) {
     if (localUser) {
       const parsedLocalUser: User = JSON.parse(localUser);
 
-      setCharacters(parsedLocalUser.characters);
+      const newCharacters: Character[] = [];
+      for (const character of parsedLocalUser.characters) {
+        if (character.bosses.length > 0 && character.tracking.bosses) {
+          newCharacters.push(character);
+        }
+      }
+
+      setCharacters(newCharacters);
       setRegion(parsedLocalUser.region);
     }
   }, []);

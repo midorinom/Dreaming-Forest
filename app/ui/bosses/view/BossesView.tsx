@@ -46,13 +46,15 @@ export default function BossesView({
     // Iterate each page of characters
     for (let i = 0; i < Math.ceil(characters.length / 5); i++) {
       const newBossesList: Set<number> = new Set();
-      const newSubtotals: number[] = [0, 0, 0, 0, 0];
+      const newSubtotals: number[] = [-1, -1, -1, -1, -1];
 
       // Iterate through each character on the page
       for (let j = 0; j < 5; j++) {
         if (i * 5 + j === characters.length) {
           break; // no more characters remaining
         }
+
+        newSubtotals[j] = 0;
 
         // Iterate through each boss
         for (const boss of characters[i * 5 + j].bosses) {
