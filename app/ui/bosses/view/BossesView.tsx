@@ -4,7 +4,9 @@ import {
   BossesViewProps,
   Data,
 } from "@/app/lib/definitions/bosses-definitions";
-import { Character } from "@/app/lib/definitions/general-definitions";
+import { Character, User } from "@/app/lib/definitions/general-definitions";
+import { getDateTimes } from "@/app/lib/functions/utility-functions";
+import dayjs from "dayjs";
 import Characters from "./Characters";
 import BossesList from "./BossesList";
 import MesoTotals from "./MesoTotals";
@@ -39,6 +41,7 @@ export default function BossesView({
 
     isFirstRender.current = false;
     const newData: Data[] = [];
+    let charactersChanged: boolean = false;
 
     // Iterate each page of characters
     for (let i = 0; i < Math.ceil(characters.length / 5); i++) {
@@ -55,16 +58,41 @@ export default function BossesView({
         for (const boss of characters[i * 5 + j].bosses) {
           newBossesList.add(boss.bossesPosition);
           if (boss.done) {
-            let meso: number = 0;
-
-            if (region === "GMS") {
-              meso = bossesInfo[boss.bossesPosition].gms_meso;
-            } else if (region === "MSEA") {
-              meso = bossesInfo[boss.bossesPosition].msea_meso;
+            const dateTimes = getDateTimes(region);
+            if (!dateTimes) {
+              return;
             }
+            const nextThursday = dateTimes.nextThursday;
 
-            newSubtotals[j] += meso;
-            setTotalMeso((prevState) => prevState + meso);
+            // Check whether 1 week has passed
+            if (dayjs(nextThursday).diff(dayjs(boss.done), "week") < 1) {
+              let meso: number = 0;
+
+              if (region === "GMS") {
+                meso = bossesInfo[boss.bossesPosition].gms_meso;
+              } else if (region === "MSEA") {
+                meso = bossesInfo[boss.bossesPosition].msea_meso;
+              }
+
+              newSubtotals[j] += meso;
+              setTotalMeso((prevState) => prevState + meso);
+            } else {
+              // Reset boss.done to null since the reset date has passed
+              const localUser = localStorage.getItem("user");
+
+              if (localUser) {
+                const newUser: User = JSON.parse(localUser);
+
+                for (const newBoss of newUser.characters[i * 5 + j].bosses) {
+                  if (newBoss.bossesPosition === boss.bossesPosition) {
+                    newBoss.done = null;
+                  }
+                }
+
+                localStorage.setItem("user", JSON.stringify(newUser));
+                charactersChanged = true;
+              }
+            }
           }
         }
       }
@@ -74,6 +102,16 @@ export default function BossesView({
         subtotals: newSubtotals,
       };
       newData.push(newDataItem);
+    }
+
+    // Flagged if any bosses were reset, update the characters state to reflect the new changes
+    if (charactersChanged) {
+      const localUser = localStorage.getItem("user");
+      if (localUser) {
+        const newUser: User = JSON.parse(localUser);
+        const newCharacters = newUser.characters;
+        setCharacters(newCharacters);
+      }
     }
 
     setData(newData);
