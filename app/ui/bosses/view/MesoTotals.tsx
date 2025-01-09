@@ -46,9 +46,13 @@ export default function MesoTotals({
             newBoss.done = dateTimes.nextThursday.toDate();
             let meso: number = 0;
             if (region === "GMS") {
-              meso = bossesInfo[currentRowBoss].gms_meso;
+              meso = Math.ceil(
+                bossesInfo[currentRowBoss].gms_meso / newBoss.partySize,
+              );
             } else if (region === "MSEA") {
-              meso = bossesInfo[currentRowBoss].msea_meso;
+              meso = Math.ceil(
+                bossesInfo[currentRowBoss].msea_meso / newBoss.partySize,
+              );
             }
 
             newData[charactersPage].subtotals[characterColumn] += meso;
@@ -69,9 +73,13 @@ export default function MesoTotals({
 
             let meso: number = 0;
             if (region === "GMS") {
-              meso = bossesInfo[currentRowBoss].gms_meso;
+              meso = Math.ceil(
+                bossesInfo[currentRowBoss].gms_meso / newBoss.partySize,
+              );
             } else if (region === "MSEA") {
-              meso = bossesInfo[currentRowBoss].msea_meso;
+              meso = Math.ceil(
+                bossesInfo[currentRowBoss].msea_meso / newBoss.partySize,
+              );
             }
 
             newData[charactersPage].subtotals[characterColumn] -= meso;
