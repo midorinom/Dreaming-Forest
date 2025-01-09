@@ -4,12 +4,12 @@ import { BossesEditProps } from "@/app/lib/definitions/bosses-definitions";
 import { Character } from "@/app/lib/definitions/general-definitions";
 import ActiveCharacter from "./ActiveCharacter";
 import CharactersWheel from "./CharactersWheel";
+import Editor from "./Editor";
 
 export default function BossesEdit({
   bossesInfo,
   characters,
   setCharacters,
-  region,
 }: BossesEditProps) {
   const [activeCharacter, setActiveCharacter] = useState<Character>(
     characters[0],
@@ -26,6 +26,12 @@ export default function BossesEdit({
             charactersProp={characters}
           />
         </div>
+        <Editor
+          activeCharacter={activeCharacter}
+          characters={characters}
+          setCharacters={setCharacters}
+          bossesInfo={bossesInfo}
+        />
       </div>
     </>
   );

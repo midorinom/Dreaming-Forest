@@ -39,7 +39,6 @@ export default function Bosses({ bossesInfo }: BossesProps) {
               bossesInfo={bossesInfo}
               characters={characters}
               setCharacters={setCharacters}
-              region={region}
             />
           )}
         </main>
