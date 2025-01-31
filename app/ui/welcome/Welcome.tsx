@@ -46,7 +46,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       bosses: true,
       progression: true,
     },
-    progression: {} as Progression,
+    // progression: {} as Progression,
   } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState<boolean>(false);

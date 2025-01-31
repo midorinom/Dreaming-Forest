@@ -31,7 +31,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
       bosses: true,
       progression: true,
     },
-    progression: {} as Progression,
+    // progression: {} as Progression,
   } as Character);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");

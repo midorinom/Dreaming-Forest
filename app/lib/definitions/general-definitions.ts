@@ -74,7 +74,7 @@ export type Character = {
   bosses: Boss[];
   position: number;
   tracking: Tracking;
-  progression: Progression;
+  // progression: Progression;
 };
 
 export type User = {
