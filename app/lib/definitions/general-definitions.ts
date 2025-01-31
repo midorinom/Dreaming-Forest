@@ -1,6 +1,7 @@
 import { UUID } from "crypto";
 import { Dayjs } from "dayjs";
 import { ReactElement } from "react";
+import { Progression } from "./progression-definitions";
 
 export type AutoCompleteProps = {
   items: string[];
@@ -73,6 +74,7 @@ export type Character = {
   bosses: Boss[];
   position: number;
   tracking: Tracking;
+  progression: Progression;
 };
 
 export type User = {

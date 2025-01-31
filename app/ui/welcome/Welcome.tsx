@@ -24,6 +24,7 @@ import Login from "./login/Login";
 import RegionAndCharacter from "./region-and-character/RegionAndCharacter";
 import CreateAccount from "./create-account/CreateAccount";
 import ElodinSkeleton from "@/app/ui/general/ElodinSkeleton";
+import { Progression } from "@/app/lib/definitions/progression-definitions";
 
 export default function Welcome({ classes }: WelcomeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -45,6 +46,7 @@ export default function Welcome({ classes }: WelcomeProps) {
       bosses: true,
       progression: true,
     },
+    progression: {} as Progression,
   } as Character);
   const [dialogueIndex, setDialogueIndex] = useState<DialogueIndex>("welcome");
   const [proceedClicked, setProceedClicked] = useState<boolean>(false);
