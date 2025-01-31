@@ -30,7 +30,7 @@ export default function Progression() {
   return (
     <main className="flex items-center justify-center">
       {characters.length > 0 && activeCharacter && (
-        <div className="collapse grid h-[90%] w-[94%] grid-cols-[0.175fr_0.4fr_0.205fr_0.221fr] bg-primary/85">
+        <div className="collapse grid h-[92%] w-[94%] grid-cols-[0.175fr_0.4fr_0.205fr_0.221fr] bg-primary/85 px-4 py-2">
           <Section1 activeCharacter={activeCharacter} />
           <div>Section 2</div>
           <div>Section 3</div>

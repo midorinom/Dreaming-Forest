@@ -4,7 +4,7 @@ import { CharacterProps } from "@/app/lib/definitions/progression-definitions";
 
 export default function Character({ activeCharacter }: CharacterProps) {
   return (
-    <div className="w-max-content h-[20%]">
+    <div className="w-max-content flex h-[24%] flex-col">
       <div
         style={{
           position: "relative",
