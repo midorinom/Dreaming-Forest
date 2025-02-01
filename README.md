@@ -259,3 +259,7 @@ Some pictures of what the website looks like!
 <img src="/documentation/readme/Bosses_View.png" alt="Bosses Page - View" title="Bosses Page - View">
 <img src="/documentation/readme/Bosses_Edit.png" alt="Bosses Page - Edit" title="Bosses Page - Edit">
 <img src="/documentation/readme/Settings.png" alt="Settings Page" title="Settings Page">
+
+The Progression Page is still under development, this is the figma design:
+
+<img src="/documentation/readme/Progression_Figma.png" alt="Progression Page - Figma" title="Progression Page - Figma">
