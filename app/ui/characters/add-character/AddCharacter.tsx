@@ -12,6 +12,7 @@ import ImageField from "./ImageField";
 import IgnField from "./IgnField";
 import LevelField from "./LevelField";
 import ClassField from "./ClassField";
+import { Progression } from "@/app/lib/definitions/progression-definitions";
 
 export default function AddCharacter({ setCharacters }: AddCharactersProps) {
   const [character, setCharacter] = useState<Character>({
@@ -30,6 +31,7 @@ export default function AddCharacter({ setCharacters }: AddCharactersProps) {
       bosses: true,
       progression: true,
     },
+    // progression: {} as Progression,
   } as Character);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [ign, setIgn] = useState<string>("");
