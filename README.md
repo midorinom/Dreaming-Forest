@@ -5,11 +5,23 @@
 - [Introduction](#Introduction)
 - [Video Demonstration](#Demo)
 - [Technologies Used](#Technologies)
-- [Data Model](#Data)
-- [APIs](#API)
 - [Folder Structure](#Structure)
 - [Component Hierarchy](#Hierarchy)
+- [APIs](#API)
+- [Data Model](#Data)
+- [Explanation of Each Page](#Explanation)
+  - [Welcome](#Welcome)
+  - [Dashboard](#Dashboard)
+  - [Characters](#Characters)
+  - [Dailies/Weeklies](#Dailies)
+  - [Bosses](#Bosses)
+  - [Progression](#Progression)
+  - [Settings](#Settings)
+- [Systems](#Systems)
+  - [Images](#Images)
+  - [User Data](#UserData)
 - [Pictures](#Pictures)
+- [Credits](#Credits)
 
 <a name="Introduction"></a>
 
@@ -23,7 +35,7 @@ You can view my designs on Figma <a href="https://www.figma.com/design/IohBAXXF9
 
 ## Video Demonstration
 
-I recorded a brief walkthrough of how the website looks like so far which I have uploaded <a href = "https://www.youtube.com/watch?v=5EycrPXZjI0">here</a>.
+I have recorded a walkthrough of the website, showing how it looks like and explaining its key features. You can watch it <a href = "https://www.youtube.com/watch?v=RXxAa0kLHTQ">here</a>.
 
 <a name="Technologies"></a>
 
@@ -230,25 +242,72 @@ Page (Server Component)
 
 ```
 
-<a name="Data"></a>
-
-## Data Model
-
-<img src="/documentation/readme/Data_Model.png" alt="Data Model" title="Data Model">
-
 <a name="API"></a>
 
 ## APIs
 
 All api endpoints are organised in the `/app/api` directory, as async functions inside route.ts files. Next.JS deploys all these async functions as serverless functions onto Vercel, where they are executed whenever invoked by the application.
 
-Current endpoints: `/bosses`, `/character-images`, `/characters`, `/dailies`, `/tracking`, `/userids`, `/users`, `/weeklies`
+Current endpoints:
+
+`/bosses`, `/character-images`, `/characters`, `/dailies`, `/tracking`, `/userids`, `/users`, `/weeklies`
 
 Conventions for HTTP methods that I use:
-POST - To retrieve
-PUT - To insert data where there will never be a need to update
-PATCH - To update, and also to insert data that might be updated
-DELETE - To delete
+
+- POST - To retrieve
+- PUT - To insert data where there will never be a need to update
+- PATCH - To update, and also to insert data that might be updated
+- DELETE - To delete
+
+<a name="Data"></a>
+
+## Data Model
+
+<img src="/documentation/readme/Data_Model.png" alt="Data Model" title="Data Model">
+
+<a name="Explanation"></a>
+
+## Explanation of Each Page
+
+<a name="Welcome"></a>
+
+### Welcome
+
+<a name="Dashboard"></a>
+
+### Dashboard
+
+<a name="Characters"></a>
+
+### Characters
+
+<a name="Dailies"></a>
+
+### Dailies/Weeklies
+
+<a name="Bosses"></a>
+
+### Bosses
+
+<a name="Progression"></a>
+
+### Progression
+
+<a name="Settings"></a>
+
+### Settings
+
+<a name="Systems"></a>
+
+## Systems
+
+<a name="Images"></a>
+
+### Images
+
+<a name="UserData"></a>
+
+### User Data
 
 <a name="Pictures"></a>
 
@@ -278,3 +337,7 @@ Some pictures of what the website looks like!
 The Progression Page is still under development, this is the figma design:
 
 <img src="/documentation/readme/Progression_Figma.png" alt="Progression Page - Figma" title="Progression Page - Figma">
+
+<a name="Credits"></a>
+
+## Credits
