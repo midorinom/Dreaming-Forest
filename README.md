@@ -6,6 +6,7 @@
 - [Video Demonstration](#Demo)
 - [Technologies Used](#Technologies)
 - [Data Model](#Data)
+- [APIs](#API)
 - [Folder Structure](#Structure)
 - [Component Hierarchy](#Hierarchy)
 - [Pictures](#Pictures)
@@ -234,6 +235,20 @@ Page (Server Component)
 ## Data Model
 
 <img src="/documentation/readme/Data_Model.png" alt="Data Model" title="Data Model">
+
+<a name="API"></a>
+
+## APIs
+
+All api endpoints are organised in the `/app/api` directory, as async functions inside route.ts files. Next.JS deploys all these async functions as serverless functions onto Vercel, where they are executed whenever invoked by the application.
+
+Current endpoints: `/bosses`, `/character-images`, `/characters`, `/dailies`, `/tracking`, `/userids`, `/users`, `/weeklies`
+
+Conventions for HTTP methods that I use:
+POST - To retrieve
+PUT - To insert data where there will never be a need to update
+PATCH - To update, and also to insert data that might be updated
+DELETE - To delete
 
 <a name="Pictures"></a>
 
