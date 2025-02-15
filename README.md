@@ -9,6 +9,11 @@
 - [Component Hierarchy](#Hierarchy)
 - [APIs](#API)
 - [Data Model](#Data)
+- [Systems](#Systems)
+  - [Styling](#Styling)
+  - [Database](#Database)
+  - [Images](#Images)
+  - [Storing of User Data](#UserData)
 - [Explanation of Each Page](#Explanation)
   - [Welcome](#Welcome)
   - [Dashboard](#Dashboard)
@@ -17,9 +22,6 @@
   - [Bosses](#Bosses)
   - [Progression](#Progression)
   - [Settings](#Settings)
-- [Systems](#Systems)
-  - [Images](#Images)
-  - [User Data](#UserData)
 - [Pictures](#Pictures)
 - [Credits](#Credits)
 
@@ -35,7 +37,7 @@ You can view my designs on Figma <a href="https://www.figma.com/design/IohBAXXF9
 
 ## Video Demonstration
 
-I have recorded a walkthrough of the website, showing how it looks like and explaining its key features. You can watch it <a href = "https://www.youtube.com/watch?v=RXxAa0kLHTQ">here</a>.
+I have recorded a walkthrough of the website, showing how it looks like and explaining its key features. You can watch it <a href = "https://www.youtube.com/watch?v=5EycrPXZjI0">here</a>.
 
 <a name="Technologies"></a>
 
@@ -265,6 +267,26 @@ Conventions for HTTP methods that I use:
 
 <img src="/documentation/readme/Data_Model.png" alt="Data Model" title="Data Model">
 
+<a name="Systems"></a>
+
+## Systems
+
+<a name="Styling"></a>
+
+### Styling
+
+<a name="Database"></a>
+
+### Database
+
+<a name="Images"></a>
+
+### Images
+
+<a name="UserData"></a>
+
+### Storing of User Data
+
 <a name="Explanation"></a>
 
 ## Explanation of Each Page
@@ -296,18 +318,6 @@ Conventions for HTTP methods that I use:
 <a name="Settings"></a>
 
 ### Settings
-
-<a name="Systems"></a>
-
-## Systems
-
-<a name="Images"></a>
-
-### Images
-
-<a name="UserData"></a>
-
-### User Data
 
 <a name="Pictures"></a>
 
