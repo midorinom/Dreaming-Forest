@@ -250,7 +250,7 @@ Page (Server Component)
 
 All api endpoints are organised in the `/app/api` directory, as async functions inside route.ts files. Next.JS deploys all these async functions as serverless functions onto Vercel, where they are executed whenever invoked by the application.
 
-Current endpoints:
+Endpoints:
 
 `/bosses`, `/character-images`, `/characters`, `/dailies`, `/tracking`, `/userids`, `/users`, `/weeklies`
 
@@ -275,17 +275,38 @@ Conventions for HTTP methods that I use:
 
 ### Styling
 
+I use Tailwind for all css throughout the project, with many UI elements being imported from the DaisyUI library. The `tailwind.config.ts` file contains theme configurations and custom css classes.
+
 <a name="Database"></a>
 
 ### Database
+
+The Vercel database is used for storing all data apart from images with login credentials being provided in a `.env` file, which is configured in the Vercel projects management page.
+
+When connecting to the database, Drizzle is used as an ORM to map the Typescript objects to database objects and
+to perform database queries. Relevant paths are defined in the `drizzle.config.ts` file and the `schema.ts` file is used to define the table designs in the database.
+
+Whenever the schema is changed, for the changes to be reflected in the database, a new migration has to be made by running `drizzle-kit generate` and then `drizzle-kit migrate` in the terminal. All previous migrations can be easily kept track of in the `/drizzle` directory, stored as sql files.
+
+Static data such as enums (regions, classes etc.) and boss info are seeded into the database using the `npm seed` command in the terminal (this is configured in `package.json` to execute `tsx scripts/seed.ts`). The `seed.ts` file is where the seeding functions are set up.
 
 <a name="Images"></a>
 
 ### Images
 
+Images are stored in the Vercel Blob Store as large binary data. Inside the store, they are organised into directories which are named using UUIDs that correspond to userIds. All that user's character images are stored inside the directory named after their userID, with each character image being named using their character IGN, concatenated together with a generated UUID. Whenever a character is deleted, their respective image is also deleted and whenever a user's data is deleted, their user directory is deleted entirely along with all their character images.
+
+<img src="/documentation/readme/Blob_Store.png" alt="Blob Store" title="Blob Store">
+
 <a name="UserData"></a>
 
 ### Storing of User Data
+
+User data is primarily stored on local storage as it allows for the most immediate storing and retrieving of all data that is dynamically changed, which happens frequently in a highly user-interactive application such as this one. When first using the website, the user is encouraged to create an account as this would then allow them to upload their data to the database and safeguard against the loss of data if their local storage were to be lost.
+
+However, it is too computationally intensive and also slow and thus, a bad user experience if data were to be synced with the database in real-time. I decided to then use the solution of requiring the user to manually click the sync button in the settings page in order to save their data to the database. Whenever this is done, the version number property of the user data is incremented by 1.
+
+In the `MainAppWrapper` component which is used to wrap over every page component in the application to check for whether a user is logged in, it also checks the version number of the local storage against the one in the database. If the version number in the local storage is of a smaller number, then an immediate forced sync happens where all database data is retrieved and then saved to local storage. This ensures that the user will always have their most updated data whenever they visit the website on a new device after they have previously synced on a different device.
 
 <a name="Explanation"></a>
 
@@ -351,3 +372,5 @@ The Progression Page is still under development, this is the figma design:
 <a name="Credits"></a>
 
 ## Credits
+
+All UI Icons are taken from <a href = "https://www.flaticon.com/">FlatIcon</a>. All Maplestory-related assets such as the static images used for the background, boss icons etc. belong to Nexon, the publisher and developer of Maplestory.
