@@ -307,6 +307,8 @@ However, it is too computationally intensive and also slow and thus, a bad user 
 
 In the `MainAppWrapper` component which is used to wrap over every page component in the application to check for whether a user is logged in, it also checks the version number of the local storage against the one in the database. If the version number in the local storage is of a smaller number, then an immediate forced sync happens where all database data is retrieved and then saved to local storage. This ensures that the user will always have their most updated data whenever they visit the website on a new device after they have previously synced on a different device.
 
+Last logged in date is also updated as a property in the user data whenever a user logs in. This can be useful in future for cleaning up storage space by running a script to delete all user data from users that have not logged in to the website in a long time.
+
 <a name="Explanation"></a>
 
 ## Explanation of Each Page
