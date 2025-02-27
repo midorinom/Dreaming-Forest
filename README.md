@@ -392,13 +392,13 @@ There is a filter on the top right of either the Dailies or Weeklies tab, that a
 
 ### Bosses
 
-This page is in the `/bosses` URL route and can be visited by clicking the third icon on the left sidebar. This page allows the user to track the bossing mesos earned for each character and across their account, as well as being able to easily see the total bossing completion of all characters. The list of bosses on the left is gathered from all the bosses that the current page of (up to 5) characters have, with the meso value for each boss differing depending on the region. All the meso values are fetched from the bosses data table in the database. The meso value displayed is total meso, in order words, the meso that would be earned if the player clears the boss solo.
+This page is in the `/bosses` URL route and can be visited by clicking the third icon on the left sidebar. This page allows the user to track the bossing mesos earned for each character and across their account, as well as being able to easily see the total bossing completion of all characters. The list of bosses on the left is gathered from all the bosses that the current page of (up to 5) characters have, with the meso value for each boss differing depending on the region. All the meso values are fetched from the bosses_info table in the database. The meso value displayed is total meso, in order words, the meso that would be earned if the player clears the boss solo.
 
 <img src="/documentation/readme/Bosses_View.png" alt="Bosses Page - View" title="Bosses Page - View">
 
 Clicking a checkbox directly increases the meso subtotal at the bottom of the column, which corresponds to the character in that same column, as well as adding to the total account meso which is in the red box all the way at the bottom. Clicking the boss icon on the left will check/uncheck all the checkboxes in that same row.
 
-If all the checkboxes are checked, then they will all be unchecked. Otherwise, all of the checkboxes will become checked.Clicking a character image will apply this logic to all the checkboxes in that row, while clicking a meso subtotal box will apply that logic to all the checkboxes belonging to that character whose subtotal was clicked, including the checkboxes that are not shown on the current page.
+If all the checkboxes are checked, then they will all be unchecked. Otherwise, all of the checkboxes will become checked. Clicking a character image will apply this logic to all the checkboxes in that row, while clicking a meso subtotal box will apply that logic to all the checkboxes belonging to that character whose subtotal was clicked, including the checkboxes that are not shown on the current page.
 
 Whenever a checkbox changes, the change in meso is not necessarily the same number as the one displayed in the boss list on the left, as the meso value can be divided depending on how many players cleared the boss together. This party size setting can be changed in the edit menu that is accessed by clicking the icon on the top left of the page.
 
